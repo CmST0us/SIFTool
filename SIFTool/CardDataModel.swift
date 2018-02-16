@@ -145,7 +145,7 @@ class CardDataModel {
         promoItem = dictionary[CodingKey.promoItem] as? String
         promoLink = dictionary[CodingKey.promoLink] as? String
         if let rd = dictionary[CodingKey.releaseDate] as? String {
-            releaseDate = rd.dateObj()
+            releaseDate = rd.dateObj(withFormat: "yyyy-MM-dd")
         }
         japanOnly = dictionary[CodingKey.japanOnly] as? Bool
         if let e = dictionary[CodingKey.event] as? Dictionary<String, Any> {
@@ -229,6 +229,12 @@ extension CardDataModel: CardApiRequestParamProtocol {
             "page_size": String(pageSize),
             "page": String(page)
         ]
+        return p
+    }
+    static func requestIds() -> ApiRequestParam {
+        let p = ApiRequestParam()
+        p.method = ApiRequestParam.Method.GET
+        p.path = "/cardids"
         return p
     }
 }

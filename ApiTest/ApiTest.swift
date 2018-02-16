@@ -22,7 +22,7 @@ class ApiTest: XCTestCase {
         super.tearDown()
     }
     
-    func testRequestPage() {
+    func testCardPage() {
         var page = 1
         var haveNext = true
         let results: NSMutableArray = NSMutableArray()
@@ -54,10 +54,58 @@ class ApiTest: XCTestCase {
             Logger.shared.console(error.localizedDescription, .error)
             XCTFail()
         }
-        
-        
     }
     
+    func testIdolPage() {
+        var page = 1
+        var haveNext = true
+        let p = IdolDataModel.requestPage(1, pageSize: 10)
+        do {
+            let data = try ApiHelper.shared.request(param: p)
+            if let dicts = DataModelHelper.shared.resultsDictionaries(withJsonData: data) {
+                for dict in dicts {
+                    let idol = IdolDataModel(withDictionary: dict)
+                    Logger.shared.console(idol.name, .info)
+                }
+                return
+            }
+        } catch let e as ApiRequestError{
+            Logger.shared.console(e.message, .error)
+        } catch {
+            Logger.shared.console(error.localizedDescription, .error)
+        }
+        XCTFail()
+    }
+    
+    func testIdolNamePage() {
+        let p = IdolDataModel.requestIdol(withEnglishName: "Kunikida Hanamaru")
+        do {
+            let data = try ApiHelper.shared.request(param: p)
+            if let dict = DataModelHelper.shared.dictionary(withJsonData: data) {
+                let idol = IdolDataModel(withDictionary: dict)
+                Logger.shared.console(idol.summary ?? "no summary")
+            }
+            return
+        } catch {
+            Logger.shared.console(error.localizedDescription, .error)
+        }
+        XCTFail()
+    }
+    
+    func testCardids() {
+        let p = CardDataModel.requestIds()
+        do {
+            let data = try ApiHelper.shared.request(param: p)
+            if let r = DataModelHelper.shared.array(withJsonData: data) as? [Int] {
+                let a = NSArray(array: r)
+                Logger.shared.console(a.componentsJoined(by: ", "))
+            }
+            return
+        } catch {
+            Logger.shared.console(error.localizedDescription)
+        }
+        XCTFail()
+    }
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {

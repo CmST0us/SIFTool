@@ -7,8 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4F0863F6203662F500CFDD98 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0863F5203662F500CFDD98 /* opencv2.framework */; };
-		4F0863F7203662F500CFDD98 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0863F5203662F500CFDD98 /* opencv2.framework */; };
+		4F0863F920372D5000CFDD98 /* CVDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0863F820372D5000CFDD98 /* CVDataModel.swift */; };
+		4F0863FA20372D5000CFDD98 /* CVDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0863F820372D5000CFDD98 /* CVDataModel.swift */; };
+		4F0863FB20372D5000CFDD98 /* CVDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0863F820372D5000CFDD98 /* CVDataModel.swift */; };
+		4F0863FD20372D6400CFDD98 /* IdolDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0863FC20372D6400CFDD98 /* IdolDataModel.swift */; };
+		4F0863FE20372D6400CFDD98 /* IdolDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0863FC20372D6400CFDD98 /* IdolDataModel.swift */; };
+		4F0863FF20372D6400CFDD98 /* IdolDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0863FC20372D6400CFDD98 /* IdolDataModel.swift */; };
+		4F0864002037329100CFDD98 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0863F5203662F500CFDD98 /* opencv2.framework */; };
+		4F086401203732AB00CFDD98 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0863F5203662F500CFDD98 /* opencv2.framework */; };
+		4F08640320373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F08640220373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm */; };
+		4F08640420373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F08640220373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm */; };
+		4F08640520373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm in Sources */ = {isa = PBXBuildFile; fileRef = 4F08640220373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm */; };
 		4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9720347AB70025741A /* ApiRequestParam.swift */; };
@@ -81,7 +90,10 @@
 		12B8C854157AEED0F316DBCF /* Pods-SIFTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIFTool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SIFTool/Pods-SIFTool.debug.xcconfig"; sourceTree = "<group>"; };
 		348D3FC84CC80BA3868A130E /* Pods-SIFTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIFTool.release.xcconfig"; path = "Pods/Target Support Files/Pods-SIFTool/Pods-SIFTool.release.xcconfig"; sourceTree = "<group>"; };
 		3592CEF3EA487E187630A793 /* Pods_SIFTool_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SIFTool_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4F0863F5203662F500CFDD98 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../../../Desktop/opensource/opencv2.framework; sourceTree = "<group>"; };
+		4F0863F5203662F500CFDD98 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = /Users/cmst0us/Project/xCode_Project/SIFTool/SIFTool/../../../../Desktop/opensource/opencv2.framework; sourceTree = "<absolute>"; };
+		4F0863F820372D5000CFDD98 /* CVDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDataModel.swift; sourceTree = "<group>"; };
+		4F0863FC20372D6400CFDD98 /* IdolDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdolDataModel.swift; sourceTree = "<group>"; };
+		4F08640220373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = OpenCVBridgeSwiftHelper.mm; sourceTree = "<group>"; };
 		4F4F5F8F203479420025741A /* SIFTool-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SIFTool-macOS.entitlements"; sourceTree = "<group>"; };
 		4F4F5F90203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		4F4F5F91203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
@@ -132,7 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F0863F6203662F500CFDD98 /* opencv2.framework in Frameworks */,
+				4F086401203732AB00CFDD98 /* opencv2.framework in Frameworks */,
 				E56D676C2B3D7A2970BC81A4 /* Pods_SIFTool.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,7 +153,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4F0863F7203662F500CFDD98 /* opencv2.framework in Frameworks */,
+				4F0864002037329100CFDD98 /* opencv2.framework in Frameworks */,
 				71E9B512A1AA91CC4785B524 /* Pods_SIFTool_macOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +178,8 @@
 				4F4F5FA7203480CD0025741A /* MiniEventDataModel.swift */,
 				4F4F5FAA203480FF0025741A /* SkillUpTinyCardDataModel.swift */,
 				4F4F5FAD2034810F0025741A /* URPairDataModel.swift */,
+				4F0863F820372D5000CFDD98 /* CVDataModel.swift */,
+				4F0863FC20372D6400CFDD98 /* IdolDataModel.swift */,
 			);
 			name = Net;
 			sourceTree = "<group>";
@@ -330,6 +344,7 @@
 		4FEA5F3720346A4100F03CCC /* opencv */ = {
 			isa = PBXGroup;
 			children = (
+				4F08640220373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm */,
 			);
 			name = opencv;
 			sourceTree = "<group>";
@@ -452,15 +467,18 @@
 				TargetAttributes = {
 					4F4F5FBA203490220025741A = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 4FEA5F0F2034686700F03CCC;
 					};
 					4FEA5EF6203467BB00F03CCC = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 					4FEA5F0F2034686700F03CCC = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -617,6 +635,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F0863FB20372D5000CFDD98 /* CVDataModel.swift in Sources */,
 				4F4F5FC7203490620025741A /* ApiRequestParamProtocol.swift in Sources */,
 				4F4F5FC8203490620025741A /* Dictionary+URLParam.swift in Sources */,
 				4F4F5FC9203490620025741A /* Data+JSONDataToDictionary.swift in Sources */,
@@ -624,12 +643,14 @@
 				4F4F5FCA203490620025741A /* CardDataModel.swift in Sources */,
 				4F4F5FCB203490620025741A /* MiniIdolDataModel.swift in Sources */,
 				4F4F5FCC203490620025741A /* MiniEventDataModel.swift in Sources */,
+				4F0863FF20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
 				4F4F5FCD203490620025741A /* SkillUpTinyCardDataModel.swift in Sources */,
 				4F4F5FCE203490620025741A /* URPairDataModel.swift in Sources */,
 				4F4F5FCF203490620025741A /* DataModelHelper.swift in Sources */,
 				4F4F5FD820349B810025741A /* String+Date.swift in Sources */,
 				4F4F5FD0203490620025741A /* Logger.swift in Sources */,
 				4F4F5FC52034903B0025741A /* ApiHelper.swift in Sources */,
+				4F08640520373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm in Sources */,
 				4F4F5FC62034903E0025741A /* ApiRequestParam.swift in Sources */,
 				4F4F5FBE203490220025741A /* ApiTest.swift in Sources */,
 			);
@@ -643,6 +664,8 @@
 				4FEA5F2C2034693700F03CCC /* Logger.swift in Sources */,
 				4FEA5F302034699500F03CCC /* CoreDataHelper.swift in Sources */,
 				4FEA5EFB203467BB00F03CCC /* AppDelegate.swift in Sources */,
+				4F0863FD20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
+				4F0863F920372D5000CFDD98 /* CVDataModel.swift in Sources */,
 				4F4F5FB1203486500025741A /* ApiRequestParamProtocol.swift in Sources */,
 				4F4F5FD2203497AC0025741A /* String+httpSchema.swift in Sources */,
 				4F4F5FA5203480BC0025741A /* MiniIdolDataModel.swift in Sources */,
@@ -654,6 +677,7 @@
 				4F4F5FA8203480CD0025741A /* MiniEventDataModel.swift in Sources */,
 				4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */,
 				4F4F5FA1203480870025741A /* CardDataModel.swift in Sources */,
+				4F08640320373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm in Sources */,
 				4F4F5F9B20347D160025741A /* Dictionary+URLParam.swift in Sources */,
 				4F4F5FAE2034810F0025741A /* URPairDataModel.swift in Sources */,
 			);
@@ -667,6 +691,8 @@
 				4FEA5F152034686700F03CCC /* ViewController.swift in Sources */,
 				4FEA5F132034686700F03CCC /* AppDelegate.swift in Sources */,
 				4FEA5F2D2034693700F03CCC /* Logger.swift in Sources */,
+				4F0863FE20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
+				4F0863FA20372D5000CFDD98 /* CVDataModel.swift in Sources */,
 				4F4F5FB2203486500025741A /* ApiRequestParamProtocol.swift in Sources */,
 				4F4F5FD3203497AC0025741A /* String+httpSchema.swift in Sources */,
 				4F4F5FA6203480BC0025741A /* MiniIdolDataModel.swift in Sources */,
@@ -678,6 +704,7 @@
 				4F4F5FA9203480CD0025741A /* MiniEventDataModel.swift in Sources */,
 				4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */,
 				4F4F5FA2203480870025741A /* CardDataModel.swift in Sources */,
+				4F08640420373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm in Sources */,
 				4F4F5F9C20347D160025741A /* Dictionary+URLParam.swift in Sources */,
 				4F4F5FAF2034810F0025741A /* URPairDataModel.swift in Sources */,
 			);
@@ -725,6 +752,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -735,6 +763,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.eki.ApiTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SIFTool-macOS.app/Contents/MacOS/SIFTool-macOS";
 			};
@@ -744,6 +773,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -873,17 +903,20 @@
 			baseConfigurationReference = 12B8C854157AEED0F316DBCF /* Pods-SIFTool.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VQ94C2355;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SIFTool",
+					"$(PROJECT_DIR)/SIFTool/../../../../Desktop/opensource",
 				);
 				INFOPLIST_FILE = SIFTool/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eki.SIFTool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -894,11 +927,13 @@
 			baseConfigurationReference = 348D3FC84CC80BA3868A130E /* Pods-SIFTool.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2VQ94C2355;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SIFTool",
+					"$(PROJECT_DIR)/SIFTool/../../../../Desktop/opensource",
 				);
 				INFOPLIST_FILE = SIFTool/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
@@ -915,6 +950,7 @@
 			baseConfigurationReference = DE3AB1EEBD085595B7DD39A6 /* Pods-SIFTool-macOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "SIFTool-macOS/SIFTool-macOS.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -923,6 +959,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SIFTool",
+					"$(PROJECT_DIR)/SIFTool/../../../../Desktop/opensource",
 				);
 				INFOPLIST_FILE = "SIFTool-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -930,6 +967,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.eki.SIFTool-macOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
@@ -939,6 +977,7 @@
 			baseConfigurationReference = A05C2EFFA2E50BA116040B65 /* Pods-SIFTool-macOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "SIFTool-macOS/SIFTool-macOS.entitlements";
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -947,6 +986,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/SIFTool",
+					"$(PROJECT_DIR)/SIFTool/../../../../Desktop/opensource",
 				);
 				INFOPLIST_FILE = "SIFTool-macOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

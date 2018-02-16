@@ -10,3 +10,8 @@ import Foundation
 protocol CardApiRequestParamProtocol {
     static func requestPage(_ page: Int, pageSize: Int) -> ApiRequestParam 
 }
+
+protocol IdolApiRequestParamProtocol {
+    static func requestPage(_ page: Int, pageSize: Int) -> ApiRequestParam
+    static func requestIdol(withEnglishName englishName: String) -> ApiRequestParam
+}

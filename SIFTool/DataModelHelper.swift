@@ -9,10 +9,13 @@
 import Foundation
 class DataModelHelper {
     //MARK: - Private Member
-    private func trySyntaxJson(withJsonData data:Data, key: String) -> Any? {
+    private func trySyntaxAsDictionary(withJsonData data:Data, key: String = "") -> Any? {
         do {
             let jsonObj = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers])
             if let value = jsonObj as? Dictionary<String, Any> {
+                if key.count == 0 {
+                    return value
+                }
                 return value[key]
             }
         } catch {
@@ -21,6 +24,17 @@ class DataModelHelper {
         return nil
     }
 
+    private func trySyntaxAsArray(withJsonData data:Data) -> [Any]? {
+        do {
+            let jsonObj = try JSONSerialization.jsonObject(with: data, options: [JSONSerialization.ReadingOptions.mutableContainers])
+            if let value = jsonObj as? [Any] {
+                return value
+            }
+        } catch {
+            return nil
+        }
+        return nil
+    }
     //MARK: - Private Method
     private init() {
         
@@ -32,13 +46,22 @@ class DataModelHelper {
     
     //MARK: - Public Method
     func resultsDictionaries(withJsonData data:Data) -> [Dictionary<String, Any>]? {
-        return trySyntaxJson(withJsonData: data, key: "results") as? [Dictionary<String, Any>]
+        return trySyntaxAsDictionary(withJsonData: data, key: "results") as? [Dictionary<String, Any>]
     }
+    
     func count(withJsonData data: Data) -> Int? {
-        return trySyntaxJson(withJsonData: data, key: "count") as? Int
+        return trySyntaxAsDictionary(withJsonData: data, key: "count") as? Int
     }
     
     func next(withJsonData data: Data) -> String? {
-        return trySyntaxJson(withJsonData: data, key: "next") as? String
+        return trySyntaxAsDictionary(withJsonData: data, key: "next") as? String
+    }
+    
+    func dictionary(withJsonData data:Data) -> Dictionary<String, Any>? {
+        return trySyntaxAsDictionary(withJsonData: data) as? Dictionary<String, Any>
+    }
+    
+    func array(withJsonData data:Data) -> [Any]? {
+        return trySyntaxAsArray(withJsonData: data)
     }
 }
