@@ -1,0 +1,1003 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4F0863F6203662F500CFDD98 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0863F5203662F500CFDD98 /* opencv2.framework */; };
+		4F0863F7203662F500CFDD98 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0863F5203662F500CFDD98 /* opencv2.framework */; };
+		4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
+		4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
+		4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9720347AB70025741A /* ApiRequestParam.swift */; };
+		4F4F5F9920347AB70025741A /* ApiRequestParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9720347AB70025741A /* ApiRequestParam.swift */; };
+		4F4F5F9B20347D160025741A /* Dictionary+URLParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9A20347D160025741A /* Dictionary+URLParam.swift */; };
+		4F4F5F9C20347D160025741A /* Dictionary+URLParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9A20347D160025741A /* Dictionary+URLParam.swift */; };
+		4F4F5F9E20347D660025741A /* Data+JSONDataToDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9D20347D660025741A /* Data+JSONDataToDictionary.swift */; };
+		4F4F5F9F20347D660025741A /* Data+JSONDataToDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9D20347D660025741A /* Data+JSONDataToDictionary.swift */; };
+		4F4F5FA1203480870025741A /* CardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FA0203480870025741A /* CardDataModel.swift */; };
+		4F4F5FA2203480870025741A /* CardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FA0203480870025741A /* CardDataModel.swift */; };
+		4F4F5FA5203480BC0025741A /* MiniIdolDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FA4203480BC0025741A /* MiniIdolDataModel.swift */; };
+		4F4F5FA6203480BC0025741A /* MiniIdolDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FA4203480BC0025741A /* MiniIdolDataModel.swift */; };
+		4F4F5FA8203480CD0025741A /* MiniEventDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FA7203480CD0025741A /* MiniEventDataModel.swift */; };
+		4F4F5FA9203480CD0025741A /* MiniEventDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FA7203480CD0025741A /* MiniEventDataModel.swift */; };
+		4F4F5FAB203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FAA203480FF0025741A /* SkillUpTinyCardDataModel.swift */; };
+		4F4F5FAC203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FAA203480FF0025741A /* SkillUpTinyCardDataModel.swift */; };
+		4F4F5FAE2034810F0025741A /* URPairDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FAD2034810F0025741A /* URPairDataModel.swift */; };
+		4F4F5FAF2034810F0025741A /* URPairDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FAD2034810F0025741A /* URPairDataModel.swift */; };
+		4F4F5FB1203486500025741A /* ApiRequestParamProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FB0203486500025741A /* ApiRequestParamProtocol.swift */; };
+		4F4F5FB2203486500025741A /* ApiRequestParamProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FB0203486500025741A /* ApiRequestParamProtocol.swift */; };
+		4F4F5FB420348F6E0025741A /* DataModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FB320348F6E0025741A /* DataModelHelper.swift */; };
+		4F4F5FB520348F6E0025741A /* DataModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FB320348F6E0025741A /* DataModelHelper.swift */; };
+		4F4F5FBE203490220025741A /* ApiTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FBD203490220025741A /* ApiTest.swift */; };
+		4F4F5FC52034903B0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
+		4F4F5FC62034903E0025741A /* ApiRequestParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9720347AB70025741A /* ApiRequestParam.swift */; };
+		4F4F5FC7203490620025741A /* ApiRequestParamProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FB0203486500025741A /* ApiRequestParamProtocol.swift */; };
+		4F4F5FC8203490620025741A /* Dictionary+URLParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9A20347D160025741A /* Dictionary+URLParam.swift */; };
+		4F4F5FC9203490620025741A /* Data+JSONDataToDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9D20347D660025741A /* Data+JSONDataToDictionary.swift */; };
+		4F4F5FCA203490620025741A /* CardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FA0203480870025741A /* CardDataModel.swift */; };
+		4F4F5FCB203490620025741A /* MiniIdolDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FA4203480BC0025741A /* MiniIdolDataModel.swift */; };
+		4F4F5FCC203490620025741A /* MiniEventDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FA7203480CD0025741A /* MiniEventDataModel.swift */; };
+		4F4F5FCD203490620025741A /* SkillUpTinyCardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FAA203480FF0025741A /* SkillUpTinyCardDataModel.swift */; };
+		4F4F5FCE203490620025741A /* URPairDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FAD2034810F0025741A /* URPairDataModel.swift */; };
+		4F4F5FCF203490620025741A /* DataModelHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FB320348F6E0025741A /* DataModelHelper.swift */; };
+		4F4F5FD0203490620025741A /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F2B2034693700F03CCC /* Logger.swift */; };
+		4F4F5FD2203497AC0025741A /* String+httpSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD1203497AC0025741A /* String+httpSchema.swift */; };
+		4F4F5FD3203497AC0025741A /* String+httpSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD1203497AC0025741A /* String+httpSchema.swift */; };
+		4F4F5FD4203497AC0025741A /* String+httpSchema.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD1203497AC0025741A /* String+httpSchema.swift */; };
+		4F4F5FD620349B810025741A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD520349B810025741A /* String+Date.swift */; };
+		4F4F5FD720349B810025741A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD520349B810025741A /* String+Date.swift */; };
+		4F4F5FD820349B810025741A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD520349B810025741A /* String+Date.swift */; };
+		4FEA5EFB203467BB00F03CCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5EFA203467BB00F03CCC /* AppDelegate.swift */; };
+		4FEA5EFD203467BB00F03CCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5EFC203467BB00F03CCC /* ViewController.swift */; };
+		4FEA5F00203467BB00F03CCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA5EFE203467BB00F03CCC /* Main.storyboard */; };
+		4FEA5F02203467BB00F03CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA5F01203467BB00F03CCC /* Assets.xcassets */; };
+		4FEA5F05203467BB00F03CCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA5F03203467BB00F03CCC /* LaunchScreen.storyboard */; };
+		4FEA5F132034686700F03CCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F122034686700F03CCC /* AppDelegate.swift */; };
+		4FEA5F152034686700F03CCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F142034686700F03CCC /* ViewController.swift */; };
+		4FEA5F1A2034686700F03CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA5F192034686700F03CCC /* Assets.xcassets */; };
+		4FEA5F1D2034686700F03CCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA5F1B2034686700F03CCC /* Main.storyboard */; };
+		4FEA5F2C2034693700F03CCC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F2B2034693700F03CCC /* Logger.swift */; };
+		4FEA5F2D2034693700F03CCC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F2B2034693700F03CCC /* Logger.swift */; };
+		4FEA5F302034699500F03CCC /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F2F2034699500F03CCC /* CoreDataHelper.swift */; };
+		4FEA5F312034699500F03CCC /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F2F2034699500F03CCC /* CoreDataHelper.swift */; };
+		71E9B512A1AA91CC4785B524 /* Pods_SIFTool_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3592CEF3EA487E187630A793 /* Pods_SIFTool_macOS.framework */; };
+		E56D676C2B3D7A2970BC81A4 /* Pods_SIFTool.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B2401D9FF16416637EBEF79A /* Pods_SIFTool.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		4F4F5FC0203490220025741A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FEA5EEF203467BB00F03CCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FEA5F0F2034686700F03CCC;
+			remoteInfo = "SIFTool-macOS";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		12B8C854157AEED0F316DBCF /* Pods-SIFTool.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIFTool.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SIFTool/Pods-SIFTool.debug.xcconfig"; sourceTree = "<group>"; };
+		348D3FC84CC80BA3868A130E /* Pods-SIFTool.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIFTool.release.xcconfig"; path = "Pods/Target Support Files/Pods-SIFTool/Pods-SIFTool.release.xcconfig"; sourceTree = "<group>"; };
+		3592CEF3EA487E187630A793 /* Pods_SIFTool_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SIFTool_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F0863F5203662F500CFDD98 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = ../../../../Desktop/opensource/opencv2.framework; sourceTree = "<group>"; };
+		4F4F5F8F203479420025741A /* SIFTool-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SIFTool-macOS.entitlements"; sourceTree = "<group>"; };
+		4F4F5F90203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
+		4F4F5F91203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		4F4F5F92203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
+		4F4F5F9320347A8F0025741A /* ApiHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiHelper.swift; sourceTree = "<group>"; };
+		4F4F5F9720347AB70025741A /* ApiRequestParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestParam.swift; sourceTree = "<group>"; };
+		4F4F5F9A20347D160025741A /* Dictionary+URLParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+URLParam.swift"; sourceTree = "<group>"; };
+		4F4F5F9D20347D660025741A /* Data+JSONDataToDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+JSONDataToDictionary.swift"; sourceTree = "<group>"; };
+		4F4F5FA0203480870025741A /* CardDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardDataModel.swift; sourceTree = "<group>"; };
+		4F4F5FA4203480BC0025741A /* MiniIdolDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniIdolDataModel.swift; sourceTree = "<group>"; };
+		4F4F5FA7203480CD0025741A /* MiniEventDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiniEventDataModel.swift; sourceTree = "<group>"; };
+		4F4F5FAA203480FF0025741A /* SkillUpTinyCardDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillUpTinyCardDataModel.swift; sourceTree = "<group>"; };
+		4F4F5FAD2034810F0025741A /* URPairDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URPairDataModel.swift; sourceTree = "<group>"; };
+		4F4F5FB0203486500025741A /* ApiRequestParamProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiRequestParamProtocol.swift; sourceTree = "<group>"; };
+		4F4F5FB320348F6E0025741A /* DataModelHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataModelHelper.swift; sourceTree = "<group>"; };
+		4F4F5FBB203490220025741A /* ApiTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ApiTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F4F5FBD203490220025741A /* ApiTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiTest.swift; sourceTree = "<group>"; };
+		4F4F5FBF203490220025741A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4F4F5FD1203497AC0025741A /* String+httpSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+httpSchema.swift"; sourceTree = "<group>"; };
+		4F4F5FD520349B810025741A /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		4FEA5EF7203467BB00F03CCC /* SIFTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SIFTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FEA5EFA203467BB00F03CCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4FEA5EFC203467BB00F03CCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4FEA5F01203467BB00F03CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4FEA5F06203467BB00F03CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FEA5F102034686700F03CCC /* SIFTool-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIFTool-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4FEA5F122034686700F03CCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		4FEA5F142034686700F03CCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4FEA5F192034686700F03CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		4FEA5F1E2034686700F03CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4FEA5F1F2034686700F03CCC /* SIFTool_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SIFTool_macOS.entitlements; sourceTree = "<group>"; };
+		4FEA5F2B2034693700F03CCC /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+		4FEA5F2F2034699500F03CCC /* CoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataHelper.swift; sourceTree = "<group>"; };
+		A05C2EFFA2E50BA116040B65 /* Pods-SIFTool-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIFTool-macOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SIFTool-macOS/Pods-SIFTool-macOS.release.xcconfig"; sourceTree = "<group>"; };
+		B2401D9FF16416637EBEF79A /* Pods_SIFTool.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SIFTool.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE3AB1EEBD085595B7DD39A6 /* Pods-SIFTool-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SIFTool-macOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SIFTool-macOS/Pods-SIFTool-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4F4F5FB8203490220025741A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FEA5EF4203467BB00F03CCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F0863F6203662F500CFDD98 /* opencv2.framework in Frameworks */,
+				E56D676C2B3D7A2970BC81A4 /* Pods_SIFTool.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FEA5F0D2034686700F03CCC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F0863F7203662F500CFDD98 /* opencv2.framework in Frameworks */,
+				71E9B512A1AA91CC4785B524 /* Pods_SIFTool_macOS.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4F4F5F9620347A940025741A /* Api */ = {
+			isa = PBXGroup;
+			children = (
+				4F4F5F9320347A8F0025741A /* ApiHelper.swift */,
+				4F4F5F9720347AB70025741A /* ApiRequestParam.swift */,
+			);
+			name = Api;
+			sourceTree = "<group>";
+		};
+		4F4F5FA32034808C0025741A /* Net */ = {
+			isa = PBXGroup;
+			children = (
+				4F4F5FA0203480870025741A /* CardDataModel.swift */,
+				4F4F5FA4203480BC0025741A /* MiniIdolDataModel.swift */,
+				4F4F5FA7203480CD0025741A /* MiniEventDataModel.swift */,
+				4F4F5FAA203480FF0025741A /* SkillUpTinyCardDataModel.swift */,
+				4F4F5FAD2034810F0025741A /* URPairDataModel.swift */,
+			);
+			name = Net;
+			sourceTree = "<group>";
+		};
+		4F4F5FB620348FF60025741A /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				4F4F5FB320348F6E0025741A /* DataModelHelper.swift */,
+			);
+			name = DataModel;
+			sourceTree = "<group>";
+		};
+		4F4F5FBC203490220025741A /* ApiTest */ = {
+			isa = PBXGroup;
+			children = (
+				4F4F5FBD203490220025741A /* ApiTest.swift */,
+				4F4F5FBF203490220025741A /* Info.plist */,
+			);
+			path = ApiTest;
+			sourceTree = "<group>";
+		};
+		4FEA5EEE203467BB00F03CCC = {
+			isa = PBXGroup;
+			children = (
+				4FEA5EF9203467BB00F03CCC /* SIFTool */,
+				4FEA5F112034686700F03CCC /* SIFTool-macOS */,
+				4F4F5FBC203490220025741A /* ApiTest */,
+				4FEA5EF8203467BB00F03CCC /* Products */,
+				C78C9B3EEE6E45B97714918E /* Pods */,
+				CA8C1502459E388D0D5C9EE8 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		4FEA5EF8203467BB00F03CCC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4FEA5EF7203467BB00F03CCC /* SIFTool.app */,
+				4FEA5F102034686700F03CCC /* SIFTool-macOS.app */,
+				4F4F5FBB203490220025741A /* ApiTest.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4FEA5EF9203467BB00F03CCC /* SIFTool */ = {
+			isa = PBXGroup;
+			children = (
+				4FEA5EFA203467BB00F03CCC /* AppDelegate.swift */,
+				4FEA5F2A2034690400F03CCC /* Vendor */,
+				4FEA5F29203468EF00F03CCC /* Protocol */,
+				4FEA5F28203468E000F03CCC /* Extension */,
+				4FEA5F27203468D700F03CCC /* DataModel */,
+				4FEA5F25203468CB00F03CCC /* Helper */,
+				4FEA5F23203468A300F03CCC /* ViewControllers */,
+				4FEA5F322034699C00F03CCC /* CoreData */,
+				4FEA5F33203469AE00F03CCC /* Bridge */,
+				4FEA5F24203468B100F03CCC /* Resources */,
+			);
+			path = SIFTool;
+			sourceTree = "<group>";
+		};
+		4FEA5F112034686700F03CCC /* SIFTool-macOS */ = {
+			isa = PBXGroup;
+			children = (
+				4F4F5F8F203479420025741A /* SIFTool-macOS.entitlements */,
+				4FEA5F1F2034686700F03CCC /* SIFTool_macOS.entitlements */,
+				4FEA5F122034686700F03CCC /* AppDelegate.swift */,
+				4FEA5F3820346AE000F03CCC /* ViewControllers */,
+				4FEA5F3920346AEA00F03CCC /* Resources */,
+				4FEA5F3A20346AFF00F03CCC /* CoreData */,
+			);
+			path = "SIFTool-macOS";
+			sourceTree = "<group>";
+		};
+		4FEA5F23203468A300F03CCC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4FEA5EFC203467BB00F03CCC /* ViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4FEA5F24203468B100F03CCC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4FEA5F01203467BB00F03CCC /* Assets.xcassets */,
+				4FEA5F03203467BB00F03CCC /* LaunchScreen.storyboard */,
+				4FEA5F06203467BB00F03CCC /* Info.plist */,
+				4FEA5EFE203467BB00F03CCC /* Main.storyboard */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4FEA5F25203468CB00F03CCC /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				4F4F5FB620348FF60025741A /* DataModel */,
+				4FEA5F2E2034693C00F03CCC /* Logger */,
+				4F4F5F9620347A940025741A /* Api */,
+			);
+			name = Helper;
+			sourceTree = "<group>";
+		};
+		4FEA5F27203468D700F03CCC /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				4F4F5FA32034808C0025741A /* Net */,
+			);
+			name = DataModel;
+			sourceTree = "<group>";
+		};
+		4FEA5F28203468E000F03CCC /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4F4F5F9A20347D160025741A /* Dictionary+URLParam.swift */,
+				4F4F5F9D20347D660025741A /* Data+JSONDataToDictionary.swift */,
+				4F4F5FD1203497AC0025741A /* String+httpSchema.swift */,
+				4F4F5FD520349B810025741A /* String+Date.swift */,
+			);
+			name = Extension;
+			sourceTree = "<group>";
+		};
+		4FEA5F29203468EF00F03CCC /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				4F4F5FB0203486500025741A /* ApiRequestParamProtocol.swift */,
+			);
+			name = Protocol;
+			sourceTree = "<group>";
+		};
+		4FEA5F2A2034690400F03CCC /* Vendor */ = {
+			isa = PBXGroup;
+			children = (
+				4F0863F5203662F500CFDD98 /* opencv2.framework */,
+			);
+			name = Vendor;
+			sourceTree = "<group>";
+		};
+		4FEA5F2E2034693C00F03CCC /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				4FEA5F2B2034693700F03CCC /* Logger.swift */,
+			);
+			name = Logger;
+			sourceTree = "<group>";
+		};
+		4FEA5F322034699C00F03CCC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				4FEA5F2F2034699500F03CCC /* CoreDataHelper.swift */,
+			);
+			name = CoreData;
+			sourceTree = "<group>";
+		};
+		4FEA5F33203469AE00F03CCC /* Bridge */ = {
+			isa = PBXGroup;
+			children = (
+				4FEA5F3720346A4100F03CCC /* opencv */,
+			);
+			name = Bridge;
+			sourceTree = "<group>";
+		};
+		4FEA5F3720346A4100F03CCC /* opencv */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = opencv;
+			sourceTree = "<group>";
+		};
+		4FEA5F3820346AE000F03CCC /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				4FEA5F142034686700F03CCC /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		4FEA5F3920346AEA00F03CCC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				4FEA5F192034686700F03CCC /* Assets.xcassets */,
+				4FEA5F1B2034686700F03CCC /* Main.storyboard */,
+				4FEA5F1E2034686700F03CCC /* Info.plist */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		4FEA5F3A20346AFF00F03CCC /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		C78C9B3EEE6E45B97714918E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				12B8C854157AEED0F316DBCF /* Pods-SIFTool.debug.xcconfig */,
+				348D3FC84CC80BA3868A130E /* Pods-SIFTool.release.xcconfig */,
+				DE3AB1EEBD085595B7DD39A6 /* Pods-SIFTool-macOS.debug.xcconfig */,
+				A05C2EFFA2E50BA116040B65 /* Pods-SIFTool-macOS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CA8C1502459E388D0D5C9EE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B2401D9FF16416637EBEF79A /* Pods_SIFTool.framework */,
+				3592CEF3EA487E187630A793 /* Pods_SIFTool_macOS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4F4F5FBA203490220025741A /* ApiTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4F4F5FC2203490220025741A /* Build configuration list for PBXNativeTarget "ApiTest" */;
+			buildPhases = (
+				4F4F5FB7203490220025741A /* Sources */,
+				4F4F5FB8203490220025741A /* Frameworks */,
+				4F4F5FB9203490220025741A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				4F4F5FC1203490220025741A /* PBXTargetDependency */,
+			);
+			name = ApiTest;
+			productName = ApiTest;
+			productReference = 4F4F5FBB203490220025741A /* ApiTest.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		4FEA5EF6203467BB00F03CCC /* SIFTool */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FEA5F09203467BB00F03CCC /* Build configuration list for PBXNativeTarget "SIFTool" */;
+			buildPhases = (
+				A950F8EE8745935F18CB688D /* [CP] Check Pods Manifest.lock */,
+				4FEA5EF3203467BB00F03CCC /* Sources */,
+				4FEA5EF4203467BB00F03CCC /* Frameworks */,
+				4FEA5EF5203467BB00F03CCC /* Resources */,
+				5E22F21C7009BE82C592F090 /* [CP] Embed Pods Frameworks */,
+				8C710727E174032FD3C77FCF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SIFTool;
+			productName = SIFTool;
+			productReference = 4FEA5EF7203467BB00F03CCC /* SIFTool.app */;
+			productType = "com.apple.product-type.application";
+		};
+		4FEA5F0F2034686700F03CCC /* SIFTool-macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4FEA5F202034686700F03CCC /* Build configuration list for PBXNativeTarget "SIFTool-macOS" */;
+			buildPhases = (
+				38EE395A06C5029340E75B79 /* [CP] Check Pods Manifest.lock */,
+				4FEA5F0C2034686700F03CCC /* Sources */,
+				4FEA5F0D2034686700F03CCC /* Frameworks */,
+				4FEA5F0E2034686700F03CCC /* Resources */,
+				60DD39B84B14D18134DBC70F /* [CP] Embed Pods Frameworks */,
+				DBF1FA69D4FF30FD4A0E52BE /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "SIFTool-macOS";
+			productName = "SIFTool-macOS";
+			productReference = 4FEA5F102034686700F03CCC /* SIFTool-macOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4FEA5EEF203467BB00F03CCC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = eki;
+				TargetAttributes = {
+					4F4F5FBA203490220025741A = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 4FEA5F0F2034686700F03CCC;
+					};
+					4FEA5EF6203467BB00F03CCC = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					4FEA5F0F2034686700F03CCC = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 4FEA5EF2203467BB00F03CCC /* Build configuration list for PBXProject "SIFTool" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				"zh-Hans",
+			);
+			mainGroup = 4FEA5EEE203467BB00F03CCC;
+			productRefGroup = 4FEA5EF8203467BB00F03CCC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4FEA5EF6203467BB00F03CCC /* SIFTool */,
+				4FEA5F0F2034686700F03CCC /* SIFTool-macOS */,
+				4F4F5FBA203490220025741A /* ApiTest */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4F4F5FB9203490220025741A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FEA5EF5203467BB00F03CCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FEA5F05203467BB00F03CCC /* LaunchScreen.storyboard in Resources */,
+				4FEA5F02203467BB00F03CCC /* Assets.xcassets in Resources */,
+				4FEA5F00203467BB00F03CCC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FEA5F0E2034686700F03CCC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FEA5F1A2034686700F03CCC /* Assets.xcassets in Resources */,
+				4FEA5F1D2034686700F03CCC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		38EE395A06C5029340E75B79 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SIFTool-macOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5E22F21C7009BE82C592F090 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SIFTool/Pods-SIFTool-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		60DD39B84B14D18134DBC70F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SIFTool-macOS/Pods-SIFTool-macOS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8C710727E174032FD3C77FCF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SIFTool/Pods-SIFTool-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A950F8EE8745935F18CB688D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SIFTool-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DBF1FA69D4FF30FD4A0E52BE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SIFTool-macOS/Pods-SIFTool-macOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4F4F5FB7203490220025741A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4F4F5FC7203490620025741A /* ApiRequestParamProtocol.swift in Sources */,
+				4F4F5FC8203490620025741A /* Dictionary+URLParam.swift in Sources */,
+				4F4F5FC9203490620025741A /* Data+JSONDataToDictionary.swift in Sources */,
+				4F4F5FD4203497AC0025741A /* String+httpSchema.swift in Sources */,
+				4F4F5FCA203490620025741A /* CardDataModel.swift in Sources */,
+				4F4F5FCB203490620025741A /* MiniIdolDataModel.swift in Sources */,
+				4F4F5FCC203490620025741A /* MiniEventDataModel.swift in Sources */,
+				4F4F5FCD203490620025741A /* SkillUpTinyCardDataModel.swift in Sources */,
+				4F4F5FCE203490620025741A /* URPairDataModel.swift in Sources */,
+				4F4F5FCF203490620025741A /* DataModelHelper.swift in Sources */,
+				4F4F5FD820349B810025741A /* String+Date.swift in Sources */,
+				4F4F5FD0203490620025741A /* Logger.swift in Sources */,
+				4F4F5FC52034903B0025741A /* ApiHelper.swift in Sources */,
+				4F4F5FC62034903E0025741A /* ApiRequestParam.swift in Sources */,
+				4F4F5FBE203490220025741A /* ApiTest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FEA5EF3203467BB00F03CCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FEA5EFD203467BB00F03CCC /* ViewController.swift in Sources */,
+				4FEA5F2C2034693700F03CCC /* Logger.swift in Sources */,
+				4FEA5F302034699500F03CCC /* CoreDataHelper.swift in Sources */,
+				4FEA5EFB203467BB00F03CCC /* AppDelegate.swift in Sources */,
+				4F4F5FB1203486500025741A /* ApiRequestParamProtocol.swift in Sources */,
+				4F4F5FD2203497AC0025741A /* String+httpSchema.swift in Sources */,
+				4F4F5FA5203480BC0025741A /* MiniIdolDataModel.swift in Sources */,
+				4F4F5F9E20347D660025741A /* Data+JSONDataToDictionary.swift in Sources */,
+				4F4F5FB420348F6E0025741A /* DataModelHelper.swift in Sources */,
+				4F4F5FAB203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,
+				4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */,
+				4F4F5FD620349B810025741A /* String+Date.swift in Sources */,
+				4F4F5FA8203480CD0025741A /* MiniEventDataModel.swift in Sources */,
+				4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */,
+				4F4F5FA1203480870025741A /* CardDataModel.swift in Sources */,
+				4F4F5F9B20347D160025741A /* Dictionary+URLParam.swift in Sources */,
+				4F4F5FAE2034810F0025741A /* URPairDataModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		4FEA5F0C2034686700F03CCC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4FEA5F312034699500F03CCC /* CoreDataHelper.swift in Sources */,
+				4FEA5F152034686700F03CCC /* ViewController.swift in Sources */,
+				4FEA5F132034686700F03CCC /* AppDelegate.swift in Sources */,
+				4FEA5F2D2034693700F03CCC /* Logger.swift in Sources */,
+				4F4F5FB2203486500025741A /* ApiRequestParamProtocol.swift in Sources */,
+				4F4F5FD3203497AC0025741A /* String+httpSchema.swift in Sources */,
+				4F4F5FA6203480BC0025741A /* MiniIdolDataModel.swift in Sources */,
+				4F4F5F9F20347D660025741A /* Data+JSONDataToDictionary.swift in Sources */,
+				4F4F5FB520348F6E0025741A /* DataModelHelper.swift in Sources */,
+				4F4F5FAC203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,
+				4F4F5F9920347AB70025741A /* ApiRequestParam.swift in Sources */,
+				4F4F5FD720349B810025741A /* String+Date.swift in Sources */,
+				4F4F5FA9203480CD0025741A /* MiniEventDataModel.swift in Sources */,
+				4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */,
+				4F4F5FA2203480870025741A /* CardDataModel.swift in Sources */,
+				4F4F5F9C20347D160025741A /* Dictionary+URLParam.swift in Sources */,
+				4F4F5FAF2034810F0025741A /* URPairDataModel.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		4F4F5FC1203490220025741A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FEA5F0F2034686700F03CCC /* SIFTool-macOS */;
+			targetProxy = 4F4F5FC0203490220025741A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		4FEA5EFE203467BB00F03CCC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F4F5F91203479930025741A /* zh-Hans */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		4FEA5F03203467BB00F03CCC /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F4F5F90203479930025741A /* zh-Hans */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		4FEA5F1B2034686700F03CCC /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4F4F5F92203479930025741A /* zh-Hans */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4F4F5FC3203490220025741A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2VQ94C2355;
+				INFOPLIST_FILE = ApiTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eki.ApiTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SIFTool-macOS.app/Contents/MacOS/SIFTool-macOS";
+			};
+			name = Debug;
+		};
+		4F4F5FC4203490220025741A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2VQ94C2355;
+				INFOPLIST_FILE = ApiTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = com.eki.ApiTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SIFTool-macOS.app/Contents/MacOS/SIFTool-macOS";
+			};
+			name = Release;
+		};
+		4FEA5F07203467BB00F03CCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		4FEA5F08203467BB00F03CCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4FEA5F0A203467BB00F03CCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12B8C854157AEED0F316DBCF /* Pods-SIFTool.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2VQ94C2355;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SIFTool",
+				);
+				INFOPLIST_FILE = SIFTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eki.SIFTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		4FEA5F0B203467BB00F03CCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 348D3FC84CC80BA3868A130E /* Pods-SIFTool.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2VQ94C2355;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SIFTool",
+				);
+				INFOPLIST_FILE = SIFTool/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.eki.SIFTool;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		4FEA5F212034686700F03CCC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = DE3AB1EEBD085595B7DD39A6 /* Pods-SIFTool-macOS.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SIFTool-macOS/SIFTool-macOS.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2VQ94C2355;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SIFTool",
+				);
+				INFOPLIST_FILE = "SIFTool-macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.eki.SIFTool-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Debug;
+		};
+		4FEA5F222034686700F03CCC /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A05C2EFFA2E50BA116040B65 /* Pods-SIFTool-macOS.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "SIFTool-macOS/SIFTool-macOS.entitlements";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 2VQ94C2355;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SIFTool",
+				);
+				INFOPLIST_FILE = "SIFTool-macOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.eki.SIFTool-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4F4F5FC2203490220025741A /* Build configuration list for PBXNativeTarget "ApiTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4F4F5FC3203490220025741A /* Debug */,
+				4F4F5FC4203490220025741A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FEA5EF2203467BB00F03CCC /* Build configuration list for PBXProject "SIFTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FEA5F07203467BB00F03CCC /* Debug */,
+				4FEA5F08203467BB00F03CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FEA5F09203467BB00F03CCC /* Build configuration list for PBXNativeTarget "SIFTool" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FEA5F0A203467BB00F03CCC /* Debug */,
+				4FEA5F0B203467BB00F03CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4FEA5F202034686700F03CCC /* Build configuration list for PBXNativeTarget "SIFTool-macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4FEA5F212034686700F03CCC /* Debug */,
+				4FEA5F222034686700F03CCC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4FEA5EEF203467BB00F03CCC /* Project object */;
+}
