@@ -52,6 +52,13 @@
     return cvMat;
 }
 
+- (CVMat *)emptyImageWithSize:(CGSize)size
+                      channel:(int)channel{
+    auto m = [[CVMat alloc] init];
+    m.mat = cv::Mat::zeros(size.height, size.width, CV_8UC(channel));
+    return m;
+}
+
 - (BOOL)saveImage:(CVMat *)mat
          fileName:(NSString *)fileName {
     auto str = cv::String([fileName cStringUsingEncoding:NSUTF8StringEncoding]);
@@ -70,17 +77,9 @@
                           sigmaX:(double)sigmaX
                           sigmaY:(double)sigmaY
                       borderType:(CVBridgeBorderType)type {
-    auto t = cv::BORDER_DEFAULT;
-    switch (type) {
-        case CVBridgeBorderTypeDefault:
-            t = cv::BORDER_DEFAULT;
-            break;
-        default:
-            break;
-    }
     auto outputMat = [[CVMat alloc] init];
     auto s = cv::Size(size.width, size.width);
-    cv::GaussianBlur(mat.mat, outputMat.mat, s, sigmaX, sigmaY, t);
+    cv::GaussianBlur(mat.mat, outputMat.mat, s, sigmaX, sigmaY, type);
     return outputMat;
 }
 
@@ -108,25 +107,77 @@
     return outputMat;
 }
 
-- (CVMat *)findContoursWithImage:(CVMat *)mat
+- (NSArray *)findContoursWithImage:(CVMat *)mat
                             mode:(CVBridgeRetrievalMode)mode
                           method:(CVBridgeApproximationMode)method
                      offsetPoint:(CGPoint)point {
     auto outputMat = [[CVMat alloc] init];
-    auto p = cv::Point(point.x, point.y);
+    auto offsetPoint = cv::Point(point.x, point.y);
     
     std::vector<std::vector<cv::Point>> contours;
     std::vector<cv::Vec4i> hierarchy;
-    cv::findContours(mat.mat, contours, hierarchy, mode, method, p);
+    cv::findContours(mat.mat, contours, hierarchy, mode, method, offsetPoint);
     
-    outputMat.mat = cv::Mat::zeros(mat.mat.size(), CV_8UC1);
-    for (int i = 0; i < contours.size(); i++) {
+    auto points = [NSMutableArray array];
+    for(int i = 0; i < contours.size(); i++) {
+        auto pointPerContours = [NSMutableArray array];
         for(int j = 0; j < contours[i].size(); j++){
-            cv::Point po = cv::Point(contours[i][j].x, contours[i][j].y);
-            outputMat.mat.at<uchar>(po) = 255;
+            NSPoint tp;
+            tp.x = contours[i][j].x; tp.y = contours[i][j].y;
+            auto value = [NSValue valueWithPoint:tp];
+            [pointPerContours addObject:value];
         }
+        [points addObject:pointPerContours];
     }
     
-    return outputMat;
+    return points;
+}
+
+- (CVMat *)morphologyExWithImage:(CVMat *)mat
+                       operation:(CVBridgeMorphType)operation
+                    elementSharp:(CVBridgeMorphShape)sharp
+                     elementSize:(CGSize)size
+                    elementPoint:(CGPoint)point {
+    cv::Size s;
+    s.height = size.height;
+    s.width = size.width;
+    cv::Point p;
+    p.x = point.x;
+    p.y = point.y;
+    cv::Mat element = cv::getStructuringElement(sharp, s);
+    auto output = [[CVMat alloc] init];
+    cv::morphologyEx(mat.mat, output.mat, operation, element);
+    return output;
+}
+#pragma mark - 绘制方法
+- (CVMat *)drawRectWithImage:(CVMat *)mat
+                      rect:(CGRect)rect
+                         r:(double)r
+                         g:(double)g
+                         b:(double)b {
+    cv::Rect rec;
+    rec.x = rect.origin.x;
+    rec.y = rect.origin.y;
+    rec.height = rect.size.height;
+    rec.width = rect.size.width;
+    cv::Scalar s(r, g, b);
+    auto output = [[CVMat alloc] init];
+    output.mat = mat.mat.clone();
+    cv::rectangle(output.mat, rec, s);
+    return output;
+}
+
+- (void)drawRectInImage:(CVMat *)mat
+                   rect:(CGRect)rect
+                      r:(double)r
+                      g:(double)g
+                      b:(double)b {
+    cv::Rect rec;
+    rec.x = rect.origin.x;
+    rec.y = rect.origin.y;
+    rec.height = rect.size.height;
+    rec.width = rect.size.width;
+    cv::Scalar s(r, g, b);
+    cv::rectangle(mat.mat, rec, s);
 }
 @end

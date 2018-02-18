@@ -22,6 +22,9 @@
 		4F086408203862DE00CFDD98 /* CVMat.h in Sources */ = {isa = PBXBuildFile; fileRef = 4F086406203862DE00CFDD98 /* CVMat.h */; };
 		4F08640A2038662900CFDD98 /* OpenCVTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0864092038662900CFDD98 /* OpenCVTest.swift */; };
 		4F08640D20386A0300CFDD98 /* opencv2.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0863F5203662F500CFDD98 /* opencv2.framework */; };
+		4F08640F2039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */; };
+		4F0864102039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */; };
+		4F0864112039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */; };
 		4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9720347AB70025741A /* ApiRequestParam.swift */; };
@@ -102,6 +105,7 @@
 		4F0864092038662900CFDD98 /* OpenCVTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCVTest.swift; sourceTree = "<group>"; };
 		4F08640B2038664100CFDD98 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
 		4F08640C2038667800CFDD98 /* OpenCVBridgeSwiftHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVBridgeSwiftHelper.h; sourceTree = "<group>"; };
+		4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+PointArrayRect.swift"; sourceTree = "<group>"; };
 		4F4F5F8F203479420025741A /* SIFTool-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SIFTool-macOS.entitlements"; sourceTree = "<group>"; };
 		4F4F5F90203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		4F4F5F91203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
@@ -307,6 +311,7 @@
 				4F4F5F9D20347D660025741A /* Data+JSONDataToDictionary.swift */,
 				4F4F5FD1203497AC0025741A /* String+httpSchema.swift */,
 				4F4F5FD520349B810025741A /* String+Date.swift */,
+				4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -658,6 +663,7 @@
 				4F4F5FCB203490620025741A /* MiniIdolDataModel.swift in Sources */,
 				4F4F5FCC203490620025741A /* MiniEventDataModel.swift in Sources */,
 				4F0863FF20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
+				4F0864112039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,
 				4F4F5FCD203490620025741A /* SkillUpTinyCardDataModel.swift in Sources */,
 				4F4F5FCE203490620025741A /* URPairDataModel.swift in Sources */,
 				4F4F5FCF203490620025741A /* DataModelHelper.swift in Sources */,
@@ -688,6 +694,7 @@
 				4F4F5FB420348F6E0025741A /* DataModelHelper.swift in Sources */,
 				4F4F5FAB203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,
 				4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */,
+				4F08640F2039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,
 				4F4F5FD620349B810025741A /* String+Date.swift in Sources */,
 				4F4F5FA8203480CD0025741A /* MiniEventDataModel.swift in Sources */,
 				4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */,
@@ -716,6 +723,7 @@
 				4F4F5FB520348F6E0025741A /* DataModelHelper.swift in Sources */,
 				4F4F5FAC203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,
 				4F4F5F9920347AB70025741A /* ApiRequestParam.swift in Sources */,
+				4F0864102039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,
 				4F4F5FD720349B810025741A /* String+Date.swift in Sources */,
 				4F4F5FA9203480CD0025741A /* MiniEventDataModel.swift in Sources */,
 				4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */,

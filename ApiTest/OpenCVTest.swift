@@ -1,3 +1,4 @@
+
 //
 //  OpenCVTest.swift
 //  ApiTest
@@ -60,13 +61,32 @@ class OpenCVTest: XCTestCase {
     }
     
     func testContours() {
-        var mat = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/test1.png")
+        var mat = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/test.png")
         mat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: mat, targetColor: .bgr2Gray)
-        mat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: mat, thresh: 230, maxValue: 255, type: .binary)
+        
+        mat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: mat, thresh: 254, maxValue: 255, type: .binary_Inv)
         OpenCVBridgeSwiftHelper.sharedInstance().saveImage(mat, fileName: "\(sp)/dump1.png")
-        let output = OpenCVBridgeSwiftHelper.sharedInstance().findContours(withImage: mat, mode: .ccomp, method: .none, offsetPoint: CGPoint.zero)
-        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(output, fileName: "\(sp)/dump2.png")
+        let output = OpenCVBridgeSwiftHelper.sharedInstance().findContours(withImage: mat, mode: .external, method: .none, offsetPoint: CGPoint.zero) as! [[NSValue]]
+        for ps in output {
+            let rect = ps.contoursRect()
+            let aspectRadio = Double(rect.size.width / rect.size.height)
+            let aspectRadioThresh = 0.2
+            if abs(aspectRadio - 1) < aspectRadioThresh {
+                OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: mat, rect: rect, r: 255, g: 255, b: 255)
+            }
+        }
+        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(mat, fileName: "\(sp)/dump2.png")
     }
+    
+    func testMorph() {
+        var mat = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/test.png")
+        mat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: mat, targetColor: .bgr2Gray)
+        mat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: mat, thresh: 250, maxValue: 255, type: .binary_Inv)
+        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(mat, fileName: "\(sp)/dump1.png")
+        mat = OpenCVBridgeSwiftHelper.sharedInstance().morphologyEx(withImage: mat, operation: .open, elementSharp: .rect, elementSize: CGSize.init(width: 7, height: 7), elementPoint: CGPoint.init(x: 3, y: 3))
+        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(mat, fileName: "\(sp)/dump2.png")
+    }
+    
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
