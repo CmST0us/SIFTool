@@ -55,6 +55,32 @@ class ApiTest: XCTestCase {
             XCTFail()
         }
     }
+    func testDetector() {
+        if let data = NSData(contentsOfFile: "/Users/cmst0us/Downloads/f.json") as Data? {
+            if let results = DataModelHelper.shared.array(withJsonData: data) as? [Dictionary<String, Any>] {
+                
+                let cards = results.map({ (dict) -> CardDataModel in
+                    let card = CardDataModel(withDictionary: dict)
+                    return card
+                })
+                let detector = SIFRoundIconDetector(withCards: cards, configuration: .defaultRoundIconConfiguration)
+                for u in detector.roundCardUrls {
+                    var image0: NSImage? = nil
+                    var image1: NSImage? = nil
+                    if let u0 = u.1 {
+                        image0 = NSImage.init(contentsOf: u0)
+                    }
+                    if let u1 = u.2 {
+                        image1 = NSImage.init(contentsOf: u1)
+                    }
+                    detector.makeRoundCardImagePattern(cardId: u.0, images: (image0?.mat, image1?.mat))
+                }
+                Logger.shared.console("make Pattern finish")
+                return
+            }
+        }
+        XCTFail()
+    }
     
     func testIdolPage() {
         var page = 1

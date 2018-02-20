@@ -11,6 +11,7 @@
 #import <vector>
 #import "CVMat.h"
 #import "OpenCVBridgeSwiftHelper.h"
+#import "NSImage+CVMat.h"
 
 @implementation CVMat {
     cv::Mat _mat;
@@ -22,6 +23,121 @@
 
 - (cv::Mat &)mat {
     return _mat;
+}
+
+- (CVMat *)clone {
+    auto m = [[CVMat alloc] init];
+    m.mat = self.mat.clone();
+    return m;
+}
+
+- (CGSize)size {
+    return CGSizeMake(self.mat.cols, self.mat.rows);
+}
+
+- (int)channels {
+    return _mat.channels();
+}
+
+- (CVMat *)roiAt:(CGRect)rect {
+    cv::Rect r;
+    r.width = rect.size.width;
+    r.height = rect.size.height;
+    r.x = rect.origin.x;
+    r.y = rect.origin.y;
+    
+    auto m = [[CVMat alloc] init];
+    m.mat = _mat(r);
+    return m;
+}
+
+- (void)fillBy:(CVMat *)mat {
+    cv::resize(mat.mat, mat.mat, cv::Size(_mat.cols, _mat.rows));
+    mat.mat.copyTo(_mat);
+}
+
+@end
+
+@implementation NSImage (CVMat)
+- (CGImageRef)cgImage {
+    CGContextRef bitmapCtx = CGBitmapContextCreate(NULL/*data - pass NULL to let CG allocate the memory*/,
+                                                   [self size].width,
+                                                   [self size].height,
+                                                   8 /*bitsPerComponent*/,
+                                                   0 /*bytesPerRow - CG will calculate it for you if it's allocating the data.  This might get padded out a bit for better alignment*/,
+                                                   [[NSColorSpace genericRGBColorSpace] CGColorSpace],
+                                                   kCGBitmapByteOrder32Host|kCGImageAlphaPremultipliedFirst);
+    
+    [NSGraphicsContext saveGraphicsState];
+    [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithGraphicsPort:bitmapCtx flipped:NO]];
+    [self drawInRect:NSMakeRect(0,0, [self size].width, [self size].height) fromRect:NSZeroRect operation:NSCompositingOperationCopy fraction:1.0];
+    [NSGraphicsContext restoreGraphicsState];
+    
+    CGImageRef cgImage = CGBitmapContextCreateImage(bitmapCtx);
+    CGContextRelease(bitmapCtx);
+    return cgImage;
+}
+
+- (CVMat *)mat {
+    CGImageRef imageRef = [self cgImage];
+    CGColorSpaceRef colorSpace = CGImageGetColorSpace(imageRef);
+    CGFloat cols = self.size.width;
+    CGFloat rows = self.size.height;
+    cv::Mat cvMat(rows, cols, CV_8UC4); // 8 bits per component, 4 channels
+    
+    CGContextRef contextRef = CGBitmapContextCreate(cvMat.data,                 // Pointer to backing data
+                                                    cols,                      // Width of bitmap
+                                                    rows,                     // Height of bitmap
+                                                    8,                          // Bits per component
+                                                    cvMat.step[0],              // Bytes per row
+                                                    colorSpace,                 // Colorspace
+                                                    kCGImageAlphaNoneSkipLast |
+                                                    kCGBitmapByteOrderDefault); // Bitmap info flags
+    
+    CGContextDrawImage(contextRef, CGRectMake(0, 0, cols, rows), imageRef);
+    CGContextRelease(contextRef);
+    CGImageRelease(imageRef);
+    
+    auto mat = [[CVMat alloc] init];
+    mat.mat = cvMat;
+    return mat;
+}
+
++ (NSImage *)imageWithCVMat:(CVMat *)mat {
+    NSData *data = [NSData dataWithBytes:mat.mat.data length:mat.mat.elemSize() * mat.mat.total()];
+    
+    CGColorSpaceRef colorSpace;
+    
+    if (mat.mat.elemSize() == 1) {
+        colorSpace = CGColorSpaceCreateDeviceGray();
+    } else {
+        colorSpace = CGColorSpaceCreateDeviceRGB();
+    }
+    
+    CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)data);
+    
+    CGImageRef imageRef = CGImageCreate(mat.mat.cols,                                     // Width
+                                        mat.mat.rows,                                     // Height
+                                        8,                                              // Bits per component
+                                        8 * mat.mat.elemSize(),                           // Bits per pixel
+                                        mat.mat.step[0],                                  // Bytes per row
+                                        colorSpace,                                     // Colorspace
+                                        kCGImageAlphaNone | kCGBitmapByteOrderDefault,  // Bitmap info flags
+                                        provider,                                       // CGDataProviderRef
+                                        NULL,                                           // Decode
+                                        false,                                          // Should interpolate
+                                        kCGRenderingIntentDefault);                     // Intent
+    
+    
+    NSBitmapImageRep *bitmapRep = [[NSBitmapImageRep alloc] initWithCGImage:imageRef];
+    NSImage *image = [[NSImage alloc] init];
+    [image addRepresentation:bitmapRep];
+    
+    CGImageRelease(imageRef);
+    CGDataProviderRelease(provider);
+    CGColorSpaceRelease(colorSpace);
+    
+    return image;
 }
 
 @end
@@ -71,6 +187,18 @@
     cv::imshow(str, mat.mat);
 }
 
+- (NSArray *)splitImage:(CVMat *)mat {
+    auto array = [NSMutableArray arrayWithCapacity:4];
+    cv::Mat channel[4];
+    cv::split(mat.mat, channel);
+    for (int i = 0; i < mat.channels; i++) {
+        auto m = [[CVMat alloc] init];
+        m.mat = channel[i];
+        [array addObject:m];
+    }
+    return array;
+}
+
 #pragma mark - 图像处理方法
 - (CVMat *)gaussianBlurWithImage:(CVMat *)mat
                       kernelSize:(NSSize)size
@@ -111,7 +239,6 @@
                             mode:(CVBridgeRetrievalMode)mode
                           method:(CVBridgeApproximationMode)method
                      offsetPoint:(CGPoint)point {
-    auto outputMat = [[CVMat alloc] init];
     auto offsetPoint = cv::Point(point.x, point.y);
     
     std::vector<std::vector<cv::Point>> contours;
@@ -147,6 +274,31 @@
     cv::Mat element = cv::getStructuringElement(sharp, s);
     auto output = [[CVMat alloc] init];
     cv::morphologyEx(mat.mat, output.mat, operation, element);
+    return output;
+}
+
+- (CVMat *)morphologyExWithImage:(CVMat *)mat
+                       operation:(CVBridgeMorphType)operation
+                      iterations:(int)iterations
+                    elementSharp:(CVBridgeMorphShape)sharp
+                     elementSize:(CGSize)size
+                    elementPoint:(CGPoint)point {
+    cv::Size s;
+    s.height = size.height;
+    s.width = size.width;
+    cv::Point p;
+    p.x = point.x;
+    p.y = point.y;
+    cv::Mat element = cv::getStructuringElement(sharp, s);
+    auto output = [[CVMat alloc] init];
+    cv::morphologyEx(mat.mat, output.mat, operation, element, cv::Point(-1, -1), iterations);
+    return output;
+}
+
+- (CVMat *)cropWithImage:(CVMat *)mat
+                  byRect:(CGRect)rect {
+    auto output = [[CVMat alloc] init];
+    output.mat = mat.mat(cv::Range(rect.origin.y, rect.origin.y + rect.size.height + 1), cv::Range(rect.origin.x, rect.size.width + rect.origin.x + 1)).clone();
     return output;
 }
 #pragma mark - 绘制方法

@@ -25,6 +25,14 @@
 		4F08640F2039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */; };
 		4F0864102039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */; };
 		4F0864112039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */; };
+		4F086418203BB68A00CFDD98 /* CV.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F086417203BB68A00CFDD98 /* CV.storyboard */; };
+		4F086419203BB68A00CFDD98 /* CV.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F086417203BB68A00CFDD98 /* CV.storyboard */; };
+		4F08641C203C7A3B00CFDD98 /* SIFRoundIconDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641B203C7A3B00CFDD98 /* SIFRoundIconDetector.swift */; };
+		4F08641D203C7A3B00CFDD98 /* SIFRoundIconDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641B203C7A3B00CFDD98 /* SIFRoundIconDetector.swift */; };
+		4F08641E203C7A3B00CFDD98 /* SIFRoundIconDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641B203C7A3B00CFDD98 /* SIFRoundIconDetector.swift */; };
+		4F086420203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
+		4F086421203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
+		4F086422203C8A1A00CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
 		4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9720347AB70025741A /* ApiRequestParam.swift */; };
@@ -106,6 +114,10 @@
 		4F08640B2038664100CFDD98 /* Bridge.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Bridge.h; sourceTree = "<group>"; };
 		4F08640C2038667800CFDD98 /* OpenCVBridgeSwiftHelper.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenCVBridgeSwiftHelper.h; sourceTree = "<group>"; };
 		4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+PointArrayRect.swift"; sourceTree = "<group>"; };
+		4F086416203B221100CFDD98 /* NSImage+CVMat.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSImage+CVMat.h"; sourceTree = "<group>"; };
+		4F086417203BB68A00CFDD98 /* CV.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CV.storyboard; sourceTree = "<group>"; };
+		4F08641B203C7A3B00CFDD98 /* SIFRoundIconDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFRoundIconDetector.swift; sourceTree = "<group>"; };
+		4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFRoundIconDetectorConfiguration.swift; sourceTree = "<group>"; };
 		4F4F5F8F203479420025741A /* SIFTool-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SIFTool-macOS.entitlements"; sourceTree = "<group>"; };
 		4F4F5F90203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		4F4F5F91203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
@@ -174,6 +186,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4F08641A203C798400CFDD98 /* Object */ = {
+			isa = PBXGroup;
+			children = (
+				4F08641B203C7A3B00CFDD98 /* SIFRoundIconDetector.swift */,
+				4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */,
+			);
+			name = Object;
+			sourceTree = "<group>";
+		};
 		4F4F5F9620347A940025741A /* Api */ = {
 			isa = PBXGroup;
 			children = (
@@ -244,10 +265,10 @@
 				4FEA5F2A2034690400F03CCC /* Vendor */,
 				4FEA5F29203468EF00F03CCC /* Protocol */,
 				4FEA5F28203468E000F03CCC /* Extension */,
+				4F08641A203C798400CFDD98 /* Object */,
 				4FEA5F27203468D700F03CCC /* DataModel */,
 				4FEA5F25203468CB00F03CCC /* Helper */,
 				4FEA5F23203468A300F03CCC /* ViewControllers */,
-				4FEA5F322034699C00F03CCC /* CoreData */,
 				4FEA5F33203469AE00F03CCC /* Bridge */,
 				4FEA5F24203468B100F03CCC /* Resources */,
 			);
@@ -289,6 +310,7 @@
 		4FEA5F25203468CB00F03CCC /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				4FEA5F322034699C00F03CCC /* CoreData */,
 				4F4F5FB620348FF60025741A /* DataModel */,
 				4FEA5F2E2034693C00F03CCC /* Logger */,
 				4F4F5F9620347A940025741A /* Api */,
@@ -360,6 +382,7 @@
 		4FEA5F3720346A4100F03CCC /* opencv */ = {
 			isa = PBXGroup;
 			children = (
+				4F086416203B221100CFDD98 /* NSImage+CVMat.h */,
 				4F08640C2038667800CFDD98 /* OpenCVBridgeSwiftHelper.h */,
 				4F08640220373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm */,
 				4F086406203862DE00CFDD98 /* CVMat.h */,
@@ -380,6 +403,7 @@
 			children = (
 				4FEA5F192034686700F03CCC /* Assets.xcassets */,
 				4FEA5F1B2034686700F03CCC /* Main.storyboard */,
+				4F086417203BB68A00CFDD98 /* CV.storyboard */,
 				4FEA5F1E2034686700F03CCC /* Info.plist */,
 			);
 			name = Resources;
@@ -525,6 +549,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F086419203BB68A00CFDD98 /* CV.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,6 +569,7 @@
 			files = (
 				4FEA5F1A2034686700F03CCC /* Assets.xcassets in Resources */,
 				4FEA5F1D2034686700F03CCC /* Main.storyboard in Resources */,
+				4F086418203BB68A00CFDD98 /* CV.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -574,9 +600,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SIFTool/Pods-SIFTool-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage-iOS/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -589,9 +618,12 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SIFTool-macOS/Pods-SIFTool-macOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage-macOS/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -656,6 +688,7 @@
 				4F0863FB20372D5000CFDD98 /* CVDataModel.swift in Sources */,
 				4F4F5FC7203490620025741A /* ApiRequestParamProtocol.swift in Sources */,
 				4F4F5FC8203490620025741A /* Dictionary+URLParam.swift in Sources */,
+				4F086422203C8A1A00CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
 				4F08640A2038662900CFDD98 /* OpenCVTest.swift in Sources */,
 				4F4F5FC9203490620025741A /* Data+JSONDataToDictionary.swift in Sources */,
 				4F4F5FD4203497AC0025741A /* String+httpSchema.swift in Sources */,
@@ -669,6 +702,7 @@
 				4F4F5FCF203490620025741A /* DataModelHelper.swift in Sources */,
 				4F4F5FD820349B810025741A /* String+Date.swift in Sources */,
 				4F4F5FD0203490620025741A /* Logger.swift in Sources */,
+				4F08641E203C7A3B00CFDD98 /* SIFRoundIconDetector.swift in Sources */,
 				4F4F5FC52034903B0025741A /* ApiHelper.swift in Sources */,
 				4F08640520373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm in Sources */,
 				4F4F5FC62034903E0025741A /* ApiRequestParam.swift in Sources */,
@@ -687,9 +721,11 @@
 				4F0863FD20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
 				4F0863F920372D5000CFDD98 /* CVDataModel.swift in Sources */,
 				4F086407203862DE00CFDD98 /* CVMat.h in Sources */,
+				4F086420203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
 				4F4F5FB1203486500025741A /* ApiRequestParamProtocol.swift in Sources */,
 				4F4F5FD2203497AC0025741A /* String+httpSchema.swift in Sources */,
 				4F4F5FA5203480BC0025741A /* MiniIdolDataModel.swift in Sources */,
+				4F08641C203C7A3B00CFDD98 /* SIFRoundIconDetector.swift in Sources */,
 				4F4F5F9E20347D660025741A /* Data+JSONDataToDictionary.swift in Sources */,
 				4F4F5FB420348F6E0025741A /* DataModelHelper.swift in Sources */,
 				4F4F5FAB203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,
@@ -716,9 +752,11 @@
 				4F0863FE20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
 				4F0863FA20372D5000CFDD98 /* CVDataModel.swift in Sources */,
 				4F086408203862DE00CFDD98 /* CVMat.h in Sources */,
+				4F086421203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
 				4F4F5FB2203486500025741A /* ApiRequestParamProtocol.swift in Sources */,
 				4F4F5FD3203497AC0025741A /* String+httpSchema.swift in Sources */,
 				4F4F5FA6203480BC0025741A /* MiniIdolDataModel.swift in Sources */,
+				4F08641D203C7A3B00CFDD98 /* SIFRoundIconDetector.swift in Sources */,
 				4F4F5F9F20347D660025741A /* Data+JSONDataToDictionary.swift in Sources */,
 				4F4F5FB520348F6E0025741A /* DataModelHelper.swift in Sources */,
 				4F4F5FAC203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,

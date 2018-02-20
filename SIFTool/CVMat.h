@@ -8,4 +8,9 @@
 #import <Foundation/Foundation.h>
 @interface CVMat: NSObject
 
+- (CVMat * _Nonnull)clone;
+- (CGSize)size;
+- (int)channels;
+- (CVMat * _Nonnull)roiAt:(CGRect)rect;
+- (void)fillBy:(CVMat * _Nonnull)mat;
 @end

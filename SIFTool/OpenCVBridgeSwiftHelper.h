@@ -122,6 +122,14 @@ typedef NS_ENUM(NSUInteger, CVBridgeMorphType) {
 - (BOOL)saveImage:(CVMat * _Nonnull)mat
          fileName:(NSString * _Nonnull)fileName;
 
+
+/**
+ 分离通道
+
+ @param mat 输入图像矩阵
+ @return [CVMat]
+ */
+- (NSArray * _Nonnull)splitImage:(CVMat * _Nonnull)mat;
 @end
 
 #pragma mark - 图像处理方法
@@ -204,6 +212,16 @@ typedef NS_ENUM(NSUInteger, CVBridgeMorphType) {
                              elementSharp:(CVBridgeMorphShape)sharp
                               elementSize:(CGSize)size
                              elementPoint:(CGPoint)point;
+
+- (CVMat * _Nonnull)morphologyExWithImage:(CVMat * _Nonnull)mat
+                                operation:(CVBridgeMorphType)operation
+                               iterations:(int)iterations
+                             elementSharp:(CVBridgeMorphShape)sharp
+                              elementSize:(CGSize)size
+                             elementPoint:(CGPoint)point;
+
+- (CVMat * _Nonnull)cropWithImage:(CVMat * _Nonnull)mat
+                           byRect:(CGRect)rect;
 @end
 
 #pragma mark - 绘制方法

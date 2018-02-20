@@ -52,16 +52,8 @@ class OpenCVTest: XCTestCase {
         OpenCVBridgeSwiftHelper.sharedInstance().saveImage(canny, fileName: "\(sp)/dump3.png")
     }
     
-    func testSomeThing() {
-        let mat = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/test.png")
-        var output = OpenCVBridgeSwiftHelper.sharedInstance().gaussianBlur(withImage: mat, kernelSize: NSSize.init(width: 3, height: 3), sigmaX: 0, sigmaY: 0, borderType: .default)
-        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(output, fileName: "\(sp)/dump1.png")
-        output = OpenCVBridgeSwiftHelper.sharedInstance().canny(withImage: output, lowThreshold: 200, highThreshold: 300);
-        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(output, fileName: "\(sp)/dump2.png")
-    }
-    
     func testContours() {
-        var mat = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/test.png")
+        var mat = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/test1.png")
         mat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: mat, targetColor: .bgr2Gray)
         
         mat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: mat, thresh: 254, maxValue: 255, type: .binary_Inv)
@@ -87,6 +79,60 @@ class OpenCVTest: XCTestCase {
         OpenCVBridgeSwiftHelper.sharedInstance().saveImage(mat, fileName: "\(sp)/dump2.png")
     }
     
+    //首先二值化，找轮廓，切图
+    func testMethod1() {
+        var mat = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/test.png")
+        let cloneMat = mat.clone()
+        var corpMat = mat.clone()
+        
+        mat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: mat, targetColor: .bgr2Gray)
+        
+        mat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: mat, thresh: 254, maxValue: 255, type: .binary_Inv)
+        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(mat, fileName: "\(sp)/dump1.png")
+        
+        let output = OpenCVBridgeSwiftHelper.sharedInstance().findContours(withImage: mat, mode: .external, method: .none, offsetPoint: CGPoint.zero) as! [[NSValue]]
+        
+        var minX = CGFloat.greatestFiniteMagnitude
+        var maxX = CGFloat.leastNormalMagnitude
+        var maxXPlusWeight = CGFloat.leastNormalMagnitude
+        var minY = CGFloat.greatestFiniteMagnitude
+        var maxY = CGFloat.leastNormalMagnitude
+        var maxYPlusHeight = CGFloat.leastNormalMagnitude
+        
+        let empty = OpenCVBridgeSwiftHelper.sharedInstance().emptyImage(with: cloneMat.size(), channel: 3)
+        var i = 0
+        for contours in output {
+            // filter
+            let rect = contours.contoursRect()
+            let area = rect.size.width * rect.size.height
+            if area < 50 * 50 {
+                continue
+            }
+            let aspectRadio = Double(rect.size.width / rect.size.height)
+            let aspectRadioThresh = 0.2
+            if abs(aspectRadio - 1) > aspectRadioThresh {
+                continue
+            }
+            
+            minX = Swift.min(minX, rect.origin.x)
+            maxX = Swift.max(maxX, rect.origin.x)
+            minY = Swift.min(minY, rect.origin.y)
+            maxY = Swift.max(maxY, rect.origin.y)
+            maxXPlusWeight = Swift.max(maxXPlusWeight, maxX + rect.size.width)
+            maxYPlusHeight = Swift.max(maxYPlusHeight, maxY + rect.size.height)
+            OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: empty, rect: rect, r: 255, g: 255, b: 255)
+            let cutMat = OpenCVBridgeSwiftHelper.sharedInstance().crop(withImage: cloneMat, by: rect)
+            OpenCVBridgeSwiftHelper.sharedInstance().saveImage(cutMat, fileName: "\(sp)/dumps/\(i).png")
+            i += 1
+        }
+        
+        let groupRect = CGRect(x: minX, y: minY, width: maxXPlusWeight - minX, height: maxYPlusHeight - minY)
+        OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: empty, rect: groupRect, r: 255, g: 0, b: 0)
+        
+        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(empty, fileName: "\(sp)/dump2.png")
+        
+        
+    }
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

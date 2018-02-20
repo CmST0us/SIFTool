@@ -6,7 +6,7 @@ target 'SIFTool' do
   use_frameworks!
 
   # Pods for SIFTool
-
+  pod 'SDWebImage', '~> 4.0'
 end
 
 target 'SIFTool-macOS' do
@@ -14,5 +14,6 @@ target 'SIFTool-macOS' do
   use_frameworks!
 
   # Pods for SIFTool-macOS
-
+  pod 'SDWebImage', '~> 4.0'
 end
+
