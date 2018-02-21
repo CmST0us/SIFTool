@@ -66,7 +66,7 @@
                                                    8 /*bitsPerComponent*/,
                                                    0 /*bytesPerRow - CG will calculate it for you if it's allocating the data.  This might get padded out a bit for better alignment*/,
                                                    [[NSColorSpace genericRGBColorSpace] CGColorSpace],
-                                                   kCGBitmapByteOrder32Host|kCGImageAlphaPremultipliedFirst);
+                                                   kCGBitmapByteOrderDefault|kCGImageAlphaNoneSkipLast);
     
     [NSGraphicsContext saveGraphicsState];
     [NSGraphicsContext setCurrentContext:[NSGraphicsContext graphicsContextWithGraphicsPort:bitmapCtx flipped:NO]];
@@ -83,6 +83,7 @@
     CGColorSpaceRef colorSpace = CGImageGetColorSpace(imageRef);
     CGFloat cols = self.size.width;
     CGFloat rows = self.size.height;
+    
     cv::Mat cvMat(rows, cols, CV_8UC4); // 8 bits per component, 4 channels
     
     CGContextRef contextRef = CGBitmapContextCreate(cvMat.data,                 // Pointer to backing data
@@ -98,6 +99,7 @@
     CGContextRelease(contextRef);
     CGImageRelease(imageRef);
     
+    cv::cvtColor(cvMat, cvMat, cv::COLOR_RGBA2BGRA);
     auto mat = [[CVMat alloc] init];
     mat.mat = cvMat;
     return mat;
@@ -162,7 +164,7 @@
 
 - (CVMat *)readImageWithNamePath: (NSString *)namePath {
     auto str = cv::String([namePath cStringUsingEncoding: NSUTF8StringEncoding]);
-    cv::Mat mat = cv::imread(str);
+    cv::Mat mat = cv::imread(str, cv::IMREAD_UNCHANGED);
     auto cvMat = [[CVMat alloc] init];
     cvMat.mat = mat;
     return cvMat;

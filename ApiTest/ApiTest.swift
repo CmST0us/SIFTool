@@ -81,7 +81,11 @@ class ApiTest: XCTestCase {
         }
         XCTFail()
     }
-    
+    func testImageRead() {
+        let image = NSImage.init(contentsOfFile: "/Users/cmst0us/Downloads/round.png")
+//        let mat = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "/Users/cmst0us/Downloads/round.png")
+        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(image!.mat, fileName: "/Users/cmst0us/Downloads/roundMatDump.png")
+    }
     func testIdolPage() {
         var page = 1
         var haveNext = true
