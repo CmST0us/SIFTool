@@ -133,6 +133,28 @@ class OpenCVTest: XCTestCase {
         
         
     }
+    
+    func testMatchTemple() {
+        let image = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/test.png")
+        let o = image.clone();
+        let template = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/template.png")
+        let resultArray = OpenCVBridgeSwiftHelper.sharedInstance().matchTemplate(withImage: image, template: template, method: CVBridgeTemplateMatchMode.CCOEFF_NORMED) as! [[NSNumber]]
+        var result = resultArray.map { (numbers) -> (Int, Int, Double) in
+            return (numbers[0].intValue, numbers[1].intValue, Double(numbers[2].floatValue))
+        } as [(Int, Int, Double)]
+        result = result.filter { (x, y, v) -> Bool in
+            if v > 0.8 {
+                return true
+            }
+            return false
+        }
+        let max = result.max { (a, b) -> Bool in
+            return a.2 > b.2
+        }
+        
+        OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: o, rect: CGRect.init(x: CGFloat(max!.0), y: CGFloat(max!.1), width: template.size().width, height: template.size().height), r: 255, g: 0, b: 0)
+        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(o, fileName: "\(sp)/dump.png")
+    }
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.

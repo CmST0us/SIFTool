@@ -52,25 +52,20 @@ class SIFRoundIconDetector {
     }
     
     func makeRoundCardImagePattern(cardId: Int, images: (CVMat?, CVMat?)) {
-        if cardId == 5 {
-            OpenCVBridgeSwiftHelper.sharedInstance().saveImage(_roundCardImagePattern, fileName: "/Users/cmst0us/Downloads/dumps/patterns.png")
-            
-        } else if cardId > 5 {
-            exit(0)
-        }
-        if let image1 = images.0 {
+        if let roundCardImage = images.0 {
             let coordinates = patternCoordinates(index: cardId, idolize: false)
+            let pattern = OpenCVBridgeSwiftHelper.sharedInstance().resizeImage(roundCardImage, to: CGSize.init(width: _configuration.patternWidth, height: _configuration.patternHeight)).roi(at: _configuration.patternRealRect)
+            
             let roi = _roundCardImagePattern.roi(at: CGRect.init(origin: CGPoint.init(x: coordinates.0, y: coordinates.1), size: _configuration.patternRealSize))
-            roi.fill(by: image1)
+            roi.fill(by: pattern)
         }
-        if let image2 = images.1 {
+        if let idolizedRoundCardImage = images.1 {
             let coordinates = patternCoordinates(index: cardId, idolize: true)
+            let pattern = OpenCVBridgeSwiftHelper.sharedInstance().resizeImage(idolizedRoundCardImage, to: CGSize.init(width: _configuration.patternWidth, height: _configuration.patternHeight)).roi(at: _configuration.patternRealRect)
+            
             let roi = _roundCardImagePattern.roi(at: CGRect.init(origin: CGPoint.init(x: coordinates.0, y: coordinates.1), size: _configuration.patternRealSize))
-            roi.fill(by: image2)
+            roi.fill(by: pattern)
         }
-        Logger.shared.console("card \(String(cardId)) make pattern ok")
-        
-        
     }
     
 }

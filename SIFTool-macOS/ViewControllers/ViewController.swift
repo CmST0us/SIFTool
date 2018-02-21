@@ -40,7 +40,7 @@ class ViewController: NSViewController {
         let pointArray = pointString.split(separator: ",")
         let point = CGPoint.init(x: Int(pointArray[0])!, y: Int(pointArray[1])!)
         
-        let nm = OpenCVBridgeSwiftHelper.sharedInstance().morphologyEx(withImage: m!, operation: CVBridgeMorphType.init(rawValue: UInt(params[0])!)!, iterations: Int32(params[1])!, elementSharp: CVBridgeMorphShape.init(rawValue: UInt(params[2])!)!, elementSize: size, elementPoint: point)
+        let nm = OpenCVBridgeSwiftHelper.sharedInstance().morphologyEx(withImage: m!, operation: CVBridgeMorphType.init(rawValue: Int(params[0])!)!, iterations: Int32(params[1])!, elementSharp: CVBridgeMorphShape.init(rawValue: Int(params[2])!)!, elementSize: size, elementPoint: point)
         imageView.image = NSImage.init(cvMat: nm)
         dumpParam()
     }

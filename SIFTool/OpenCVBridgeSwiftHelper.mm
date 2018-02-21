@@ -52,7 +52,7 @@
 }
 
 - (void)fillBy:(CVMat *)mat {
-    cv::resize(mat.mat, mat.mat, cv::Size(_mat.cols, _mat.rows));
+//    cv::resize(mat.mat, mat.mat, cv::Size(_mat.cols, _mat.rows));
     mat.mat.copyTo(_mat);
 }
 
@@ -164,7 +164,15 @@
 
 - (CVMat *)readImageWithNamePath: (NSString *)namePath {
     auto str = cv::String([namePath cStringUsingEncoding: NSUTF8StringEncoding]);
-    cv::Mat mat = cv::imread(str, cv::IMREAD_UNCHANGED);
+    cv::Mat mat = cv::imread(str, cv::IMREAD_COLOR);
+    auto cvMat = [[CVMat alloc] init];
+    cvMat.mat = mat;
+    return cvMat;
+}
+
+- (CVMat *)readImageWithNamePath:(NSString *)namePath mode:(CVBridgeImreadMode)mode {
+    auto str = cv::String([namePath cStringUsingEncoding: NSUTF8StringEncoding]);
+    cv::Mat mat = cv::imread(str, mode);
     auto cvMat = [[CVMat alloc] init];
     cvMat.mat = mat;
     return cvMat;
@@ -201,6 +209,15 @@
     return array;
 }
 
+- (CVMat *)resizeImage:(CVMat *)mat to:(CGSize)size {
+    cv::Size s;
+    s.height = size.height;
+    s.width = size.width;
+    auto output = [[CVMat alloc] init];
+    cv::resize(mat.mat, output.mat, s);
+    return output;
+}
+
 #pragma mark - 图像处理方法
 - (CVMat *)gaussianBlurWithImage:(CVMat *)mat
                       kernelSize:(NSSize)size
@@ -235,31 +252,6 @@
     auto outputMat = [[CVMat alloc] init];
     cv::threshold(mat.mat, outputMat.mat, thresh, maxValue, type);
     return outputMat;
-}
-
-- (NSArray *)findContoursWithImage:(CVMat *)mat
-                            mode:(CVBridgeRetrievalMode)mode
-                          method:(CVBridgeApproximationMode)method
-                     offsetPoint:(CGPoint)point {
-    auto offsetPoint = cv::Point(point.x, point.y);
-    
-    std::vector<std::vector<cv::Point>> contours;
-    std::vector<cv::Vec4i> hierarchy;
-    cv::findContours(mat.mat, contours, hierarchy, mode, method, offsetPoint);
-    
-    auto points = [NSMutableArray array];
-    for(int i = 0; i < contours.size(); i++) {
-        auto pointPerContours = [NSMutableArray array];
-        for(int j = 0; j < contours[i].size(); j++){
-            NSPoint tp;
-            tp.x = contours[i][j].x; tp.y = contours[i][j].y;
-            auto value = [NSValue valueWithPoint:tp];
-            [pointPerContours addObject:value];
-        }
-        [points addObject:pointPerContours];
-    }
-    
-    return points;
 }
 
 - (CVMat *)morphologyExWithImage:(CVMat *)mat
@@ -303,6 +295,7 @@
     output.mat = mat.mat(cv::Range(rect.origin.y, rect.origin.y + rect.size.height + 1), cv::Range(rect.origin.x, rect.size.width + rect.origin.x + 1)).clone();
     return output;
 }
+
 #pragma mark - 绘制方法
 - (CVMat *)drawRectWithImage:(CVMat *)mat
                       rect:(CGRect)rect
@@ -314,7 +307,7 @@
     rec.y = rect.origin.y;
     rec.height = rect.size.height;
     rec.width = rect.size.width;
-    cv::Scalar s(r, g, b);
+    cv::Scalar s(b, g, r);
     auto output = [[CVMat alloc] init];
     output.mat = mat.mat.clone();
     cv::rectangle(output.mat, rec, s);
@@ -331,7 +324,56 @@
     rec.y = rect.origin.y;
     rec.height = rect.size.height;
     rec.width = rect.size.width;
-    cv::Scalar s(r, g, b);
+    cv::Scalar s(b, g, r);
     cv::rectangle(mat.mat, rec, s);
 }
+
+#pragma mark - 搜索算法
+- (NSArray *)findContoursWithImage:(CVMat *)mat
+                              mode:(CVBridgeRetrievalMode)mode
+                            method:(CVBridgeApproximationMode)method
+                       offsetPoint:(CGPoint)point {
+    auto offsetPoint = cv::Point(point.x, point.y);
+    
+    std::vector<std::vector<cv::Point>> contours;
+    std::vector<cv::Vec4i> hierarchy;
+    cv::findContours(mat.mat, contours, hierarchy, mode, method, offsetPoint);
+    
+    auto points = [NSMutableArray array];
+    for(int i = 0; i < contours.size(); i++) {
+        auto pointPerContours = [NSMutableArray array];
+        for(int j = 0; j < contours[i].size(); j++){
+            NSPoint tp;
+            tp.x = contours[i][j].x; tp.y = contours[i][j].y;
+            auto value = [NSValue valueWithPoint:tp];
+            [pointPerContours addObject:value];
+        }
+        [points addObject:pointPerContours];
+    }
+    
+    return points;
+}
+
+- (NSArray *)matchTemplateWithImage:(CVMat *)mat template:(CVMat *)templateMat method:(CVBridgeTemplateMatchMode)method {
+    int result_cols =  mat.mat.cols - templateMat.mat.cols + 1;
+    int result_rows = mat.mat.rows - templateMat.mat.rows + 1;
+    cv::Mat result;
+    result.create(result_rows, result_cols, CV_32FC1);
+//    cv::Mat m;
+//    cv::Mat t;
+//    cv::convertScaleAbs(mat.mat, m);
+//    cv::convertScaleAbs(templateMat.mat, t);
+    cv::matchTemplate(mat.mat, templateMat.mat, result, method);
+    cv::normalize(result, result, 0, 1, cv::NORM_MINMAX, -1, cv::Mat());
+//    @[x, y, v]
+    auto array = [NSMutableArray arrayWithCapacity:result.cols * result.rows];
+    for (int i = 0; i < result.rows; ++i) {
+        for (int j = 0; j < result.cols; ++j) {
+            float f = result.at<float>(i, j);
+            [array addObject:@[[NSNumber numberWithInt:j], [NSNumber numberWithInt:i], [NSNumber numberWithFloat:f]]];
+        }
+    }
+    return array;
+}
+
 @end

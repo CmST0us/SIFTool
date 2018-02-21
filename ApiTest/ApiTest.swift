@@ -81,6 +81,8 @@ class ApiTest: XCTestCase {
         }
         XCTFail()
     }
+    
+
     func testImageRead() {
         let image = NSImage.init(contentsOfFile: "/Users/cmst0us/Downloads/round.png")
 //        let mat = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "/Users/cmst0us/Downloads/round.png")

@@ -10,21 +10,29 @@ import Foundation
 struct SIFRoundIconDetectorConfiguration {
     var patternWidth: Double = 1.0
     var patternHeight: Double = 1.0
-    var patternRadio: Double = 1.0
+    
+    var patternLeft: Double = 1.0
+    var patternRight: Double = 1.0
+    var patternTop: Double = 1.0
+    var patternBottom: Double = 1.0
     
     static var defaultRoundIconConfiguration: SIFRoundIconDetectorConfiguration {
-        return SIFRoundIconDetectorConfiguration.init(patternWidth: 80, patternHeight: 80, patternRadio: 0.5)
+        return SIFRoundIconDetectorConfiguration.init(patternWidth: 80.0, patternHeight: 80.0, patternLeft: 15.0, patternRight: 17.0, patternTop: 16.0, patternBottom: 15.0)
     }
     
     var patternRealSize: CGSize {
-        return CGSize.init(width: patternWidth * patternRadio, height: patternHeight * patternRadio)
+        return CGSize.init(width: patternRealWidth, height: patternRealHeight)
     }
     
     var patternRealWidth: Double {
-        return patternWidth * patternRadio
+        return patternWidth - patternLeft - patternRight
     }
     
     var patternRealHeight: Double {
-        return patternHeight * patternRadio
+        return patternHeight - patternTop - patternBottom
+    }
+    
+    var patternRealRect: CGRect {
+        return CGRect.init(x: CGFloat(patternLeft), y: CGFloat(patternTop), width: CGFloat(patternRealWidth), height: CGFloat(patternRealHeight))
     }
 }

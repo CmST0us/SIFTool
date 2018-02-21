@@ -90,7 +90,7 @@ typedef NS_ENUM(NSInteger, CVBridgeApproximationMode) {
  bridge to cv::MorphShapes
  
  */
-typedef NS_ENUM(NSUInteger, CVBridgeMorphShape) {
+typedef NS_ENUM(NSInteger, CVBridgeMorphShape) {
     CVBridgeMorphShapeRect = 0,
     CVBridgeMorphShapeCross = 1,
     CVBridgeMorphShapeEllipse = 2
@@ -101,7 +101,7 @@ typedef NS_ENUM(NSUInteger, CVBridgeMorphShape) {
  bridge to cv::MorphTypes
 
  */
-typedef NS_ENUM(NSUInteger, CVBridgeMorphType) {
+typedef NS_ENUM(NSInteger, CVBridgeMorphType) {
     CVBridgeMorphTypeErode = 0,
     CVBridgeMorphTypeDilate = 1,
     CVBridgeMorphTypeOpen = 2,
@@ -110,18 +110,52 @@ typedef NS_ENUM(NSUInteger, CVBridgeMorphType) {
     CVBridgeMorphTypeTopHat = 5,
     CVBridgeMorphTypeBlackHat = 6
 };
-    
+
+typedef NS_ENUM(NSInteger, CVBridgeTemplateMatchMode) {
+    CVBridgeTemplateMatchModeSQDIFF        = 0, //!< \f[R(x,y)= \sum _{x',y'} (T(x',y')-I(x+x',y+y'))^2\f]
+    CVBridgeTemplateMatchModeSQDIFF_NORMED = 1, //!< \f[R(x,y)= \frac{\sum_{x',y'} (T(x',y')-I(x+x',y+y'))^2}{\sqrt{\sum_{x',y'}T(x',y')^2 \cdot \sum_{x',y'} I(x+x',y+y')^2}}\f]
+    CVBridgeTemplateMatchModeCCORR         = 2, //!< \f[R(x,y)= \sum _{x',y'} (T(x',y')  \cdot I(x+x',y+y'))\f]
+    CVBridgeTemplateMatchModeCCORR_NORMED  = 3, //!< \f[R(x,y)= \frac{\sum_{x',y'} (T(x',y') \cdot I(x+x',y+y'))}{\sqrt{\sum_{x',y'}T(x',y')^2 \cdot \sum_{x',y'} I(x+x',y+y')^2}}\f]
+    CVBridgeTemplateMatchModeCCOEFF        = 4, //!< \f[R(x,y)= \sum _{x',y'} (T'(x',y')  \cdot I'(x+x',y+y'))\f]
+    //!< where
+    //!< \f[\begin{array}{l} T'(x',y')=T(x',y') - 1/(w  \cdot h)  \cdot \sum _{x'',y''} T(x'',y'') \\ I'(x+x',y+y')=I(x+x',y+y') - 1/(w  \cdot h)  \cdot \sum _{x'',y''} I(x+x'',y+y'') \end{array}\f]
+    CVBridgeTemplateMatchModeCCOEFF_NORMED = 5  //!< \f[R(x,y)= \frac{ \sum_{x',y'} (T'(x',y') \cdot I'(x+x',y+y')) }{ \sqrt{\sum_{x',y'}T'(x',y')^2 \cdot \sum_{x',y'} I'(x+x',y+y')^2} }\f]
+};
+
+typedef NS_ENUM(NSInteger, CVBridgeImreadMode) {
+    CVBridgeImreadModeUnchangeN  = -1, //!< If set, return the loaded image as is (with alpha channel, otherwise it gets cropped).
+    CVBridgeImreadModeGrayscale  = 0,  //!< If set, always convert image to the single channel grayscale image.
+    CVBridgeImreadModeColor      = 1,  //!< If set, always convert image to the 3 channel BGR color image.
+    CVBridgeImreadModeAnyDepth   = 2,  //!< If set, return 16-bit/32-bit image when the in, put has the corresponding depth, otherwise convert it to 8-bit.
+    CVBridgeImreadModeAnyColor   = 4,  //!< If set, the image is read in any possible color format.
+    CVBridgeImreadModeLoadGdal   = 8   //!< If set, use the gdal driver for loading the image.
+};
+
+enum ImreadModes {
+    IMREAD_UNCHANGED  = -1, //!< If set, return the loaded image as is (with alpha channel, otherwise it gets cropped).
+    IMREAD_GRAYSCALE  = 0,  //!< If set, always convert image to the single channel grayscale image.
+    IMREAD_COLOR      = 1,  //!< If set, always convert image to the 3 channel BGR color image.
+    IMREAD_ANYDEPTH   = 2,  //!< If set, return 16-bit/32-bit image when the input has the corresponding depth, otherwise convert it to 8-bit.
+    IMREAD_ANYCOLOR   = 4,  //!< If set, the image is read in any possible color format.
+    IMREAD_LOAD_GDAL  = 8   //!< If set, use the gdal driver for loading the image.
+};
 @interface OpenCVBridgeSwiftHelper: NSObject
 + (instancetype _Nonnull)sharedInstance;
 
-- (CVMat * _Nonnull )readImageWithNamePath: (NSString * _Nonnull)namePath;
+- (CVMat * _Nonnull)readImageWithNamePath: (NSString * _Nonnull)namePath;
 
-- (CVMat * _Nonnull )emptyImageWithSize:(CGSize)size
+- (CVMat * _Nonnull)readImageWithNamePath:(NSString * _Nonnull)namePath
+                                     mode:(CVBridgeImreadMode)mode;
+
+- (CVMat * _Nonnull)emptyImageWithSize:(CGSize)size
                                 channel:(int)channel;
 
 - (BOOL)saveImage:(CVMat * _Nonnull)mat
          fileName:(NSString * _Nonnull)fileName;
 
+
+- (CVMat * _Nonnull)resizeImage:(CVMat * _Nonnull)mat
+                             to:(CGSize)size;
 
 /**
  分离通道
@@ -193,20 +227,6 @@ typedef NS_ENUM(NSUInteger, CVBridgeMorphType) {
                                   type:(CVBridgeThresholdType)type;
 
 
-/**
- 查找轮廓
-
- @param mat 图像输入矩阵
- @param mode 边缘查找模式
- @param method 边缘匹配方法
- @param point 偏移点
- @return 轮廓点集 [[NSPoint]]
- */
-- (NSArray * _Nonnull)findContoursWithImage:(CVMat * _Nonnull)mat
-                                     mode:(CVBridgeRetrievalMode)mode
-                                   method:(CVBridgeApproximationMode)method
-                              offsetPoint:(CGPoint)point;
-
 - (CVMat * _Nonnull)morphologyExWithImage:(CVMat * _Nonnull)mat
                                 operation:(CVBridgeMorphType)operation
                              elementSharp:(CVBridgeMorphShape)sharp
@@ -220,6 +240,14 @@ typedef NS_ENUM(NSUInteger, CVBridgeMorphType) {
                               elementSize:(CGSize)size
                              elementPoint:(CGPoint)point;
 
+
+/**
+ 裁剪图像，注意此方法会复制一份mat。对返回的mat的修改不会影响原mat
+
+ @param mat 输入图像矩阵
+ @param rect 裁剪区域
+ @return 输出图像矩阵
+ */
 - (CVMat * _Nonnull)cropWithImage:(CVMat * _Nonnull)mat
                            byRect:(CGRect)rect;
 @end
@@ -239,4 +267,32 @@ typedef NS_ENUM(NSUInteger, CVBridgeMorphType) {
                       r:(double)r
                       g:(double)g
                       b:(double)b;
+
+#pragma mark: - 搜索算法
+/**
+ 查找轮廓
+ 
+ @param mat 图像输入矩阵
+ @param mode 边缘查找模式
+ @param method 边缘匹配方法
+ @param point 偏移点
+ @return 轮廓点集 [[NSPoint]]
+ */
+- (NSArray * _Nonnull)findContoursWithImage:(CVMat * _Nonnull)mat
+                                       mode:(CVBridgeRetrievalMode)mode
+                                     method:(CVBridgeApproximationMode)method
+                                offsetPoint:(CGPoint)point;
+
+
+/**
+ 模版匹配
+
+ @param mat 模式图像
+ @param templateMat 要被滑动做匹配的图像
+ @param method 匹配方式
+ @return [[NSNumber]]
+ */
+- (NSArray * _Nonnull)matchTemplateWithImage:(CVMat * _Nonnull)mat
+                                    template:(CVMat * _Nonnull)templateMat
+                                      method:(CVBridgeTemplateMatchMode)method;
 @end
