@@ -8,9 +8,18 @@
 #import <Foundation/Foundation.h>
 @interface CVMat: NSObject
 
-- (CVMat * _Nonnull)clone;
+- (nonnull CVMat *)clone;
+
 - (CGSize)size;
 - (int)channels;
-- (CVMat * _Nonnull)roiAt:(CGRect)rect;
-- (void)fillBy:(CVMat * _Nonnull)mat;
+
+- (nonnull CVMat *)roiAt:(CGRect)rect;
+
+- (nonnull NSNumber *)floatValueAt:(CGPoint)point;
+- (void)setFloatValue:(nonnull NSNumber *)value at:(CGPoint)point;
+
+- (nonnull NSNumber *)ucharValueAt:(CGPoint)point;
+- (void)setUcharValue:(nonnull NSNumber *)value at:(CGPoint)point;
+
+- (void)fillBy:(nonnull CVMat *)mat;
 @end

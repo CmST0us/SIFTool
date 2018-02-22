@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class ViewController: NSViewController {
+class CVViewController: NSViewController {
     
     @IBOutlet weak var imageNameTextField: NSTextField!
     @IBOutlet weak var threshParams: NSTextField!

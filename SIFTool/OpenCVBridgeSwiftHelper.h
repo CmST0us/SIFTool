@@ -140,21 +140,21 @@ enum ImreadModes {
     IMREAD_LOAD_GDAL  = 8   //!< If set, use the gdal driver for loading the image.
 };
 @interface OpenCVBridgeSwiftHelper: NSObject
-+ (instancetype _Nonnull)sharedInstance;
++ (nonnull instancetype)sharedInstance;
 
-- (CVMat * _Nonnull)readImageWithNamePath: (NSString * _Nonnull)namePath;
+- (nonnull CVMat *)readImageWithNamePath: (nonnull NSString *)namePath;
 
-- (CVMat * _Nonnull)readImageWithNamePath:(NSString * _Nonnull)namePath
+- (nonnull CVMat *)readImageWithNamePath:(nonnull NSString *)namePath
                                      mode:(CVBridgeImreadMode)mode;
 
-- (CVMat * _Nonnull)emptyImageWithSize:(CGSize)size
+- (nonnull CVMat *)emptyImageWithSize:(CGSize)size
                                 channel:(int)channel;
 
-- (BOOL)saveImage:(CVMat * _Nonnull)mat
-         fileName:(NSString * _Nonnull)fileName;
+- (BOOL)saveImage:(nonnull CVMat *)mat
+         fileName:(nonnull NSString *)fileName;
 
 
-- (CVMat * _Nonnull)resizeImage:(CVMat * _Nonnull)mat
+- (nonnull CVMat *)resizeImage:(nonnull CVMat *)mat
                              to:(CGSize)size;
 
 /**
@@ -163,7 +163,7 @@ enum ImreadModes {
  @param mat 输入图像矩阵
  @return [CVMat]
  */
-- (NSArray * _Nonnull)splitImage:(CVMat * _Nonnull)mat;
+- (nonnull NSArray *)splitImage:(nonnull CVMat *)mat;
 @end
 
 #pragma mark - 图像处理方法
@@ -179,7 +179,7 @@ enum ImreadModes {
  @param type 推断图像外部像素的某种便捷模式
  @return 高斯模糊后的图像矩阵
  */
-- (CVMat * _Nonnull)gaussianBlurWithImage:(CVMat * _Nonnull)mat
+- (nonnull CVMat *)gaussianBlurWithImage:(nonnull CVMat *)mat
                                kernelSize:(NSSize)size
                                    sigmaX:(double)sigmaX
                                    sigmaY:(double)sigmaY
@@ -194,7 +194,7 @@ enum ImreadModes {
  @param highThreshold second threshold for the hysteresis procedure.
  @return Canny边缘检测后图像矩阵
  */
-- (CVMat * _Nonnull)cannyWithImage:(CVMat * _Nonnull)mat
+- (nonnull CVMat *)cannyWithImage:(nonnull CVMat *)mat
                       lowThreshold:(double)lowThreshold
                      highThreshold:(double)highThreshold;
 
@@ -207,7 +207,7 @@ enum ImreadModes {
  @param type 目标色彩
  @return 转换后的图像矩阵
  */
-- (CVMat * _Nonnull)covertColorWithImage:(CVMat * _Nonnull)mat
+- (nonnull CVMat *)covertColorWithImage:(nonnull CVMat *)mat
                              targetColor:(CVBridgeColorCovertType)type;
 
 
@@ -221,19 +221,19 @@ enum ImreadModes {
  @param type 二值化方式
  @return 二值化后的图像矩阵
  */
-- (CVMat * _Nonnull)thresholdWithImage:(CVMat * _Nonnull)mat
+- (nonnull CVMat *)thresholdWithImage:(nonnull CVMat *)mat
                                 thresh:(double)thresh
                               maxValue:(double)maxValue
                                   type:(CVBridgeThresholdType)type;
 
 
-- (CVMat * _Nonnull)morphologyExWithImage:(CVMat * _Nonnull)mat
+- (nonnull CVMat *)morphologyExWithImage:(nonnull CVMat *)mat
                                 operation:(CVBridgeMorphType)operation
                              elementSharp:(CVBridgeMorphShape)sharp
                               elementSize:(CGSize)size
                              elementPoint:(CGPoint)point;
 
-- (CVMat * _Nonnull)morphologyExWithImage:(CVMat * _Nonnull)mat
+- (nonnull CVMat *)morphologyExWithImage:(nonnull CVMat *)mat
                                 operation:(CVBridgeMorphType)operation
                                iterations:(int)iterations
                              elementSharp:(CVBridgeMorphShape)sharp
@@ -248,21 +248,21 @@ enum ImreadModes {
  @param rect 裁剪区域
  @return 输出图像矩阵
  */
-- (CVMat * _Nonnull)cropWithImage:(CVMat * _Nonnull)mat
+- (nonnull CVMat *)cropWithImage:(nonnull CVMat *)mat
                            byRect:(CGRect)rect;
 @end
 
 #pragma mark - 绘制方法
 @interface OpenCVBridgeSwiftHelper(draw)
 
-- (CVMat * _Nonnull)drawRectWithImage:(CVMat * _Nonnull)mat
+- (nonnull CVMat *)drawRectWithImage:(nonnull CVMat *)mat
                                rect:(CGRect)rect
                                   r:(double)r
                                   g:(double)g
                                   b:(double)b;
 
 
-- (void)drawRectInImage:(CVMat * _Nonnull)mat
+- (void)drawRectInImage:(nonnull CVMat *)mat
                    rect:(CGRect)rect
                       r:(double)r
                       g:(double)g
@@ -278,7 +278,7 @@ enum ImreadModes {
  @param point 偏移点
  @return 轮廓点集 [[NSPoint]]
  */
-- (NSArray * _Nonnull)findContoursWithImage:(CVMat * _Nonnull)mat
+- (nonnull NSArray *)findContoursWithImage:(nonnull CVMat *)mat
                                        mode:(CVBridgeRetrievalMode)mode
                                      method:(CVBridgeApproximationMode)method
                                 offsetPoint:(CGPoint)point;
@@ -290,9 +290,9 @@ enum ImreadModes {
  @param mat 模式图像
  @param templateMat 要被滑动做匹配的图像
  @param method 匹配方式
- @return [[NSNumber]]
+ @return CVMat 32FC1的矩阵
  */
-- (NSArray * _Nonnull)matchTemplateWithImage:(CVMat * _Nonnull)mat
-                                    template:(CVMat * _Nonnull)templateMat
+- (nonnull CVMat *)matchTemplateWithImage:(nonnull CVMat *)mat
+                                    template:(nonnull CVMat *)templateMat
                                       method:(CVBridgeTemplateMatchMode)method;
 @end

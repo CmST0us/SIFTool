@@ -56,6 +56,36 @@
     mat.mat.copyTo(_mat);
 }
 
+- (NSNumber *)ucharValueAt:(CGPoint)point {
+    cv::Point p;
+    p.x = point.x;
+    p.y = point.y;
+    uchar v = _mat.at<uchar>(p);
+    return [NSNumber numberWithUnsignedChar:v];
+}
+
+- (void)setUcharValue:(NSNumber *)value at:(CGPoint)point {
+    cv::Point p;
+    p.x = point.x;
+    p.y = point.y;
+    _mat.at<uchar>(p) = [value unsignedCharValue];
+}
+
+- (NSNumber *)floatValueAt:(CGPoint)point {
+    cv::Point p;
+    p.x = point.x;
+    p.y = point.y;
+    float v = _mat.at<float>(p);
+    return [NSNumber numberWithFloat:v];
+}
+
+- (void)setFloatValue:(NSNumber *)value at:(CGPoint)point {
+    cv::Point p;
+    p.x = point.x;
+    p.y = point.y;
+    _mat.at<float>(p) = [value floatValue];
+}
+
 @end
 
 @implementation NSImage (CVMat)
@@ -354,26 +384,27 @@
     return points;
 }
 
-- (NSArray *)matchTemplateWithImage:(CVMat *)mat template:(CVMat *)templateMat method:(CVBridgeTemplateMatchMode)method {
+- (CVMat *)matchTemplateWithImage:(CVMat *)mat template:(CVMat *)templateMat method:(CVBridgeTemplateMatchMode)method {
     int result_cols =  mat.mat.cols - templateMat.mat.cols + 1;
     int result_rows = mat.mat.rows - templateMat.mat.rows + 1;
     cv::Mat result;
+    auto output = [[CVMat alloc] init];
     result.create(result_rows, result_cols, CV_32FC1);
-//    cv::Mat m;
-//    cv::Mat t;
-//    cv::convertScaleAbs(mat.mat, m);
-//    cv::convertScaleAbs(templateMat.mat, t);
     cv::matchTemplate(mat.mat, templateMat.mat, result, method);
-    cv::normalize(result, result, 0, 1, cv::NORM_MINMAX, -1, cv::Mat());
+    cv::normalize(result, result, 0, 1, cv::NORM_MINMAX, -1);
+    output.mat = result;
 //    @[x, y, v]
-    auto array = [NSMutableArray arrayWithCapacity:result.cols * result.rows];
-    for (int i = 0; i < result.rows; ++i) {
-        for (int j = 0; j < result.cols; ++j) {
-            float f = result.at<float>(i, j);
-            [array addObject:@[[NSNumber numberWithInt:j], [NSNumber numberWithInt:i], [NSNumber numberWithFloat:f]]];
-        }
-    }
-    return array;
+//    auto array = [NSMutableArray arrayWithCapacity:result.cols * result.rows];
+//    for (int i = 0; i < result.rows; ++i) {
+//        for (int j = 0; j < result.cols; ++j) {
+//            float f = result.at<float>(i, j);
+//            if (f > 1) {
+//                NSLog(@"bad value");
+//            }
+//            [array addObject:@[[NSNumber numberWithInt:j], [NSNumber numberWithInt:i], [NSNumber numberWithFloat:f]]];
+//        }
+//    }
+    return output;
 }
 
 @end

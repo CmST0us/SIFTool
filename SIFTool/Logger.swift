@@ -7,6 +7,10 @@
 //
 
 import Foundation
+
+protocol LoggerProtocol {
+    func log(msg: String);
+}
 class Logger {
     
     enum Level {
@@ -19,13 +23,13 @@ class Logger {
         
     }
     static let shared = Logger()
-    
+    var delegate: LoggerProtocol? = nil
 }
 
 extension Logger {
-    func console(_ msg: String, _ level: Level = Level.info,
-                 _ file: String = #file, line: Int = #line,
-                 _ col: Int = #column, _ function: String = #function) {
+    private func logString(_ msg: String, _ level: Level = Level.info,
+                 _ file: String = #file, _ line: Int = #line,
+                 _ col: Int = #column, _ function: String = #function) -> String {
         var levelString = "INFO"
         switch level {
         case .info:
@@ -36,23 +40,39 @@ extension Logger {
         case .error:
             levelString = "ERROR"
         }
+        let time = Date(timeIntervalSinceNow: 0)
+        let formatter = DateFormatter()
+        formatter.dateFormat = "YYYY-MM-dd HH:mm:ss.SSSS"
+        let timeString = formatter.string(from: time)
+        let ps = """
+        {
+        time: "\(timeString)",
+        msg: "\(msg)",
+        level: "\(levelString)",
+        file: "\(file)",
+        line: \(line),
+        col: \(col),
+        func: "\(function)"
+        },
+        """
+        return ps
+    }
+        
+    func console(_ msg: String, _ level: Level = Level.info,
+                 _ file: String = #file, _ line: Int = #line,
+                 _ col: Int = #column, _ function: String = #function) {
         #if DEBUG
-            let time = Date(timeIntervalSinceNow: 0)
-            let formatter = DateFormatter()
-            formatter.dateFormat = "YYYY-MM-dd HH:mm:ss.SSSS"
-            let timeString = formatter.string(from: time)
-            let ps = """
-            {
-            time: "\(timeString)",
-            msg: "\(msg)",
-            level: "\(levelString)",
-            file: "\(file)",
-            line: \(line),
-            col: \(col),
-            func: "\(function)"
-            },
-            """
-            print(ps)
+            print(logString(msg, level, file, line, col, function))
+        #endif
+    }
+    
+    func output(_ msg: String, _ level: Level = Level.info,
+                 _ file: String = #file, _ line: Int = #line,
+                 _ col: Int = #column, _ function: String = #function) {
+        #if DEBUG
+            if let d = delegate {
+                d.log(msg: logString(msg, level, file, line, col, function))
+            }
         #endif
     }
 }

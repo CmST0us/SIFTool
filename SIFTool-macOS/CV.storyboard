@@ -33,7 +33,7 @@
         <!--View Controller-->
         <scene sceneID="cgz-z5-PXU">
             <objects>
-                <viewController id="gQp-WR-b1r" customClass="ViewController" customModule="SIFTool_macOS" sceneMemberID="viewController">
+                <viewController id="gQp-WR-b1r" customClass="CVViewController" customModule="SIFTool_macOS" sceneMemberID="viewController">
                     <view key="view" id="Irr-YF-wfL">
                         <rect key="frame" x="0.0" y="0.0" width="1270" height="720"/>
                         <autoresizingMask key="autoresizingMask"/>

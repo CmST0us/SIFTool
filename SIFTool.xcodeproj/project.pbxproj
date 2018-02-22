@@ -33,6 +33,7 @@
 		4F086420203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
 		4F086421203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
 		4F086422203C8A1A00CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
+		4F1EB1F2203EBFDB0003BA0C /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F1203EBFDB0003BA0C /* MainViewController.swift */; };
 		4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9720347AB70025741A /* ApiRequestParam.swift */; };
@@ -80,7 +81,7 @@
 		4FEA5F02203467BB00F03CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA5F01203467BB00F03CCC /* Assets.xcassets */; };
 		4FEA5F05203467BB00F03CCC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA5F03203467BB00F03CCC /* LaunchScreen.storyboard */; };
 		4FEA5F132034686700F03CCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F122034686700F03CCC /* AppDelegate.swift */; };
-		4FEA5F152034686700F03CCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F142034686700F03CCC /* ViewController.swift */; };
+		4FEA5F152034686700F03CCC /* CVViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F142034686700F03CCC /* CVViewController.swift */; };
 		4FEA5F1A2034686700F03CCC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA5F192034686700F03CCC /* Assets.xcassets */; };
 		4FEA5F1D2034686700F03CCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA5F1B2034686700F03CCC /* Main.storyboard */; };
 		4FEA5F2C2034693700F03CCC /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F2B2034693700F03CCC /* Logger.swift */; };
@@ -118,6 +119,7 @@
 		4F086417203BB68A00CFDD98 /* CV.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CV.storyboard; sourceTree = "<group>"; };
 		4F08641B203C7A3B00CFDD98 /* SIFRoundIconDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFRoundIconDetector.swift; sourceTree = "<group>"; };
 		4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFRoundIconDetectorConfiguration.swift; sourceTree = "<group>"; };
+		4F1EB1F1203EBFDB0003BA0C /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4F4F5F8F203479420025741A /* SIFTool-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SIFTool-macOS.entitlements"; sourceTree = "<group>"; };
 		4F4F5F90203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		4F4F5F91203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
@@ -145,7 +147,7 @@
 		4FEA5F06203467BB00F03CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FEA5F102034686700F03CCC /* SIFTool-macOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SIFTool-macOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEA5F122034686700F03CCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4FEA5F142034686700F03CCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4FEA5F142034686700F03CCC /* CVViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVViewController.swift; sourceTree = "<group>"; };
 		4FEA5F192034686700F03CCC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FEA5F1E2034686700F03CCC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4FEA5F1F2034686700F03CCC /* SIFTool_macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SIFTool_macOS.entitlements; sourceTree = "<group>"; };
@@ -393,7 +395,8 @@
 		4FEA5F3820346AE000F03CCC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4FEA5F142034686700F03CCC /* ViewController.swift */,
+				4FEA5F142034686700F03CCC /* CVViewController.swift */,
+				4F1EB1F1203EBFDB0003BA0C /* MainViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -746,7 +749,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FEA5F312034699500F03CCC /* CoreDataHelper.swift in Sources */,
-				4FEA5F152034686700F03CCC /* ViewController.swift in Sources */,
+				4FEA5F152034686700F03CCC /* CVViewController.swift in Sources */,
 				4FEA5F132034686700F03CCC /* AppDelegate.swift in Sources */,
 				4FEA5F2D2034693700F03CCC /* Logger.swift in Sources */,
 				4F0863FE20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
@@ -759,6 +762,7 @@
 				4F08641D203C7A3B00CFDD98 /* SIFRoundIconDetector.swift in Sources */,
 				4F4F5F9F20347D660025741A /* Data+JSONDataToDictionary.swift in Sources */,
 				4F4F5FB520348F6E0025741A /* DataModelHelper.swift in Sources */,
+				4F1EB1F2203EBFDB0003BA0C /* MainViewController.swift in Sources */,
 				4F4F5FAC203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,
 				4F4F5F9920347AB70025741A /* ApiRequestParam.swift in Sources */,
 				4F0864102039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,

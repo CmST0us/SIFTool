@@ -135,25 +135,31 @@ class OpenCVTest: XCTestCase {
     }
     
     func testMatchTemple() {
-        let image = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/test.png")
-        let o = image.clone();
-        let template = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/template.png")
-        let resultArray = OpenCVBridgeSwiftHelper.sharedInstance().matchTemplate(withImage: image, template: template, method: CVBridgeTemplateMatchMode.CCOEFF_NORMED) as! [[NSNumber]]
-        var result = resultArray.map { (numbers) -> (Int, Int, Double) in
-            return (numbers[0].intValue, numbers[1].intValue, Double(numbers[2].floatValue))
-        } as [(Int, Int, Double)]
-        result = result.filter { (x, y, v) -> Bool in
-            if v > 0.8 {
-                return true
+        do {
+            let image = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/test.png")
+            let o = image.clone();
+            let template = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/template.png")
+            let resultMat = OpenCVBridgeSwiftHelper.sharedInstance().matchTemplate(withImage: image, template: template, method: CVBridgeTemplateMatchMode.CCOEFF_NORMED)
+            var maxPoint = (0, 0, NSNumber.init(value: 0))
+            for y in 0 ..< Int(resultMat.size().height) {
+                for x in 0 ..< Int(resultMat.size().width) {
+                    let p = CGPoint.init(x: x, y: y)
+                    let v = resultMat.floatValue(at: p)
+                    if v.floatValue > maxPoint.2.floatValue {
+                        maxPoint = (x, y, v)
+                    }
+                    if v.floatValue > 1 {
+                        Logger.shared.console("bad value (> 0)")
+                    }
+                }
             }
-            return false
+            OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: o, rect: CGRect.init(x: CGFloat(maxPoint.0), y: CGFloat(maxPoint.1), width: template.size().width, height: template.size().height), r: 0, g: 255, b: 0)
+            OpenCVBridgeSwiftHelper.sharedInstance().saveImage(o, fileName: "\(sp)/dump.png")
+            
         }
-        let max = result.max { (a, b) -> Bool in
-            return a.2 > b.2
-        }
-        
-        OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: o, rect: CGRect.init(x: CGFloat(max!.0), y: CGFloat(max!.1), width: template.size().width, height: template.size().height), r: 255, g: 0, b: 0)
-        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(o, fileName: "\(sp)/dump.png")
+        Logger.shared.console("check memory")
+        sleep(5)
+        Logger.shared.console("check memory")
     }
     func testExample() {
         // This is an example of a functional test case.

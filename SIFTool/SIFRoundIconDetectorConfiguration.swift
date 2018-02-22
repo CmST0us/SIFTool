@@ -20,6 +20,9 @@ struct SIFRoundIconDetectorConfiguration {
         return SIFRoundIconDetectorConfiguration.init(patternWidth: 80.0, patternHeight: 80.0, patternLeft: 15.0, patternRight: 17.0, patternTop: 16.0, patternBottom: 15.0)
     }
     
+    var patternSize: CGSize {
+        return CGSize.init(width: patternWidth, height: patternHeight)
+    }
     var patternRealSize: CGSize {
         return CGSize.init(width: patternRealWidth, height: patternRealHeight)
     }
