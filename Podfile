@@ -15,5 +15,6 @@ target 'SIFTool-macOS' do
 
   # Pods for SIFTool-macOS
   pod 'SDWebImage', '~> 4.0'
+  pod 'PromiseKit'
 end
 

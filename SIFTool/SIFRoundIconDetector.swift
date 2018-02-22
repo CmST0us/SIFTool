@@ -16,17 +16,22 @@ class SIFRoundIconDetector {
     private var _roundCardImagePattern: CVMat!
     private var _configuration: SIFRoundIconDetectorConfiguration
     
-    init(withCards cardsArray: [CardDataModel], configuration: SIFRoundIconDetectorConfiguration) {
+    init(withCards cardsArray: [CardDataModel], configuration: SIFRoundIconDetectorConfiguration, roundCardImagePattern: CVMat? = nil) {
         _cards = cardsArray
         _configuration = configuration
         
-        let cardCount = CGFloat(cardsArray.count)
+        let cardCount = cardsArray.max { (a, b) -> Bool in
+            return a.id < b.id
+        }
         var patternSize = _configuration.patternRealSize
-        patternSize.height = patternSize.height * cardCount
+        patternSize.height = patternSize.height * CGFloat(cardCount!.id + 1)
         patternSize.width = patternSize.width * 2
         
-        _roundCardImagePattern = OpenCVBridgeSwiftHelper.sharedInstance().emptyImage(with: patternSize, channel: 3)
-        
+        if let p = roundCardImagePattern {
+            _roundCardImagePattern = p
+        } else {
+            _roundCardImagePattern = OpenCVBridgeSwiftHelper.sharedInstance().emptyImage(with: patternSize, channel: 4)
+        }
     }
     
     lazy var roundCardUrls: [(Int, URL?, URL?)] = {
@@ -68,6 +73,16 @@ class SIFRoundIconDetector {
         }
     }
     
+    func saveRoundCardImagePattern(toPath path: String) {
+        OpenCVBridgeSwiftHelper.sharedInstance().saveImage(_roundCardImagePattern, fileName: path)
+    }
+    
+    func makeTemplateImagePattern(image: CVMat) -> CVMat {
+        let resizeImage = OpenCVBridgeSwiftHelper.sharedInstance().resizeImage(image, to: _configuration.patternSize)
+        let roi = resizeImage.roi(at: _configuration.patternRealRect)
+        return roi
+    }
+    
     func search(screenShoot: CVMat) -> [CGRect] {
         let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: screenShoot, targetColor: CVBridgeColorCovertType.bgr2Gray)
         let binrayMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 250.0, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
@@ -91,33 +106,35 @@ class SIFRoundIconDetector {
         return outputArray
     }
     
-    func makeTemplateImagePattern(image: CVMat) -> CVMat {
-        let resizeImage = OpenCVBridgeSwiftHelper.sharedInstance().resizeImage(image, to: _configuration.patternSize)
-        let roi = resizeImage.roi(at: _configuration.patternRealRect)
-        return roi
-    }
     
     func match(image: CVMat) -> CGPoint? {
         let resultMat = OpenCVBridgeSwiftHelper.sharedInstance().matchTemplate(withImage: _roundCardImagePattern, template: image, method: CVBridgeTemplateMatchMode.CCOEFF_NORMED)
-        var maxValuePoint = (0, 0, NSNumber(value: 0))
+        var maxValuePoint = (0, 0, Float(0))
         for y in 0 ..< Int(resultMat.size().height) {
             for x in 0 ..< Int(resultMat.size().width) {
                 let v = resultMat.floatValue(at: CGPoint.init(x: x, y: y))
-                if v.floatValue > maxValuePoint.2.floatValue {
+                if v > maxValuePoint.2 {
                     maxValuePoint = (x, y, v)
                 }
             }
         }
-        if maxValuePoint.2 == 0 {
+        if maxValuePoint.2 == Float(0) {
             return nil
         }
         return CGPoint(x: maxValuePoint.0, y: maxValuePoint.1)
     }
     
     func card(atPatternPoint point: CGPoint) -> (CardDataModel?, Bool) {
-        let xIndex = Int(point.x) / Int(_configuration.patternRealWidth)
-        let yIndex = Int(point.y) / Int(_configuration.patternRealHeight)
+        let xIndex = Int(Double(point.x) / Double(_configuration.patternRealWidth))
+        let yIndex = Int(Double(point.y) / Double(_configuration.patternRealHeight))
         return (_cards[yIndex], xIndex == 1 ? true : false)
     }
     
+}
+
+//MARK: - use for debug
+extension SIFRoundIconDetector {
+    var patternImage: NSImage {
+        return NSImage.init(cvMat: _roundCardImagePattern)
+    }
 }

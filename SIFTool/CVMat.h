@@ -15,11 +15,12 @@
 
 - (nonnull CVMat *)roiAt:(CGRect)rect;
 
-- (nonnull NSNumber *)floatValueAt:(CGPoint)point;
-- (void)setFloatValue:(nonnull NSNumber *)value at:(CGPoint)point;
+- (float)floatValueAt:(CGPoint)point;
+- (void)setFloatValue:(float)value at:(CGPoint)point;
 
-- (nonnull NSNumber *)ucharValueAt:(CGPoint)point;
-- (void)setUcharValue:(nonnull NSNumber *)value at:(CGPoint)point;
+- (unsigned char)ucharValueAt:(CGPoint)point;
+- (void)setUcharValue:(unsigned char)value at:(CGPoint)point;
 
 - (void)fillBy:(nonnull CVMat *)mat;
+
 @end

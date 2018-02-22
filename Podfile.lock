@@ -1,14 +1,25 @@
 PODS:
+  - PromiseKit (4.5.2):
+    - PromiseKit/Foundation (= 4.5.2)
+    - PromiseKit/QuartzCore (= 4.5.2)
+    - PromiseKit/UIKit (= 4.5.2)
+  - PromiseKit/CorePromise (4.5.2)
+  - PromiseKit/Foundation (4.5.2):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.5.2):
+    - PromiseKit/CorePromise
   - SDWebImage (4.3.0):
     - SDWebImage/Core (= 4.3.0)
   - SDWebImage/Core (4.3.0)
 
 DEPENDENCIES:
+  - PromiseKit
   - SDWebImage (~> 4.0)
 
 SPEC CHECKSUMS:
+  PromiseKit: 743e497a5f505a470d3bbbf4ce0663c1268af0a4
   SDWebImage: 6da6c8bca115addc4de8613362e1b15f66333825
 
-PODFILE CHECKSUM: 429ecd36ced9991eefb2da89eb7a315d04bb5957
+PODFILE CHECKSUM: ece11e98b6a986d8d290eca9e593ee1cc4cffbb5
 
 COCOAPODS: 1.4.0

@@ -759,9 +759,9 @@
                                 </textFieldCell>
                             </textField>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dvs-kb-8fc">
-                                <rect key="frame" x="269" y="430" width="67" height="32"/>
+                                <rect key="frame" x="203" y="430" width="133" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <buttonCell key="cell" type="push" title="请求" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jCu-45-rVu">
+                                <buttonCell key="cell" type="push" title="生成匹配模式图" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jCu-45-rVu">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" usesAppearanceFont="YES"/>
                                 </buttonCell>
@@ -778,10 +778,6 @@
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
-                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="oC0-6y-vTe">
-                                <rect key="frame" x="251" y="440" width="16" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </progressIndicator>
                             <scrollView fixedFrame="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zl6-eb-bnN">
                                 <rect key="frame" x="20" y="20" width="310" height="406"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -827,17 +823,20 @@
                                 </textFieldCell>
                             </textField>
                             <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0eL-l8-zEp">
-                                <rect key="frame" x="461" y="468" width="302" height="26"/>
+                                <rect key="frame" x="462" y="468" width="301" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Item 1" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" pullsDown="YES" selectedItem="aIh-Wy-hsL" id="jH6-NU-0NN">
+                                <popUpButtonCell key="cell" type="push" title="选择截图" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="aIh-Wy-hsL" id="jH6-NU-0NN">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="menu"/>
                                     <menu key="menu" id="WMy-9O-FtG">
                                         <items>
-                                            <menuItem title="Item 1" hidden="YES" id="aIh-Wy-hsL"/>
+                                            <menuItem title="选择截图" state="on" id="aIh-Wy-hsL"/>
                                         </items>
                                     </menu>
                                 </popUpButtonCell>
+                                <connections>
+                                    <action selector="selectScreenShootAction:" target="XfG-lQ-9wD" id="5Ms-Sy-B12"/>
+                                </connections>
                             </popUpButton>
                             <scrollView fixedFrame="YES" autohidesScrollers="YES" horizontalLineScroll="126" horizontalPageScroll="10" verticalLineScroll="126" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NsI-fe-mB9">
                                 <rect key="frame" x="399" y="49" width="361" height="371"/>
@@ -946,6 +945,10 @@
                                     <action selector="process:" target="XfG-lQ-9wD" id="Ti8-BU-UnE"/>
                                 </connections>
                             </button>
+                            <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" translatesAutoresizingMaskIntoConstraints="NO" id="oC0-6y-vTe">
+                                <rect key="frame" x="185" y="440" width="16" height="16"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </progressIndicator>
                         </subviews>
                     </view>
                     <connections>

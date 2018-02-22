@@ -17,7 +17,15 @@ struct SIFRoundIconDetectorConfiguration {
     var patternBottom: Double = 1.0
     
     static var defaultRoundIconConfiguration: SIFRoundIconDetectorConfiguration {
-        return SIFRoundIconDetectorConfiguration.init(patternWidth: 80.0, patternHeight: 80.0, patternLeft: 15.0, patternRight: 17.0, patternTop: 16.0, patternBottom: 15.0)
+        return defaultRoundIconConfiguration(radio: 1)
+    }
+    
+    static var defaultRadioRoundIconConfiguration: SIFRoundIconDetectorConfiguration {
+        return SIFRoundIconDetectorConfiguration.init(patternWidth: 40.0, patternHeight: 40.0, patternLeft: 7.5, patternRight: 8.5, patternTop: 8, patternBottom: 7.5)
+    }
+    
+    static func defaultRoundIconConfiguration(radio: Double ) -> SIFRoundIconDetectorConfiguration {
+        return SIFRoundIconDetectorConfiguration.init(patternWidth: 80.0 * radio, patternHeight: 80.0 * radio, patternLeft: 15.0 * radio, patternRight: 17.0 * radio, patternTop: 16.0 * radio, patternBottom: 15.0 * radio)
     }
     
     var patternSize: CGSize {

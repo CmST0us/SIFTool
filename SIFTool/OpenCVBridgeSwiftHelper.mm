@@ -52,38 +52,37 @@
 }
 
 - (void)fillBy:(CVMat *)mat {
-//    cv::resize(mat.mat, mat.mat, cv::Size(_mat.cols, _mat.rows));
     mat.mat.copyTo(_mat);
 }
 
-- (NSNumber *)ucharValueAt:(CGPoint)point {
+- (unsigned char)ucharValueAt:(CGPoint)point {
     cv::Point p;
     p.x = point.x;
     p.y = point.y;
     uchar v = _mat.at<uchar>(p);
-    return [NSNumber numberWithUnsignedChar:v];
+    return v;
 }
 
-- (void)setUcharValue:(NSNumber *)value at:(CGPoint)point {
+- (void)setUcharValue:(unsigned char)value at:(CGPoint)point {
     cv::Point p;
     p.x = point.x;
     p.y = point.y;
-    _mat.at<uchar>(p) = [value unsignedCharValue];
+    _mat.at<uchar>(p) = value;
 }
 
-- (NSNumber *)floatValueAt:(CGPoint)point {
+- (float)floatValueAt:(CGPoint)point {
     cv::Point p;
     p.x = point.x;
     p.y = point.y;
     float v = _mat.at<float>(p);
-    return [NSNumber numberWithFloat:v];
+    return v;
 }
 
-- (void)setFloatValue:(NSNumber *)value at:(CGPoint)point {
+- (void)setFloatValue:(float)value at:(CGPoint)point {
     cv::Point p;
     p.x = point.x;
     p.y = point.y;
-    _mat.at<float>(p) = [value floatValue];
+    _mat.at<float>(p) = value;
 }
 
 @end
@@ -393,17 +392,6 @@
     cv::matchTemplate(mat.mat, templateMat.mat, result, method);
     cv::normalize(result, result, 0, 1, cv::NORM_MINMAX, -1);
     output.mat = result;
-//    @[x, y, v]
-//    auto array = [NSMutableArray arrayWithCapacity:result.cols * result.rows];
-//    for (int i = 0; i < result.rows; ++i) {
-//        for (int j = 0; j < result.cols; ++j) {
-//            float f = result.at<float>(i, j);
-//            if (f > 1) {
-//                NSLog(@"bad value");
-//            }
-//            [array addObject:@[[NSNumber numberWithInt:j], [NSNumber numberWithInt:i], [NSNumber numberWithFloat:f]]];
-//        }
-//    }
     return output;
 }
 
