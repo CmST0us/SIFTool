@@ -10,7 +10,7 @@ import Cocoa
 import SDWebImage
 import PromiseKit
 
-class MainViewController: NSViewController {
+class ImportCardViewController: NSViewController {
 
     @IBOutlet weak var cardTableView: NSTableView!
     
@@ -28,7 +28,7 @@ class MainViewController: NSViewController {
     
     var screenShoots: [NSImage] = []
     
-    var cards: [(CardDataModel, Bool)] = []
+    var cards: [(CardDataModel, CVMat, Bool)] = []
     
     lazy var config: SIFRoundIconDetectorConfiguration = {
         return SIFRoundIconDetectorConfiguration.defaultRoundIconConfiguration(radio: 0.3)
@@ -85,14 +85,16 @@ class MainViewController: NSViewController {
                 let mat = screenShoot.mat
                 let results = self.detector.search(screenShoot: mat)
                 for result in results {
-                    let template = self.detector.makeTemplateImagePattern(image: mat.roi(at: result))
+                    let roi = mat.roi(at: result)
+                    let roiClone = roi.clone()
+                    let template = self.detector.makeTemplateImagePattern(image: roi)
                     if let point = self.detector.match(image: template) {
                         let card = self.detector.card(atPatternPoint: point)
                         if card == nil {
                             continue
                         }
-                        self.cards.append(card!)
-                        Logger.shared.output("find card\(String(card!.0.id))")
+                        self.cards.append((card!.0, roiClone, card!.1))
+                        Logger.shared.output("find card \(String(card!.0.id))")
                     }
                 }
             }
@@ -133,6 +135,7 @@ class MainViewController: NSViewController {
                     Logger.shared.output("all page download ok")
                     
                     let jsonData = try JSONSerialization.data(withJSONObject: results, options: [.prettyPrinted])
+                    self.cardsJsonData = jsonData
                     try jsonData.write(to: URL.init(fileURLWithPath: cardsJsonDataPath))
                 } catch let e as ApiRequestError {
                     Logger.shared.output(e.message, .error)
@@ -168,33 +171,11 @@ class MainViewController: NSViewController {
                     var image2: NSImage? = nil
                     
                     if let u1 = roundCardUrl.1 {
-                        let fileName = u1.lastPathComponent
-                        let tempDir = NSTemporaryDirectory() as NSString
-                        let filePath = tempDir.appendingPathComponent(fileName)
-                        if let cacheData = NSData.init(contentsOfFile: filePath) {
-                            image1 = NSImage(data: cacheData as Data)
-                        } else {
-                            if let data = NSData.init(contentsOf: u1) {
-                                try! data.write(toFile: filePath, options: NSData.WritingOptions.atomicWrite)
-                                image1 = NSImage.init(data: data as Data)
-                                Logger.shared.output("\(fileName) has cached")
-                            }
-                        }
+                        image1 = SIFImageCacheHelper.shared.image(withUrl: u1)
                     }
                     
                     if let u2 = roundCardUrl.2 {
-                        let fileName = u2.lastPathComponent
-                        let tempDir = NSTemporaryDirectory() as NSString
-                        let filePath = tempDir.appendingPathComponent(fileName)
-                        if let cacheData = NSData.init(contentsOfFile: filePath) {
-                            image2 = NSImage(data: cacheData as Data)
-                        } else {
-                            if let data = NSData.init(contentsOf: u2) {
-                                try! data.write(toFile: filePath, options: NSData.WritingOptions.atomicWrite)
-                                image2 = NSImage.init(data: data as Data)
-                                Logger.shared.output("\(fileName) has cached")
-                            }
-                        }
+                        image2 = SIFImageCacheHelper.shared.image(withUrl: u2)
                     }
                     self.detector.makeRoundCardImagePattern(cardId: roundCardUrl.0, images: (image1?.mat, image2?.mat))
                 }
@@ -209,7 +190,7 @@ class MainViewController: NSViewController {
     }
 }
 
-extension MainViewController: LoggerProtocol {
+extension ImportCardViewController: LoggerProtocol {
     func log(msg: String) {
         DispatchQueue.main.async {
             self.logTextView.string = msg + self.logTextView.string
@@ -217,16 +198,13 @@ extension MainViewController: LoggerProtocol {
     }
 }
 
-extension MainViewController: NSTableViewDataSource, NSTableViewDelegate {
+extension ImportCardViewController: NSTableViewDataSource, NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier.init("cell"), owner: self) as! CardTableCellView
         let model = cards[row]
         cell.setupCell(withDataModel: model.0)
-        let cardImage = model.1 ? model.0.roundCardIdolizedImage : model.0.roundCardImage
-        cell.cardImageView.sd_setImage(with: URL(string: cardImage ?? ""), completed: { (image, error, type, url) in
-            cell.cardImageView.image = image
-        })
+        cell.cardImageView.image = NSImage.init(cvMat: model.1)
         return cell
     }
     

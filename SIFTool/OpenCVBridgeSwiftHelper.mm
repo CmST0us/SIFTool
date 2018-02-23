@@ -135,6 +135,7 @@
 }
 
 + (NSImage *)imageWithCVMat:(CVMat *)mat {
+    cv::cvtColor(mat.mat, mat.mat, cv::COLOR_BGRA2RGB);
     NSData *data = [NSData dataWithBytes:mat.mat.data length:mat.mat.elemSize() * mat.mat.total()];
     
     CGColorSpaceRef colorSpace;

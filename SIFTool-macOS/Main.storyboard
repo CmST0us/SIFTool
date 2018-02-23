@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="l6i-Rj-D3n">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13771"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="T4k-6G-IxG">
+            <objects>
+                <windowController id="l6i-Rj-D3n" sceneMemberID="viewController">
+                    <window key="window" title="SIF工具" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="wxe-tp-sk6">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="245" y="301" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
+                        <connections>
+                            <outlet property="delegate" destination="l6i-Rj-D3n" id="Z4G-6F-ZrF"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="iMb-qK-fie" kind="relationship" relationship="window.shadowedContentViewController" id="4v4-MJ-6DD"/>
+                    </connections>
+                </windowController>
+                <customObject id="WA4-Pu-gE5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-833" y="213"/>
+        </scene>
+        <!--Main View Controller-->
+        <scene sceneID="zPs-pf-cyF">
+            <objects>
+                <viewController id="iMb-qK-fie" customClass="MainViewController" customModule="SIFTool_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="a4x-MW-Uxz">
+                        <rect key="frame" x="0.0" y="0.0" width="816" height="730"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TkT-hX-LBJ">
+                                <rect key="frame" x="0.0" y="0.0" width="816" height="730"/>
+                                <subviews>
+                                    <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="750" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kIc-YY-dgW">
+                                        <rect key="frame" x="0.0" y="643" width="816" height="87"/>
+                                        <subviews>
+                                            <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Rq-SI-sRI">
+                                                <rect key="frame" x="0.0" y="0.0" width="473" height="87"/>
+                                                <clipView key="contentView" id="Y54-SJ-ktM">
+                                                    <rect key="frame" x="1" y="1" width="471" height="85"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                    <subviews>
+                                                        <predicateEditor verticalHuggingPriority="750" nestingMode="compound" canRemoveAllRows="YES" rowHeight="25" id="HBI-Dg-2XC">
+                                                            <rect key="frame" x="0.0" y="0.0" width="471" height="98"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                                            <rowTemplates>
+                                                                <predicateEditorRowTemplate rowType="compound" id="viX-3a-y8j">
+                                                                    <popUpMenus>
+                                                                        <menu id="Dsc-zS-Zqo">
+                                                                            <items>
+                                                                                <menuItem title="Any" state="on" id="dxs-W6-Zra">
+                                                                                    <integer key="representedObject" value="2"/>
+                                                                                </menuItem>
+                                                                                <menuItem title="All" id="o4K-Hd-8Ao">
+                                                                                    <integer key="representedObject" value="1"/>
+                                                                                </menuItem>
+                                                                            </items>
+                                                                        </menu>
+                                                                        <menu id="KFA-ao-eLG">
+                                                                            <items>
+                                                                                <menuItem title="of the following are true" state="on" id="96m-xH-j21"/>
+                                                                            </items>
+                                                                        </menu>
+                                                                    </popUpMenus>
+                                                                </predicateEditorRowTemplate>
+                                                                <predicateEditorRowTemplate rowType="simple" id="QwL-kc-tuk">
+                                                                    <array key="leftExpressionObject">
+                                                                        <expression type="keyPath">
+                                                                            <string key="keyPath">name</string>
+                                                                        </expression>
+                                                                        <expression type="keyPath">
+                                                                            <string key="keyPath">address</string>
+                                                                        </expression>
+                                                                        <expression type="keyPath">
+                                                                            <string key="keyPath">sign</string>
+                                                                        </expression>
+                                                                    </array>
+                                                                    <integer key="rightExpressionObject" value="700"/>
+                                                                    <popUpMenus>
+                                                                        <menu id="ZWE-AH-1vx">
+                                                                            <items>
+                                                                                <menuItem title="name" state="on" id="4TY-MJ-cIw">
+                                                                                    <expression key="representedObject" type="keyPath">
+                                                                                        <string key="keyPath">name</string>
+                                                                                    </expression>
+                                                                                </menuItem>
+                                                                                <menuItem title="address" id="l1X-ZA-MOX">
+                                                                                    <expression key="representedObject" type="keyPath">
+                                                                                        <string key="keyPath">address</string>
+                                                                                    </expression>
+                                                                                </menuItem>
+                                                                                <menuItem title="sign" id="gSK-uA-dqq">
+                                                                                    <expression key="representedObject" type="keyPath">
+                                                                                        <string key="keyPath">sign</string>
+                                                                                    </expression>
+                                                                                </menuItem>
+                                                                            </items>
+                                                                        </menu>
+                                                                        <menu id="AXo-YI-EKZ">
+                                                                            <items>
+                                                                                <menuItem title="contains" state="on" id="EZG-uI-piP">
+                                                                                    <integer key="representedObject" value="99"/>
+                                                                                </menuItem>
+                                                                                <menuItem title="begins with" id="gvL-dR-dgG">
+                                                                                    <integer key="representedObject" value="8"/>
+                                                                                </menuItem>
+                                                                                <menuItem title="ends with" id="b4E-z8-Kfc">
+                                                                                    <integer key="representedObject" value="9"/>
+                                                                                </menuItem>
+                                                                                <menuItem title="is" id="j2M-7V-nnu">
+                                                                                    <integer key="representedObject" value="4"/>
+                                                                                </menuItem>
+                                                                                <menuItem title="is not" id="gYx-iB-pqR">
+                                                                                    <integer key="representedObject" value="5"/>
+                                                                                </menuItem>
+                                                                            </items>
+                                                                        </menu>
+                                                                    </popUpMenus>
+                                                                </predicateEditorRowTemplate>
+                                                            </rowTemplates>
+                                                        </predicateEditor>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.91000002619999998" alpha="1" colorSpace="calibratedWhite"/>
+                                                </clipView>
+                                                <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="GXr-Wa-4Bh">
+                                                    <rect key="frame" x="-100" y="-100" width="360" height="15"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                                <scroller key="verticalScroller" verticalHuggingPriority="750" horizontal="NO" id="TgI-Qs-Nj9">
+                                                    <rect key="frame" x="456" y="1" width="16" height="85"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                </scroller>
+                                            </scrollView>
+                                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Emy-pR-oOj">
+                                                <rect key="frame" x="481" y="4" width="335" height="79"/>
+                                                <subviews>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lsc-KO-P3e">
+                                                        <rect key="frame" x="134" y="51" width="67" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="筛选" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wTT-gE-ZEU">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                        </buttonCell>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nhL-zl-gdi">
+                                                        <rect key="frame" x="134" y="22" width="67" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="排序" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="grI-hp-qz2">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                        </buttonCell>
+                                                    </button>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ftX-Px-5kc">
+                                                        <rect key="frame" x="121" y="-7" width="94" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="导入卡片" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vef-VM-UcB">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" usesAppearanceFont="YES"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <segue destination="kB0-gZ-ld3" kind="show" id="Edx-Nn-3cX"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <visibilityPriorities>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                    <integer value="1000"/>
+                                                </visibilityPriorities>
+                                                <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                    <real value="3.4028234663852886e+38"/>
+                                                </customSpacing>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="0Rq-SI-sRI" firstAttribute="top" secondItem="kIc-YY-dgW" secondAttribute="top" id="Hyt-11-2lv"/>
+                                        </constraints>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                    <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHx-0L-fbc">
+                                        <rect key="frame" x="0.0" y="0.0" width="816" height="635"/>
+                                        <clipView key="contentView" drawsBackground="NO" id="Phd-Qi-R0z">
+                                            <rect key="frame" x="1" y="1" width="814" height="633"/>
+                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                            <subviews>
+                                                <collectionView id="hdR-WB-5kR">
+                                                    <rect key="frame" x="0.0" y="0.0" width="814" height="158"/>
+                                                    <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="IlX-R2-cRE">
+                                                        <size key="itemSize" width="120" height="120"/>
+                                                        <edgeInsets key="sectionInset" left="4" right="4" top="4" bottom="4"/>
+                                                    </collectionViewFlowLayout>
+                                                    <color key="primaryBackgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    <connections>
+                                                        <outlet property="dataSource" destination="iMb-qK-fie" id="Urn-yL-ucq"/>
+                                                        <outlet property="delegate" destination="iMb-qK-fie" id="Gfb-lT-VXt"/>
+                                                    </connections>
+                                                </collectionView>
+                                            </subviews>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </clipView>
+                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="4Sc-rk-57e">
+                                            <rect key="frame" x="1" y="350" width="700" height="16"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="J3E-Cv-1w3">
+                                            <rect key="frame" x="234" y="1" width="15" height="143"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </scroller>
+                                    </scrollView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="aHx-0L-fbc" secondAttribute="bottom" id="3Dl-Vh-uBG"/>
+                                    <constraint firstItem="aHx-0L-fbc" firstAttribute="leading" secondItem="TkT-hX-LBJ" secondAttribute="leading" id="Yb7-s5-JoB"/>
+                                    <constraint firstAttribute="trailing" secondItem="aHx-0L-fbc" secondAttribute="trailing" id="fSv-vv-Bp9"/>
+                                    <constraint firstAttribute="trailing" secondItem="kIc-YY-dgW" secondAttribute="trailing" id="tQa-6c-NWY"/>
+                                    <constraint firstItem="kIc-YY-dgW" firstAttribute="leading" secondItem="TkT-hX-LBJ" secondAttribute="leading" id="xnQ-Qn-hF9"/>
+                                </constraints>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="TkT-hX-LBJ" firstAttribute="leading" secondItem="a4x-MW-Uxz" secondAttribute="leading" id="2Dh-J5-d6T"/>
+                            <constraint firstAttribute="trailing" secondItem="TkT-hX-LBJ" secondAttribute="trailing" id="CpF-PL-WNG"/>
+                            <constraint firstItem="TkT-hX-LBJ" firstAttribute="top" secondItem="a4x-MW-Uxz" secondAttribute="top" id="kGB-HP-5mk"/>
+                            <constraint firstAttribute="bottom" secondItem="TkT-hX-LBJ" secondAttribute="bottom" id="yY2-ht-u8j"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <customObject id="n7N-dW-sgH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-63" y="311"/>
+        </scene>
+        <!--ImportCard-->
+        <scene sceneID="Hyb-Nh-9eL">
+            <objects>
+                <controllerPlaceholder storyboardName="ImportCard" id="kB0-gZ-ld3" sceneMemberID="viewController"/>
+                <customObject id="Vs4-vq-2B0" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="519" y="-112"/>
+        </scene>
+        <!--Card Collection View Item-->
+        <scene sceneID="gWN-GK-GDR">
+            <objects>
+                <collectionViewItem storyboardIdentifier="CardCollectionViewItem" id="Npk-yi-rpX" customClass="CardCollectionViewItem" customModule="SIFTool_macOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" id="ypF-iJ-THr">
+                        <rect key="frame" x="0.0" y="0.0" width="120" height="158"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="leading" spacing="0.0" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" fixedFrame="YES" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tDt-h0-fBy">
+                                <rect key="frame" x="0.0" y="4" width="120" height="154"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Gzd-MB-Fkq">
+                                        <rect key="frame" x="0.0" y="34" width="120" height="120"/>
+                                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="s7w-C6-uVf"/>
+                                    </imageView>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="gVW-0f-tIX">
+                                        <rect key="frame" x="-2" y="17" width="85" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="CARDRARITY" id="sKM-bI-azs">
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="uxf-Lg-tMC">
+                                        <rect key="frame" x="-2" y="0.0" width="75" height="17"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="IDOLNAME" id="F9g-Kj-d8n">
+                                            <font key="font" metaFont="systemBold"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                    </textField>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                    </view>
+                    <connections>
+                        <outlet property="cardImageView" destination="Gzd-MB-Fkq" id="IcY-Iv-aK5"/>
+                        <outlet property="nameLabel" destination="uxf-Lg-tMC" id="tkS-Dc-oI2"/>
+                        <outlet property="rarityLabel" destination="gVW-0f-tIX" id="sId-Zz-3x8"/>
+                    </connections>
+                </collectionViewItem>
+                <customObject id="lD2-ZX-HlC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-411" y="833"/>
+        </scene>
+    </scenes>
+</document>
