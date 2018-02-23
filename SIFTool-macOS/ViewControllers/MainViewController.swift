@@ -28,7 +28,7 @@ class MainViewController: NSViewController {
     
     var screenShoots: [NSImage] = []
     
-    var cards: [CardDataModel] = []
+    var cards: [(CardDataModel, Bool)] = []
     
     lazy var config: SIFRoundIconDetectorConfiguration = {
         return SIFRoundIconDetectorConfiguration.defaultRoundIconConfiguration(radio: 0.3)
@@ -38,9 +38,10 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         logTextView.string = ""
-        Logger.shared.delegate = self
+        Logger.shared.delegate = self 
         ApiHelper.shared.taskWaitTime = 15
-        
+        self.cardTableView.dataSource = self
+        self.cardTableView.delegate = self
     }
     
     func openSelectFilePlane(completion: @escaping ([URL]?) -> Void) {
@@ -77,7 +78,7 @@ class MainViewController: NSViewController {
     }
     
     @IBAction func process(_ sender: Any) {
-        self.cards.removeAll()
+        self.cards.removeAll(keepingCapacity: true)
         requestActivitor.startAnimation(nil)
         DispatchQueue.global().async {
             for screenShoot in self.screenShoots {
@@ -86,16 +87,19 @@ class MainViewController: NSViewController {
                 for result in results {
                     let template = self.detector.makeTemplateImagePattern(image: mat.roi(at: result))
                     if let point = self.detector.match(image: template) {
-                        let cards = self.detector.card(atPatternPoint: point)
-                        if let c = cards.0 {
-                            self.cards.append(c)
-                            Logger.shared.output("find card\(String(c.id))")
+                        let card = self.detector.card(atPatternPoint: point)
+                        if card == nil {
+                            continue
                         }
+                        self.cards.append(card!)
+                        Logger.shared.output("find card\(String(card!.0.id))")
                     }
                 }
             }
             DispatchQueue.main.async {
                 self.requestActivitor.stopAnimation(nil)
+                self.screenShoots.removeAll()
+                self.cardTableView.reloadData()
             }
         }
     }
@@ -215,12 +219,19 @@ extension MainViewController: LoggerProtocol {
 
 extension MainViewController: NSTableViewDataSource, NSTableViewDelegate {
     
-//    func tableView(_ tableView: NSTableView, rowViewForRow row: Int) -> NSTableRowView? {
-//
-//    }
-//
-//    func numberOfRows(in tableView: NSTableView) -> Int {
-//        return 0
-//    }
+    func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
+        let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier.init("cell"), owner: self) as! CardTableCellView
+        let model = cards[row]
+        cell.setupCell(withDataModel: model.0)
+        let cardImage = model.1 ? model.0.roundCardIdolizedImage : model.0.roundCardImage
+        cell.cardImageView.sd_setImage(with: URL(string: cardImage ?? ""), completed: { (image, error, type, url) in
+            cell.cardImageView.image = image
+        })
+        return cell
+    }
+    
+    func numberOfRows(in tableView: NSTableView) -> Int {
+        return cards.count
+    }
 }
 

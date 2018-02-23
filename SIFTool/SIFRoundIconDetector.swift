@@ -12,12 +12,15 @@ import UIKit
 #endif
 
 class SIFRoundIconDetector {
-    private var _cards: [CardDataModel] = []
+//    private var _cards: [CardDataModel] = []
+    private var _cards: [Int: CardDataModel] = [:]
     private var _roundCardImagePattern: CVMat!
     private var _configuration: SIFRoundIconDetectorConfiguration
     
     init(withCards cardsArray: [CardDataModel], configuration: SIFRoundIconDetectorConfiguration, roundCardImagePattern: CVMat? = nil) {
-        _cards = cardsArray
+        for card in cardsArray {
+            _cards[card.id] = card
+        }
         _configuration = configuration
         
         let cardCount = cardsArray.max { (a, b) -> Bool in
@@ -36,7 +39,7 @@ class SIFRoundIconDetector {
     
     lazy var roundCardUrls: [(Int, URL?, URL?)] = {
         var u: [(Int, URL?, URL?)] = []
-        for card in _cards {
+        for card in _cards.values {
             var roundCardImageUrl: URL? = nil
             var roundCardIdolizedImageUrl: URL? = nil
             if let urlPath = card.roundCardImage {
@@ -50,9 +53,9 @@ class SIFRoundIconDetector {
         return u
     }()
     
-    private func patternCoordinates(index: Int, idolize: Bool) -> (Double, Double) {
-        let x = idolize ? _configuration.patternRealWidth : Double(0)
-        let y = Double(index) * _configuration.patternRealHeight
+    private func patternCoordinates(index: Int, idolize: Bool) -> (Int, Int) {
+        let x = idolize ? _configuration.patternRealWidth : 0
+        let y = index * _configuration.patternRealHeight
         return (x, y)
     }
     
@@ -124,10 +127,13 @@ class SIFRoundIconDetector {
         return CGPoint(x: maxValuePoint.0, y: maxValuePoint.1)
     }
     
-    func card(atPatternPoint point: CGPoint) -> (CardDataModel?, Bool) {
-        let xIndex = Int(Double(point.x) / Double(_configuration.patternRealWidth))
+    func card(atPatternPoint point: CGPoint) -> (CardDataModel, Bool)? {
+        let idolized = Int(point.x) < Int(_configuration.patternRealWidth) ? false : true
         let yIndex = Int(Double(point.y) / Double(_configuration.patternRealHeight))
-        return (_cards[yIndex], xIndex == 1 ? true : false)
+        if let card = _cards[yIndex] {
+            return (card, idolized)
+        }
+        return nil
     }
     
 }

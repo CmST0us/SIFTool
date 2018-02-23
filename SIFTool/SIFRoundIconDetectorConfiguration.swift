@@ -8,24 +8,20 @@
 
 import Foundation
 struct SIFRoundIconDetectorConfiguration {
-    var patternWidth: Double = 1.0
-    var patternHeight: Double = 1.0
+    var patternWidth = 1
+    var patternHeight = 1
     
-    var patternLeft: Double = 1.0
-    var patternRight: Double = 1.0
-    var patternTop: Double = 1.0
-    var patternBottom: Double = 1.0
+    var patternLeft = 1
+    var patternRight = 1
+    var patternTop = 1
+    var patternBottom = 1
     
     static var defaultRoundIconConfiguration: SIFRoundIconDetectorConfiguration {
         return defaultRoundIconConfiguration(radio: 1)
     }
     
-    static var defaultRadioRoundIconConfiguration: SIFRoundIconDetectorConfiguration {
-        return SIFRoundIconDetectorConfiguration.init(patternWidth: 40.0, patternHeight: 40.0, patternLeft: 7.5, patternRight: 8.5, patternTop: 8, patternBottom: 7.5)
-    }
-    
     static func defaultRoundIconConfiguration(radio: Double ) -> SIFRoundIconDetectorConfiguration {
-        return SIFRoundIconDetectorConfiguration.init(patternWidth: 80.0 * radio, patternHeight: 80.0 * radio, patternLeft: 15.0 * radio, patternRight: 17.0 * radio, patternTop: 16.0 * radio, patternBottom: 15.0 * radio)
+        return SIFRoundIconDetectorConfiguration.init(patternWidth: Int(80.0 * radio), patternHeight: Int(80.0 * radio), patternLeft: Int(15.0 * radio), patternRight: Int(17.0 * radio), patternTop: Int(16.0 * radio), patternBottom: Int(15.0 * radio))
     }
     
     var patternSize: CGSize {
@@ -35,11 +31,11 @@ struct SIFRoundIconDetectorConfiguration {
         return CGSize.init(width: patternRealWidth, height: patternRealHeight)
     }
     
-    var patternRealWidth: Double {
+    var patternRealWidth: Int {
         return patternWidth - patternLeft - patternRight
     }
     
-    var patternRealHeight: Double {
+    var patternRealHeight: Int {
         return patternHeight - patternTop - patternBottom
     }
     

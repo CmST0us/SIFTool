@@ -238,3 +238,17 @@ extension CardDataModel: CardApiRequestParamProtocol {
         return p
     }
 }
+
+// MARK: - Hashable
+extension CardDataModel: Hashable {
+    static func ==(lhs: CardDataModel, rhs: CardDataModel) -> Bool {
+        if lhs.id == rhs.id {
+            return true
+        }
+        return false
+    }
+    
+    var hashValue: Int {
+        return self.id
+    }
+}
