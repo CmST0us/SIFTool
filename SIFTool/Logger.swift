@@ -70,8 +70,11 @@ extension Logger {
                  _ file: String = #file, _ line: Int = #line,
                  _ col: Int = #column, _ function: String = #function) {
         #if DEBUG
+            let logStr = logString(msg, level, file, line, col, function)
             if let d = delegate {
-                d.log(msg: logString(msg, level, file, line, col, function))
+                d.log(msg: logStr)
+            } else {
+                console(logStr)
             }
         #endif
     }

@@ -109,81 +109,48 @@ class ImportCardViewController: NSViewController {
     @IBAction func requstApi(_ sender: Any) {
         requestActivitor.startAnimation(nil)
         DispatchQueue.global().async {
-            let tempDirectoryPath = NSTemporaryDirectory() as NSString
-            let cardsJsonDataPath = tempDirectoryPath.appendingPathComponent("cards.json") as String
-            if let data = NSData(contentsOfFile: cardsJsonDataPath) {
-                self.cardsJsonData = data as Data
-                Logger.shared.output("read cache ok")
-            } else {
-                var page = 1
-                var haveNext = true
-                let results: NSMutableArray = NSMutableArray()
-                do {
-                    while haveNext {
-                        let p = CardDataModel.requestPage(page, pageSize: 100)
-                        let data = try ApiHelper.shared.request(param: p)
-                        if DataModelHelper.shared.next(withJsonData: data) == nil {
-                            haveNext = false
-                        }
-                        if let dicts = DataModelHelper.shared.resultsDictionaries(withJsonData: data) {
-                            results.addObjects(from: dicts)
-                        }
-                        Logger.shared.output("page \(page) download ok")
-                        page += 1
-                        
-                    }
-                    Logger.shared.output("all page download ok")
-                    
-                    let jsonData = try JSONSerialization.data(withJSONObject: results, options: [.prettyPrinted])
-                    self.cardsJsonData = jsonData
-                    try jsonData.write(to: URL.init(fileURLWithPath: cardsJsonDataPath))
-                } catch let e as ApiRequestError {
-                    Logger.shared.output(e.message, .error)
-                    return
-                } catch {
-                    Logger.shared.output(error.localizedDescription, .error)
-                    return
+            do {
+                if SIFCacheHelper.shared.cards.count == 0 {
+                    try SIFCacheHelper.shared.cacheCards(process: { (current, total) in
+                        Logger.shared.output("cache cards (\(String(current))/\(String(total)))")
+                    })
                 }
-            }
-            
-            Logger.shared.output("load cards ok")
-            //get card round image
-            //check cache
-            Logger.shared.output("load round image")
-            if let result = DataModelHelper.shared.array(withJsonData: self.cardsJsonData) as? [Dictionary<String, Any>]{
-                let cards = result.map({ (card) -> CardDataModel in
-                    let c = CardDataModel(withDictionary: card)
-                    return c
-                })
+                Logger.shared.output("load cards ok")
+                //get card round image
+                //check cache
+                Logger.shared.output("load round image")
                 if let im = NSImage.init(contentsOfFile: NSTemporaryDirectory() + "/pattern.png") {
-                    self.detector = SIFRoundIconDetector(withCards: cards, configuration: self.config, roundCardImagePattern: im.mat)
+                    self.detector = SIFRoundIconDetector(withCards: SIFCacheHelper.shared.cards, configuration: self.config, roundCardImagePattern: im.mat)
                     Logger.shared.output("use pattern cache")
                     DispatchQueue.main.async {
                         self.requestActivitor.stopAnimation(nil)
                     }
                     return
                 } else {
-                    self.detector = SIFRoundIconDetector(withCards: cards, configuration: self.config)
+                    self.detector = SIFRoundIconDetector(withCards: SIFCacheHelper.shared.cards, configuration: self.config)
                 }
-                
+
                 for roundCardUrl in self.detector.roundCardUrls {
                     var image1: NSImage? = nil
                     var image2: NSImage? = nil
                     
                     if let u1 = roundCardUrl.1 {
-                        image1 = SIFImageCacheHelper.shared.image(withUrl: u1)
+                        image1 = SIFCacheHelper.shared.image(withUrl: u1)
                     }
                     
                     if let u2 = roundCardUrl.2 {
-                        image2 = SIFImageCacheHelper.shared.image(withUrl: u2)
+                        image2 = SIFCacheHelper.shared.image(withUrl: u2)
                     }
                     self.detector.makeRoundCardImagePattern(cardId: roundCardUrl.0, images: (image1?.mat, image2?.mat))
                 }
-                self.detector.saveRoundCardImagePattern(toPath: (NSTemporaryDirectory() as NSString).appendingPathComponent("pattern.png"))
+            
+                self.detector.saveRoundCardImagePattern(toPath: NSTemporaryDirectory().appendingPathComponent("pattern.png"))
                 Logger.shared.output("make all round card pattern ok")
                 DispatchQueue.main.async {
                     self.requestActivitor.stopAnimation(nil)
                 }
+            } catch {
+                Logger.shared.output(error.localizedDescription)
             }
         }
         

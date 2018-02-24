@@ -2,8 +2,6 @@
 
 import Cocoa
 
-var str = "Hello, playground"
-let startIndex = str.index(str.startIndex, offsetBy: 1)
-let endIndex = str.endIndex
-str[startIndex ..< endIndex]
+let string = "/var/folders/s_/8h4bb4_17y32dv_ypr8l102r0000gn/T/com.eki.SIFTool-macOS/" as NSString
+
 

@@ -12,22 +12,20 @@ import UIKit
 #endif
 
 class SIFRoundIconDetector {
-//    private var _cards: [CardDataModel] = []
     private var _cards: [Int: CardDataModel] = [:]
     private var _roundCardImagePattern: CVMat!
     private var _configuration: SIFRoundIconDetectorConfiguration
     
-    init(withCards cardsArray: [CardDataModel], configuration: SIFRoundIconDetectorConfiguration, roundCardImagePattern: CVMat? = nil) {
-        for card in cardsArray {
-            _cards[card.id] = card
-        }
+    init(withCards cards: [Int: CardDataModel], configuration: SIFRoundIconDetectorConfiguration, roundCardImagePattern: CVMat? = nil) {
+        _cards = cards
         _configuration = configuration
         
-        let cardCount = cardsArray.max { (a, b) -> Bool in
-            return a.id < b.id
+        let cardCount = _cards.keys.max { (a, b) -> Bool in
+            return a < b
         }
+        
         var patternSize = _configuration.patternRealSize
-        patternSize.height = patternSize.height * CGFloat(cardCount!.id + 1)
+        patternSize.height = patternSize.height * CGFloat(cardCount! + 1)
         patternSize.width = patternSize.width * 2
         
         if let p = roundCardImagePattern {

@@ -11,6 +11,9 @@
 		4F079B9A204072B100ED4728 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F079B99204072B100ED4728 /* MainViewController.swift */; };
 		4F079B9E204075E500ED4728 /* CardCollectionViewItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F079B9D204075E500ED4728 /* CardCollectionViewItem.swift */; };
 		4F079BA020407DD500ED4728 /* ImportCard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4F079B9F20407DD400ED4728 /* ImportCard.storyboard */; };
+		4F079BA22041AEF900ED4728 /* String+appendPathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F079BA12041AEF900ED4728 /* String+appendPathComponent.swift */; };
+		4F079BA32041AEF900ED4728 /* String+appendPathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F079BA12041AEF900ED4728 /* String+appendPathComponent.swift */; };
+		4F079BA42041AEF900ED4728 /* String+appendPathComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F079BA12041AEF900ED4728 /* String+appendPathComponent.swift */; };
 		4F0863F920372D5000CFDD98 /* CVDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0863F820372D5000CFDD98 /* CVDataModel.swift */; };
 		4F0863FA20372D5000CFDD98 /* CVDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0863F820372D5000CFDD98 /* CVDataModel.swift */; };
 		4F0863FB20372D5000CFDD98 /* CVDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F0863F820372D5000CFDD98 /* CVDataModel.swift */; };
@@ -44,9 +47,9 @@
 		4F1EB1F9203FBB6E0003BA0C /* CardTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F8203FBB6D0003BA0C /* CardTableCellView.swift */; };
 		4F1EB1FA203FBB6E0003BA0C /* CardTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F8203FBB6D0003BA0C /* CardTableCellView.swift */; };
 		4F1EB1FB203FBB6E0003BA0C /* CardTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F8203FBB6D0003BA0C /* CardTableCellView.swift */; };
-		4F1EB1FE203FE2630003BA0C /* SIFImageCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFImageCacheHelper.swift */; };
-		4F1EB1FF203FE2630003BA0C /* SIFImageCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFImageCacheHelper.swift */; };
-		4F1EB200203FE2630003BA0C /* SIFImageCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFImageCacheHelper.swift */; };
+		4F1EB1FE203FE2630003BA0C /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
+		4F1EB1FF203FE2630003BA0C /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
+		4F1EB200203FE2630003BA0C /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
 		4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9720347AB70025741A /* ApiRequestParam.swift */; };
@@ -122,6 +125,7 @@
 		4F079B99204072B100ED4728 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4F079B9D204075E500ED4728 /* CardCollectionViewItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewItem.swift; sourceTree = "<group>"; };
 		4F079B9F20407DD400ED4728 /* ImportCard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ImportCard.storyboard; sourceTree = "<group>"; };
+		4F079BA12041AEF900ED4728 /* String+appendPathComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+appendPathComponent.swift"; sourceTree = "<group>"; };
 		4F0863F5203662F500CFDD98 /* opencv2.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = opencv2.framework; path = /Users/cmst0us/Project/xCode_Project/SIFTool/SIFTool/../../../../Desktop/opensource/opencv2.framework; sourceTree = "<absolute>"; };
 		4F0863F820372D5000CFDD98 /* CVDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVDataModel.swift; sourceTree = "<group>"; };
 		4F0863FC20372D6400CFDD98 /* IdolDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdolDataModel.swift; sourceTree = "<group>"; };
@@ -139,7 +143,7 @@
 		4F1EB1F3203F28880003BA0C /* URL+FilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+FilePath.swift"; sourceTree = "<group>"; };
 		4F1EB1F7203F2D700003BA0C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4F1EB1F8203FBB6D0003BA0C /* CardTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableCellView.swift; sourceTree = "<group>"; };
-		4F1EB1FD203FE2630003BA0C /* SIFImageCacheHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFImageCacheHelper.swift; sourceTree = "<group>"; };
+		4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCacheHelper.swift; sourceTree = "<group>"; };
 		4F4F5F8F203479420025741A /* SIFTool-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SIFTool-macOS.entitlements"; sourceTree = "<group>"; };
 		4F4F5F90203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		4F4F5F91203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
@@ -238,7 +242,7 @@
 		4F1EB1FC203FE2400003BA0C /* SIFImageCache */ = {
 			isa = PBXGroup;
 			children = (
-				4F1EB1FD203FE2630003BA0C /* SIFImageCacheHelper.swift */,
+				4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */,
 			);
 			name = SIFImageCache;
 			sourceTree = "<group>";
@@ -384,6 +388,7 @@
 				4F4F5F9D20347D660025741A /* Data+JSONDataToDictionary.swift */,
 				4F4F5FD1203497AC0025741A /* String+httpSchema.swift */,
 				4F4F5FD520349B810025741A /* String+Date.swift */,
+				4F079BA12041AEF900ED4728 /* String+appendPathComponent.swift */,
 				4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */,
 				4F1EB1F3203F28880003BA0C /* URL+FilePath.swift */,
 			);
@@ -735,6 +740,7 @@
 			files = (
 				4F0863FB20372D5000CFDD98 /* CVDataModel.swift in Sources */,
 				4F4F5FC7203490620025741A /* ApiRequestParamProtocol.swift in Sources */,
+				4F079BA42041AEF900ED4728 /* String+appendPathComponent.swift in Sources */,
 				4F4F5FC8203490620025741A /* Dictionary+URLParam.swift in Sources */,
 				4F086422203C8A1A00CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
 				4F08640A2038662900CFDD98 /* OpenCVTest.swift in Sources */,
@@ -757,7 +763,7 @@
 				4F4F5FC62034903E0025741A /* ApiRequestParam.swift in Sources */,
 				4F4F5FBE203490220025741A /* ApiTest.swift in Sources */,
 				4F1EB1FB203FBB6E0003BA0C /* CardTableCellView.swift in Sources */,
-				4F1EB200203FE2630003BA0C /* SIFImageCacheHelper.swift in Sources */,
+				4F1EB200203FE2630003BA0C /* SIFCacheHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -781,7 +787,7 @@
 				4F4F5F9E20347D660025741A /* Data+JSONDataToDictionary.swift in Sources */,
 				4F4F5FB420348F6E0025741A /* DataModelHelper.swift in Sources */,
 				4F4F5FAB203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,
-				4F1EB1FE203FE2630003BA0C /* SIFImageCacheHelper.swift in Sources */,
+				4F1EB1FE203FE2630003BA0C /* SIFCacheHelper.swift in Sources */,
 				4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */,
 				4F08640F2039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,
 				4F4F5FD620349B810025741A /* String+Date.swift in Sources */,
@@ -791,6 +797,7 @@
 				4F08640320373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm in Sources */,
 				4F4F5F9B20347D160025741A /* Dictionary+URLParam.swift in Sources */,
 				4F4F5FAE2034810F0025741A /* URPairDataModel.swift in Sources */,
+				4F079BA22041AEF900ED4728 /* String+appendPathComponent.swift in Sources */,
 				4F1EB1F9203FBB6E0003BA0C /* CardTableCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -809,7 +816,8 @@
 				4F086408203862DE00CFDD98 /* CVMat.h in Sources */,
 				4F086421203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
 				4F4F5FB2203486500025741A /* ApiRequestParamProtocol.swift in Sources */,
-				4F1EB1FF203FE2630003BA0C /* SIFImageCacheHelper.swift in Sources */,
+				4F079BA32041AEF900ED4728 /* String+appendPathComponent.swift in Sources */,
+				4F1EB1FF203FE2630003BA0C /* SIFCacheHelper.swift in Sources */,
 				4F4F5FD3203497AC0025741A /* String+httpSchema.swift in Sources */,
 				4F1EB1F5203F28880003BA0C /* URL+FilePath.swift in Sources */,
 				4F4F5FA6203480BC0025741A /* MiniIdolDataModel.swift in Sources */,

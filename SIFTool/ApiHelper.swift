@@ -48,6 +48,18 @@ class ApiHelper {
 extension ApiHelper {
     func request(param: ApiRequestParam) throws -> Data {
         var requestPath = _baseUrlPath + param.path
+        if param.query.count > 0 {
+            requestPath += ("?" + param.query.urlQueryString())
+        }
+        do {
+            return try request(fullUrl: requestPath, param: param)
+        } catch {
+            throw error
+        }
+    }
+    
+    func request(fullUrl: String, param: ApiRequestParam) throws -> Data {
+        var requestPath = fullUrl
         
         if param.query.count > 0 {
             requestPath += ("?" + param.query.urlQueryString())
