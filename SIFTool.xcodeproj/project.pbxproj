@@ -91,6 +91,20 @@
 		4F4F5FD620349B810025741A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD520349B810025741A /* String+Date.swift */; };
 		4F4F5FD720349B810025741A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD520349B810025741A /* String+Date.swift */; };
 		4F4F5FD820349B810025741A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD520349B810025741A /* String+Date.swift */; };
+		4FE1E395204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
+		4FE1E396204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
+		4FE1E397204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
+		4FE1E399204278B50032F229 /* UserCardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E398204278B50032F229 /* UserCardDataModel.swift */; };
+		4FE1E39A204278B50032F229 /* UserCardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E398204278B50032F229 /* UserCardDataModel.swift */; };
+		4FE1E39B204278B50032F229 /* UserCardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E398204278B50032F229 /* UserCardDataModel.swift */; };
+		4FE1E39E2042798C0032F229 /* UserCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E39C2042798C0032F229 /* UserCard.xcdatamodeld */; };
+		4FE1E39F2042798C0032F229 /* UserCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E39C2042798C0032F229 /* UserCard.xcdatamodeld */; };
+		4FE1E3A02042798C0032F229 /* UserCard.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E39C2042798C0032F229 /* UserCard.xcdatamodeld */; };
+		4FE1E3A220427DD50032F229 /* CoreDataModelBridgeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E3A120427DD50032F229 /* CoreDataModelBridgeProtocol.swift */; };
+		4FE1E3A320427DD50032F229 /* CoreDataModelBridgeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E3A120427DD50032F229 /* CoreDataModelBridgeProtocol.swift */; };
+		4FE1E3A420427DD50032F229 /* CoreDataModelBridgeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E3A120427DD50032F229 /* CoreDataModelBridgeProtocol.swift */; };
+		4FE1E3A62042ABF40032F229 /* CheckBoxTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E3A52042ABF40032F229 /* CheckBoxTableCellView.swift */; };
+		4FE1E3A72042ABF40032F229 /* CheckBoxTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E3A52042ABF40032F229 /* CheckBoxTableCellView.swift */; };
 		4FEA5EFB203467BB00F03CCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5EFA203467BB00F03CCC /* AppDelegate.swift */; };
 		4FEA5EFD203467BB00F03CCC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5EFC203467BB00F03CCC /* ViewController.swift */; };
 		4FEA5F00203467BB00F03CCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA5EFE203467BB00F03CCC /* Main.storyboard */; };
@@ -163,6 +177,11 @@
 		4F4F5FBF203490220025741A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F4F5FD1203497AC0025741A /* String+httpSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+httpSchema.swift"; sourceTree = "<group>"; };
 		4F4F5FD520349B810025741A /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		4FE1E394204278060032F229 /* UserCardStorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardStorageHelper.swift; sourceTree = "<group>"; };
+		4FE1E398204278B50032F229 /* UserCardDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardDataModel.swift; sourceTree = "<group>"; };
+		4FE1E39D2042798C0032F229 /* UserCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserCard.xcdatamodel; sourceTree = "<group>"; };
+		4FE1E3A120427DD50032F229 /* CoreDataModelBridgeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModelBridgeProtocol.swift; sourceTree = "<group>"; };
+		4FE1E3A52042ABF40032F229 /* CheckBoxTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxTableCellView.swift; sourceTree = "<group>"; };
 		4FEA5EF7203467BB00F03CCC /* SIFTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SIFTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEA5EFA203467BB00F03CCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FEA5EFC203467BB00F03CCC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -215,6 +234,7 @@
 			isa = PBXGroup;
 			children = (
 				4F1EB1F8203FBB6D0003BA0C /* CardTableCellView.swift */,
+				4FE1E3A52042ABF40032F229 /* CheckBoxTableCellView.swift */,
 				4F079B9D204075E500ED4728 /* CardCollectionViewItem.swift */,
 			);
 			name = Views;
@@ -337,7 +357,6 @@
 				4F079B9C204072C600ED4728 /* ViewControllers */,
 				4F079B9B204072B900ED4728 /* Views */,
 				4FEA5F3920346AEA00F03CCC /* Resources */,
-				4FEA5F3A20346AFF00F03CCC /* CoreData */,
 			);
 			path = "SIFTool-macOS";
 			sourceTree = "<group>";
@@ -355,6 +374,7 @@
 			children = (
 				4FEA5F01203467BB00F03CCC /* Assets.xcassets */,
 				4FEA5F03203467BB00F03CCC /* LaunchScreen.storyboard */,
+				4FE1E39C2042798C0032F229 /* UserCard.xcdatamodeld */,
 				4FEA5F06203467BB00F03CCC /* Info.plist */,
 				4FEA5EFE203467BB00F03CCC /* Main.storyboard */,
 			);
@@ -377,6 +397,7 @@
 			isa = PBXGroup;
 			children = (
 				4F4F5FA32034808C0025741A /* Net */,
+				4FE1E398204278B50032F229 /* UserCardDataModel.swift */,
 			);
 			name = DataModel;
 			sourceTree = "<group>";
@@ -398,6 +419,7 @@
 		4FEA5F29203468EF00F03CCC /* Protocol */ = {
 			isa = PBXGroup;
 			children = (
+				4FE1E3A120427DD50032F229 /* CoreDataModelBridgeProtocol.swift */,
 				4F4F5FB0203486500025741A /* ApiRequestParamProtocol.swift */,
 			);
 			name = Protocol;
@@ -423,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				4FEA5F2F2034699500F03CCC /* CoreDataHelper.swift */,
+				4FE1E394204278060032F229 /* UserCardStorageHelper.swift */,
 			);
 			name = CoreData;
 			sourceTree = "<group>";
@@ -457,13 +480,6 @@
 				4FEA5F1E2034686700F03CCC /* Info.plist */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		4FEA5F3A20346AFF00F03CCC /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = CoreData;
 			sourceTree = "<group>";
 		};
 		C78C9B3EEE6E45B97714918E /* Pods */ = {
@@ -741,21 +757,26 @@
 				4F0863FB20372D5000CFDD98 /* CVDataModel.swift in Sources */,
 				4F4F5FC7203490620025741A /* ApiRequestParamProtocol.swift in Sources */,
 				4F079BA42041AEF900ED4728 /* String+appendPathComponent.swift in Sources */,
+				4FE1E3A420427DD50032F229 /* CoreDataModelBridgeProtocol.swift in Sources */,
 				4F4F5FC8203490620025741A /* Dictionary+URLParam.swift in Sources */,
 				4F086422203C8A1A00CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
 				4F08640A2038662900CFDD98 /* OpenCVTest.swift in Sources */,
 				4F4F5FC9203490620025741A /* Data+JSONDataToDictionary.swift in Sources */,
 				4F4F5FD4203497AC0025741A /* String+httpSchema.swift in Sources */,
+				4FE1E3A72042ABF40032F229 /* CheckBoxTableCellView.swift in Sources */,
 				4F4F5FCA203490620025741A /* CardDataModel.swift in Sources */,
 				4F4F5FCB203490620025741A /* MiniIdolDataModel.swift in Sources */,
 				4F4F5FCC203490620025741A /* MiniEventDataModel.swift in Sources */,
 				4F0863FF20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
 				4F0864112039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,
 				4F4F5FCD203490620025741A /* SkillUpTinyCardDataModel.swift in Sources */,
+				4FE1E397204278060032F229 /* UserCardStorageHelper.swift in Sources */,
 				4F1EB1F6203F28880003BA0C /* URL+FilePath.swift in Sources */,
 				4F4F5FCE203490620025741A /* URPairDataModel.swift in Sources */,
 				4F4F5FCF203490620025741A /* DataModelHelper.swift in Sources */,
+				4FE1E39B204278B50032F229 /* UserCardDataModel.swift in Sources */,
 				4F4F5FD820349B810025741A /* String+Date.swift in Sources */,
+				4FE1E3A02042798C0032F229 /* UserCard.xcdatamodeld in Sources */,
 				4F4F5FD0203490620025741A /* Logger.swift in Sources */,
 				4F08641E203C7A3B00CFDD98 /* SIFRoundIconDetector.swift in Sources */,
 				4F4F5FC52034903B0025741A /* ApiHelper.swift in Sources */,
@@ -775,19 +796,23 @@
 				4FEA5F2C2034693700F03CCC /* Logger.swift in Sources */,
 				4FEA5F302034699500F03CCC /* CoreDataHelper.swift in Sources */,
 				4FEA5EFB203467BB00F03CCC /* AppDelegate.swift in Sources */,
+				4FE1E39E2042798C0032F229 /* UserCard.xcdatamodeld in Sources */,
 				4F0863FD20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
 				4F0863F920372D5000CFDD98 /* CVDataModel.swift in Sources */,
 				4F086407203862DE00CFDD98 /* CVMat.h in Sources */,
 				4F1EB1F4203F28880003BA0C /* URL+FilePath.swift in Sources */,
 				4F086420203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
+				4FE1E395204278060032F229 /* UserCardStorageHelper.swift in Sources */,
 				4F4F5FB1203486500025741A /* ApiRequestParamProtocol.swift in Sources */,
 				4F4F5FD2203497AC0025741A /* String+httpSchema.swift in Sources */,
+				4FE1E3A220427DD50032F229 /* CoreDataModelBridgeProtocol.swift in Sources */,
 				4F4F5FA5203480BC0025741A /* MiniIdolDataModel.swift in Sources */,
 				4F08641C203C7A3B00CFDD98 /* SIFRoundIconDetector.swift in Sources */,
 				4F4F5F9E20347D660025741A /* Data+JSONDataToDictionary.swift in Sources */,
 				4F4F5FB420348F6E0025741A /* DataModelHelper.swift in Sources */,
 				4F4F5FAB203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,
 				4F1EB1FE203FE2630003BA0C /* SIFCacheHelper.swift in Sources */,
+				4FE1E399204278B50032F229 /* UserCardDataModel.swift in Sources */,
 				4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */,
 				4F08640F2039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,
 				4F4F5FD620349B810025741A /* String+Date.swift in Sources */,
@@ -810,9 +835,11 @@
 				4F079B9E204075E500ED4728 /* CardCollectionViewItem.swift in Sources */,
 				4FEA5F152034686700F03CCC /* CVViewController.swift in Sources */,
 				4FEA5F132034686700F03CCC /* AppDelegate.swift in Sources */,
+				4FE1E396204278060032F229 /* UserCardStorageHelper.swift in Sources */,
 				4FEA5F2D2034693700F03CCC /* Logger.swift in Sources */,
 				4F0863FE20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
 				4F0863FA20372D5000CFDD98 /* CVDataModel.swift in Sources */,
+				4FE1E3A62042ABF40032F229 /* CheckBoxTableCellView.swift in Sources */,
 				4F086408203862DE00CFDD98 /* CVMat.h in Sources */,
 				4F086421203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
 				4F4F5FB2203486500025741A /* ApiRequestParamProtocol.swift in Sources */,
@@ -828,7 +855,10 @@
 				4F1EB1F2203EBFDB0003BA0C /* ImportViewController.swift in Sources */,
 				4F4F5FAC203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,
 				4F4F5F9920347AB70025741A /* ApiRequestParam.swift in Sources */,
+				4FE1E3A320427DD50032F229 /* CoreDataModelBridgeProtocol.swift in Sources */,
 				4F0864102039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,
+				4FE1E39F2042798C0032F229 /* UserCard.xcdatamodeld in Sources */,
+				4FE1E39A204278B50032F229 /* UserCardDataModel.swift in Sources */,
 				4F4F5FD720349B810025741A /* String+Date.swift in Sources */,
 				4F4F5FA9203480CD0025741A /* MiniEventDataModel.swift in Sources */,
 				4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */,
@@ -1172,6 +1202,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		4FE1E39C2042798C0032F229 /* UserCard.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				4FE1E39D2042798C0032F229 /* UserCard.xcdatamodel */,
+			);
+			currentVersion = 4FE1E39D2042798C0032F229 /* UserCard.xcdatamodel */;
+			path = UserCard.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 4FEA5EEF203467BB00F03CCC /* Project object */;
 }

@@ -55,7 +55,7 @@ class SIFCacheHelper {
         let results: NSMutableArray = NSMutableArray()
         do {
             //request total cards id
-            let totalCardsIdParam = CardDataModel.requestIds()
+                let totalCardsIdParam = CardDataModel.requestIds()
             let totalCardsIdData = try ApiHelper.shared.request(param: totalCardsIdParam)
             let cardIdsArray = DataModelHelper.shared.array(withJsonData: totalCardsIdData) as! [Int]
             
@@ -81,6 +81,7 @@ class SIFCacheHelper {
             let jsonData = try JSONSerialization.data(withJSONObject: results, options: [.prettyPrinted])
             try jsonData.write(to: URL.init(fileURLWithPath: self.cacheDirectory.appendingPathComponent("cards.json")))
         } catch {
+            cards.removeAll(keepingCapacity: true)
             throw error
         }
     }

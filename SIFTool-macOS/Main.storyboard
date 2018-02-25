@@ -25,30 +25,30 @@
                 </windowController>
                 <customObject id="WA4-Pu-gE5" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-833" y="213"/>
+            <point key="canvasLocation" x="-895" y="311"/>
         </scene>
         <!--Main View Controller-->
         <scene sceneID="zPs-pf-cyF">
             <objects>
                 <viewController id="iMb-qK-fie" customClass="MainViewController" customModule="SIFTool_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="a4x-MW-Uxz">
-                        <rect key="frame" x="0.0" y="0.0" width="816" height="730"/>
+                        <rect key="frame" x="0.0" y="0.0" width="816" height="759"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TkT-hX-LBJ">
-                                <rect key="frame" x="0.0" y="0.0" width="816" height="730"/>
+                                <rect key="frame" x="0.0" y="0.0" width="816" height="759"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="750" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kIc-YY-dgW">
-                                        <rect key="frame" x="0.0" y="643" width="816" height="87"/>
+                                        <rect key="frame" x="0.0" y="651" width="816" height="108"/>
                                         <subviews>
                                             <scrollView autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Rq-SI-sRI">
-                                                <rect key="frame" x="0.0" y="0.0" width="672" height="87"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="726" height="108"/>
                                                 <clipView key="contentView" id="Y54-SJ-ktM">
-                                                    <rect key="frame" x="1" y="1" width="670" height="85"/>
+                                                    <rect key="frame" x="1" y="1" width="724" height="106"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <predicateEditor verticalHuggingPriority="750" nestingMode="compound" canRemoveAllRows="YES" rowHeight="25" id="HBI-Dg-2XC">
-                                                            <rect key="frame" x="0.0" y="0.0" width="670" height="85"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="724" height="77"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                                             <rowTemplates>
                                                                 <predicateEditorRowTemplate rowType="compound" id="viX-3a-y8j">
@@ -134,29 +134,39 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="TgI-Qs-Nj9">
-                                                    <rect key="frame" x="464" y="1" width="16" height="85"/>
+                                                    <rect key="frame" x="709" y="1" width="16" height="77"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
                                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" horizontalHuggingPriority="750" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Emy-pR-oOj">
-                                                <rect key="frame" x="680" y="4" width="136" height="79"/>
+                                                <rect key="frame" x="734" y="0.0" width="82" height="108"/>
                                                 <subviews>
+                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="U8U-xh-fqX">
+                                                        <rect key="frame" x="8" y="80" width="67" height="32"/>
+                                                        <buttonCell key="cell" type="push" title="刷新" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="U00-vL-bv1">
+                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                            <font key="font" size="13" name=".PingFangSC-Regular"/>
+                                                        </buttonCell>
+                                                        <connections>
+                                                            <action selector="reloadData" target="iMb-qK-fie" id="Gco-Z6-Bcu"/>
+                                                        </connections>
+                                                    </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Lsc-KO-P3e">
-                                                        <rect key="frame" x="35" y="51" width="67" height="32"/>
+                                                        <rect key="frame" x="8" y="51" width="67" height="32"/>
                                                         <buttonCell key="cell" type="push" title="筛选" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wTT-gE-ZEU">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" usesAppearanceFont="YES"/>
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nhL-zl-gdi">
-                                                        <rect key="frame" x="35" y="22" width="67" height="32"/>
+                                                        <rect key="frame" x="8" y="22" width="67" height="32"/>
                                                         <buttonCell key="cell" type="push" title="排序" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="grI-hp-qz2">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" usesAppearanceFont="YES"/>
                                                         </buttonCell>
                                                     </button>
                                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ftX-Px-5kc">
-                                                        <rect key="frame" x="21" y="-7" width="94" height="32"/>
+                                                        <rect key="frame" x="-6" y="-7" width="94" height="32"/>
                                                         <buttonCell key="cell" type="push" title="导入卡片" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="vef-VM-UcB">
                                                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                                             <font key="font" usesAppearanceFont="YES"/>
@@ -170,8 +180,10 @@
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
                                                     <integer value="1000"/>
+                                                    <integer value="1000"/>
                                                 </visibilityPriorities>
                                                 <customSpacing>
+                                                    <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
                                                     <real value="3.4028234663852886e+38"/>
@@ -191,9 +203,9 @@
                                         </customSpacing>
                                     </stackView>
                                     <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aHx-0L-fbc">
-                                        <rect key="frame" x="0.0" y="0.0" width="816" height="635"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="816" height="643"/>
                                         <clipView key="contentView" drawsBackground="NO" id="Phd-Qi-R0z">
-                                            <rect key="frame" x="1" y="1" width="814" height="633"/>
+                                            <rect key="frame" x="1" y="1" width="814" height="641"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <collectionView id="hdR-WB-5kR">
@@ -246,6 +258,9 @@
                             <constraint firstAttribute="bottom" secondItem="TkT-hX-LBJ" secondAttribute="bottom" id="yY2-ht-u8j"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="userCardCollectionView" destination="hdR-WB-5kR" id="M1p-GL-cMI"/>
+                    </connections>
                 </viewController>
                 <customObject id="n7N-dW-sgH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -311,7 +326,7 @@
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BOA-ZI-zq4">
                                                 <rect key="frame" x="-2" y="0.0" width="55" height="14"/>
                                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="IDOLIZED" id="dpy-oW-Pp4">
-                                                    <font key="font" metaFont="system" size="11"/>
+                                                    <font key="font" metaFont="smallSystem"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>

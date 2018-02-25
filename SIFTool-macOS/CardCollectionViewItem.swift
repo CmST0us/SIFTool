@@ -24,6 +24,7 @@ class CardCollectionViewItem: NSCollectionViewItem {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        
     }
     
     func setupView(withModel model: CardDataModel, idolized: Bool) {

@@ -28,8 +28,8 @@ class ImportCardViewController: NSViewController {
     
     var screenShoots: [NSImage] = []
     
-    var cards: [(CardDataModel, CVMat, Bool)] = []
-    
+    var cards: [(UserCardDataModel, NSImage, Bool)] = []
+
     lazy var config: SIFRoundIconDetectorConfiguration = {
         return SIFRoundIconDetectorConfiguration.defaultRoundIconConfiguration(radio: 0.3)
     }()
@@ -50,7 +50,7 @@ class ImportCardViewController: NSViewController {
         p.canChooseDirectories = false
         p.allowsMultipleSelection = true
         p.allowedFileTypes = ["png", "jpg", "PNG", "jpeg", "JPEG", "JPG"]
-        p.beginSheetModal(for: NSApplication.shared.windows.first!) { (result) in
+        p.beginSheetModal(for: NSApplication.shared.keyWindow!) { (result) in
             if result == NSApplication.ModalResponse.OK {
                 completion(p.urls)
             } else {
@@ -61,13 +61,13 @@ class ImportCardViewController: NSViewController {
     @IBAction func selectScreenShootAction(_ sender: NSPopUpButton) {
         switch sender.indexOfSelectedItem {
         case 0:
+            self.screenShoots.removeAll()
             openSelectFilePlane { (urls) in
                 guard urls != nil else {
                     return
                 }
                 for url in urls! {
                     Logger.shared.output("选择文件\(url.absoluteString)")
-                    
                     let image = NSImage.init(contentsOf: url)
                     self.screenShoots.append(image!)
                 }
@@ -93,14 +93,17 @@ class ImportCardViewController: NSViewController {
                         if card == nil {
                             continue
                         }
-                        self.cards.append((card!.0, roiClone, card!.1))
-                        Logger.shared.output("find card \(String(card!.0.id))")
+                        
+                        let userCard = UserCardDataModel.init()
+                        userCard.cardId = card!.0.id
+                        userCard.idolized = card!.1
+                        self.cards.append((userCard, NSImage.init(cvMat: roiClone), true))
+                            Logger.shared.output("find card, id: \(String(card!.0.id))")
                     }
                 }
             }
             DispatchQueue.main.async {
                 self.requestActivitor.stopAnimation(nil)
-                self.screenShoots.removeAll()
                 self.cardTableView.reloadData()
             }
         }
@@ -119,7 +122,7 @@ class ImportCardViewController: NSViewController {
                 //get card round image
                 //check cache
                 Logger.shared.output("load round image")
-                if let im = NSImage.init(contentsOfFile: NSTemporaryDirectory() + "/pattern.png") {
+                if let im = NSImage.init(contentsOfFile: SIFCacheHelper.shared.cacheDirectory.appendingPathComponent("pattern.png")) {
                     self.detector = SIFRoundIconDetector(withCards: SIFCacheHelper.shared.cards, configuration: self.config, roundCardImagePattern: im.mat)
                     Logger.shared.output("use pattern cache")
                     DispatchQueue.main.async {
@@ -144,7 +147,7 @@ class ImportCardViewController: NSViewController {
                     self.detector.makeRoundCardImagePattern(cardId: roundCardUrl.0, images: (image1?.mat, image2?.mat))
                 }
             
-                self.detector.saveRoundCardImagePattern(toPath: NSTemporaryDirectory().appendingPathComponent("pattern.png"))
+                self.detector.saveRoundCardImagePattern(toPath: SIFCacheHelper.shared.cacheDirectory.appendingPathComponent("pattern.png"))
                 Logger.shared.output("make all round card pattern ok")
                 DispatchQueue.main.async {
                     self.requestActivitor.stopAnimation(nil)
@@ -154,6 +157,22 @@ class ImportCardViewController: NSViewController {
             }
         }
         
+    }
+    @IBAction func importSelectedCard(_ sender: Any) {
+        
+    }
+    @IBAction func allCardWithIdolized(_ sender: Any) {
+//        NotificationCenter.default.post(name: NSNotification.Name.init(CardTableCellView.NotificationName.selectIdolizedButton), object: nil, userInfo: ["state": true])
+    }
+    @IBAction func allCardWithoutIdolized(_ sender: Any) {
+//        NotificationCenter.default.post(name: NSNotification.Name.init(CardTableCellView.NotificationName.selectIdolizedButton), object: nil, userInfo: ["state": false])
+    }
+
+    @IBAction func allCardWillImport(_ sender: Any) {
+//        NotificationCenter.default.post(name: NSNotification.Name.init(CardTableCellView.NotificationName.selectImportButton), object: nil, userInfo: ["state": true])
+    }
+    @IBAction func allCardWillNotImport(_ sender: Any) {
+//        NotificationCenter.default.post(name: NSNotification.Name.init(CardTableCellView.NotificationName.selectImportButton), object: nil, userInfo: ["state": false])
     }
 }
 
@@ -168,11 +187,31 @@ extension ImportCardViewController: LoggerProtocol {
 extension ImportCardViewController: NSTableViewDataSource, NSTableViewDelegate {
     
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier.init("cell"), owner: self) as! CardTableCellView
-        let model = cards[row]
-        cell.setupCell(withDataModel: model.0)
-        cell.cardImageView.image = NSImage.init(cvMat: model.1)
-        return cell
+        switch tableColumn!.identifier.rawValue {
+        case "import":
+            let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier.init("importCell"), owner: self) as! CheckBoxTableCellView
+            let model = cards[row]
+            cell.on = model.2
+            return cell
+            
+        case "card":
+            let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier.init("cardCell"), owner: self) as! CardTableCellView
+            let model = cards[row]
+            cell.setupCell(withDataModel: model.0)
+            cell.cardImageView.image = model.1
+            return cell
+            
+        case "idolized":
+            let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier.init("idolizedCell"), owner: self) as! CheckBoxTableCellView
+            let model = cards[row]
+            cell.on = model.0.idolized
+            return cell
+            
+        default:
+            break
+        }
+        
+        return nil
     }
     
     func numberOfRows(in tableView: NSTableView) -> Int {

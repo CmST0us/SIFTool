@@ -10,15 +10,22 @@ import Cocoa
 
 class MainViewController: NSViewController {
     
-    lazy var userCards: [(CardDataModel, Bool)] = {
-        return SIFCacheHelper.shared.cards.map({ (k, v) -> (CardDataModel, Bool) in
-            return (v, true)
-        })
+    @IBOutlet weak var userCardCollectionView: NSCollectionView!
+    
+    lazy var userCards: [UserCardDataModel] = {
+        return UserCardStorageHelper.shared.fetchAllUserCard() ?? []
     }()
+    
+    @IBAction func reloadData(_ sender: Any) {
+        userCards = UserCardStorageHelper.shared.fetchAllUserCard() ?? []
+        self.userCardCollectionView.reloadData()
+        Logger.shared.output("total count: \(String(userCards.count))")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ApiHelper.shared.baseUrlPath = "http://schoolido.lu/api"
+        SIFCacheHelper.shared.cacheDirectory = "/Users/cmst0us/Downloads/round_card_images"
     }
     
 }
@@ -28,8 +35,9 @@ extension MainViewController: NSCollectionViewDataSource, NSCollectionViewDelega
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let cardCollectionViewItem = CardCollectionViewItem.storyboardResources
-        let model = userCards[indexPath.item]
-        cardCollectionViewItem.setupView(withModel: model.0, idolized: model.1)
+        let cardDataModel = SIFCacheHelper.shared.cards[userCards[indexPath.item].cardId]
+        let idolized = userCards[indexPath.item].idolized
+        cardCollectionViewItem.setupView(withModel: cardDataModel!, idolized: idolized)
         return cardCollectionViewItem
     }
     

@@ -9,10 +9,10 @@
 import Foundation
 import CoreData
 
-class CardCoreDataHelper {
+class UserCardCoreDataHelper {
     //MARK: - Private Member
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: CardCoreDataHelper.coreDataModelFileName)
+        let container = NSPersistentContainer(name: UserCardCoreDataHelper.coreDataModelFileName)
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 //[TODO] handle error, remember do not use fatalError when shipping
@@ -27,11 +27,11 @@ class CardCoreDataHelper {
         
     }
     //MARK: - Public Member
-    private static let coreDataModelFileName = "card"
+    private static let coreDataModelFileName = "UserCard"
     //    static let coreDataModelFileName = "test"
     
     //MARK: Single Instance
-    static let shared = CardCoreDataHelper()
+    static let shared = UserCardCoreDataHelper()
     
     
     //MARK: - Public Method
