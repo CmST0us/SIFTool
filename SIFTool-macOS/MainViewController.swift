@@ -12,21 +12,38 @@ class MainViewController: NSViewController {
     
     @IBOutlet weak var userCardCollectionView: NSCollectionView!
     
+    @IBOutlet weak var cardsInfoLabel: NSTextField!
+    
+    @IBOutlet weak var cardsFiltePredicateEditor: NSPredicateEditor!
+    
     lazy var userCards: [UserCardDataModel] = {
         return UserCardStorageHelper.shared.fetchAllUserCard() ?? []
     }()
     
     @IBAction func reloadData(_ sender: Any) {
         userCards = UserCardStorageHelper.shared.fetchAllUserCard() ?? []
+        cardsInfoLabel.stringValue = "持有 \(String(userCards.count)) 种卡"
         self.userCardCollectionView.reloadData()
-        Logger.shared.output("total count: \(String(userCards.count))")
     }
     
+    @IBAction func startFilter(_ sender: Any) {
+        self.cardsFiltePredicateEditor.addRow(nil)
+    }
+    func setupPredicateEditor() {
+        
+    }
+    @IBAction func predicateEditorChange(_ sender: Any) {
+        for i in 0 ..< cardsFiltePredicateEditor.numberOfRows {
+            let p = cardsFiltePredicateEditor.debugDescription
+            Logger.shared.console(p)
+        }
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         ApiHelper.shared.baseUrlPath = "http://schoolido.lu/api"
         ApiHelper.shared.taskWaitTime = 15
         SIFCacheHelper.shared.cacheDirectory = "/Users/cmst0us/Downloads/round_card_images"
+        cardsInfoLabel.stringValue = "持有 \(String(userCards.count)) 种卡"
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData(_:)), name: NSNotification.Name.init(ImportCardViewController.NotificationName.importOk), object: nil)
     }
     
@@ -59,3 +76,4 @@ extension MainViewController: NSCollectionViewDataSource, NSCollectionViewDelega
     }
     
 }
+

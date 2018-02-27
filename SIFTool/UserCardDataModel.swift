@@ -13,10 +13,11 @@ class UserCardDataModel {
     var idolized: Bool
     
     var isImport: Bool = true
-    
+
     init(withDictionary dictionary:[String: Any]) {
         cardId = dictionary["cardId"] as! Int
         idolized = dictionary["idolized"] as! Bool
+
     }
     
     init() {

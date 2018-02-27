@@ -91,6 +91,7 @@
 		4F4F5FD620349B810025741A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD520349B810025741A /* String+Date.swift */; };
 		4F4F5FD720349B810025741A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD520349B810025741A /* String+Date.swift */; };
 		4F4F5FD820349B810025741A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD520349B810025741A /* String+Date.swift */; };
+		4F83C2482045A9100071C58E /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F83C2472045A9100071C58E /* MainWindowController.swift */; };
 		4FE1E395204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
 		4FE1E396204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
 		4FE1E397204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
@@ -177,6 +178,7 @@
 		4F4F5FBF203490220025741A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4F4F5FD1203497AC0025741A /* String+httpSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+httpSchema.swift"; sourceTree = "<group>"; };
 		4F4F5FD520349B810025741A /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
+		4F83C2472045A9100071C58E /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		4FE1E394204278060032F229 /* UserCardStorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardStorageHelper.swift; sourceTree = "<group>"; };
 		4FE1E398204278B50032F229 /* UserCardDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardDataModel.swift; sourceTree = "<group>"; };
 		4FE1E39D2042798C0032F229 /* UserCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserCard.xcdatamodel; sourceTree = "<group>"; };
@@ -245,6 +247,7 @@
 			children = (
 				4F1EB1F1203EBFDB0003BA0C /* ImportViewController.swift */,
 				4F079B99204072B100ED4728 /* MainViewController.swift */,
+				4F83C2472045A9100071C58E /* MainWindowController.swift */,
 				4FEA5F142034686700F03CCC /* CVViewController.swift */,
 			);
 			name = ViewControllers;
@@ -852,6 +855,7 @@
 				4F08641D203C7A3B00CFDD98 /* SIFRoundIconDetector.swift in Sources */,
 				4F4F5F9F20347D660025741A /* Data+JSONDataToDictionary.swift in Sources */,
 				4F4F5FB520348F6E0025741A /* DataModelHelper.swift in Sources */,
+				4F83C2482045A9100071C58E /* MainWindowController.swift in Sources */,
 				4F1EB1F2203EBFDB0003BA0C /* ImportViewController.swift in Sources */,
 				4F4F5FAC203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,
 				4F4F5F9920347AB70025741A /* ApiRequestParam.swift in Sources */,
