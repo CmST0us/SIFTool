@@ -28,8 +28,13 @@ class ImportCardViewController: NSViewController {
     
     var screenShoots: [NSImage] = []
     
-    var cards: [(UserCardDataModel, NSImage, Bool)] = []
-
+    var cards: [(UserCardDataModel, NSImage)] = []
+    
+    struct NotificationName {
+        static let importOk = "ImportCardViewController.NotificationName.importOk"
+    }
+    
+    
     lazy var config: SIFRoundIconDetectorConfiguration = {
         return SIFRoundIconDetectorConfiguration.defaultRoundIconConfiguration(radio: 0.3)
     }()
@@ -78,7 +83,7 @@ class ImportCardViewController: NSViewController {
     }
     
     @IBAction func process(_ sender: Any) {
-        self.cards.removeAll(keepingCapacity: true)
+        self.cards.removeAll()
         requestActivitor.startAnimation(nil)
         DispatchQueue.global().async {
             for screenShoot in self.screenShoots {
@@ -97,7 +102,8 @@ class ImportCardViewController: NSViewController {
                         let userCard = UserCardDataModel.init()
                         userCard.cardId = card!.0.id
                         userCard.idolized = card!.1
-                        self.cards.append((userCard, NSImage.init(cvMat: roiClone), true))
+                        userCard.isImport = true
+                        self.cards.append((userCard, NSImage.init(cvMat: roiClone)))
                             Logger.shared.output("find card, id: \(String(card!.0.id))")
                     }
                 }
@@ -158,21 +164,62 @@ class ImportCardViewController: NSViewController {
         }
         
     }
-    @IBAction func importSelectedCard(_ sender: Any) {
+    @IBAction func refreshCardsData(_ sender: Any) {
+        do {
+            self.cards.removeAll()
+            try SIFCacheHelper.shared.deleteCardsCache()
+            DispatchQueue.global().async {
+                do {
+                    try SIFCacheHelper.shared.cacheCards(process: nil)
+                } catch {
+                    Logger.shared.output(error.localizedDescription)
+                }
+            }
+        } catch {
+            Logger.shared.output(error.localizedDescription)
+        }
         
     }
+    
+    @IBAction func deletePatternCache(_ sender: Any) {
+        do {
+            self.cards.removeAll()
+            try SIFCacheHelper.shared.deleteMatchPattern()
+        } catch {
+            Logger.shared.output(error.localizedDescription)
+        }
+    }
+    @IBAction func importSelectedCard(_ sender: Any) {
+        for card in cards {
+            UserCardStorageHelper.shared.addUserCard(card: card.0)
+        }
+        Logger.shared.output("import OK")
+        NotificationCenter.default.post(name: NSNotification.Name.init(NotificationName.importOk), object: nil)
+    }
     @IBAction func allCardWithIdolized(_ sender: Any) {
-//        NotificationCenter.default.post(name: NSNotification.Name.init(CardTableCellView.NotificationName.selectIdolizedButton), object: nil, userInfo: ["state": true])
+        for i in cards {
+            i.0.idolized = true
+        }
+        self.cardTableView.reloadData()
     }
     @IBAction func allCardWithoutIdolized(_ sender: Any) {
-//        NotificationCenter.default.post(name: NSNotification.Name.init(CardTableCellView.NotificationName.selectIdolizedButton), object: nil, userInfo: ["state": false])
+        for i in cards {
+            i.0.idolized = false
+        }
+        self.cardTableView.reloadData()
     }
 
     @IBAction func allCardWillImport(_ sender: Any) {
-//        NotificationCenter.default.post(name: NSNotification.Name.init(CardTableCellView.NotificationName.selectImportButton), object: nil, userInfo: ["state": true])
+        for i in cards {
+            i.0.isImport = true
+        }
+        self.cardTableView.reloadData()
     }
     @IBAction func allCardWillNotImport(_ sender: Any) {
-//        NotificationCenter.default.post(name: NSNotification.Name.init(CardTableCellView.NotificationName.selectImportButton), object: nil, userInfo: ["state": false])
+        for i in cards {
+            i.0.isImport = false
+        }
+        self.cardTableView.reloadData()
     }
 }
 
@@ -191,7 +238,7 @@ extension ImportCardViewController: NSTableViewDataSource, NSTableViewDelegate {
         case "import":
             let cell = tableView.makeView(withIdentifier: NSUserInterfaceItemIdentifier.init("importCell"), owner: self) as! CheckBoxTableCellView
             let model = cards[row]
-            cell.on = model.2
+            cell.on = model.0.isImport
             return cell
             
         case "card":

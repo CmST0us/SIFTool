@@ -60,15 +60,28 @@ extension UserCardStorageHelper {
 
 // MARK: - add method
 extension UserCardStorageHelper {
-    func addUserCard(card: UserCardDataModel) {
-        let viewContext = UserCardCoreDataHelper.shared.persistentContainer.viewContext
-        let description = NSEntityDescription.insertNewObject(forEntityName: UserCardDataModel.entityName, into: viewContext)
-        card.copy(to: description)
-        doSave()
-        do {
-            try UserCardCoreDataHelper.shared.saveContext()
-        } catch {
-            Logger.shared.output("can not save core data")
+    func addUserCard(card: UserCardDataModel, checkExist: Bool = true) {
+        
+        func add(card: UserCardDataModel) {
+            let viewContext = UserCardCoreDataHelper.shared.persistentContainer.viewContext
+            let description = NSEntityDescription.insertNewObject(forEntityName: UserCardDataModel.entityName, into: viewContext)
+            card.copy(to: description)
+            doSave()
+            do {
+                try UserCardCoreDataHelper.shared.saveContext()
+            } catch {
+                Logger.shared.output("can not save core data")
+            }
+        }
+        
+        if checkExist == false {
+            add(card: card)
+        } else {
+            if let _ = fetchUserCardManagedObject(withCardId: card.cardId) {
+                return
+            } else {
+                add(card: card)
+            }
         }
     }
 }

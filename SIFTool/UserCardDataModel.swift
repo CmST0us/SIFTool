@@ -11,7 +11,9 @@ import Cocoa
 class UserCardDataModel {
     var cardId: Int
     var idolized: Bool
-
+    
+    var isImport: Bool = true
+    
     init(withDictionary dictionary:[String: Any]) {
         cardId = dictionary["cardId"] as! Int
         idolized = dictionary["idolized"] as! Bool
@@ -24,9 +26,7 @@ class UserCardDataModel {
 }
 
 extension UserCardDataModel: CoreDataModelBridgeProtocol {
-    static var entityName: String {
-        return "UserCard"
-    }
+    static var entityName: String = "UserCard"
     
     func copy(to managedObject: NSManagedObject) {
         managedObject.setValue(cardId, forKey: "cardId")

@@ -25,7 +25,9 @@ class MainViewController: NSViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         ApiHelper.shared.baseUrlPath = "http://schoolido.lu/api"
+        ApiHelper.shared.taskWaitTime = 15
         SIFCacheHelper.shared.cacheDirectory = "/Users/cmst0us/Downloads/round_card_images"
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(_:)), name: NSNotification.Name.init(ImportCardViewController.NotificationName.importOk), object: nil)
     }
     
 }
@@ -35,6 +37,14 @@ extension MainViewController: NSCollectionViewDataSource, NSCollectionViewDelega
     
     func collectionView(_ collectionView: NSCollectionView, itemForRepresentedObjectAt indexPath: IndexPath) -> NSCollectionViewItem {
         let cardCollectionViewItem = CardCollectionViewItem.storyboardResources
+        if !SIFCacheHelper.shared.isCardsCached {
+            do {
+                try SIFCacheHelper.shared.cacheCards(process: nil)
+            } catch {
+                Logger.shared.output(error.localizedDescription)
+            }
+            
+        }
         let cardDataModel = SIFCacheHelper.shared.cards[userCards[indexPath.item].cardId]
         let idolized = userCards[indexPath.item].idolized
         cardCollectionViewItem.setupView(withModel: cardDataModel!, idolized: idolized)
