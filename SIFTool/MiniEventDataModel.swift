@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class MiniEventDataModel {
+class MiniEventDataModel: NSObject {
     struct CodingKey {
         static let japaneseName = "japanese_name"
         static let englishName = "english_name"

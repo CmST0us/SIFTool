@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class CVDataModel {
+class CVDataModel: NSObject {
     struct CodingKey {
         static let name = "name"
         static let nickname = "nickname"

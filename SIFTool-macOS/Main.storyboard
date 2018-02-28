@@ -111,17 +111,17 @@
                                 <rowTemplates>
                                     <predicateEditorRowTemplate rowType="simple" id="MGG-B6-ZmD">
                                         <array key="leftExpressionObject">
-                                            <expression type="constant">
-                                                <string key="constantValue">id</string>
+                                            <expression type="keyPath">
+                                                <string key="keyPath">id</string>
                                             </expression>
                                         </array>
                                         <integer key="rightExpressionObject" value="300"/>
                                         <popUpMenus>
-                                            <menu id="46T-v5-b31">
+                                            <menu id="aqT-1N-ayg">
                                                 <items>
-                                                    <menuItem title="卡片ID" state="on" id="tsC-jE-h7P">
-                                                        <expression key="representedObject" type="constant">
-                                                            <string key="constantValue">id</string>
+                                                    <menuItem title="卡片编号" state="on" id="BG1-xQ-mhl">
+                                                        <expression key="representedObject" type="keyPath">
+                                                            <string key="keyPath">id</string>
                                                         </expression>
                                                     </menuItem>
                                                 </items>
@@ -146,14 +146,17 @@
                                                     <menuItem title="is greater than or equal to" id="y2L-fa-DnY">
                                                         <integer key="representedObject" value="3"/>
                                                     </menuItem>
+                                                    <menuItem title="in" id="mTz-VK-fj9">
+                                                        <integer key="representedObject" value="10"/>
+                                                    </menuItem>
                                                 </items>
                                             </menu>
                                         </popUpMenus>
                                     </predicateEditorRowTemplate>
                                     <predicateEditorRowTemplate rowType="simple" id="umP-Oh-o9E">
                                         <array key="leftExpressionObject">
-                                            <expression type="constant">
-                                                <string key="constantValue">rarity</string>
+                                            <expression type="keyPath">
+                                                <string key="keyPath">rarity</string>
                                             </expression>
                                         </array>
                                         <array key="rightExpressionObject">
@@ -172,13 +175,16 @@
                                             <expression type="constant">
                                                 <string key="constantValue">N</string>
                                             </expression>
+                                            <expression type="constant">
+                                                <string key="constantValue">All</string>
+                                            </expression>
                                         </array>
                                         <popUpMenus>
-                                            <menu id="OdE-Hs-L5u">
+                                            <menu id="6eH-6a-cVx">
                                                 <items>
-                                                    <menuItem title="稀有度" state="on" id="Jg4-37-kR3">
-                                                        <expression key="representedObject" type="constant">
-                                                            <string key="constantValue">rarity</string>
+                                                    <menuItem title="稀有度" state="on" id="D6u-qB-ZMv">
+                                                        <expression key="representedObject" type="keyPath">
+                                                            <string key="keyPath">rarity</string>
                                                         </expression>
                                                     </menuItem>
                                                 </items>
@@ -188,36 +194,42 @@
                                                     <menuItem title="is" state="on" id="ijd-no-e1s">
                                                         <integer key="representedObject" value="4"/>
                                                     </menuItem>
-                                                    <menuItem title="in" id="vYg-BU-VZs">
+                                                    <menuItem title="in" id="eYu-CD-GYS">
                                                         <integer key="representedObject" value="10"/>
                                                     </menuItem>
                                                 </items>
                                             </menu>
                                             <menu id="e68-Wi-sdi">
                                                 <items>
-                                                    <menuItem title="UR" state="on" id="4UY-DW-ll5">
+                                                    <menuItem title="UR" state="mixed" id="4UY-DW-ll5">
+                                                        <modifierMask key="keyEquivalentModifierMask"/>
                                                         <expression key="representedObject" type="constant">
                                                             <string key="constantValue">UR</string>
                                                         </expression>
                                                     </menuItem>
-                                                    <menuItem title="SSR" id="27g-2G-GWJ">
+                                                    <menuItem title="SSR" state="mixed" id="27g-2G-GWJ">
                                                         <expression key="representedObject" type="constant">
                                                             <string key="constantValue">SSR</string>
                                                         </expression>
                                                     </menuItem>
-                                                    <menuItem title="SR" id="GG2-wf-MvE">
+                                                    <menuItem title="SR" state="mixed" id="GG2-wf-MvE">
                                                         <expression key="representedObject" type="constant">
                                                             <string key="constantValue">SR</string>
                                                         </expression>
                                                     </menuItem>
-                                                    <menuItem title="R" id="fdl-oO-FPx">
+                                                    <menuItem title="R" state="mixed" id="fdl-oO-FPx">
                                                         <expression key="representedObject" type="constant">
                                                             <string key="constantValue">R</string>
                                                         </expression>
                                                     </menuItem>
-                                                    <menuItem title="N" id="n8K-Y0-doX">
+                                                    <menuItem title="N" state="mixed" id="n8K-Y0-doX">
                                                         <expression key="representedObject" type="constant">
                                                             <string key="constantValue">N</string>
+                                                        </expression>
+                                                    </menuItem>
+                                                    <menuItem title="All" id="dN2-47-dZu">
+                                                        <expression key="representedObject" type="constant">
+                                                            <string key="constantValue">All</string>
                                                         </expression>
                                                     </menuItem>
                                                 </items>
@@ -255,6 +267,9 @@
                                                 <items>
                                                     <menuItem title="is" state="on" id="Suc-rM-bwy">
                                                         <integer key="representedObject" value="4"/>
+                                                    </menuItem>
+                                                    <menuItem title="in" id="V7g-HX-xEg">
+                                                        <integer key="representedObject" value="10"/>
                                                     </menuItem>
                                                 </items>
                                             </menu>
@@ -312,6 +327,9 @@
                                                     </menuItem>
                                                     <menuItem title="is not" id="9dg-ta-GhL">
                                                         <integer key="representedObject" value="5"/>
+                                                    </menuItem>
+                                                    <menuItem title="in" id="rVS-YU-xT8">
+                                                        <integer key="representedObject" value="10"/>
                                                     </menuItem>
                                                 </items>
                                             </menu>
@@ -376,7 +394,7 @@
                 <customObject id="oC5-au-dyV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="6Lu-ZA-l1g"/>
             </objects>
-            <point key="canvasLocation" x="-1310" y="588"/>
+            <point key="canvasLocation" x="-1337" y="588"/>
         </scene>
         <!--Card Collection View Item-->
         <scene sceneID="gWN-GK-GDR">

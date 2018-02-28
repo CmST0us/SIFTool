@@ -46,7 +46,7 @@ class SIFRoundIconDetector {
             if let urlPath = card.roundCardIdolizedImage {
                 roundCardIdolizedImageUrl = URL(string: urlPath)
             }
-            u.append((card.id, roundCardImageUrl, roundCardIdolizedImageUrl))
+            u.append((card.id.intValue, roundCardImageUrl, roundCardIdolizedImageUrl))
         }
         return u
     }()

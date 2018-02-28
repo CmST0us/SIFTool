@@ -8,9 +8,10 @@
 
 import Cocoa
 
-class UserCardDataModel {
-    var cardId: Int
-    var idolized: Bool
+@objcMembers
+class UserCardDataModel: NSObject {
+    var cardId: Int = 0
+    var idolized: Bool = false
     
     var isImport: Bool = true
 
@@ -20,10 +21,10 @@ class UserCardDataModel {
 
     }
     
-    init() {
-        cardId = 0
-        idolized = false
+    override init() {
+        super.init()
     }
+    
 }
 
 extension UserCardDataModel: CoreDataModelBridgeProtocol {
@@ -34,3 +35,4 @@ extension UserCardDataModel: CoreDataModelBridgeProtocol {
         managedObject.setValue(idolized, forKey: "idolized")
     }
 }
+

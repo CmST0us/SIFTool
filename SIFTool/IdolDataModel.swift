@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class IdolDataModel {
+class IdolDataModel: NSObject {
     struct CodingKey {
         static let name = "name"
         static let japaneseName = "japaneseName"
@@ -36,15 +36,15 @@ class IdolDataModel {
         static let chibiSmall = "chibi_small"
     }
     
-    var name: String!
+    var name: String
     var japaneseName: String? = nil
-    var main: Bool? = nil
-    var age: Int? = nil
+    var main: NSNumber? = nil
+    var age: NSNumber? = nil
     var school: String? = nil
     var birthday: Date? = nil
     var astrologicalSign: String? = nil
     var blood: String? = nil
-    var height: Int? = nil
+    var height: NSNumber? = nil
     var measurements: String? = nil
     var favoriteFood: String? = nil
     var leastFavoriteFood: String? = nil
@@ -55,7 +55,7 @@ class IdolDataModel {
     var subUnit: String? = nil
     var cv: CVDataModel? = nil
     var summary: String? = nil
-    var websiteUrl: String!
+    var websiteUrl: String
     var wikiUrl: String? = nil
     var wikiaUrl: String? = nil
     var officialUrl: String? = nil
@@ -65,15 +65,21 @@ class IdolDataModel {
     required init(withDictionary dictionary: Dictionary<String, Any>) {
         name = dictionary[CodingKey.name] as! String
         japaneseName = dictionary[CodingKey.japaneseName] as? String
-        main = dictionary[CodingKey.main] as? Bool
-        age = dictionary[CodingKey.age] as? Int
+        if let mainRaw = dictionary[CodingKey.main] as? Bool {
+            main = NSNumber(value: mainRaw)
+        }
+        if let ageRaw = dictionary[CodingKey.age] as? Int {
+            age = NSNumber(value: ageRaw)
+        }
         school = dictionary[CodingKey.school] as? String
         if let birthdayString = dictionary[CodingKey.birthday] as? String {
             birthday = birthdayString.dateObj(withFormat: "MM-dd")
         }
         astrologicalSign = dictionary[CodingKey.astrologicalSign] as? String
         blood = dictionary[CodingKey.blood] as? String
-        height = dictionary[CodingKey.height] as? Int
+        if let heightRaw = dictionary[CodingKey.height] as? Int {
+            height = NSNumber(value: heightRaw)
+        }
         measurements = dictionary[CodingKey.measurements] as? String
         favoriteFood = dictionary[CodingKey.favoriteFood] as? String
         leastFavoriteFood = dictionary[CodingKey.leastFavoriteFood] as? String

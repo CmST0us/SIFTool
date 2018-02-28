@@ -30,11 +30,11 @@ class CardCollectionViewItem: NSCollectionViewItem {
     func setupView(withModel model: CardDataModel, idolized: Bool) {
         cardImageView.image = SIFCacheHelper.shared.image(withUrl: URL(string: (idolized ? model.roundCardIdolizedImage : model.roundCardImage) ?? ""))
         rarityLabel.stringValue = model.rarity
-        nameLabel.stringValue = model.idol.japaneseName ?? model.idol.name
+        nameLabel.stringValue = (model.idol.japaneseName ?? model.idol.name) + "(\(String(model.id.intValue)))"
         idolizedLabel.stringValue = idolized ? "已觉醒" : "未觉醒"
-        coolScoreLabel.stringValue = "Cool:\(String(model.minimumStatisticsCool ?? -1))"
-        pureScoreLabel.stringValue = "Pure:\(String(model.minimumStatisticsPure ?? -1))"
-        smileScoreLabel.stringValue = "Smile:\(String(model.minimumStatisticsSmile ?? -1))"
+        coolScoreLabel.stringValue = "Cool:\(String(model.minimumStatisticsCool?.intValue ?? -1))"
+        pureScoreLabel.stringValue = "Pure:\(String(model.minimumStatisticsPure?.intValue ?? -1))"
+        smileScoreLabel.stringValue = "Smile:\(String(model.minimumStatisticsSmile?.intValue ?? -1))"
     }
     
     static var storyboardResources: CardCollectionViewItem {

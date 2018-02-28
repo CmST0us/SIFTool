@@ -7,7 +7,9 @@
 //
 
 import Foundation
-class MiniIdolDataModel {
+
+@objcMembers
+class MiniIdolDataModel: NSObject {
     struct CodingKey {
         static let name = "name"
         static let school = "school"
@@ -17,19 +19,26 @@ class MiniIdolDataModel {
         static let subUnit = "sub_unit"
     }
     
-    var name: String!
+    var name: String {
+        if japaneseName != nil {
+            return japaneseName!
+        }
+        return englishName
+    }
     var school: String? = nil
     var year: String? = nil
     var mainUnit: String? = nil
+    var englishName: String
     var japaneseName: String? = nil
     var subUnit: String? = nil
     
     required init(withDictionary dictionary: Dictionary<String, Any>) {
-        name = dictionary[CodingKey.name] as! String
+        englishName = dictionary[CodingKey.name] as! String
         school = dictionary[CodingKey.school] as? String
         year = dictionary[CodingKey.year] as? String
         mainUnit = dictionary[CodingKey.mainUnit] as? String
         japaneseName = dictionary[CodingKey.japaneseName] as? String
         subUnit = dictionary[CodingKey.subUnit] as? String
+        super.init()
     }
 }

@@ -8,7 +8,8 @@
 
 import Foundation
 
-class CardDataModel {
+@objcMembers
+class CardDataModel: NSObject {
     
     struct CodingKey {
         static let id = "id"
@@ -80,30 +81,30 @@ class CardDataModel {
         static let all = "All"
     }
     
-    var id: Int!
-    var idol: MiniIdolDataModel!
-    var rarity: String!
-    var attribute: String!
+    var id: NSNumber
+    var idol: MiniIdolDataModel
+    var rarity: String
+    var attribute: String
     var japaneseCollection: String? = nil
     var translatedCollection: String? = nil
     var japaneseAttribute: String? = nil
-    var isPromo: Bool? = nil
+    var isPromo: NSNumber? = nil
     var promoItem: String? = nil
     var promoLink: String? = nil
     var releaseDate: Date? = nil
-    var japanOnly: Bool? = nil
+    var japanOnly: NSNumber? = nil
     var event: MiniEventDataModel? = nil
-    var isSpecial: Bool? = nil
-    var hp: Int? = nil
-    var minimumStatisticsSmile: Int? = nil
-    var minimumStatisticsPure: Int? = nil
-    var minimumStatisticsCool: Int? = nil
-    var nonIdolizedMaximumStatisticsSmile: Int? = nil
-    var nonIdolizedMaximumStatisticsPure: Int? = nil
-    var nonIdolizedMaximumStatisticsCool: Int? = nil
-    var idolizedMaximumStatisticsSmile: Int? = nil
-    var idolizedMaximumStatisticsPure: Int? = nil
-    var idolizedMaximumStatisticsCool: Int? = nil
+    var isSpecial: NSNumber? = nil
+    var hp: NSNumber? = nil
+    var minimumStatisticsSmile: NSNumber? = nil
+    var minimumStatisticsPure: NSNumber? = nil
+    var minimumStatisticsCool: NSNumber? = nil
+    var nonIdolizedMaximumStatisticsSmile: NSNumber? = nil
+    var nonIdolizedMaximumStatisticsPure: NSNumber? = nil
+    var nonIdolizedMaximumStatisticsCool: NSNumber? = nil
+    var idolizedMaximumStatisticsSmile: NSNumber? = nil
+    var idolizedMaximumStatisticsPure: NSNumber? = nil
+    var idolizedMaximumStatisticsCool: NSNumber? = nil
     var skill: String? = nil
     var japaneseSkill: String? = nil
     var skillDetails: String? = nil
@@ -118,50 +119,77 @@ class CardDataModel {
     var roundCardIdolizedImage: String? = nil
     var videoStory: String? = nil
     var japaneseVideoStory: String? = nil
-    var websiteUrl: String!
-    var nonIdolizedMaxLevel: Int? = nil
-    var idolizedMaxLevel: Int? = nil
+    var websiteUrl: String
+    var nonIdolizedMaxLevel: NSNumber? = nil
+    var idolizedMaxLevel: NSNumber? = nil
     var transparentImage: String? = nil
     var transparentIdolizedImage: String? = nil
     var cleanUr: String? = nil
     var cleanUrIdolized: String? = nil
     var skillUpCards: [SkillUpTinyCardDataModel]? = nil
     var urPair: URPairDataModel? = nil
-    var totalOwners: Int? = nil
-    var totalWishlist: Int? = nil
-    var rankingAttribute: Int? = nil
-    var rankingRarity: Int? = nil
-    var rankingSpecial: Int? = nil
+    var totalOwners: NSNumber? = nil
+    var totalWishlist: NSNumber? = nil
+    var rankingAttribute: NSNumber? = nil
+    var rankingRarity: NSNumber? = nil
+    var rankingSpecial: NSNumber? = nil
     
-    required init(withDictionary dictionary: Dictionary<String, Any>) {
-        id = dictionary[CodingKey.id] as! Int
+    init(withDictionary dictionary: Dictionary<String, Any>) {
+        let idRaw = dictionary[CodingKey.id] as! Int
+        id = NSNumber(value: idRaw)
         idol = MiniIdolDataModel(withDictionary: dictionary[CodingKey.idol] as! Dictionary<String, Any>)
         rarity = dictionary[CodingKey.rarity] as! String
         attribute = dictionary[CodingKey.attribute] as! String
         japaneseCollection = dictionary[CodingKey.japaneseCollection] as? String
         translatedCollection = dictionary[CodingKey.translatedCollection] as? String
         japaneseAttribute = dictionary[CodingKey.japaneseAttribute] as? String
-        isPromo = dictionary[CodingKey.isPromo] as? Bool
+        if let isPromoRaw = dictionary[CodingKey.isPromo] as? Bool {
+            isPromo = NSNumber(value: isPromoRaw)
+        }
         promoItem = dictionary[CodingKey.promoItem] as? String
         promoLink = dictionary[CodingKey.promoLink] as? String
         if let rd = dictionary[CodingKey.releaseDate] as? String {
             releaseDate = rd.dateObj(withFormat: "yyyy-MM-dd")
         }
-        japanOnly = dictionary[CodingKey.japanOnly] as? Bool
+        if let japanOnlyRaw = dictionary[CodingKey.japanOnly] as? Bool {
+            japanOnly = NSNumber(value: japanOnlyRaw)
+        }
         if let e = dictionary[CodingKey.event] as? Dictionary<String, Any> {
             event = MiniEventDataModel(withDictionary: e)
         }
-        isSpecial = dictionary[CodingKey.isSpecial] as? Bool
-        hp = dictionary[CodingKey.hp] as? Int
-        minimumStatisticsSmile = dictionary[CodingKey.minimumStatisticsSmile] as? Int
-        minimumStatisticsPure = dictionary[CodingKey.minimumStatisticsPure] as? Int
-        minimumStatisticsCool = dictionary[CodingKey.minimumStatisticsCool] as? Int
-        nonIdolizedMaximumStatisticsSmile = dictionary[CodingKey.nonIdolizedMaximumStatisticsSmile] as? Int
-        nonIdolizedMaximumStatisticsPure = dictionary[CodingKey.nonIdolizedMaximumStatisticsPure] as? Int
-        nonIdolizedMaximumStatisticsCool = dictionary[CodingKey.nonIdolizedMaximumStatisticsCool] as? Int
-        idolizedMaximumStatisticsSmile = dictionary[CodingKey.idolizedMaximumStatisticsSmile] as? Int
-        idolizedMaximumStatisticsPure = dictionary[CodingKey.idolizedMaximumStatisticsPure] as? Int
-        idolizedMaximumStatisticsCool = dictionary[CodingKey.idolizedMaximumStatisticsCool] as? Int
+        if let isSpecialRaw = dictionary[CodingKey.isSpecial] as? Bool {
+            isSpecial = NSNumber(value: isSpecialRaw)
+        }
+        if let hpRaw = dictionary[CodingKey.hp] as? Int {
+            hp = NSNumber(value: hpRaw)
+        }
+        if let minimumStatisticsSmileRaw = dictionary[CodingKey.minimumStatisticsSmile] as? Int {
+            minimumStatisticsSmile = NSNumber(value: minimumStatisticsSmileRaw)
+        }
+        if let minimumStatisticsPureRaw = dictionary[CodingKey.minimumStatisticsPure] as? Int {
+            minimumStatisticsPure = NSNumber(value: minimumStatisticsPureRaw)
+        }
+        if let minimumStatisticsCoolRaw = dictionary[CodingKey.minimumStatisticsCool] as? Int {
+            minimumStatisticsCool = NSNumber(value: minimumStatisticsCoolRaw)
+        }
+        if let nonIdolizedMaximumStatisticsSmileRaw = dictionary[CodingKey.nonIdolizedMaximumStatisticsSmile] as? Int {
+            nonIdolizedMaximumStatisticsSmile = NSNumber(value: nonIdolizedMaximumStatisticsSmileRaw)
+        }
+        if let nonIdolizedMaximumStatisticsPureRaw = dictionary[CodingKey.nonIdolizedMaximumStatisticsPure] as? Int {
+            nonIdolizedMaximumStatisticsPure = NSNumber(value: nonIdolizedMaximumStatisticsPureRaw)
+        }
+        if let nonIdolizedMaximumStatisticsCoolRaw = dictionary[CodingKey.nonIdolizedMaximumStatisticsCool] as? Int {
+            nonIdolizedMaximumStatisticsCool = NSNumber(value: nonIdolizedMaximumStatisticsCoolRaw)
+        }
+        if let idolizedMaximumStatisticsSmileRaw = dictionary[CodingKey.idolizedMaximumStatisticsSmile] as? Int {
+            idolizedMaximumStatisticsSmile = NSNumber(value: idolizedMaximumStatisticsSmileRaw)
+        }
+        if let idolizedMaximumStatisticsPureRaw = dictionary[CodingKey.idolizedMaximumStatisticsPure] as? Int {
+            idolizedMaximumStatisticsPure = NSNumber(value: idolizedMaximumStatisticsPureRaw)
+        }
+        if let idolizedMaximumStatisticsCoolRaw = dictionary[CodingKey.idolizedMaximumStatisticsCool] as? Int {
+            idolizedMaximumStatisticsCool = NSNumber(value: idolizedMaximumStatisticsCoolRaw)
+        }
         skill = dictionary[CodingKey.skill] as? String
         japaneseSkill = dictionary[CodingKey.japaneseSkill] as? String
         skillDetails = dictionary[CodingKey.skillDetails] as? String
@@ -185,8 +213,12 @@ class CardDataModel {
         videoStory = dictionary[CodingKey.videoStory] as? String
         japaneseVideoStory = dictionary[CodingKey.japaneseVideoStory] as? String
         websiteUrl = dictionary[CodingKey.websiteUrl] as! String
-        nonIdolizedMaxLevel = dictionary[CodingKey.nonIdolizedMaxLevel] as? Int
-        idolizedMaxLevel = dictionary[CodingKey.idolizedMaxLevel] as? Int
+        if let nonIdolizedMaxLevelRaw = dictionary[CodingKey.nonIdolizedMaxLevel] as? Int {
+            nonIdolizedMaxLevel = NSNumber(value: nonIdolizedMaxLevelRaw)
+        }
+        if let idolizedMaxLevelRaw = dictionary[CodingKey.idolizedMaxLevel] as? Int {
+            idolizedMaxLevel = NSNumber(value: idolizedMaxLevelRaw)
+        }
         if let ti = dictionary[CodingKey.transparentImage] as? String {
             transparentImage = ti.addHttpSchemaString()
         }
@@ -210,11 +242,22 @@ class CardDataModel {
         if let up = dictionary[CodingKey.urPair] as? Dictionary<String, Any> {
             urPair = URPairDataModel(withDictionary: up)
         }
-        totalOwners = dictionary[CodingKey.totalOwners] as? Int
-        totalWishlist = dictionary[CodingKey.totalWishlist] as? Int
-        rankingAttribute = dictionary[CodingKey.rankingAttribute] as? Int
-        rankingRarity = dictionary[CodingKey.rankingRarity] as? Int
-        rankingSpecial = dictionary[CodingKey.rankingSpecial] as? Int
+        if let totalOwnersRaw = dictionary[CodingKey.totalOwners] as? Int {
+            totalOwners = NSNumber(value: totalOwnersRaw)
+        }
+        if let totalWishlistRaw = dictionary[CodingKey.totalWishlist] as? Int {
+            totalWishlist = NSNumber(value: totalWishlistRaw)
+        }
+        if let rankingAttributeRaw = dictionary[CodingKey.rankingAttribute] as? Int {
+            rankingAttribute = NSNumber(value: rankingAttributeRaw)
+        }
+        if let rankingRarityRaw = dictionary[CodingKey.rankingRarity] as? Int {
+            rankingRarity = NSNumber(value: rankingRarityRaw)
+        }
+        if let rankingSpecialRaw = dictionary[CodingKey.rankingSpecial] as? Int {
+            rankingSpecial = NSNumber(value: rankingSpecialRaw)
+        }
+        super.init()
     }
 }
 
@@ -240,7 +283,7 @@ extension CardDataModel: CardApiRequestParamProtocol {
 }
 
 // MARK: - Hashable
-extension CardDataModel: Hashable {
+extension CardDataModel {
     static func ==(lhs: CardDataModel, rhs: CardDataModel) -> Bool {
         if lhs.id == rhs.id {
             return true
@@ -248,7 +291,7 @@ extension CardDataModel: Hashable {
         return false
     }
     
-    var hashValue: Int {
-        return self.id
+    override var hashValue: Int {
+        return self.id.intValue
     }
 }

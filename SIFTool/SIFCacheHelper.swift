@@ -47,7 +47,7 @@ class SIFCacheHelper {
                 var tCard: [Int: CardDataModel] = [:]
                 for dict in dictArray {
                     let card = CardDataModel(withDictionary: dict)
-                    tCard[card.id] = card
+                    tCard[card.id.intValue] = card
                 }
                 return tCard
             }
@@ -114,7 +114,7 @@ extension SIFCacheHelper {
                 if let dicts = DataModelHelper.shared.resultsDictionaries(withJsonData: data) {
                     for dict in dicts {
                         let card = CardDataModel(withDictionary: dict)
-                        self.cards[card.id] = card
+                        self.cards[card.id.intValue] = card
                         if process != nil {
                             process!(currentCardIndex, cardIdsArray.count)
                         }

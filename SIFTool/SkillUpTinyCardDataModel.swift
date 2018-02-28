@@ -7,7 +7,7 @@
 //
 
 import Foundation
-class SkillUpTinyCardDataModel {
+class SkillUpTinyCardDataModel: NSObject {
     struct CodingKey {
         static let id = "id"
         static let roundCardImage = "round_card_image"

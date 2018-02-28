@@ -20,24 +20,51 @@ class MainViewController: NSViewController {
         return UserCardStorageHelper.shared.fetchAllUserCard() ?? []
     }()
     
+    lazy var filterUserCards: [UserCardDataModel] = []
+    
+    
     @IBAction func reloadData(_ sender: Any) {
         userCards = UserCardStorageHelper.shared.fetchAllUserCard() ?? []
-        cardsInfoLabel.stringValue = "持有 \(String(userCards.count)) 种卡"
+        filterUserCards.removeAll()
+        if self.cardsFiltePredicateEditor.numberOfRows > 0 {
+            cardsInfoLabel.stringValue = "持有 \(String(filterUserCards.count)) 种卡"
+        } else {
+            cardsInfoLabel.stringValue = "持有 \(String(userCards.count)) 种卡"
+        }
+        
+        self.userCardCollectionView.reloadData()
+    }
+    
+    func filterData() {
+        if self.cardsFiltePredicateEditor.numberOfRows > 0 {
+            cardsInfoLabel.stringValue = "持有 \(String(filterUserCards.count)) 种卡"
+        } else {
+            cardsInfoLabel.stringValue = "持有 \(String(userCards.count)) 种卡"
+        }
         self.userCardCollectionView.reloadData()
     }
     
     @IBAction func startFilter(_ sender: Any) {
         self.cardsFiltePredicateEditor.addRow(nil)
     }
-    func setupPredicateEditor() {
+
+    @IBAction func predicateEditorChange(_ sender: Any) {
+        if self.cardsFiltePredicateEditor.numberOfRows == 0 {
+            reloadData(self)
+        }
+        
+        if let p = cardsFiltePredicateEditor.objectValue as? NSPredicate {
+            filterUserCards = userCards.filter({ (model) -> Bool in
+                let cardModel = SIFCacheHelper.shared.cards[model.cardId]
+                let b = p.evaluate(with: cardModel)
+                return b
+            })
+            
+        }
+        filterData()
         
     }
-    @IBAction func predicateEditorChange(_ sender: Any) {
-        for i in 0 ..< cardsFiltePredicateEditor.numberOfRows {
-            let p = cardsFiltePredicateEditor.debugDescription
-            Logger.shared.console(p)
-        }
-    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         ApiHelper.shared.baseUrlPath = "http://schoolido.lu/api"
@@ -62,13 +89,21 @@ extension MainViewController: NSCollectionViewDataSource, NSCollectionViewDelega
             }
             
         }
-        let cardDataModel = SIFCacheHelper.shared.cards[userCards[indexPath.item].cardId]
-        let idolized = userCards[indexPath.item].idolized
+        
+        var dataModel = userCards
+        if self.cardsFiltePredicateEditor.numberOfRows > 0 {
+            dataModel = filterUserCards
+        }
+        let cardDataModel = SIFCacheHelper.shared.cards[dataModel[indexPath.item].cardId]
+        let idolized = dataModel[indexPath.item].idolized
         cardCollectionViewItem.setupView(withModel: cardDataModel!, idolized: idolized)
         return cardCollectionViewItem
     }
     
     func collectionView(_ collectionView: NSCollectionView, numberOfItemsInSection section: Int) -> Int {
+        if self.cardsFiltePredicateEditor.numberOfRows > 0 {
+            return filterUserCards.count
+        }
         return userCards.count
     }
     func numberOfSections(in collectionView: NSCollectionView) -> Int {

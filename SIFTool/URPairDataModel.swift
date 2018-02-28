@@ -28,7 +28,7 @@ struct URPairCard {
         name = dictionary[CodingKey.name] as? String
     }
 }
-class URPairDataModel {
+class URPairDataModel: NSObject {
     struct CodingKey {
         static let card = "card"
         static let reverseDisplayIdolized = "reverse_display_idolized"
