@@ -99,12 +99,62 @@ class CardDataModel: NSObject {
     var minimumStatisticsSmile: NSNumber? = nil
     var minimumStatisticsPure: NSNumber? = nil
     var minimumStatisticsCool: NSNumber? = nil
+    var minimumStatisticsMax: NSNumber {
+        var smile = 0
+        var pure = 0
+        var cool = 0
+        if minimumStatisticsCool != nil {
+            cool = minimumStatisticsCool!.intValue
+        }
+        if minimumStatisticsPure != nil {
+            pure = minimumStatisticsPure!.intValue
+        }
+        if minimumStatisticsSmile != nil {
+            smile = minimumStatisticsSmile!.intValue
+        }
+        let maxValue = [smile, pure, cool].max()!
+        return NSNumber(value: maxValue)
+    }
+    
     var nonIdolizedMaximumStatisticsSmile: NSNumber? = nil
     var nonIdolizedMaximumStatisticsPure: NSNumber? = nil
     var nonIdolizedMaximumStatisticsCool: NSNumber? = nil
+    var nonIdolizedMaximumStatisticsMax: NSNumber {
+        var smile = 0
+        var pure = 0
+        var cool = 0
+        if nonIdolizedMaximumStatisticsCool != nil {
+            cool = nonIdolizedMaximumStatisticsCool!.intValue
+        }
+        if nonIdolizedMaximumStatisticsPure != nil {
+            pure = nonIdolizedMaximumStatisticsPure!.intValue
+        }
+        if nonIdolizedMaximumStatisticsSmile != nil {
+            smile = nonIdolizedMaximumStatisticsSmile!.intValue
+        }
+        let maxValue = [smile, pure, cool].max()!
+        return NSNumber(value: maxValue)
+    }
+    
     var idolizedMaximumStatisticsSmile: NSNumber? = nil
     var idolizedMaximumStatisticsPure: NSNumber? = nil
     var idolizedMaximumStatisticsCool: NSNumber? = nil
+    var idolizedMaximumStatisticsMax: NSNumber {
+        var smile = 0
+        var pure = 0
+        var cool = 0
+        if idolizedMaximumStatisticsCool != nil {
+            cool = idolizedMaximumStatisticsCool!.intValue
+        }
+        if idolizedMaximumStatisticsPure != nil {
+            pure = idolizedMaximumStatisticsPure!.intValue
+        }
+        if idolizedMaximumStatisticsSmile != nil {
+            smile = idolizedMaximumStatisticsSmile!.intValue
+        }
+        let maxValue = [smile, pure, cool].max()!
+        return NSNumber(value: maxValue)
+    }
     var skill: String? = nil
     var japaneseSkill: String? = nil
     var skillDetails: String? = nil
