@@ -155,6 +155,35 @@ class CardDataModel: NSObject {
         let maxValue = [smile, pure, cool].max()!
         return NSNumber(value: maxValue)
     }
+    
+    func statisticsSmile(idolized: Bool) -> NSNumber? {
+        if idolized {
+            return idolizedMaximumStatisticsSmile
+        }
+        return nonIdolizedMaximumStatisticsSmile
+    }
+    
+    func statisticsPure(idolized: Bool) -> NSNumber? {
+        if idolized {
+            return idolizedMaximumStatisticsPure
+        }
+        return nonIdolizedMaximumStatisticsPure
+    }
+    
+    func statisticsCool(idolized: Bool) -> NSNumber? {
+        if idolized {
+            return idolizedMaximumStatisticsCool
+        }
+        return nonIdolizedMaximumStatisticsCool
+    }
+    
+    func statisticsMax(idolized: Bool) -> NSNumber {
+        if idolized {
+            return idolizedMaximumStatisticsMax
+        }
+        return nonIdolizedMaximumStatisticsMax
+    }
+    
     var skill: String? = nil
     var japaneseSkill: String? = nil
     var skillDetails: String? = nil

@@ -108,14 +108,14 @@
                                 <rect key="frame" x="20" y="23" width="390" height="406"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                 <clipView key="contentView" ambiguous="YES" id="QkG-uS-Prw">
-                                    <rect key="frame" x="1" y="1" width="388" height="404"/>
+                                    <rect key="frame" x="1" y="1" width="373" height="404"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <textView ambiguous="YES" importsGraphics="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" smartInsertDelete="YES" id="ZV9-fl-TG3">
-                                            <rect key="frame" x="0.0" y="0.0" width="388" height="404"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="373" height="404"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                            <size key="minSize" width="388" height="404"/>
+                                            <size key="minSize" width="373" height="404"/>
                                             <size key="maxSize" width="463" height="10000000"/>
                                             <attributedString key="textStorage">
                                                 <fragment content="LOG">
@@ -135,7 +135,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="rki-VL-HSq">
-                                    <rect key="frame" x="373" y="1" width="16" height="404"/>
+                                    <rect key="frame" x="374" y="1" width="15" height="404"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>
@@ -329,7 +329,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="aga-ck-MH4">
-                                    <rect key="frame" x="1" y="7" width="0.0" height="16"/>
+                                    <rect key="frame" x="1" y="8" width="0.0" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="jaE-Af-KNm">
@@ -446,7 +446,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="232.5" y="841.5"/>
+            <point key="canvasLocation" x="341" y="842"/>
         </scene>
     </scenes>
 </document>

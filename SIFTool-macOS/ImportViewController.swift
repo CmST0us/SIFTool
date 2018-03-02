@@ -103,6 +103,7 @@ class ImportCardViewController: NSViewController {
                         userCard.cardId = card!.0.id.intValue
                         userCard.idolized = card!.1
                         userCard.isImport = true
+                        userCard.user = UserDefaults.init().value(forKey: "user") as? String ?? "default"
                         self.cards.append((userCard, NSImage.init(cvMat: roiClone)))
                             Logger.shared.output("find card, id: \(String(card!.0.id.intValue))")
                     }

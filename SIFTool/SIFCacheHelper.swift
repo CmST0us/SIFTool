@@ -136,7 +136,9 @@ extension SIFCacheHelper {
     
     func deleteCardsCache() throws {
         do {
-            try FileManager.default.removeItem(atPath: cacheDirectory.appendingPathComponent("cards.json"))
+            if FileManager.default.fileExists(atPath: cacheDirectory.appendingPathComponent("cards.json")) {
+                try FileManager.default.removeItem(atPath: cacheDirectory.appendingPathComponent("cards.json"))
+            }
         } catch {
             throw error
         }

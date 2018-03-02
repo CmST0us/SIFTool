@@ -32,9 +32,9 @@ class CardCollectionViewItem: NSCollectionViewItem {
         rarityLabel.stringValue = model.rarity
         nameLabel.stringValue = (model.idol.japaneseName ?? model.idol.name) + "(\(String(model.id.intValue)))"
         idolizedLabel.stringValue = idolized ? "已觉醒" : "未觉醒"
-        coolScoreLabel.stringValue = "Cool:\(String(model.minimumStatisticsCool?.intValue ?? -1))"
-        pureScoreLabel.stringValue = "Pure:\(String(model.minimumStatisticsPure?.intValue ?? -1))"
-        smileScoreLabel.stringValue = "Smile:\(String(model.minimumStatisticsSmile?.intValue ?? -1))"
+        coolScoreLabel.stringValue = "Cool:\(String(model.statisticsCool(idolized: idolized)?.intValue ?? -1))"
+        pureScoreLabel.stringValue = "Pure:\(String(model.statisticsPure(idolized: idolized)?.intValue ?? -1))"
+        smileScoreLabel.stringValue = "Smile:\(String(model.statisticsSmile(idolized: idolized)?.intValue ?? -1))"
     }
     
     static var storyboardResources: CardCollectionViewItem {

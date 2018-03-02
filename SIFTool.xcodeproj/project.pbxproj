@@ -50,6 +50,8 @@
 		4F1EB1FE203FE2630003BA0C /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
 		4F1EB1FF203FE2630003BA0C /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
 		4F1EB200203FE2630003BA0C /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
+		4F2C02B22049C2B4001086B7 /* CreateNewCardSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2C02B12049C2B4001086B7 /* CreateNewCardSetViewController.swift */; };
+		4F2C02B52049C2D1001086B7 /* OpenCardSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2C02B32049C2D1001086B7 /* OpenCardSetViewController.swift */; };
 		4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
 		4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9720347AB70025741A /* ApiRequestParam.swift */; };
@@ -159,6 +161,8 @@
 		4F1EB1F7203F2D700003BA0C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		4F1EB1F8203FBB6D0003BA0C /* CardTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTableCellView.swift; sourceTree = "<group>"; };
 		4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCacheHelper.swift; sourceTree = "<group>"; };
+		4F2C02B12049C2B4001086B7 /* CreateNewCardSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNewCardSetViewController.swift; sourceTree = "<group>"; };
+		4F2C02B32049C2D1001086B7 /* OpenCardSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenCardSetViewController.swift; sourceTree = "<group>"; };
 		4F4F5F8F203479420025741A /* SIFTool-macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "SIFTool-macOS.entitlements"; sourceTree = "<group>"; };
 		4F4F5F90203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.storyboard"; sourceTree = "<group>"; };
 		4F4F5F91203479930025741A /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = "zh-Hans"; path = "zh-Hans.lproj/Main.storyboard"; sourceTree = "<group>"; };
@@ -246,6 +250,8 @@
 			isa = PBXGroup;
 			children = (
 				4F1EB1F1203EBFDB0003BA0C /* ImportViewController.swift */,
+				4F2C02B12049C2B4001086B7 /* CreateNewCardSetViewController.swift */,
+				4F2C02B32049C2D1001086B7 /* OpenCardSetViewController.swift */,
 				4F079B99204072B100ED4728 /* MainViewController.swift */,
 				4F83C2472045A9100071C58E /* MainWindowController.swift */,
 				4FEA5F142034686700F03CCC /* CVViewController.swift */,
@@ -835,6 +841,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FEA5F312034699500F03CCC /* CoreDataHelper.swift in Sources */,
+				4F2C02B52049C2D1001086B7 /* OpenCardSetViewController.swift in Sources */,
 				4F079B9E204075E500ED4728 /* CardCollectionViewItem.swift in Sources */,
 				4FEA5F152034686700F03CCC /* CVViewController.swift in Sources */,
 				4FEA5F132034686700F03CCC /* AppDelegate.swift in Sources */,
@@ -866,6 +873,7 @@
 				4F4F5FD720349B810025741A /* String+Date.swift in Sources */,
 				4F4F5FA9203480CD0025741A /* MiniEventDataModel.swift in Sources */,
 				4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */,
+				4F2C02B22049C2B4001086B7 /* CreateNewCardSetViewController.swift in Sources */,
 				4F4F5FA2203480870025741A /* CardDataModel.swift in Sources */,
 				4F08640420373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm in Sources */,
 				4F4F5F9C20347D160025741A /* Dictionary+URLParam.swift in Sources */,

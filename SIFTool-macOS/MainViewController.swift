@@ -10,6 +10,10 @@ import Cocoa
 
 class MainViewController: NSViewController {
     
+    struct NotificationName {
+        static let reloadData = "MainViewController.reloadData"
+    }
+    
     @IBOutlet weak var userCardCollectionView: NSCollectionView!
     
     @IBOutlet weak var cardsInfoLabel: NSTextField!
@@ -23,10 +27,12 @@ class MainViewController: NSViewController {
     @IBOutlet weak var sortMethodSegmentedControl: NSSegmentedControl!
     
     private lazy var userCards: [UserCardDataModel] = {
-        return UserCardStorageHelper.shared.fetchAllUserCard() ?? []
+        return UserCardStorageHelper.shared.fetchAllUserCard(user: user) ?? []
     }()
     
     private lazy var filterUserCards: [UserCardDataModel] = []
+    
+    lazy var user: String = UserDefaults.init().value(forKey: "user") as? String ?? "default"
     
     var collectionViewDataModel: [UserCardDataModel] {
         if self.cardsFiltePredicateEditor.numberOfRows > 0 {
@@ -46,16 +52,45 @@ class MainViewController: NSViewController {
             let aCard = SIFCacheHelper.shared.cards[a.cardId]!
             let bCard = SIFCacheHelper.shared.cards[b.cardId]!
             
+            /*
+              <rank attr=min>
+                 <attribute attr=Cool> </attribute>
+                 <attribute attr=Pure> </attribute>
+                 <attribute attr=Smile> </attribute>
+                 <attribute attr=All> </attribute>
+             </rank>
+             <rank attr=nonidolized>
+                 <attribute attr=Cool> </attribute>
+                 <attribute attr=Pure> </attribute>
+                 <attribute attr=Smile> </attribute>
+                 <attribute attr=All> </attribute>
+             </rank>
+             <rank attr=idolized>
+                 <attribute attr=Cool> </attribute>
+                 <attribute attr=Pure> </attribute>
+                 <attribute attr=Smile> </attribute>
+                 <attribute attr=All> </attribute>
+             </rank>
+             <rank attr=user>
+                 <attribute attr=Cool> </attribute>
+                 <attribute attr=Pure> </attribute>
+                 <attribute attr=Smile> </attribute>
+                 <attribute attr=All> </attribute>
+             </rank>
+             */
             let aSortArray = [
                 [aCard.minimumStatisticsCool, aCard.minimumStatisticsPure, aCard.minimumStatisticsSmile, aCard.minimumStatisticsMax],
                 [aCard.nonIdolizedMaximumStatisticsCool, aCard.nonIdolizedMaximumStatisticsPure, aCard.nonIdolizedMaximumStatisticsSmile, aCard.nonIdolizedMaximumStatisticsMax],
-                [aCard.idolizedMaximumStatisticsCool, aCard.idolizedMaximumStatisticsPure, aCard.idolizedMaximumStatisticsSmile, aCard.idolizedMaximumStatisticsMax]
+                [aCard.idolizedMaximumStatisticsCool, aCard.idolizedMaximumStatisticsPure, aCard.idolizedMaximumStatisticsSmile, aCard.idolizedMaximumStatisticsMax],
+                [aCard.statisticsCool(idolized: a.idolized), aCard.statisticsPure(idolized: a.idolized), aCard.statisticsSmile(idolized: a.idolized), aCard.statisticsMax(idolized: a.idolized)]
+                
             ]
             
             let bSortArray = [
                 [bCard.minimumStatisticsCool, bCard.minimumStatisticsPure, bCard.minimumStatisticsSmile, bCard.minimumStatisticsMax],
                 [bCard.nonIdolizedMaximumStatisticsCool, bCard.nonIdolizedMaximumStatisticsPure, bCard.nonIdolizedMaximumStatisticsSmile, bCard.nonIdolizedMaximumStatisticsMax],
-                [bCard.idolizedMaximumStatisticsCool, bCard.idolizedMaximumStatisticsPure, bCard.idolizedMaximumStatisticsSmile, bCard.idolizedMaximumStatisticsMax]
+                [bCard.idolizedMaximumStatisticsCool, bCard.idolizedMaximumStatisticsPure, bCard.idolizedMaximumStatisticsSmile, bCard.idolizedMaximumStatisticsMax],
+                [bCard.statisticsCool(idolized: b.idolized), bCard.statisticsPure(idolized: b.idolized), bCard.statisticsSmile(idolized: b.idolized), bCard.statisticsMax(idolized: b.idolized)]
             ]
             
             let attributeSegmentedIndex = self.sortAttributeSegmentedControl.selectedSegment
@@ -71,16 +106,22 @@ class MainViewController: NSViewController {
             return sortScoreA < sortScoreB
         }
     }
-    @IBAction func reloadData(_ sender: Any) {
-        userCards = UserCardStorageHelper.shared.fetchAllUserCard() ?? []
+    @objc func reloadData(_ sender: Any) {
+        self.user = UserDefaults.init().value(forKey: "user") as? String ?? "default"
+        userCards = UserCardStorageHelper.shared.fetchAllUserCard(user: user) ?? []
         filterUserCards.removeAll()
-        cardsInfoLabel.stringValue = "持有 \(String(collectionViewDataModel.count)) 种卡"
+        cardsInfoLabel.stringValue = "\(self.user) 持有 \(String(collectionViewDataModel.count)) 种卡"
         self.userCardCollectionView.reloadData()
     }
     
     func filterData() {
-        cardsInfoLabel.stringValue = "持有 \(String(collectionViewDataModel.count)) 种卡"
+        cardsInfoLabel.stringValue = "\(self.user) 持有 \(String(collectionViewDataModel.count)) 种卡"
         self.userCardCollectionView.reloadData()
+    }
+    
+    @IBAction func deleteAllCards(_ sender: Any) {
+        UserCardStorageHelper.shared.removeAllUserCards(user: self.user)
+        self.reloadData(self)
     }
     
     @IBAction func startFilter(_ sender: Any) {
@@ -118,8 +159,10 @@ class MainViewController: NSViewController {
         ApiHelper.shared.baseUrlPath = "http://schoolido.lu/api"
         ApiHelper.shared.taskWaitTime = 15
         SIFCacheHelper.shared.cacheDirectory = "/Users/cmst0us/Downloads/round_card_images"
-        cardsInfoLabel.stringValue = "持有 \(String(collectionViewDataModel.count)) 种卡"
+        cardsInfoLabel.stringValue = "\(self.user) 持有 \(String(collectionViewDataModel.count)) 种卡"
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData(_:)), name: NSNotification.Name.init(ImportCardViewController.NotificationName.importOk), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData(_:)), name: NSNotification.Name(rawValue: NotificationName.reloadData), object: nil)
+        
     }
     
 }
