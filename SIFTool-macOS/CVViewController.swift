@@ -14,6 +14,7 @@ class CVViewController: NSViewController {
     @IBOutlet weak var threshParams: NSTextField!
     @IBOutlet weak var morphyParams: NSTextField!
     @IBOutlet weak var covertParams: NSTextField!
+    @IBOutlet weak var gaussParams: NSTextField!
     @IBOutlet weak var imageView: NSImageView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,7 @@ class CVViewController: NSViewController {
         Logger.shared.console("threshParam: \(threshParams.stringValue)")
         Logger.shared.console("mor: \(morphyParams.stringValue)")
         Logger.shared.console("covertParam: \(covertParams.stringValue)")
+        Logger.shared.console("gauss: \(gaussParams.stringValue)")
     }
     
     @IBAction func doMorph(_ sender: Any) {
@@ -65,47 +67,91 @@ class CVViewController: NSViewController {
         dumpParam()
     }
     
+    @IBAction func doGauss(_ sender: Any) {
+        let m = imageView.image?.mat
+        let paramsString = gaussParams.stringValue
+        let params = paramsString.split(separator: "|")
+        let sizeString = String(params[0])
+        let sizeArray = sizeString.split(separator: ",")
+        let size = CGSize.init(width: Int(sizeArray[0])!, height: Int(sizeArray[1])!)
+        let sigmaX = Double(params[1])!
+        let sigmaY = Double(params[2])!
+        let nm = OpenCVBridgeSwiftHelper.sharedInstance().gaussianBlur(withImage: m!, kernelSize: size, sigmaX: sigmaX, sigmaY: sigmaY, borderType: CVBridgeBorderType.default)
+        
+        imageView.image = NSImage.init(cvMat: nm)
+        dumpParam()
+    }
     @IBAction func resetImage(_ sender: Any) {
         imageView.image = NSImage(named: NSImage.Name("\(imageNameTextField.stringValue)"))
     }
     @IBAction func drawContours(_ sender: Any) {
         var m = imageView.image?.mat
         let channel = OpenCVBridgeSwiftHelper.sharedInstance().splitImage(m!) as! [CVMat]
-        
         m = channel[0]
         
-        let cloneM = m?.clone()
-        
-        let output = OpenCVBridgeSwiftHelper.sharedInstance().findContours(withImage: m!, mode: CVBridgeRetrievalMode.external, method: CVBridgeApproximationMode.none, offsetPoint: CGPoint.zero) as! [[NSValue]]
-        
-        var minX = CGFloat.greatestFiniteMagnitude
-        var maxX = CGFloat.leastNormalMagnitude
-        var maxXPlusWeight = CGFloat.leastNormalMagnitude
-        var minY = CGFloat.greatestFiniteMagnitude
-        var maxY = CGFloat.leastNormalMagnitude
-        var maxYPlusHeight = CGFloat.leastNormalMagnitude
-        
-        for contours in output {
-            let rect = contours.contoursRect()
-            let area = rect.size.width * rect.size.height
-            if area < 50 * 50 {
-                continue
-            }
-            let aspectRadio = Double(rect.size.width / rect.size.height)
-            let aspectRadioThresh = 0.2
-            if abs(aspectRadio - 1) > aspectRadioThresh {
-                continue
-            }
+        func findContours(mat: CVMat, step: Int) -> CVMat {
+            let cloneMat = mat.clone()
+            let output = OpenCVBridgeSwiftHelper.sharedInstance().findContours(withImage: mat, mode: CVBridgeRetrievalMode.external, method: CVBridgeApproximationMode.none, offsetPoint: CGPoint.zero) as! [[NSValue]]
             
-            minX = Swift.min(minX, rect.origin.x)
-            maxX = Swift.max(maxX, rect.origin.x)
-            minY = Swift.min(minY, rect.origin.y)
-            maxY = Swift.max(maxY, rect.origin.y)
-            maxXPlusWeight = Swift.max(maxXPlusWeight, maxX + rect.size.width)
-            maxYPlusHeight = Swift.max(maxYPlusHeight, maxY + rect.size.height)
-            OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: cloneM!, rect: rect, r: 255, g: 255, b: 255)
+            var minX = CGFloat.greatestFiniteMagnitude
+            var maxX = CGFloat.leastNormalMagnitude
+            var maxXPlusWeight = CGFloat.leastNormalMagnitude
+            var minY = CGFloat.greatestFiniteMagnitude
+            var maxY = CGFloat.leastNormalMagnitude
+            var maxYPlusHeight = CGFloat.leastNormalMagnitude
+            var maxWidth = CGFloat.leastNormalMagnitude
+            var maxHeight = CGFloat.leastNormalMagnitude
+            for contours in output {
+                let rect = contours.contoursRect()
+                let area = rect.size.width * rect.size.height
+                if area < 80 * 80 {
+                    continue
+                }
+                let aspectRadio = Double(rect.size.width / rect.size.height)
+                let aspectRadioThresh = 0.2
+                if abs(aspectRadio - 1) > aspectRadioThresh {
+                    continue
+                }
+                
+                minX = Swift.min(minX, rect.origin.x)
+                maxX = Swift.max(maxX, rect.origin.x)
+                minY = Swift.min(minY, rect.origin.y)
+                maxY = Swift.max(maxY, rect.origin.y)
+                maxWidth = Swift.max(maxWidth, rect.size.width)
+                maxHeight = Swift.max(maxHeight, rect.size.height)
+                
+                maxXPlusWeight = Swift.max(maxXPlusWeight, maxWidth + maxX)
+                maxYPlusHeight = Swift.max(maxYPlusHeight, maxHeight + maxY)
+                if step == 1{
+                    OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: cloneMat, rect: rect, r: 255, g: 255, b: 255)
+                }
+            }
+            if step == 0 {
+                var w = maxXPlusWeight
+                var h = maxYPlusHeight
+                if w > cloneMat.size().width {
+                    w = cloneMat.size().width - minX - 1
+                } else {
+                    w = maxXPlusWeight - minX
+                }
+                
+                if h > cloneMat.size().height {
+                    h = cloneMat.size().height - minY - 1
+                } else {
+                    h = maxYPlusHeight - minY
+                }
+                // user 8 pix offset to avoid button layout in 1080p screenshot
+                let roiMat = cloneMat.roi(at: CGRect.init(x: minX, y: minY + 8, width: w, height: h - 8))
+                let centerY = roiMat.size().height / 2 - 1
+                let centerBrokeArrowRect = CGRect.init(x: 0, y: centerY, width: roiMat.size().width, height: 2)
+                OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat, rect: centerBrokeArrowRect, r: 0, g: 0, b: 0)
+                return roiMat
+            }
+            return cloneMat
         }
-        imageView.image = NSImage(cvMat: cloneM!)
+        let roi = findContours(mat: m!, step: 0)
+        let drawMat = findContours(mat: roi, step: 1)
+        imageView.image = NSImage(cvMat: drawMat)
         Logger.shared.console("Draw")
         
     }

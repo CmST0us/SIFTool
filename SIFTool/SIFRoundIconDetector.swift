@@ -84,27 +84,76 @@ class SIFRoundIconDetector {
         return roi
     }
     
-    func search(screenShoot: CVMat) -> [CGRect] {
-        let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: screenShoot, targetColor: CVBridgeColorCovertType.bgr2Gray)
-        let binrayMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 250.0, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
 
-        let contoursArray = OpenCVBridgeSwiftHelper.sharedInstance().findContours(withImage: binrayMat, mode: CVBridgeRetrievalMode.external, method: CVBridgeApproximationMode.none, offsetPoint: CGPoint.zero) as! [[NSValue]]
-        
+    func search(screenshot: CVMat) -> (CGRect, [CGRect]) {
+        let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: screenshot, targetColor: CVBridgeColorCovertType.bgr2Gray)
+        let binrayMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 220.0, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
         var outputArray: [CGRect] = []
-        for contours in contoursArray {
-            let rect = contours.contoursRect()
-            let area = rect.size.width * rect.size.height
-            if area < 50 * 50 {
-                continue
+        var screenshotRoiRect: CGRect!
+        func findContours(mat: CVMat, step: Int) -> CVMat {
+            let cloneMat = mat.clone()
+            let output = OpenCVBridgeSwiftHelper.sharedInstance().findContours(withImage: mat, mode: CVBridgeRetrievalMode.external, method: CVBridgeApproximationMode.none, offsetPoint: CGPoint.zero) as! [[NSValue]]
+            
+            var minX = CGFloat.greatestFiniteMagnitude
+            var maxX = CGFloat.leastNormalMagnitude
+            var maxXPlusWeight = CGFloat.leastNormalMagnitude
+            var minY = CGFloat.greatestFiniteMagnitude
+            var maxY = CGFloat.leastNormalMagnitude
+            var maxYPlusHeight = CGFloat.leastNormalMagnitude
+            var maxWidth = CGFloat.leastNormalMagnitude
+            var maxHeight = CGFloat.leastNormalMagnitude
+            for contours in output {
+                let rect = contours.contoursRect()
+                let area = rect.size.width * rect.size.height
+                if area < 80 * 80 {
+                    continue
+                }
+                let aspectRadio = Double(rect.size.width / rect.size.height)
+                let aspectRadioThresh = 0.2
+                if abs(aspectRadio - 1) > aspectRadioThresh {
+                    continue
+                }
+                
+                minX = Swift.min(minX, rect.origin.x)
+                maxX = Swift.max(maxX, rect.origin.x)
+                minY = Swift.min(minY, rect.origin.y)
+                maxY = Swift.max(maxY, rect.origin.y)
+                maxWidth = Swift.max(maxWidth, rect.size.width)
+                maxHeight = Swift.max(maxHeight, rect.size.height)
+                
+                maxXPlusWeight = Swift.max(maxXPlusWeight, maxWidth + maxX)
+                maxYPlusHeight = Swift.max(maxYPlusHeight, maxHeight + maxY)
+                if step == 1{
+                    outputArray.append(rect)
+                }
             }
-            let aspectRadio = Double(rect.size.width / rect.size.height)
-            let aspectRadioThresh = 0.2
-            if abs(aspectRadio - 1) > aspectRadioThresh {
-                continue
+            if step == 0 {
+                var w = maxXPlusWeight
+                var h = maxYPlusHeight
+                if w > cloneMat.size().width {
+                    w = cloneMat.size().width - minX - 1
+                } else {
+                    w = maxXPlusWeight - minX
+                }
+                
+                if h > cloneMat.size().height {
+                    h = cloneMat.size().height - minY - 1
+                } else {
+                    h = maxYPlusHeight - minY
+                }
+                // user 8 pix offset to avoid button layout in 1080p screenshot
+                screenshotRoiRect = CGRect.init(x: minX, y: minY + 8, width: w, height: h - 8)
+                let roiMat = cloneMat.roi(at: screenshotRoiRect)
+                let centerY = roiMat.size().height / 2 - 1
+                let centerBrokeArrowRect = CGRect.init(x: 0, y: centerY, width: roiMat.size().width, height: 2)
+                OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat, rect: centerBrokeArrowRect, r: 0, g: 0, b: 0)
+                return roiMat
+                
             }
-            outputArray.append(rect)
+            return cloneMat
         }
-        return outputArray
+        let _ = findContours(mat: findContours(mat: binrayMat, step: 0), step: 1)
+        return (screenshotRoiRect, outputArray)
     }
     
     

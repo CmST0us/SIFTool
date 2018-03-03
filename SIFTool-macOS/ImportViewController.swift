@@ -26,7 +26,7 @@ class ImportCardViewController: NSViewController {
     
     var detector: SIFRoundIconDetector!
     
-    var screenShoots: [NSImage] = []
+    var screenshots: [NSImage] = []
     
     var cards: [(UserCardDataModel, NSImage)] = []
     
@@ -66,7 +66,7 @@ class ImportCardViewController: NSViewController {
     @IBAction func selectScreenShootAction(_ sender: NSPopUpButton) {
         switch sender.indexOfSelectedItem {
         case 0:
-            self.screenShoots.removeAll()
+            self.screenshots.removeAll()
             openSelectFilePlane { (urls) in
                 guard urls != nil else {
                     return
@@ -74,7 +74,7 @@ class ImportCardViewController: NSViewController {
                 for url in urls! {
                     Logger.shared.output("选择文件\(url.absoluteString)")
                     let image = NSImage.init(contentsOf: url)
-                    self.screenShoots.append(image!)
+                    self.screenshots.append(image!)
                 }
             }
         default:
@@ -86,11 +86,11 @@ class ImportCardViewController: NSViewController {
         self.cards.removeAll()
         requestActivitor.startAnimation(nil)
         DispatchQueue.global().async {
-            for screenShoot in self.screenShoots {
-                let mat = screenShoot.mat
-                let results = self.detector.search(screenShoot: mat)
-                for result in results {
-                    let roi = mat.roi(at: result)
+            for screenshot in self.screenshots {
+                let mat = screenshot.mat
+                let results = self.detector.search(screenshot: mat)
+                for result in results.1 {
+                    let roi = mat.roi(at: results.0).roi(at: result)
                     let roiClone = roi.clone()
                     let template = self.detector.makeTemplateImagePattern(image: roi)
                     if let point = self.detector.match(image: template) {
