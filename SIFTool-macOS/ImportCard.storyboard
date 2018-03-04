@@ -178,7 +178,7 @@
                                             <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                             <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                             <tableColumns>
-                                                <tableColumn identifier="card" width="299" minWidth="280" maxWidth="305" id="bVv-VL-pY7">
+                                                <tableColumn identifier="card" width="270" minWidth="270" maxWidth="305" id="bVv-VL-pY7">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="卡片">
                                                         <font key="font" metaFont="smallSystem"/>
                                                         <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -192,11 +192,11 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="cardCell" id="iEc-6s-8sZ" customClass="CardTableCellView" customModule="SIFTool_macOS" customModuleProvider="target">
-                                                            <rect key="frame" x="1" y="1" width="299" height="100"/>
+                                                            <rect key="frame" x="1" y="1" width="270" height="100"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ie3-GR-FyA">
-                                                                    <rect key="frame" x="8" y="8" width="283" height="84"/>
+                                                                    <rect key="frame" x="8" y="8" width="254" height="84"/>
                                                                     <subviews>
                                                                         <imageView horizontalHuggingPriority="750" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gq0-K2-HF1">
                                                                             <rect key="frame" x="0.0" y="2" width="80" height="80"/>
@@ -207,7 +207,7 @@
                                                                             <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="F0c-Qj-PDE"/>
                                                                         </imageView>
                                                                         <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8sb-AK-dkh">
-                                                                            <rect key="frame" x="88" y="34" width="195" height="17"/>
+                                                                            <rect key="frame" x="88" y="34" width="166" height="17"/>
                                                                             <subviews>
                                                                                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="2og-jq-CQe">
                                                                                     <rect key="frame" x="-2" y="0.0" width="54" height="17"/>
@@ -218,7 +218,7 @@
                                                                                     </textFieldCell>
                                                                                 </textField>
                                                                                 <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="iFY-ou-kA0">
-                                                                                    <rect key="frame" x="56" y="0.0" width="141" height="17"/>
+                                                                                    <rect key="frame" x="56" y="0.0" width="112" height="17"/>
                                                                                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="IDOLNAME" id="NnK-bf-lhz">
                                                                                         <font key="font" metaFont="systemBold"/>
                                                                                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -260,6 +260,38 @@
                                                         </tableCellView>
                                                     </prototypeCellViews>
                                                 </tableColumn>
+                                                <tableColumn identifier="kizuna" width="30" minWidth="30" maxWidth="36" id="Bka-kL-JBw">
+                                                    <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="绊满">
+                                                        <font key="font" metaFont="smallSystem"/>
+                                                        <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </tableHeaderCell>
+                                                    <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="hgN-7f-aoO">
+                                                        <font key="font" metaFont="system"/>
+                                                        <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                        <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                                    </textFieldCell>
+                                                    <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                                    <prototypeCellViews>
+                                                        <tableCellView identifier="kizunaCell" id="t0a-ck-xM9" customClass="CheckBoxTableCellView" customModule="SIFTool_macOS" customModuleProvider="target">
+                                                            <rect key="frame" x="274" y="1" width="30" height="100"/>
+                                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                            <subviews>
+                                                                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="866-G0-pMG">
+                                                                    <rect key="frame" x="5" y="40" width="20" height="20"/>
+                                                                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" state="on" inset="2" id="yhv-Dh-1Sg">
+                                                                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                                                        <font key="font" metaFont="system"/>
+                                                                    </buttonCell>
+                                                                </button>
+                                                            </subviews>
+                                                            <connections>
+                                                                <outlet property="checkBoxButton" destination="866-G0-pMG" id="HCA-EL-qiV"/>
+                                                            </connections>
+                                                        </tableCellView>
+                                                    </prototypeCellViews>
+                                                </tableColumn>
                                                 <tableColumn identifier="idolized" width="30" minWidth="30" maxWidth="30" id="K7A-ur-t3Y">
                                                     <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="觉醒">
                                                         <font key="font" metaFont="smallSystem"/>
@@ -274,13 +306,13 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="idolizedCell" id="jfc-tk-bJk" customClass="CheckBoxTableCellView" customModule="SIFTool_macOS" customModuleProvider="target">
-                                                            <rect key="frame" x="303" y="1" width="30" height="100"/>
+                                                            <rect key="frame" x="307" y="1" width="30" height="100"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gZ6-zF-OTM">
                                                                     <rect key="frame" x="5" y="40" width="20" height="20"/>
                                                                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="only" state="on" inset="2" id="vr1-en-WPr">
+                                                                    <buttonCell key="cell" type="check" bezelStyle="regularSquare" imagePosition="overlaps" state="on" inset="2" id="vr1-en-WPr">
                                                                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                                                         <font key="font" metaFont="system"/>
                                                                     </buttonCell>
@@ -306,7 +338,7 @@
                                                     <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                                     <prototypeCellViews>
                                                         <tableCellView identifier="importCell" id="RJg-id-Fr5" customClass="CheckBoxTableCellView" customModule="SIFTool_macOS" customModuleProvider="target">
-                                                            <rect key="frame" x="336" y="1" width="30" height="100"/>
+                                                            <rect key="frame" x="340" y="1" width="30" height="100"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <subviews>
                                                                 <button horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fd0-FM-3Zg">
@@ -329,7 +361,7 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="aga-ck-MH4">
-                                    <rect key="frame" x="1" y="8" width="0.0" height="15"/>
+                                    <rect key="frame" x="1" y="355" width="376" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="jaE-Af-KNm">
@@ -446,7 +478,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="341" y="842"/>
+            <point key="canvasLocation" x="340.5" y="841.5"/>
         </scene>
     </scenes>
 </document>

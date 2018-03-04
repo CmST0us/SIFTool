@@ -27,14 +27,15 @@ class CardCollectionViewItem: NSCollectionViewItem {
         
     }
     
-    func setupView(withModel model: CardDataModel, idolized: Bool) {
-        cardImageView.image = SIFCacheHelper.shared.image(withUrl: URL(string: (idolized ? model.roundCardIdolizedImage : model.roundCardImage) ?? ""))
+    func setupView(withCardModel model: CardDataModel, userCard: UserCardDataModel) {
+        cardImageView.image = SIFCacheHelper.shared.image(withUrl: URL(string: (userCard.idolized ? model.roundCardIdolizedImage : model.roundCardImage) ?? ""))
         rarityLabel.stringValue = model.rarity
         nameLabel.stringValue = (model.idol.japaneseName ?? model.idol.name) + "(\(String(model.id.intValue)))"
-        idolizedLabel.stringValue = idolized ? "已觉醒" : "未觉醒"
-        coolScoreLabel.stringValue = "Cool:\(String(model.statisticsCool(idolized: idolized)?.intValue ?? -1))"
-        pureScoreLabel.stringValue = "Pure:\(String(model.statisticsPure(idolized: idolized)?.intValue ?? -1))"
-        smileScoreLabel.stringValue = "Smile:\(String(model.statisticsSmile(idolized: idolized)?.intValue ?? -1))"
+        idolizedLabel.stringValue = userCard.idolized ? "已觉醒 " : "未觉醒 "
+        idolizedLabel.stringValue += userCard.isKizunaMax ? "绊满" : "绊0"
+        coolScoreLabel.stringValue = "Cool:\(String(model.statisticsCool(idolized: userCard.idolized, isKizunaMax: userCard.isKizunaMax).intValue))"
+        pureScoreLabel.stringValue = "Pure:\(String(model.statisticsPure(idolized: userCard.idolized, isKizunaMax: userCard.isKizunaMax).intValue))"
+        smileScoreLabel.stringValue = "Smile:\(String(model.statisticsSmile(idolized: userCard.idolized, isKizunaMax: userCard.isKizunaMax).intValue))"
     }
     
     static var storyboardResources: CardCollectionViewItem {

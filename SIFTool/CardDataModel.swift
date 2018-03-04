@@ -96,92 +96,96 @@ class CardDataModel: NSObject {
     var event: MiniEventDataModel? = nil
     var isSpecial: NSNumber? = nil
     var hp: NSNumber? = nil
-    var minimumStatisticsSmile: NSNumber? = nil
-    var minimumStatisticsPure: NSNumber? = nil
-    var minimumStatisticsCool: NSNumber? = nil
-    var minimumStatisticsMax: NSNumber {
-        var smile = 0
-        var pure = 0
-        var cool = 0
-        if minimumStatisticsCool != nil {
-            cool = minimumStatisticsCool!.intValue
+    var minimumStatisticsSmile: NSNumber
+    var minimumStatisticsPure: NSNumber
+    var minimumStatisticsCool: NSNumber
+    
+    var nonIdolizedMaximumStatisticsSmile: NSNumber
+    var nonIdolizedMaximumStatisticsPure: NSNumber
+    var nonIdolizedMaximumStatisticsCool: NSNumber
+    var nonIdolizedMaximumKizuna: NSNumber {
+        switch self.rarity {
+        case Rarity.N:
+            return NSNumber.init(value: 25)
+        case Rarity.R:
+            return NSNumber.init(value: 100)
+        case Rarity.SR:
+            return NSNumber.init(value: 250)
+        case Rarity.SSR:
+            return NSNumber.init(value: 375)
+        case Rarity.UR:
+            return NSNumber.init(value: 500)
+        default:
+            break
         }
-        if minimumStatisticsPure != nil {
-            pure = minimumStatisticsPure!.intValue
-        }
-        if minimumStatisticsSmile != nil {
-            smile = minimumStatisticsSmile!.intValue
-        }
-        let maxValue = [smile, pure, cool].max()!
-        return NSNumber(value: maxValue)
+        return NSNumber.init(value: 0)
     }
     
-    var nonIdolizedMaximumStatisticsSmile: NSNumber? = nil
-    var nonIdolizedMaximumStatisticsPure: NSNumber? = nil
-    var nonIdolizedMaximumStatisticsCool: NSNumber? = nil
-    var nonIdolizedMaximumStatisticsMax: NSNumber {
-        var smile = 0
-        var pure = 0
-        var cool = 0
-        if nonIdolizedMaximumStatisticsCool != nil {
-            cool = nonIdolizedMaximumStatisticsCool!.intValue
+    var idolizedMaximumStatisticsSmile: NSNumber
+    var idolizedMaximumStatisticsPure: NSNumber
+    var idolizedMaximumStatisticsCool: NSNumber
+    var idolizedMaximumKizuna: NSNumber {
+        switch self.rarity {
+        case Rarity.N:
+            return NSNumber.init(value: 50)
+        case Rarity.R:
+            return NSNumber.init(value: 200)
+        case Rarity.SR:
+            return NSNumber.init(value: 500)
+        case Rarity.SSR:
+            return NSNumber.init(value: 750)
+        case Rarity.UR:
+            return NSNumber.init(value: 1000)
+        default:
+            break
         }
-        if nonIdolizedMaximumStatisticsPure != nil {
-            pure = nonIdolizedMaximumStatisticsPure!.intValue
-        }
-        if nonIdolizedMaximumStatisticsSmile != nil {
-            smile = nonIdolizedMaximumStatisticsSmile!.intValue
-        }
-        let maxValue = [smile, pure, cool].max()!
-        return NSNumber(value: maxValue)
+        return NSNumber.init(value: 0)
     }
     
-    var idolizedMaximumStatisticsSmile: NSNumber? = nil
-    var idolizedMaximumStatisticsPure: NSNumber? = nil
-    var idolizedMaximumStatisticsCool: NSNumber? = nil
-    var idolizedMaximumStatisticsMax: NSNumber {
-        var smile = 0
-        var pure = 0
-        var cool = 0
-        if idolizedMaximumStatisticsCool != nil {
-            cool = idolizedMaximumStatisticsCool!.intValue
-        }
-        if idolizedMaximumStatisticsPure != nil {
-            pure = idolizedMaximumStatisticsPure!.intValue
-        }
-        if idolizedMaximumStatisticsSmile != nil {
-            smile = idolizedMaximumStatisticsSmile!.intValue
-        }
-        let maxValue = [smile, pure, cool].max()!
-        return NSNumber(value: maxValue)
-    }
-    
-    func statisticsSmile(idolized: Bool) -> NSNumber? {
+    func statisticsSmile(idolized: Bool, isKizunaMax: Bool) -> NSNumber {
         if idolized {
+            if attribute == Attribute.smile && isKizunaMax {
+                return NSNumber.init(value: idolizedMaximumStatisticsSmile.intValue + statisticsKizuna(idolized: true).intValue)
+            }
             return idolizedMaximumStatisticsSmile
+        }
+        if attribute == Attribute.smile && isKizunaMax {
+            return NSNumber.init(value: nonIdolizedMaximumStatisticsSmile.intValue + statisticsKizuna(idolized: false).intValue)
         }
         return nonIdolizedMaximumStatisticsSmile
     }
     
-    func statisticsPure(idolized: Bool) -> NSNumber? {
+    func statisticsPure(idolized: Bool, isKizunaMax: Bool) -> NSNumber {
         if idolized {
+            if attribute == Attribute.pure && isKizunaMax {
+                return NSNumber.init(value: idolizedMaximumStatisticsPure.intValue + statisticsKizuna(idolized: true).intValue)
+            }
             return idolizedMaximumStatisticsPure
+        }
+        if attribute == Attribute.pure && isKizunaMax {
+            return NSNumber.init(value: nonIdolizedMaximumStatisticsPure.intValue + statisticsKizuna(idolized: false).intValue)
         }
         return nonIdolizedMaximumStatisticsPure
     }
     
-    func statisticsCool(idolized: Bool) -> NSNumber? {
+    func statisticsCool(idolized: Bool, isKizunaMax: Bool) -> NSNumber {
         if idolized {
+            if attribute == Attribute.cool && isKizunaMax {
+                return NSNumber.init(value: idolizedMaximumStatisticsCool.intValue + statisticsKizuna(idolized: true).intValue)
+            }
             return idolizedMaximumStatisticsCool
+        }
+        if attribute == Attribute.cool && isKizunaMax {
+            return NSNumber.init(value: nonIdolizedMaximumStatisticsCool.intValue + statisticsKizuna(idolized: false).intValue)
         }
         return nonIdolizedMaximumStatisticsCool
     }
     
-    func statisticsMax(idolized: Bool) -> NSNumber {
+    func statisticsKizuna(idolized: Bool) -> NSNumber {
         if idolized {
-            return idolizedMaximumStatisticsMax
+            return idolizedMaximumKizuna
         }
-        return nonIdolizedMaximumStatisticsMax
+        return nonIdolizedMaximumKizuna
     }
     
     var skill: String? = nil
@@ -242,33 +246,16 @@ class CardDataModel: NSObject {
         if let hpRaw = dictionary[CodingKey.hp] as? Int {
             hp = NSNumber(value: hpRaw)
         }
-        if let minimumStatisticsSmileRaw = dictionary[CodingKey.minimumStatisticsSmile] as? Int {
-            minimumStatisticsSmile = NSNumber(value: minimumStatisticsSmileRaw)
-        }
-        if let minimumStatisticsPureRaw = dictionary[CodingKey.minimumStatisticsPure] as? Int {
-            minimumStatisticsPure = NSNumber(value: minimumStatisticsPureRaw)
-        }
-        if let minimumStatisticsCoolRaw = dictionary[CodingKey.minimumStatisticsCool] as? Int {
-            minimumStatisticsCool = NSNumber(value: minimumStatisticsCoolRaw)
-        }
-        if let nonIdolizedMaximumStatisticsSmileRaw = dictionary[CodingKey.nonIdolizedMaximumStatisticsSmile] as? Int {
-            nonIdolizedMaximumStatisticsSmile = NSNumber(value: nonIdolizedMaximumStatisticsSmileRaw)
-        }
-        if let nonIdolizedMaximumStatisticsPureRaw = dictionary[CodingKey.nonIdolizedMaximumStatisticsPure] as? Int {
-            nonIdolizedMaximumStatisticsPure = NSNumber(value: nonIdolizedMaximumStatisticsPureRaw)
-        }
-        if let nonIdolizedMaximumStatisticsCoolRaw = dictionary[CodingKey.nonIdolizedMaximumStatisticsCool] as? Int {
-            nonIdolizedMaximumStatisticsCool = NSNumber(value: nonIdolizedMaximumStatisticsCoolRaw)
-        }
-        if let idolizedMaximumStatisticsSmileRaw = dictionary[CodingKey.idolizedMaximumStatisticsSmile] as? Int {
-            idolizedMaximumStatisticsSmile = NSNumber(value: idolizedMaximumStatisticsSmileRaw)
-        }
-        if let idolizedMaximumStatisticsPureRaw = dictionary[CodingKey.idolizedMaximumStatisticsPure] as? Int {
-            idolizedMaximumStatisticsPure = NSNumber(value: idolizedMaximumStatisticsPureRaw)
-        }
-        if let idolizedMaximumStatisticsCoolRaw = dictionary[CodingKey.idolizedMaximumStatisticsCool] as? Int {
-            idolizedMaximumStatisticsCool = NSNumber(value: idolizedMaximumStatisticsCoolRaw)
-        }
+        minimumStatisticsSmile = NSNumber.init(value: (dictionary[CodingKey.minimumStatisticsSmile] as? Int) ?? 0)
+        minimumStatisticsPure = NSNumber.init(value: (dictionary[CodingKey.minimumStatisticsPure] as? Int) ?? 0)
+        minimumStatisticsCool = NSNumber.init(value: (dictionary[CodingKey.minimumStatisticsCool] as? Int) ?? 0)
+        nonIdolizedMaximumStatisticsSmile = NSNumber.init(value: (dictionary[CodingKey.nonIdolizedMaximumStatisticsSmile] as? Int) ?? 0)
+        nonIdolizedMaximumStatisticsPure = NSNumber.init(value: (dictionary[CodingKey.nonIdolizedMaximumStatisticsPure] as? Int) ?? 0)
+        nonIdolizedMaximumStatisticsCool = NSNumber.init(value: (dictionary[CodingKey.nonIdolizedMaximumStatisticsCool] as? Int) ?? 0)
+        idolizedMaximumStatisticsSmile = NSNumber.init(value: (dictionary[CodingKey.idolizedMaximumStatisticsSmile] as? Int) ?? 0)
+        idolizedMaximumStatisticsPure = NSNumber.init(value: (dictionary[CodingKey.idolizedMaximumStatisticsPure] as? Int) ?? 0)
+        idolizedMaximumStatisticsCool = NSNumber.init(value: (dictionary[CodingKey.idolizedMaximumStatisticsCool] as? Int) ?? 0)
+        
         skill = dictionary[CodingKey.skill] as? String
         japaneseSkill = dictionary[CodingKey.japaneseSkill] as? String
         skillDetails = dictionary[CodingKey.skillDetails] as? String

@@ -13,9 +13,9 @@
                     <window key="window" title="SIF工具" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="wxe-tp-sk6">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" fullSizeContentView="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="245" y="301" width="956" height="415"/>
+                        <rect key="contentRect" x="245" y="301" width="986" height="415"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1028"/>
-                        <value key="minSize" type="size" width="956" height="270"/>
+                        <value key="minSize" type="size" width="986" height="270"/>
                         <connections>
                             <outlet property="delegate" destination="l6i-Rj-D3n" id="Z4G-6F-ZrF"/>
                         </connections>
@@ -41,14 +41,14 @@
             <objects>
                 <viewController id="VPB-bN-wZq" customClass="MainViewController" customModule="SIFTool_macOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="eZV-0Z-Z5O">
-                        <rect key="frame" x="0.0" y="0.0" width="956" height="650"/>
+                        <rect key="frame" x="0.0" y="0.0" width="986" height="650"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="light" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="m4I-mf-jlg">
-                                <rect key="frame" x="0.0" y="606" width="956" height="44"/>
+                                <rect key="frame" x="0.0" y="606" width="986" height="44"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9Bc-ua-1Sz">
-                                        <rect key="frame" x="453" y="13" width="50" height="17"/>
+                                        <rect key="frame" x="468" y="13" width="50" height="17"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="SIF工具" id="r13-GW-FDx">
                                             <font key="font" metaFont="system"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -56,7 +56,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XVi-Hb-ssf">
-                                        <rect key="frame" x="738" y="11" width="198" height="21"/>
+                                        <rect key="frame" x="768" y="11" width="198" height="21"/>
                                         <subviews>
                                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="cod-80-24u">
                                                 <rect key="frame" x="-6" y="-7" width="120" height="32"/>
@@ -107,7 +107,7 @@
                                 </constraints>
                             </visualEffectView>
                             <predicateEditor verticalHuggingPriority="750" nestingMode="list" canRemoveAllRows="YES" rowHeight="25" translatesAutoresizingMaskIntoConstraints="NO" id="wNM-bR-19w">
-                                <rect key="frame" x="0.0" y="506" width="956" height="100"/>
+                                <rect key="frame" x="0.0" y="506" width="986" height="100"/>
                                 <rowTemplates>
                                     <predicateEditorRowTemplate rowType="simple" id="MGG-B6-ZmD">
                                         <array key="leftExpressionObject">
@@ -341,13 +341,13 @@
                                 </connections>
                             </predicateEditor>
                             <scrollView wantsLayer="YES" autohidesScrollers="YES" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="54T-b2-Var">
-                                <rect key="frame" x="0.0" y="34" width="956" height="472"/>
+                                <rect key="frame" x="0.0" y="34" width="986" height="472"/>
                                 <clipView key="contentView" drawsBackground="NO" id="lQL-nw-kuW">
-                                    <rect key="frame" x="1" y="1" width="954" height="470"/>
+                                    <rect key="frame" x="1" y="1" width="984" height="470"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <collectionView id="uop-Z7-ED6">
-                                            <rect key="frame" x="0.0" y="0.0" width="954" height="470"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="984" height="470"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
                                             <collectionViewFlowLayout key="collectionViewLayout" minimumInteritemSpacing="10" minimumLineSpacing="10" id="h5F-FA-hF0">
                                                 <size key="itemSize" width="308" height="120"/>
@@ -372,13 +372,13 @@
                                 </scroller>
                             </scrollView>
                             <visualEffectView blendingMode="behindWindow" material="mediumLight" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="bre-wh-RRf">
-                                <rect key="frame" x="0.0" y="0.0" width="956" height="34"/>
+                                <rect key="frame" x="0.0" y="0.0" width="986" height="34"/>
                                 <subviews>
                                     <stackView distribution="fill" orientation="horizontal" alignment="top" spacing="16" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T3G-4a-LF8">
-                                        <rect key="frame" x="20" y="7" width="917" height="21"/>
+                                        <rect key="frame" x="55" y="7" width="877" height="21"/>
                                         <subviews>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4z5-tE-3A6">
-                                                <rect key="frame" x="0.0" y="0.0" width="268" height="21"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="228" height="21"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tah-zq-dpF">
                                                         <rect key="frame" x="-2" y="2" width="58" height="17"/>
@@ -389,14 +389,13 @@
                                                         </textFieldCell>
                                                     </textField>
                                                     <segmentedControl verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pUJ-QO-4ld">
-                                                        <rect key="frame" x="60" y="-2" width="210" height="24"/>
+                                                        <rect key="frame" x="60" y="-2" width="170" height="24"/>
                                                         <segmentedCell key="cell" borderStyle="border" alignment="left" style="rounded" trackingMode="selectOne" id="OcS-ct-ZLP">
                                                             <font key="font" metaFont="system"/>
                                                             <segments>
-                                                                <segment label="Cool"/>
+                                                                <segment label="Cool" selected="YES"/>
                                                                 <segment label="Pure" tag="1"/>
                                                                 <segment label="Smile"/>
-                                                                <segment label="All" selected="YES"/>
                                                             </segments>
                                                         </segmentedCell>
                                                         <connections>
@@ -414,7 +413,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LXI-ec-ZAF">
-                                                <rect key="frame" x="284" y="0.0" width="372" height="21"/>
+                                                <rect key="frame" x="244" y="0.0" width="372" height="21"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="sVE-Ud-4lU">
                                                         <rect key="frame" x="-2" y="2" width="58" height="17"/>
@@ -450,7 +449,7 @@
                                                 </customSpacing>
                                             </stackView>
                                             <stackView distribution="fill" orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5TF-wb-udn">
-                                                <rect key="frame" x="672" y="0.0" width="245" height="21"/>
+                                                <rect key="frame" x="632" y="0.0" width="245" height="21"/>
                                                 <subviews>
                                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="AgV-zy-5RA">
                                                         <rect key="frame" x="-2" y="2" width="58" height="17"/>
@@ -532,7 +531,7 @@
                 <customObject id="oC5-au-dyV" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
                 <userDefaultsController representsSharedInstance="YES" id="6Lu-ZA-l1g"/>
             </objects>
-            <point key="canvasLocation" x="-1178" y="654"/>
+            <point key="canvasLocation" x="-1163" y="654"/>
         </scene>
         <!--Card Collection View Item-->
         <scene sceneID="gWN-GK-GDR">
@@ -898,11 +897,11 @@
                                     </subviews>
                                 </clipView>
                                 <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="RDC-NV-1rx">
-                                    <rect key="frame" x="1" y="119" width="223" height="15"/>
+                                    <rect key="frame" x="-7" y="-14" width="0.0" height="15"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                                 <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="DFn-CP-RLP">
-                                    <rect key="frame" x="224" y="17" width="15" height="102"/>
+                                    <rect key="frame" x="-14" y="-7" width="15" height="0.0"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </scroller>
                             </scrollView>

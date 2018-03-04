@@ -79,26 +79,26 @@ class MainViewController: NSViewController {
              </rank>
              */
             let aSortArray = [
-                [aCard.minimumStatisticsCool, aCard.minimumStatisticsPure, aCard.minimumStatisticsSmile, aCard.minimumStatisticsMax],
-                [aCard.nonIdolizedMaximumStatisticsCool, aCard.nonIdolizedMaximumStatisticsPure, aCard.nonIdolizedMaximumStatisticsSmile, aCard.nonIdolizedMaximumStatisticsMax],
-                [aCard.idolizedMaximumStatisticsCool, aCard.idolizedMaximumStatisticsPure, aCard.idolizedMaximumStatisticsSmile, aCard.idolizedMaximumStatisticsMax],
-                [aCard.statisticsCool(idolized: a.idolized), aCard.statisticsPure(idolized: a.idolized), aCard.statisticsSmile(idolized: a.idolized), aCard.statisticsMax(idolized: a.idolized)]
+                [aCard.minimumStatisticsCool, aCard.minimumStatisticsPure, aCard.minimumStatisticsSmile],
+                [aCard.nonIdolizedMaximumStatisticsCool, aCard.nonIdolizedMaximumStatisticsPure, aCard.nonIdolizedMaximumStatisticsSmile],
+                [aCard.idolizedMaximumStatisticsCool, aCard.idolizedMaximumStatisticsPure, aCard.idolizedMaximumStatisticsSmile],
+                [aCard.statisticsCool(idolized: a.idolized, isKizunaMax: a.isKizunaMax), aCard.statisticsPure(idolized: a.idolized, isKizunaMax: a.isKizunaMax), aCard.statisticsSmile(idolized: a.idolized, isKizunaMax: a.isKizunaMax)]
                 
             ]
             
             let bSortArray = [
-                [bCard.minimumStatisticsCool, bCard.minimumStatisticsPure, bCard.minimumStatisticsSmile, bCard.minimumStatisticsMax],
-                [bCard.nonIdolizedMaximumStatisticsCool, bCard.nonIdolizedMaximumStatisticsPure, bCard.nonIdolizedMaximumStatisticsSmile, bCard.nonIdolizedMaximumStatisticsMax],
-                [bCard.idolizedMaximumStatisticsCool, bCard.idolizedMaximumStatisticsPure, bCard.idolizedMaximumStatisticsSmile, bCard.idolizedMaximumStatisticsMax],
-                [bCard.statisticsCool(idolized: b.idolized), bCard.statisticsPure(idolized: b.idolized), bCard.statisticsSmile(idolized: b.idolized), bCard.statisticsMax(idolized: b.idolized)]
+                [bCard.minimumStatisticsCool, bCard.minimumStatisticsPure, bCard.minimumStatisticsSmile],
+                [bCard.nonIdolizedMaximumStatisticsCool, bCard.nonIdolizedMaximumStatisticsPure, bCard.nonIdolizedMaximumStatisticsSmile],
+                [bCard.idolizedMaximumStatisticsCool, bCard.idolizedMaximumStatisticsPure, bCard.idolizedMaximumStatisticsSmile],
+                [bCard.statisticsCool(idolized: b.idolized, isKizunaMax: b.isKizunaMax), bCard.statisticsPure(idolized: b.idolized, isKizunaMax: b.isKizunaMax), bCard.statisticsSmile(idolized: b.idolized, isKizunaMax: b.isKizunaMax)]
             ]
             
             let attributeSegmentedIndex = self.sortAttributeSegmentedControl.selectedSegment
             let rankSegmentedIndex = self.sortRankSegmentedControl.selectedSegment
             
             
-            let sortScoreA = aSortArray[rankSegmentedIndex][attributeSegmentedIndex]?.intValue ?? 0
-            let sortScoreB = bSortArray[rankSegmentedIndex][attributeSegmentedIndex]?.intValue ?? 0
+            let sortScoreA = aSortArray[rankSegmentedIndex][attributeSegmentedIndex].intValue
+            let sortScoreB = bSortArray[rankSegmentedIndex][attributeSegmentedIndex].intValue
             
             if type == 0 {
                 return sortScoreA > sortScoreB
@@ -182,8 +182,8 @@ extension MainViewController: NSCollectionViewDataSource, NSCollectionViewDelega
         }
         
         let cardDataModel = SIFCacheHelper.shared.cards[collectionViewDataModel[indexPath.item].cardId]
-        let idolized = collectionViewDataModel[indexPath.item].idolized
-        cardCollectionViewItem.setupView(withModel: cardDataModel!, idolized: idolized)
+        let userCardDataModel = collectionViewDataModel[indexPath.item]
+        cardCollectionViewItem.setupView(withCardModel: cardDataModel!, userCard: userCardDataModel)
         return cardCollectionViewItem
     }
     

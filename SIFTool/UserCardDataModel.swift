@@ -15,11 +15,13 @@ class UserCardDataModel: NSObject {
     var user: String = ""
     
     var isImport: Bool = true
+    var isKizunaMax: Bool = false
 
     init(withDictionary dictionary:[String: Any]) {
         cardId = dictionary["cardId"] as! Int
         idolized = dictionary["idolized"] as! Bool
         user = dictionary["user"] as! String
+        isKizunaMax = dictionary["isKizunaMax"] as! Bool
     }
     
     override init() {
@@ -35,6 +37,7 @@ extension UserCardDataModel: CoreDataModelBridgeProtocol {
         managedObject.setValue(cardId, forKey: "cardId")
         managedObject.setValue(idolized, forKey: "idolized")
         managedObject.setValue(user, forKey: "user")
+        managedObject.setValue(isKizunaMax, forKey: "isKizunaMax")
     }
 }
 
