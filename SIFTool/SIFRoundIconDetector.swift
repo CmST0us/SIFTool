@@ -86,8 +86,9 @@ class SIFRoundIconDetector {
     
 
     func search(screenshot: CVMat) -> (CGRect, [CGRect]) {
-        let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: screenshot, targetColor: CVBridgeColorCovertType.bgr2Gray)
-        let binrayMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 220.0, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
+        let gaussianMat = OpenCVBridgeSwiftHelper.sharedInstance().gaussianBlur(withImage: screenshot, kernelSize: NSSize.init(width: 9, height: 1), sigmaX: 3, sigmaY: 3, borderType: CVBridgeBorderType.default)
+        let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: gaussianMat, targetColor: CVBridgeColorCovertType.bgr2Gray)
+        let binaryMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 220.0, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
         var outputArray: [CGRect] = []
         var screenshotRoiRect: CGRect!
         func findContours(mat: CVMat, step: Int) -> CVMat {
@@ -152,7 +153,7 @@ class SIFRoundIconDetector {
             }
             return cloneMat
         }
-        let _ = findContours(mat: findContours(mat: binrayMat, step: 0), step: 1)
+        let f = findContours(mat: findContours(mat: binaryMat, step: 0), step: 1)
         return (screenshotRoiRect, outputArray)
     }
     

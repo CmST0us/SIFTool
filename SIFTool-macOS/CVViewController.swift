@@ -53,7 +53,7 @@ class CVViewController: NSViewController {
         let paramsString = threshParams.stringValue
         let params = paramsString.split(separator: "|")
         let nm = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: m!, thresh: Double(params[0])!, maxValue: Double(params[1])!, type: CVBridgeThresholdType.init(rawValue: Int(params[2])!)!)
-        imageView.image = NSImage.init(cvMat: nm)
+        imageView.image = NSImage.init(cvMat: nm)  
         dumpParam()
     }
     @IBAction func doCovert(_ sender: Any) {

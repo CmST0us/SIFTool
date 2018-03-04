@@ -84,6 +84,7 @@ class ImportCardViewController: NSViewController {
     
     @IBAction func process(_ sender: Any) {
         self.cards.removeAll()
+        self.cardTableView.reloadData()
         requestActivitor.startAnimation(nil)
         DispatchQueue.global().async {
             for screenshot in self.screenshots {
@@ -193,7 +194,9 @@ class ImportCardViewController: NSViewController {
     }
     @IBAction func importSelectedCard(_ sender: Any) {
         for card in cards {
-            UserCardStorageHelper.shared.addUserCard(card: card.0)
+            if card.0.isImport {
+                UserCardStorageHelper.shared.addUserCard(card: card.0)
+            }
         }
         Logger.shared.output("import OK")
         NotificationCenter.default.post(name: NSNotification.Name.init(NotificationName.importOk), object: nil)
