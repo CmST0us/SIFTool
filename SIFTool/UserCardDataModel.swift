@@ -5,8 +5,7 @@
 //  Created by CmST0us on 2018/2/25.
 //  Copyright © 2018年 eki. All rights reserved.
 //
-
-import Cocoa
+import CoreData
 
 @objcMembers
 class UserCardDataModel: NSObject {

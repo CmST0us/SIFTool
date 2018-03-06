@@ -6,6 +6,8 @@
 //  Copyright © 2018年 eki. All rights reserved.
 //
 
+#if TARGET_OS_OSX
+
 #import <Cocoa/Cocoa.h>
 #import <Foundation/Foundation.h>
 
@@ -14,3 +16,4 @@
 + (nonnull NSImage *)imageWithCVMat:(nonnull CVMat *)mat;
 @end
 
+#endif

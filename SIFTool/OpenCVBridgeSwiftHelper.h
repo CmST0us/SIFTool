@@ -180,7 +180,7 @@ enum ImreadModes {
  @return 高斯模糊后的图像矩阵
  */
 - (nonnull CVMat *)gaussianBlurWithImage:(nonnull CVMat *)mat
-                               kernelSize:(NSSize)size
+                               kernelSize:(CGSize)size
                                    sigmaX:(double)sigmaX
                                    sigmaY:(double)sigmaY
                                borderType:(CVBridgeBorderType)type;

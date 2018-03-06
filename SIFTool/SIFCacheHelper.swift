@@ -8,10 +8,10 @@
 
 import Foundation
 
-#if TARGET_OS_IPHONE
-import UIKit
-#else
-typealias UIImage = NSImage
+#if macOS
+    import Cocoa
+#elseif iOS
+    import UIKit
 #endif
 
 struct SIFCacheHelperError: Error {
@@ -24,6 +24,10 @@ struct SIFCacheHelperError: Error {
 }
 
 class SIFCacheHelper {
+    #if macOS
+        typealias UIImage = NSImage
+    #endif
+    
     private init() {
         
     }

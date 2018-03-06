@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import CoreData
+
 class UserCardStorageHelper {
     private init() {
         

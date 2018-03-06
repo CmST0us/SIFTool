@@ -44,7 +44,6 @@
 		4F1EB1F4203F28880003BA0C /* URL+FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F3203F28880003BA0C /* URL+FilePath.swift */; };
 		4F1EB1F5203F28880003BA0C /* URL+FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F3203F28880003BA0C /* URL+FilePath.swift */; };
 		4F1EB1F6203F28880003BA0C /* URL+FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F3203F28880003BA0C /* URL+FilePath.swift */; };
-		4F1EB1F9203FBB6E0003BA0C /* CardTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F8203FBB6D0003BA0C /* CardTableCellView.swift */; };
 		4F1EB1FA203FBB6E0003BA0C /* CardTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F8203FBB6D0003BA0C /* CardTableCellView.swift */; };
 		4F1EB1FB203FBB6E0003BA0C /* CardTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F8203FBB6D0003BA0C /* CardTableCellView.swift */; };
 		4F1EB1FE203FE2630003BA0C /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
@@ -94,6 +93,9 @@
 		4F4F5FD720349B810025741A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD520349B810025741A /* String+Date.swift */; };
 		4F4F5FD820349B810025741A /* String+Date.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5FD520349B810025741A /* String+Date.swift */; };
 		4F83C2482045A9100071C58E /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F83C2472045A9100071C58E /* MainWindowController.swift */; };
+		4FBA7B02204DA59B00037CF5 /* ScoreIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */; };
+		4FBA7B04204EA8E300037CF5 /* UIView+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */; };
+		4FC16846204DA2A200A73CB2 /* SIFUserCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC16845204DA2A200A73CB2 /* SIFUserCardCollectionViewCell.swift */; };
 		4FE1E395204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
 		4FE1E396204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
 		4FE1E397204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
@@ -183,6 +185,9 @@
 		4F4F5FD1203497AC0025741A /* String+httpSchema.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+httpSchema.swift"; sourceTree = "<group>"; };
 		4F4F5FD520349B810025741A /* String+Date.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Date.swift"; sourceTree = "<group>"; };
 		4F83C2472045A9100071C58E /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreIndicatorView.swift; sourceTree = "<group>"; };
+		4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+IB.swift"; sourceTree = "<group>"; };
+		4FC16845204DA2A200A73CB2 /* SIFUserCardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFUserCardCollectionViewCell.swift; sourceTree = "<group>"; };
 		4FE1E394204278060032F229 /* UserCardStorageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardStorageHelper.swift; sourceTree = "<group>"; };
 		4FE1E398204278B50032F229 /* UserCardDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCardDataModel.swift; sourceTree = "<group>"; };
 		4FE1E39D2042798C0032F229 /* UserCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserCard.xcdatamodel; sourceTree = "<group>"; };
@@ -318,6 +323,15 @@
 			path = ApiTest;
 			sourceTree = "<group>";
 		};
+		4FC16842204DA1A700A73CB2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4FC16845204DA2A200A73CB2 /* SIFUserCardCollectionViewCell.swift */,
+				4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
 		4FEA5EEE203467BB00F03CCC = {
 			isa = PBXGroup;
 			children = (
@@ -350,6 +364,7 @@
 				4F08641A203C798400CFDD98 /* Object */,
 				4FEA5F27203468D700F03CCC /* DataModel */,
 				4FEA5F25203468CB00F03CCC /* Helper */,
+				4FC16842204DA1A700A73CB2 /* Views */,
 				4FEA5F23203468A300F03CCC /* ViewControllers */,
 				4FEA5F33203469AE00F03CCC /* Bridge */,
 				4FEA5F24203468B100F03CCC /* Resources */,
@@ -421,6 +436,7 @@
 				4F079BA12041AEF900ED4728 /* String+appendPathComponent.swift */,
 				4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */,
 				4F1EB1F3203F28880003BA0C /* URL+FilePath.swift */,
+				4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -801,6 +817,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FC16846204DA2A200A73CB2 /* SIFUserCardCollectionViewCell.swift in Sources */,
 				4FEA5EFD203467BB00F03CCC /* ViewController.swift in Sources */,
 				4FEA5F2C2034693700F03CCC /* Logger.swift in Sources */,
 				4FEA5F302034699500F03CCC /* CoreDataHelper.swift in Sources */,
@@ -813,6 +830,7 @@
 				4F086420203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
 				4FE1E395204278060032F229 /* UserCardStorageHelper.swift in Sources */,
 				4F4F5FB1203486500025741A /* ApiRequestParamProtocol.swift in Sources */,
+				4FBA7B02204DA59B00037CF5 /* ScoreIndicatorView.swift in Sources */,
 				4F4F5FD2203497AC0025741A /* String+httpSchema.swift in Sources */,
 				4FE1E3A220427DD50032F229 /* CoreDataModelBridgeProtocol.swift in Sources */,
 				4F4F5FA5203480BC0025741A /* MiniIdolDataModel.swift in Sources */,
@@ -822,6 +840,7 @@
 				4F4F5FAB203480FF0025741A /* SkillUpTinyCardDataModel.swift in Sources */,
 				4F1EB1FE203FE2630003BA0C /* SIFCacheHelper.swift in Sources */,
 				4FE1E399204278B50032F229 /* UserCardDataModel.swift in Sources */,
+				4FBA7B04204EA8E300037CF5 /* UIView+IB.swift in Sources */,
 				4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */,
 				4F08640F2039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,
 				4F4F5FD620349B810025741A /* String+Date.swift in Sources */,
@@ -832,7 +851,6 @@
 				4F4F5F9B20347D160025741A /* Dictionary+URLParam.swift in Sources */,
 				4F4F5FAE2034810F0025741A /* URPairDataModel.swift in Sources */,
 				4F079BA22041AEF900ED4728 /* String+appendPathComponent.swift in Sources */,
-				4F1EB1F9203FBB6E0003BA0C /* CardTableCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1015,6 +1033,9 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[sdk=iphoneos*]" = "iOS DEBUG";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[sdk=iphonesimulator*]" = "iOS DEBUG";
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[sdk=macosx*]" = "macOS DEBUG";
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/SIFTool/Bridge.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1066,6 +1087,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[sdk=iphoneos*]" = iOS;
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[sdk=iphonesimulator*]" = iOS;
+				"SWIFT_ACTIVE_COMPILATION_CONDITIONS[sdk=macosx*]" = macOS;
 				SWIFT_OBJC_BRIDGING_HEADER = "${SRCROOT}/SIFTool/Bridge.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;

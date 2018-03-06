@@ -8,8 +8,8 @@
 #import "CVMat.h"
 #import "OpenCVBridgeSwiftHelper.h"
 
-#ifdef TARGET_OS_MAC
-#import "NSImage+CVMat.h"
-#elif TARGET_OS_IPHONE
+#if TARGET_OS_IPHONE
 
+#elif TARGET_OS_OSX
+#import "NSImage+CVMat.h"
 #endif

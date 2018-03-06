@@ -7,11 +7,18 @@
 //
 
 import Foundation
-#if TARGET_OS_IPHONE
-import UIKit
+
+#if iOS
+    import UIKit
+#elseif macOS
+    import Cocoa
 #endif
 
 class SIFRoundIconDetector {
+    #if macOS
+        typealias UIImage = NSImage
+    #endif
+    
     private var _cards: [Int: CardDataModel] = [:]
     private var _roundCardImagePattern: CVMat!
     private var _configuration: SIFRoundIconDetectorConfiguration
@@ -86,7 +93,7 @@ class SIFRoundIconDetector {
     
 
     func search(screenshot: CVMat) -> (CGRect, [CGRect]) {
-        let gaussianMat = OpenCVBridgeSwiftHelper.sharedInstance().gaussianBlur(withImage: screenshot, kernelSize: NSSize.init(width: 9, height: 1), sigmaX: 3, sigmaY: 3, borderType: CVBridgeBorderType.default)
+        let gaussianMat = OpenCVBridgeSwiftHelper.sharedInstance().gaussianBlur(withImage: screenshot, kernelSize: CGSize.init(width: 9, height: 1), sigmaX: 3, sigmaY: 3, borderType: CVBridgeBorderType.default)
         let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: gaussianMat, targetColor: CVBridgeColorCovertType.bgr2Gray)
         let binaryMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 220.0, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
         var outputArray: [CGRect] = []
@@ -186,9 +193,3 @@ class SIFRoundIconDetector {
     
 }
 
-//MARK: - use for debug
-extension SIFRoundIconDetector {
-    var patternImage: NSImage {
-        return NSImage.init(cvMat: _roundCardImagePattern)
-    }
-}

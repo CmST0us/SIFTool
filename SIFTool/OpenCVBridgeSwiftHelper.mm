@@ -7,6 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#if TARGET_OS_IPHONE
+#import <UIKit/UIKit.h>
+#endif
 #import <opencv2/opencv.hpp>
 #import <vector>
 #import "CVMat.h"
@@ -87,6 +90,7 @@
 
 @end
 
+#if TARGET_OS_OSX
 @implementation NSImage (CVMat)
 - (CGImageRef)cgImage {
     CGContextRef bitmapCtx = CGBitmapContextCreate(NULL/*data - pass NULL to let CG allocate the memory*/,
@@ -176,6 +180,7 @@
 }
 
 @end
+#endif
 
 @implementation OpenCVBridgeSwiftHelper
 
@@ -253,7 +258,7 @@
 
 #pragma mark - 图像处理方法
 - (CVMat *)gaussianBlurWithImage:(CVMat *)mat
-                      kernelSize:(NSSize)size
+                      kernelSize:(CGSize)size
                           sigmaX:(double)sigmaX
                           sigmaY:(double)sigmaY
                       borderType:(CVBridgeBorderType)type {
@@ -376,9 +381,13 @@
     for(int i = 0; i < contours.size(); i++) {
         auto pointPerContours = [NSMutableArray array];
         for(int j = 0; j < contours[i].size(); j++){
-            NSPoint tp;
+            CGPoint tp;
             tp.x = contours[i][j].x; tp.y = contours[i][j].y;
-            auto value = [NSValue valueWithPoint:tp];
+#if TARGET_OS_OSX
+            NSValue *value = [NSValue valueWithPoint:tp];
+#elif TARGET_OS_IPHONE
+            NSValue *value = [NSValue valueWithCGPoint:tp];
+#endif
             [pointPerContours addObject:value];
         }
         [points addObject:pointPerContours];

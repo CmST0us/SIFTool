@@ -6,8 +6,6 @@
 //  Copyright © 2018年 eki. All rights reserved.
 //
 
-import Cocoa
-
 class CardTableCellView: NSTableCellView {
     
 //    struct NotificationName {

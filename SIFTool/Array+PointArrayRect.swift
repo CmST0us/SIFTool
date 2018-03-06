@@ -14,7 +14,11 @@ extension Array where Element == NSValue {
         var maxPointX = CGFloat.leastNormalMagnitude
         var maxPointY = CGFloat.leastNormalMagnitude
         for v in self {
-            let p = v.pointValue
+            #if iOS
+                let p = v.cgPointValue
+            #elseif macOS
+                let p = v.pointValue
+            #endif
             maxPointX = Swift.max(p.x, maxPointX)
             maxPointY = Swift.max(p.y, maxPointY)
             minPointX = Swift.min(p.x, minPointX)
