@@ -74,7 +74,7 @@ extension Logger {
             if let d = delegate {
                 d.log(msg: logStr)
             } else {
-                console(logStr)
+                print(logStr)
             }
         #endif
     }

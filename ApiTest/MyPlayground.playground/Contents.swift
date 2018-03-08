@@ -1,31 +1,13 @@
-//: Playground - noun: a place where people can play
+//: Playground - noun: a place where people can pla
+import UIKit
+import Foundation
+import PlaygroundSupport
 
-import Cocoa
-
-@objcMembers
-class Person: NSObject {
-    var name: String?
-    var age: Int? = nil
-    
-    init(withDictionary: [String: Any]) {
-        name = withDictionary["name"] as! String
-        age = withDictionary["age"] as! Int
-        super.init()
+class MyViewController: UIViewController {
+    override func viewDidLoad() {
+        
     }
-    
-    override init() {
-        name = "Json"
-        age = 12
-        super.init()
-    }
-    
 }
 
-
-let p = Person(withDictionary: [
-    "name": "Eric",
-    "age": 5
-    ])
-
-p.value(forKey: "name")
-
+let myView = MyViewController()
+PlaygroundPage.current.liveView = myView

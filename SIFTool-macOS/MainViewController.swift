@@ -158,7 +158,7 @@ class MainViewController: NSViewController {
         super.viewDidLoad()
         ApiHelper.shared.baseUrlPath = "http://schoolido.lu/api"
         ApiHelper.shared.taskWaitTime = 15
-        SIFCacheHelper.shared.cacheDirectory = "/Users/cmst0us/Downloads/round_card_images"
+        SIFCacheHelper.shared.cacheDirectory = "/Users/cmst0us/Downloads/card_round"
         cardsInfoLabel.stringValue = "\(self.user) 持有 \(String(collectionViewDataModel.count)) 种卡"
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData(_:)), name: NSNotification.Name.init(ImportCardViewController.NotificationName.importOk), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData(_:)), name: NSNotification.Name(rawValue: NotificationName.reloadData), object: nil)
