@@ -1,13 +1,4 @@
 //: Playground - noun: a place where people can pla
-import UIKit
 import Foundation
-import PlaygroundSupport
+let p = NSPredicate.init(format: "a == %@", "c")
 
-class MyViewController: UIViewController {
-    override func viewDidLoad() {
-        
-    }
-}
-
-let myView = MyViewController()
-PlaygroundPage.current.liveView = myView

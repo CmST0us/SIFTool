@@ -95,7 +95,8 @@
 		4F677B1220518D8300B2C4AE /* SIFCardFilterPredicateEditorTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F677B1120518D8300B2C4AE /* SIFCardFilterPredicateEditorTableViewController.swift */; };
 		4F677B1420518EBC00B2C4AE /* SIFCardFilterPredicateEditorSelectTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F677B1320518EBC00B2C4AE /* SIFCardFilterPredicateEditorSelectTableViewCell.swift */; };
 		4F677B1620518ED000B2C4AE /* SIFCardFilterPredicateEditorValueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F677B1520518ED000B2C4AE /* SIFCardFilterPredicateEditorValueTableViewCell.swift */; };
-		4F677B18205192CD00B2C4AE /* SIFCardFilterPredicateEditorTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F677B17205192CD00B2C4AE /* SIFCardFilterPredicateEditorTemplate.swift */; };
+		4F677B18205192CD00B2C4AE /* SIFCardFilterPredicateEditorRowTemplate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F677B17205192CD00B2C4AE /* SIFCardFilterPredicateEditorRowTemplate.swift */; };
+		4F677B1A2052D20B00B2C4AE /* SIFCardFilterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F677B192052D20B00B2C4AE /* SIFCardFilterDelegate.swift */; };
 		4F83C2482045A9100071C58E /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F83C2472045A9100071C58E /* MainWindowController.swift */; };
 		4FBA7B02204DA59B00037CF5 /* ScoreIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */; };
 		4FBA7B04204EA8E300037CF5 /* UIView+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */; };
@@ -198,7 +199,8 @@
 		4F677B1120518D8300B2C4AE /* SIFCardFilterPredicateEditorTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCardFilterPredicateEditorTableViewController.swift; sourceTree = "<group>"; };
 		4F677B1320518EBC00B2C4AE /* SIFCardFilterPredicateEditorSelectTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCardFilterPredicateEditorSelectTableViewCell.swift; sourceTree = "<group>"; };
 		4F677B1520518ED000B2C4AE /* SIFCardFilterPredicateEditorValueTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCardFilterPredicateEditorValueTableViewCell.swift; sourceTree = "<group>"; };
-		4F677B17205192CD00B2C4AE /* SIFCardFilterPredicateEditorTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCardFilterPredicateEditorTemplate.swift; sourceTree = "<group>"; };
+		4F677B17205192CD00B2C4AE /* SIFCardFilterPredicateEditorRowTemplate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCardFilterPredicateEditorRowTemplate.swift; sourceTree = "<group>"; };
+		4F677B192052D20B00B2C4AE /* SIFCardFilterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCardFilterDelegate.swift; sourceTree = "<group>"; };
 		4F83C2472045A9100071C58E /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreIndicatorView.swift; sourceTree = "<group>"; };
 		4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+IB.swift"; sourceTree = "<group>"; };
@@ -291,7 +293,7 @@
 			children = (
 				4F08641B203C7A3B00CFDD98 /* SIFRoundIconDetector.swift */,
 				4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */,
-				4F677B17205192CD00B2C4AE /* SIFCardFilterPredicateEditorTemplate.swift */,
+				4F677B17205192CD00B2C4AE /* SIFCardFilterPredicateEditorRowTemplate.swift */,
 			);
 			name = Object;
 			sourceTree = "<group>";
@@ -487,6 +489,7 @@
 				4FE1E3A120427DD50032F229 /* CoreDataModelBridgeProtocol.swift */,
 				4F4F5FB0203486500025741A /* ApiRequestParamProtocol.swift */,
 				4FBA7B142050513C00037CF5 /* ActionCellProtocol.swift */,
+				4F677B192052D20B00B2C4AE /* SIFCardFilterDelegate.swift */,
 			);
 			name = Protocol;
 			sourceTree = "<group>";
@@ -896,11 +899,12 @@
 				4F4F5FD620349B810025741A /* String+Date.swift in Sources */,
 				4F4F5FA8203480CD0025741A /* MiniEventDataModel.swift in Sources */,
 				4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */,
-				4F677B18205192CD00B2C4AE /* SIFCardFilterPredicateEditorTemplate.swift in Sources */,
+				4F677B18205192CD00B2C4AE /* SIFCardFilterPredicateEditorRowTemplate.swift in Sources */,
 				4F4F5FA1203480870025741A /* CardDataModel.swift in Sources */,
 				4F08640320373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm in Sources */,
 				4FBA7B0620503A7100037CF5 /* SIFCardFilterViewController.swift in Sources */,
 				4F4F5F9B20347D160025741A /* Dictionary+URLParam.swift in Sources */,
+				4F677B1A2052D20B00B2C4AE /* SIFCardFilterDelegate.swift in Sources */,
 				4F4F5FAE2034810F0025741A /* URPairDataModel.swift in Sources */,
 				4F079BA22041AEF900ED4728 /* String+appendPathComponent.swift in Sources */,
 			);

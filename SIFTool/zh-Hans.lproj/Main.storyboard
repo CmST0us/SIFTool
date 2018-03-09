@@ -23,84 +23,84 @@
                                 <rect key="frame" x="0.0" y="44" width="374" height="480"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addCell" textLabel="Hrb-5y-CTZ" imageView="acb-C0-eko" style="IBUITableViewCellStyleDefault" id="rl7-XM-aey" customClass="SIFCardFilterAddTableViewCell" customModule="SIFTool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="374" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addCell" textLabel="Hrb-5y-CTZ" imageView="acb-C0-eko" rowHeight="44" style="IBUITableViewCellStyleDefault" id="rl7-XM-aey" customClass="SIFCardFilterAddTableViewCell" customModule="SIFTool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rl7-XM-aey" id="zyS-mT-gF7">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="66.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="添加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hrb-5y-CTZ">
-                                                    <rect key="frame" x="52" y="0.0" width="307" height="66.5"/>
+                                                    <rect key="frame" x="52" y="0.0" width="307" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" image="add_button" id="acb-C0-eko">
-                                                    <rect key="frame" x="15" y="22" width="22" height="22"/>
+                                                    <rect key="frame" x="15" y="10" width="22" height="22"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </imageView>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="predicateCell" id="n6O-V5-WXF" customClass="SIFCardFilterPredicateTableViewCell" customModule="SIFTool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="122.5" width="374" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="predicateCell" rowHeight="67" id="n6O-V5-WXF" customClass="SIFCardFilterPredicateTableViewCell" customModule="SIFTool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="99.5" width="374" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n6O-V5-WXF" id="u1l-ev-nek">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="66.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="341" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Mf0-wr-onz">
-                                                    <rect key="frame" x="27" y="15.5" width="315" height="37"/>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="pPx-0I-I73">
+                                                    <rect key="frame" x="23.5" y="13.5" width="294" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KeyPath" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1a4-Sp-D9D">
-                                                            <rect key="frame" x="0.0" y="0.0" width="97" height="37"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="90" height="40"/>
                                                             <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="97" id="28y-Eb-uUw"/>
-                                                                <constraint firstAttribute="height" constant="37" id="YeX-f1-hXD"/>
+                                                                <constraint firstAttribute="width" constant="90" id="EDD-cd-KVg"/>
+                                                                <constraint firstAttribute="height" constant="40" id="wmw-n4-dO8"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="10"/>
+                                                                    <real key="value" value="15"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFu-dj-1UE">
-                                                            <rect key="frame" x="109" y="0.0" width="97" height="37"/>
+                                                            <rect key="frame" x="102" y="0.0" width="90" height="40"/>
                                                             <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="97" id="4T8-Fm-EUg"/>
-                                                                <constraint firstAttribute="height" constant="37" id="pct-By-QiD"/>
+                                                                <constraint firstAttribute="width" constant="90" id="JkZ-Kp-oG0"/>
+                                                                <constraint firstAttribute="height" constant="40" id="gUa-Ud-x6a"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="10"/>
+                                                                    <real key="value" value="15"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dId-Hx-Ao4">
-                                                            <rect key="frame" x="218" y="0.0" width="97" height="37"/>
+                                                            <rect key="frame" x="204" y="0.0" width="90" height="40"/>
                                                             <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" constant="97" id="WSJ-cm-tZb"/>
-                                                                <constraint firstAttribute="height" constant="37" id="Xwo-cT-Q6e"/>
+                                                                <constraint firstAttribute="width" constant="90" id="pJb-Cv-SvG"/>
+                                                                <constraint firstAttribute="height" constant="40" id="zax-2o-YLB"/>
                                                             </constraints>
-                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="11"/>
+                                                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="10"/>
+                                                                    <real key="value" value="15"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
@@ -109,15 +109,15 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Mf0-wr-onz" firstAttribute="leading" secondItem="u1l-ev-nek" secondAttribute="leadingMargin" constant="12" id="fWY-LQ-bzK"/>
-                                                <constraint firstItem="Mf0-wr-onz" firstAttribute="centerY" secondItem="u1l-ev-nek" secondAttribute="centerY" id="ug1-H2-AuU"/>
+                                                <constraint firstItem="pPx-0I-I73" firstAttribute="centerX" secondItem="u1l-ev-nek" secondAttribute="centerX" id="7dl-bF-iAj"/>
+                                                <constraint firstItem="pPx-0I-I73" firstAttribute="centerY" secondItem="u1l-ev-nek" secondAttribute="centerY" id="aws-Xp-u3l"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="conditionLabel" destination="EFu-dj-1UE" id="Kb7-tc-jmg"/>
                                             <outlet property="keyPathLabel" destination="1a4-Sp-D9D" id="5lf-9A-HJp"/>
                                             <outlet property="valueLabel" destination="dId-Hx-Ao4" id="UTb-lu-a7q"/>
-                                            <segue destination="fjj-Cl-ymw" kind="show" id="A1c-7B-eoX"/>
+                                            <segue destination="fjj-Cl-ymw" kind="show" identifier="predicateEditorSegue" id="A1c-7B-eoX"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -143,13 +143,20 @@
                                 <action selector="cancel:" destination="5JI-Tb-B40" id="9tg-ZK-k22"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="XtK-mP-RWh"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="XtK-mP-RWh">
+                            <connections>
+                                <action selector="save:" destination="5JI-Tb-B40" id="KKv-1d-b3T"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <value key="contentSizeForViewInPopover" type="size" width="374" height="480"/>
+                    <connections>
+                        <outlet property="tableView" destination="Qfb-yK-oee" id="V47-o5-SkZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yBr-Wl-lfD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="821.73913043478262" y="-726.35869565217399"/>
+            <point key="canvasLocation" x="821.09375" y="-726.5625"/>
         </scene>
         <!--Card Filter Predicate Editor Table View Controller-->
         <scene sceneID="VP9-9o-FoO">
@@ -177,7 +184,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="valueCell" rowHeight="44" id="WW4-dw-c7t" customClass="SIFCardFilterPredicateEditorValueTableViewCell" customModule="SIFTool" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="valueCell" id="WW4-dw-c7t" customClass="SIFCardFilterPredicateEditorValueTableViewCell" customModule="SIFTool" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WW4-dw-c7t" id="ggv-ws-cmT">
@@ -199,7 +206,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="valueTextField" destination="lxA-OC-JEL" id="vhM-WC-LMb"/>
+                                    <outlet property="valueTextField" destination="lxA-OC-JEL" id="eHa-QI-Voy"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -478,7 +485,7 @@
                         <barButtonItem key="leftBarButtonItem" image="filter_nav_bar_icon_fill" id="CSY-5M-qHb">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="2uu-p9-7Tw" kind="popoverPresentation" popoverAnchorBarButtonItem="CSY-5M-qHb" id="tpX-2Q-UEs">
+                                <segue destination="2uu-p9-7Tw" kind="popoverPresentation" identifier="cardFilterSegue" popoverAnchorBarButtonItem="CSY-5M-qHb" id="tpX-2Q-UEs">
                                     <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
                                 </segue>
                             </connections>
