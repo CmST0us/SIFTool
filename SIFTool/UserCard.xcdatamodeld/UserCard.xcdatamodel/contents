@@ -5,9 +5,9 @@
     </entity>
     <entity name="UserCard" representedClassName="." syncable="YES">
         <attribute name="cardId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="cardSetName" attributeType="String" syncable="YES"/>
         <attribute name="idolized" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="isKizunaMax" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="user" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="User" positionX="142" positionY="-9" width="128" height="58"/>

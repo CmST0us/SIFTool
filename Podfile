@@ -7,12 +7,15 @@ target 'SIFTool' do
 
   # Pods for SIFTool
   pod 'SDWebImage', '~> 4.0'
+  pod 'TZImagePickerController'
+  pod 'MBProgressHUD'
+  
 end
 
 target 'SIFTool-macOS' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
-
+	
   # Pods for SIFTool-macOS
   pod 'SDWebImage', '~> 4.0'
   pod 'PromiseKit'

@@ -10,18 +10,24 @@ import UIKit
 
 class SIFCardFilterAddTableViewCell: UITableViewCell {
 
-    enum Identifier: String {
-        case addCell = "addCell"
+    struct Identifier {
+        static let addCell = "addCell"
     }
     
 }
 
 extension SIFCardFilterAddTableViewCell {
+    
     override func awakeFromNib() {
+        
         super.awakeFromNib()
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
+        
     }
+    
 }

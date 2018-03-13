@@ -10,11 +10,12 @@ import UIKit
 
 class SIFCardFilterPredicateEditorSelectTableViewCell: UITableViewCell {
 
-    enum Identifier: String {
-        case selectCell = "selectCell"
+    struct Identifier {
+        static let selectCell = "selectCell"
     }
     
     var select: Bool = false {
+        
         didSet {
             if select {
                 self.accessoryType = .checkmark
@@ -22,15 +23,22 @@ class SIFCardFilterPredicateEditorSelectTableViewCell: UITableViewCell {
                 self.accessoryType = .none
             }
         }
+        
     }
 }
 
 extension SIFCardFilterPredicateEditorSelectTableViewCell {
+    
     override func awakeFromNib() {
+        
         super.awakeFromNib()
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
+        
     }
+    
 }

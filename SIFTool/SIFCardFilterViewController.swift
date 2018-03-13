@@ -11,11 +11,9 @@ import CoreData
 
 class SIFCardFilterViewController: UIViewController {
     
-    enum Segue: String {
-        case predicateEditorSegue = "predicateEditorSegue"
+    struct Segue {
+        static let predicateEditorSegue = "predicateEditorSegue"
     }
-    
-    private var nextViewController: UIViewController!
     
     var delegate: SIFCardFilterDelegate?
     
@@ -23,29 +21,38 @@ class SIFCardFilterViewController: UIViewController {
     
     var templateRow: [SIFCardFilterPredicateEditorRowTemplate] = []
     
-    @IBOutlet weak var tableView: UITableView!
+    private var nextViewController: UIViewController!
+    
+    @IBOutlet private weak var tableView: UITableView!
     
     @IBAction func save(_ sender: Any) {
+        
         if let _delegate = delegate {
             _delegate.cardFilter(self, didFinishPredicateEdit: predicates)
         }
         self.dismiss(animated: true, completion: nil)
+        
     }
+    
     @IBAction func cancel(_ sender: Any) {
+        
         self.dismiss(animated: true, completion: nil)
+        
     }
 }
 
 // MARK: - Life Cycle Method
 extension SIFCardFilterViewController {
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
     }
     
     override func didReceiveMemoryWarning() {
+        
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
     
 }
@@ -54,31 +61,39 @@ extension SIFCardFilterViewController {
 // MARK: - Table View Data Souce And Delegate
 extension SIFCardFilterViewController: UITableViewDelegate, UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
+        
         return 2
+        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if section == 1 {
             return predicates.count
         }
         return 1
+        
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
         switch indexPath.tuple {
         case (0, 0):
             return 44
         default:
             return 67
         }
+        
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         switch indexPath.tuple {
         case (0, 0):
-            let cell = tableView.dequeueReusableCell(withIdentifier: SIFCardFilterAddTableViewCell.Identifier.addCell.rawValue, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: SIFCardFilterAddTableViewCell.Identifier.addCell, for: indexPath)
             return cell
         case (1, let row):
-            let cell = tableView.dequeueReusableCell(withIdentifier: SIFCardFilterPredicateTableViewCell.Identifier.predicateCell.rawValue, for: indexPath) as! SIFCardFilterPredicateTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: SIFCardFilterPredicateTableViewCell.Identifier.predicateCell, for: indexPath) as! SIFCardFilterPredicateTableViewCell
             cell.keyPathLabel.text = predicates[row].keyPathDisplayName
             cell.conditionLabel.text = predicates[row].conditionDisplayName
             cell.valueLabel.text = predicates[row].valueDisplayName
@@ -86,8 +101,11 @@ extension SIFCardFilterViewController: UITableViewDelegate, UITableViewDataSourc
         default:
             fatalError()
         }
+        
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.tuple {
@@ -110,8 +128,11 @@ extension SIFCardFilterViewController: UITableViewDelegate, UITableViewDataSourc
         default:
             break
         }
+        
     }
+    
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
         switch indexPath.tuple {
         case (1, let row):
             if editingStyle == .delete {
@@ -121,6 +142,7 @@ extension SIFCardFilterViewController: UITableViewDelegate, UITableViewDataSourc
         default:
             break
         }
+        
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
@@ -130,20 +152,40 @@ extension SIFCardFilterViewController: UITableViewDelegate, UITableViewDataSourc
 }
 
 extension SIFCardFilterViewController: SIFCardFilterPredicateEditorDelegate {
+    
     func predicateEditor(_ predicateEditor: SIFCardFilterPredicateEditorTableViewController, row: Int, didChangePredicate predicate: SIFCardFilterPredicate) {
+        
         predicates[row] = predicate
         tableView.reloadRows(at: [IndexPath.init(row: row, section: 1)], with: UITableViewRowAnimation.none)
+        
     }
 }
 
 // MARK: - Story Board Method
 extension SIFCardFilterViewController {
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        guard segue.identifier != nil else {
+            return
+        }
+        
         switch segue.identifier! {
-        case Segue.predicateEditorSegue.rawValue:
+        case Segue.predicateEditorSegue:
             self.nextViewController = segue.destination
         default:
             break
         }
+        
     }
+    
+}
+
+// MARK: - Adaptive PopoverController Method
+extension SIFCardFilterViewController: UIPopoverPresentationControllerDelegate {
+    
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+    
 }

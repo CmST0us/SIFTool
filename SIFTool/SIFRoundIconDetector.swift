@@ -70,14 +70,22 @@ class SIFRoundIconDetector {
             let pattern = OpenCVBridgeSwiftHelper.sharedInstance().resizeImage(roundCardImage, to: CGSize.init(width: _configuration.patternWidth, height: _configuration.patternHeight)).roi(at: _configuration.patternRealRect)
             
             let roi = _roundCardImagePattern.roi(at: CGRect.init(origin: CGPoint.init(x: coordinates.0, y: coordinates.1), size: _configuration.patternRealSize))
-            roi.fill(by: pattern)
+            
+            guard pattern != nil && roi != nil else {
+                return
+            }
+            
+            roi!.fill(by: pattern!)
         }
         if let idolizedRoundCardImage = images.1 {
             let coordinates = patternCoordinates(index: cardId, idolize: true)
             let pattern = OpenCVBridgeSwiftHelper.sharedInstance().resizeImage(idolizedRoundCardImage, to: CGSize.init(width: _configuration.patternWidth, height: _configuration.patternHeight)).roi(at: _configuration.patternRealRect)
             
             let roi = _roundCardImagePattern.roi(at: CGRect.init(origin: CGPoint.init(x: coordinates.0, y: coordinates.1), size: _configuration.patternRealSize))
-            roi.fill(by: pattern)
+            guard pattern != nil && roi != nil else {
+                return
+            }
+            roi!.fill(by: pattern!)
         }
     }
     
@@ -88,7 +96,10 @@ class SIFRoundIconDetector {
     func makeTemplateImagePattern(image: CVMat) -> CVMat {
         let resizeImage = OpenCVBridgeSwiftHelper.sharedInstance().resizeImage(image, to: _configuration.patternSize)
         let roi = resizeImage.roi(at: _configuration.patternRealRect)
-        return roi
+        guard roi != nil else {
+            return image
+        }
+        return roi!
     }
     
 
@@ -152,15 +163,20 @@ class SIFRoundIconDetector {
                 // user 8 pix offset to avoid button layout in 1080p screenshot
                 screenshotRoiRect = CGRect.init(x: minX, y: minY + 8, width: w, height: h - 8)
                 let roiMat = cloneMat.roi(at: screenshotRoiRect)
-                let centerY = roiMat.size().height / 2 - 1
-                let centerBrokeArrowRect = CGRect.init(x: 0, y: centerY, width: roiMat.size().width, height: 2)
-                OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat, rect: centerBrokeArrowRect, r: 0, g: 0, b: 0)
-                return roiMat
+                
+                guard roiMat != nil else {
+                    return cloneMat
+                }
+                
+                let centerY = roiMat!.size().height / 2 - 1
+                let centerBrokeArrowRect = CGRect.init(x: 0, y: centerY, width: roiMat!.size().width, height: 2)
+                OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat!, rect: centerBrokeArrowRect, r: 0, g: 0, b: 0)
+                return roiMat!
                 
             }
             return cloneMat
         }
-        let f = findContours(mat: findContours(mat: binaryMat, step: 0), step: 1)
+        let _ = findContours(mat: findContours(mat: binaryMat, step: 0), step: 1)
         return (screenshotRoiRect, outputArray)
     }
     

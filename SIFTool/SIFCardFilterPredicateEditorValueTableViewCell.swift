@@ -8,36 +8,39 @@
 
 import UIKit
 
-
-protocol SIFCardFilterPredicateEditorDelegate {
-    func predicateEditor(_ predicateEditor: SIFCardFilterPredicateEditorTableViewController, row: Int, didChangePredicate predicate: SIFCardFilterPredicate)
-}
-
-
 class SIFCardFilterPredicateEditorValueTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var valueTextField: UITextField!
     
-    enum Identifier: String {
-        case valueCell = "valueCell"
+    struct Identifier {
+        static let valueCell = "valueCell"
     }
     
     var value: String? {
+        
         get {
             return valueTextField.text
         }
+        
         set {
             valueTextField.text = newValue
         }
+        
     }
 }
 
 extension SIFCardFilterPredicateEditorValueTableViewCell {
+    
     override func awakeFromNib() {
+        
         super.awakeFromNib()
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
+        
     }
+    
 }

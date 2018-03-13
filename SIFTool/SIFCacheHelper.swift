@@ -24,6 +24,7 @@ struct SIFCacheHelperError: Error {
 }
 
 class SIFCacheHelper {
+    
     #if macOS
         typealias UIImage = NSImage
     #endif
@@ -35,6 +36,15 @@ class SIFCacheHelper {
     static var shared: SIFCacheHelper = SIFCacheHelper()
     
     private var imageCache = NSCache<NSString, UIImage>()
+    
+    var currentCardSetName: String {
+        set {
+            UserDefaults.init().setValue(newValue, forKey: "cardSetName")
+        }
+        get {
+            return UserDefaults.init().value(forKey: "cardSetName") as? String ?? "default"
+        }
+    }
     
     var cacheDirectory: String = NSTemporaryDirectory()
     
@@ -58,10 +68,12 @@ class SIFCacheHelper {
         }
         return [:]
     }()
+    
 }
 
 // MARK: - cache method
 extension SIFCacheHelper {
+    
     func image(withUrl url: URL?, refresh: Bool = false) -> UIImage? {
         if let u = url {
             let fileName = u.lastPathComponent
@@ -155,5 +167,6 @@ extension SIFCacheHelper {
             throw error
         }
     }
+    
 }
 

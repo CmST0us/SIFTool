@@ -15,7 +15,7 @@
 - (CGSize)size;
 - (int)channels;
 
-- (nonnull CVMat *)roiAt:(CGRect)rect;
+- (nullable CVMat *)roiAt:(CGRect)rect;
 
 - (float)floatValueAt:(CGPoint)point;
 - (void)setFloatValue:(float)value at:(CGPoint)point;

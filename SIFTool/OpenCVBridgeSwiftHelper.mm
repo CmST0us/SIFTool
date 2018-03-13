@@ -9,6 +9,7 @@
 #import <Foundation/Foundation.h>
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
+#import <opencv2/imgcodecs/ios.h>
 #endif
 #import <opencv2/opencv.hpp>
 #import <vector>
@@ -49,6 +50,11 @@
     r.x = rect.origin.x;
     r.y = rect.origin.y;
     
+    auto matSize = _mat.size();
+    
+    if (r.x + r.width > matSize.width || r.y + matSize.height) {
+        return NULL;
+    }
     auto m = [[CVMat alloc] init];
     m.mat = _mat(r);
     return m;
@@ -182,6 +188,21 @@
 @end
 #endif
 
+#if TARGET_OS_IPHONE
+@implementation UIImage(CVMat)
+
++ (UIImage *)imageWithCVMat:(CVMat *)mat {
+    return MatToUIImage(mat.mat);
+}
+
+- (CVMat *)mat {
+    auto mat = [[CVMat alloc] init];
+    UIImageToMat(self, mat.mat, true);
+    return mat;
+}
+
+@end
+#endif
 @implementation OpenCVBridgeSwiftHelper
 
 - (instancetype)init {

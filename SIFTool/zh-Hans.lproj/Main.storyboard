@@ -19,11 +19,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="374" height="524"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="67" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Qfb-yK-oee">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Qfb-yK-oee">
                                 <rect key="frame" x="0.0" y="44" width="374" height="480"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addCell" textLabel="Hrb-5y-CTZ" imageView="acb-C0-eko" rowHeight="44" style="IBUITableViewCellStyleDefault" id="rl7-XM-aey" customClass="SIFCardFilterAddTableViewCell" customModule="SIFTool" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addCell" textLabel="Hrb-5y-CTZ" imageView="acb-C0-eko" rowHeight="44" style="IBUITableViewCellStyleDefault" id="rl7-XM-aey" customClass="SIFCardFilterAddTableViewCell" customModule="SIFTool" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="55.5" width="374" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rl7-XM-aey" id="zyS-mT-gF7">
@@ -44,7 +44,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="predicateCell" rowHeight="67" id="n6O-V5-WXF" customClass="SIFCardFilterPredicateTableViewCell" customModule="SIFTool" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="predicateCell" rowHeight="67" id="n6O-V5-WXF" customClass="SIFCardFilterPredicateTableViewCell" customModule="SIFTool" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="99.5" width="374" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n6O-V5-WXF" id="u1l-ev-nek">
@@ -52,9 +52,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="pPx-0I-I73">
-                                                    <rect key="frame" x="23.5" y="13.5" width="294" height="40"/>
+                                                    <rect key="frame" x="15" y="13.5" width="294" height="40"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KeyPath" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1a4-Sp-D9D">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KeyPath" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="1a4-Sp-D9D">
                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="40"/>
                                                             <color key="backgroundColor" red="0.9137254901960784" green="0.9137254901960784" blue="0.9137254901960784" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -66,12 +66,12 @@
                                                             <nil key="highlightedColor"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="15"/>
+                                                                    <real key="value" value="20"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFu-dj-1UE">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="EFu-dj-1UE">
                                                             <rect key="frame" x="102" y="0.0" width="90" height="40"/>
                                                             <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -83,12 +83,12 @@
                                                             <nil key="highlightedColor"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="15"/>
+                                                                    <real key="value" value="20"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dId-Hx-Ao4">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Value" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="dId-Hx-Ao4">
                                                             <rect key="frame" x="204" y="0.0" width="90" height="40"/>
                                                             <color key="backgroundColor" red="0.91372549020000005" green="0.91372549020000005" blue="0.91372549020000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
@@ -100,7 +100,7 @@
                                                             <nil key="highlightedColor"/>
                                                             <userDefinedRuntimeAttributes>
                                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                    <real key="value" value="15"/>
+                                                                    <real key="value" value="20"/>
                                                                 </userDefinedRuntimeAttribute>
                                                                 <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="YES"/>
                                                             </userDefinedRuntimeAttributes>
@@ -109,8 +109,8 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="pPx-0I-I73" firstAttribute="centerX" secondItem="u1l-ev-nek" secondAttribute="centerX" id="7dl-bF-iAj"/>
                                                 <constraint firstItem="pPx-0I-I73" firstAttribute="centerY" secondItem="u1l-ev-nek" secondAttribute="centerY" id="aws-Xp-u3l"/>
+                                                <constraint firstItem="pPx-0I-I73" firstAttribute="leading" secondItem="u1l-ev-nek" secondAttribute="leadingMargin" id="mRw-yV-oJ9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -493,32 +493,268 @@
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="lGs-DX-Q1L">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="2w2-1A-P2i" kind="show" action="showDetailViewController:sender:" id="KzO-fY-nQo"/>
+                                <action selector="addCard:" destination="BYZ-38-t0r" id="C1j-EK-O7D"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="userCardCollectionView" destination="6OP-XS-KvD" id="8cc-QE-tvW"/>
+                        <segue destination="V9c-FC-8dx" kind="show" identifier="importCardSegue" id="01C-8T-7CG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="86" y="-26"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="ZXZ-re-UvZ">
+        <!--导入卡组-->
+        <scene sceneID="BzP-12-1Iz">
             <objects>
-                <viewController id="2w2-1A-P2i" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="hLD-3E-yTm">
+                <collectionViewController storyboardIdentifier="SIFCardImportCollectionViewController" title="导入卡组" clearsSelectionOnViewWillAppear="NO" id="V9c-FC-8dx" customClass="SIFCardImportCollectionViewController" customModule="SIFTool" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rm8-qs-dpO">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="dku-Nr-mX8"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8Ch-kw-t46" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wOo-UF-xcB">
+                            <size key="itemSize" width="174" height="261"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="8" minY="4" maxX="8" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="JL9-sm-j8G" customClass="SIFCardImportCollectionViewCell" customModule="SIFTool" customModuleProvider="target">
+                                <rect key="frame" x="8" y="4" width="174" height="261"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
+                                    <rect key="frame" x="0.0" y="0.0" width="174" height="261"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Ae-7l-jKC">
+                                            <rect key="frame" x="8" y="8" width="158" height="145.5"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="145.5" id="qIJ-AL-UIe"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C5L-N1-7Wc">
+                                            <rect key="frame" x="8" y="158" width="158" height="31"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="RARITY NAME (ID)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfm-7g-36E">
+                                                    <rect key="frame" x="0.0" y="0.0" width="158" height="18"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="IDOLIZED KIZUNA" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4T-2P-oAW">
+                                                    <rect key="frame" x="0.0" y="18" width="158" height="13"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="XJc-kv-ySE">
+                                            <rect key="frame" x="8" y="193" width="158" height="56"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="mjf-jG-ihu">
+                                                    <rect key="frame" x="0.0" y="0.0" width="158" height="16"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pure" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4D-py-bcX">
+                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Kh1-ti-BTB">
+                                                            <rect key="frame" x="37" y="0.0" width="121" height="16"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sty-VY-dp0" customClass="ScoreIndicatorView" customModule="SIFTool" customModuleProvider="target">
+                                                                    <rect key="frame" x="11" y="0.0" width="110" height="16"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="16" id="ouc-ks-xZD"/>
+                                                                        <constraint firstAttribute="width" constant="110" id="rS8-Rs-5Af"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxScore">
+                                                                            <real key="value" value="4200"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="minScore">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="score">
+                                                                            <real key="value" value="3000"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorBackgroundColor">
+                                                                            <color key="value" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="scoreLabelTextSize">
+                                                                            <real key="value" value="11"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorProcessColor">
+                                                                            <color key="value" red="0.12637946010000001" green="0.66992861029999995" blue="0.32429128889999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="indicatorCornerRadius">
+                                                                            <real key="value" value="4"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="jI9-4Z-73u">
+                                                    <rect key="frame" x="0.0" y="20" width="158" height="16"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cool" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNR-xE-lwP">
+                                                            <rect key="frame" x="0.0" y="0.0" width="29.5" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Tgi-p2-QgS">
+                                                            <rect key="frame" x="33.5" y="0.0" width="124.5" height="16"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0zI-cc-tXW" customClass="ScoreIndicatorView" customModule="SIFTool" customModuleProvider="target">
+                                                                    <rect key="frame" x="14.5" y="0.0" width="110" height="16"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="height" constant="16" id="kr8-Qn-BJ0"/>
+                                                                        <constraint firstAttribute="width" constant="110" id="se4-DB-c1t"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxScore">
+                                                                            <real key="value" value="4200"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="minScore">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="score">
+                                                                            <real key="value" value="3000"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorBackgroundColor">
+                                                                            <color key="value" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="scoreLabelTextSize">
+                                                                            <real key="value" value="11"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorProcessColor">
+                                                                            <color key="value" red="0.01273097284" green="0.59783947469999998" blue="0.92159408330000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="indicatorCornerRadius">
+                                                                            <real key="value" value="4"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="obZ-zJ-myU">
+                                                    <rect key="frame" x="0.0" y="40" width="158" height="16"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKi-Fq-eGN">
+                                                            <rect key="frame" x="0.0" y="0.0" width="35.5" height="16"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-p3-gN0">
+                                                            <rect key="frame" x="39.5" y="0.0" width="118.5" height="16"/>
+                                                            <subviews>
+                                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9p-sp-g39" customClass="ScoreIndicatorView" customModule="SIFTool" customModuleProvider="target">
+                                                                    <rect key="frame" x="8.5" y="0.0" width="110" height="16"/>
+                                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" constant="110" id="OFL-zu-H6l"/>
+                                                                        <constraint firstAttribute="height" constant="16" id="yex-rf-du6"/>
+                                                                    </constraints>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxScore">
+                                                                            <real key="value" value="4200"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="minScore">
+                                                                            <real key="value" value="0.0"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="score">
+                                                                            <real key="value" value="3000"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorBackgroundColor">
+                                                                            <color key="value" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="color" keyPath="indicatorProcessColor">
+                                                                            <color key="value" red="0.90057617430000003" green="0.0095076672730000002" blue="0.43578991290000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="indicatorCornerRadius">
+                                                                            <real key="value" value="4"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="scoreLabelTextSize">
+                                                                            <real key="value" value="11"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
+                                                                </view>
+                                                            </subviews>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="XJc-kv-ySE" firstAttribute="leading" secondItem="JL9-sm-j8G" secondAttribute="leadingMargin" id="0JD-Fz-4MT"/>
+                                    <constraint firstItem="2Ae-7l-jKC" firstAttribute="top" secondItem="JL9-sm-j8G" secondAttribute="top" constant="8" id="7Zx-wf-MDp"/>
+                                    <constraint firstItem="2Ae-7l-jKC" firstAttribute="leading" secondItem="JL9-sm-j8G" secondAttribute="leading" constant="8" id="AMS-33-ayR"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="XJc-kv-ySE" secondAttribute="trailing" id="BZ5-fF-pDU"/>
+                                    <constraint firstItem="C5L-N1-7Wc" firstAttribute="leading" secondItem="JL9-sm-j8G" secondAttribute="leadingMargin" id="CDA-mz-ANf"/>
+                                    <constraint firstItem="XJc-kv-ySE" firstAttribute="top" secondItem="C5L-N1-7Wc" secondAttribute="bottom" constant="4" id="I1S-t8-xpk"/>
+                                    <constraint firstItem="C5L-N1-7Wc" firstAttribute="top" secondItem="2Ae-7l-jKC" secondAttribute="bottom" constant="4" id="OYA-qv-dvN"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="XJc-kv-ySE" secondAttribute="bottom" constant="4" id="QPo-Ce-Ic7"/>
+                                    <constraint firstAttribute="trailing" secondItem="2Ae-7l-jKC" secondAttribute="trailing" constant="8" id="otT-rV-fpy"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="C5L-N1-7Wc" secondAttribute="trailing" id="xoI-S1-Kvf"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" red="0.26051741839999998" green="0.2605243921" blue="0.260520637" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                        <size key="value" width="1" height="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.20000000000000001"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="12"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.83741801979999997" green="0.83743780850000005" blue="0.83742713930000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <outlet property="cardRoundImageView" destination="2Ae-7l-jKC" id="8qx-kl-5gR"/>
+                                    <outlet property="coolScoreIndicatorView" destination="0zI-cc-tXW" id="OZd-Hp-x4n"/>
+                                    <outlet property="idolizedKizunaLabel" destination="h4T-2P-oAW" id="Stc-jh-df1"/>
+                                    <outlet property="pureScoreIndicatorView" destination="Sty-VY-dp0" id="tki-Qr-JUZ"/>
+                                    <outlet property="rarityNameIdLabel" destination="Bfm-7g-36E" id="aal-me-8qc"/>
+                                    <outlet property="smileIndicatorView" destination="r9p-sp-g39" id="kdG-1k-cU8"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="V9c-FC-8dx" id="xmg-Ih-rxk"/>
+                            <outlet property="delegate" destination="V9c-FC-8dx" id="tez-YS-9jb"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="j7E-7v-gS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="823" y="-26"/>
+            <point key="canvasLocation" x="853.90625" y="-18.1640625"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="G19-BG-EpO">

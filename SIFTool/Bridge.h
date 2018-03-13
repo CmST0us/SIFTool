@@ -9,7 +9,7 @@
 #import "OpenCVBridgeSwiftHelper.h"
 
 #if TARGET_OS_IPHONE
-
+#import "UIImage+CVMat.h"
 #elif TARGET_OS_OSX
 #import "NSImage+CVMat.h"
 #endif

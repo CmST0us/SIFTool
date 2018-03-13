@@ -97,7 +97,7 @@ extension UserCardStorageHelper {
         if checkExist == false {
             add(card: card)
         } else {
-            if let _ = fetchUserCardManagedObject(withCardId: card.cardId, user: card.user) {
+            if let _ = fetchUserCardManagedObject(withCardId: card.cardId, user: card.cardSetName) {
                 return
             } else {
                 add(card: card)

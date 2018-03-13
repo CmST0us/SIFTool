@@ -12,8 +12,10 @@
 #import <Foundation/Foundation.h>
 
 @interface NSImage (CVMat)
+
 @property (nonatomic, readonly, nonnull) CVMat *mat;
 + (nonnull NSImage *)imageWithCVMat:(nonnull CVMat *)mat;
+
 @end
 
 #endif

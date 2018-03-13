@@ -9,8 +9,9 @@
 import UIKit
 
 class SIFUserCardCollectionViewCell: UICollectionViewCell {
-    enum Identificer: String {
-        case userCardCell = "userCardCell"
+    
+    struct Identificer {
+        static let userCardCell = "userCardCell"
     }
     
     @IBOutlet weak var cardRoundImageView: UIImageView!
@@ -38,11 +39,6 @@ class SIFUserCardCollectionViewCell: UICollectionViewCell {
         pureScoreIndicatorView.score = withCard.statisticsPure(idolized: userCard.idolized, isKizunaMax: userCard.isKizunaMax).doubleValue
         
     }
+    
 }
 
-// MARK: - Life Cycle Method
-extension SIFUserCardCollectionViewCell {
-    override func prepareForReuse() {
-        
-    }
-}

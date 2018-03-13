@@ -15,7 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        ApiHelper.shared.baseUrlPath = "http://schoolido.lu/api"
+        ApiHelper.shared.taskWaitTime = 15
+        
+        let cacheDir = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true)[0].appendingPathComponent("cards")
+        
+        if FileManager.default.fileExists(atPath: cacheDir) {
+            try? FileManager.default.createDirectory(atPath: cacheDir, withIntermediateDirectories: true, attributes: nil)
+        }
+        
+        SIFCacheHelper.shared.cacheDirectory = cacheDir
+        
         return true
     }
 

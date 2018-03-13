@@ -14,19 +14,25 @@ class SIFCardFilterPredicateTableViewCell: UITableViewCell {
     @IBOutlet weak var conditionLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
-    enum Identifier: String {
-        case predicateCell = "predicateCell"
+    struct Identifier {
+        static let predicateCell = "predicateCell"
     }
     
 }
 
 // MARK: - Life Cycle Method
 extension SIFCardFilterPredicateTableViewCell {
+    
     override func awakeFromNib() {
+        
         super.awakeFromNib()
+        
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
+        
         super.setSelected(selected, animated: animated)
+        
     }
+    
 }
