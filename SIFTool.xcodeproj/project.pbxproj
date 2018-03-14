@@ -105,6 +105,9 @@
 		4F9A9C1F2058CED000CED9C5 /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
 		4F9A9C212058CF5A00CED9C5 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
 		4F9A9C222058CF6100CED9C5 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F2F2034699500F03CCC /* CoreDataHelper.swift */; };
+		4F9A9C282058E00100CED9C5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A9C272058E00100CED9C5 /* libz.tbd */; };
+		4F9A9C2A2058E00A00CED9C5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A9C292058E00A00CED9C5 /* libz.tbd */; };
+		4FB8135B205971190089FD38 /* resources.zip in Resources */ = {isa = PBXBuildFile; fileRef = 4FB8135A205971190089FD38 /* resources.zip */; };
 		4FBA7B02204DA59B00037CF5 /* ScoreIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */; };
 		4FBA7B04204EA8E300037CF5 /* UIView+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */; };
 		4FBA7B0620503A7100037CF5 /* SIFCardFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B0520503A7100037CF5 /* SIFCardFilterViewController.swift */; };
@@ -219,6 +222,9 @@
 		4F83C2472045A9100071C58E /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		4F9A9C1B2058CE2000CED9C5 /* MiscTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscTest.swift; sourceTree = "<group>"; };
 		4F9A9C1D2058CEA800CED9C5 /* SIFCacheTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCacheTest.swift; sourceTree = "<group>"; };
+		4F9A9C272058E00100CED9C5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		4F9A9C292058E00A00CED9C5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		4FB8135A205971190089FD38 /* resources.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = resources.zip; path = ../../../../Downloads/card_round/resources.zip; sourceTree = "<group>"; };
 		4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreIndicatorView.swift; sourceTree = "<group>"; };
 		4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+IB.swift"; sourceTree = "<group>"; };
 		4FBA7B0520503A7100037CF5 /* SIFCardFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCardFilterViewController.swift; sourceTree = "<group>"; };
@@ -263,6 +269,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F9A9C2A2058E00A00CED9C5 /* libz.tbd in Frameworks */,
 				4F086401203732AB00CFDD98 /* opencv2.framework in Frameworks */,
 				E56D676C2B3D7A2970BC81A4 /* Pods_SIFTool.framework in Frameworks */,
 			);
@@ -272,6 +279,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4F9A9C282058E00100CED9C5 /* libz.tbd in Frameworks */,
 				4F0864002037329100CFDD98 /* opencv2.framework in Frameworks */,
 				71E9B512A1AA91CC4785B524 /* Pods_SIFTool_macOS.framework in Frameworks */,
 			);
@@ -365,13 +373,6 @@
 			path = SIFToolTest;
 			sourceTree = "<group>";
 		};
-		4F677B242058499200B2C4AE /* cards.bundle */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = cards.bundle;
-			sourceTree = "<group>";
-		};
 		4FBA7B112050475600037CF5 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -463,7 +464,7 @@
 		4FEA5F24203468B100F03CCC /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				4F677B242058499200B2C4AE /* cards.bundle */,
+				4FB8135A205971190089FD38 /* resources.zip */,
 				4FEA5F01203467BB00F03CCC /* Assets.xcassets */,
 				4FE1E39C2042798C0032F229 /* UserCard.xcdatamodeld */,
 				4FEA5F06203467BB00F03CCC /* Info.plist */,
@@ -592,6 +593,8 @@
 		CA8C1502459E388D0D5C9EE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4F9A9C272058E00100CED9C5 /* libz.tbd */,
+				4F9A9C292058E00A00CED9C5 /* libz.tbd */,
 				B2401D9FF16416637EBEF79A /* Pods_SIFTool.framework */,
 				3592CEF3EA487E187630A793 /* Pods_SIFTool_macOS.framework */,
 			);
@@ -723,6 +726,7 @@
 				4FEA5F02203467BB00F03CCC /* Assets.xcassets in Resources */,
 				4FEA5F00203467BB00F03CCC /* Main.storyboard in Resources */,
 				4FBA7B102050474C00037CF5 /* PredicatePicker.xib in Resources */,
+				4FB8135B205971190089FD38 /* resources.zip in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -765,14 +769,18 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SIFTool/Pods-SIFTool-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GzipSwift-iOS/Gzip.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage-iOS/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SSZipArchive-iOS/SSZipArchive.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gzip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -787,12 +795,16 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SIFTool-macOS/Pods-SIFTool-macOS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GzipSwift-macOS/Gzip.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage-macOS/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SSZipArchive-macOS/SSZipArchive.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit/PromiseKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Gzip.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

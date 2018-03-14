@@ -32,9 +32,8 @@ class SIFCardImportCollectionViewController: UICollectionViewController {
     private func setupDetector() {
         
         let cardCache = SIFCacheHelper.shared.cards
-        
+        self.detectorConfiguration = SIFRoundIconDetectorConfiguration.defaultRoundIconConfiguration(radio: 0.3)
         if let patternImage = UIImage.init(contentsOfFile: SIFCacheHelper.shared.cacheDirectory.appendingPathComponent("pattern.png")) {
-            self.detectorConfiguration = SIFRoundIconDetectorConfiguration.defaultRoundIconConfiguration(radio: 0.3)
             self.detector = SIFRoundIconDetector(withCards: cardCache, configuration: self.detectorConfiguration, roundCardImagePattern: patternImage.mat)
             Logger.shared.console("use pattern image cache")
         } else {
@@ -142,7 +141,7 @@ extension SIFCardImportCollectionViewController {
                         userCard.cardSetName = SIFCacheHelper.shared.currentCardSetName
                         self.cards.append(userCard)
                         
-                        setProgressHudLabelText("找到卡片(ID: \(String(userCard.cardId))")
+                        setProgressHudLabelText("找到卡片(ID: \(String(userCard.cardId)))")
                     }
                     
                 }

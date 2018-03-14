@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SSZipArchive
 
 #if macOS
     import Cocoa
@@ -56,6 +57,15 @@ class SIFCacheHelper {
     }
     
     lazy var cards: [Int: CardDataModel] = {
+        return loadCardsJsonFile()
+    }()
+    
+}
+
+// MARK: - cache method
+extension SIFCacheHelper {
+    
+    func loadCardsJsonFile() -> [Int: CardDataModel] {
         if let data = NSData(contentsOfFile: self.cacheDirectory.appendingPathComponent("cards.json")) as Data? {
             if let dictArray = DataModelHelper.shared.array(withJsonData: data) as? [Dictionary<String, Any>] {
                 var tCard: [Int: CardDataModel] = [:]
@@ -67,12 +77,15 @@ class SIFCacheHelper {
             }
         }
         return [:]
-    }()
+    }
     
-}
-
-// MARK: - cache method
-extension SIFCacheHelper {
+    func unzipResourceData() -> Bool {
+        let resourceFile = Bundle.main.path(forResource: "resources", ofType: "zip", inDirectory: nil, forLocalization: nil)
+        guard resourceFile != nil else {
+            return false
+        }
+        return SSZipArchive.unzipFile(atPath: resourceFile!, toDestination: self.cacheDirectory)
+    }
     
     func image(withUrl url: URL?, refresh: Bool = false) -> UIImage? {
         if let u = url {

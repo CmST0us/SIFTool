@@ -9,7 +9,8 @@ target 'SIFTool' do
   pod 'SDWebImage', '~> 4.0'
   pod 'TZImagePickerController'
   pod 'MBProgressHUD'
-  
+  pod 'GzipSwift'
+  pod 'SSZipArchive'
 end
 
 target 'SIFTool-macOS' do
@@ -19,5 +20,8 @@ target 'SIFTool-macOS' do
   # Pods for SIFTool-macOS
   pod 'SDWebImage', '~> 4.0'
   pod 'PromiseKit'
+  pod 'GzipSwift'
+  pod 'SSZipArchive'
 end
+
 

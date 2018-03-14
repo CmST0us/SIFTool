@@ -17,7 +17,7 @@ class SIFCardToolListViewController: UIViewController {
         static let importCardSegue = "importCardSegue"
     }
     
-    private var selectScreenshots: [UIImage]!
+    private var selectScreenshots: [UIImage] = []
     
 //    private lazy var _collectionViewDataSource: [UserCardDataModel] = {
 //
@@ -220,9 +220,25 @@ extension SIFCardToolListViewController: TZImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool) {
         
-//        self.selectScreenshots = [UIImage.init(contentsOfFile:  SIFCacheHelper.shared.cacheDirectory.appendingPathComponent("test.png"))!]
-        self.selectScreenshots = photos
-        self.performSegue(withIdentifier: "importCardSegue", sender: nil)
+        var originCallCount: Int = 0 {
+            didSet {
+                if originCallCount == assets.count {
+                    self.performSegue(withIdentifier: Segue.importCardSegue, sender: nil)
+                }
+            }
+            
+        }
+        
+        for item in assets {
+            TZImageManager.default().getOriginalPhoto(withAsset: item, completion: { (image, info) in
+                guard image != nil else {
+                    originCallCount += 1
+                    return
+                }
+                self.selectScreenshots.append(image!)
+                originCallCount += 1
+            })
+        }
         
     }
 

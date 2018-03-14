@@ -104,7 +104,7 @@ class SIFRoundIconDetector {
     
 
     func search(screenshot: CVMat) -> (CGRect, [CGRect]) {
-        let gaussianMat = OpenCVBridgeSwiftHelper.sharedInstance().gaussianBlur(withImage: screenshot, kernelSize: CGSize.init(width: 9, height: 1), sigmaX: 3, sigmaY: 3, borderType: CVBridgeBorderType.default)
+        let gaussianMat = OpenCVBridgeSwiftHelper.sharedInstance().gaussianBlur(withImage: screenshot, kernelSize: CGSize.init(width: 3, height: 1), sigmaX: 3, sigmaY: 3, borderType: CVBridgeBorderType.default)
         let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: gaussianMat, targetColor: CVBridgeColorCovertType.bgr2Gray)
         let binaryMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 220.0, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
         var outputArray: [CGRect] = []
@@ -170,7 +170,10 @@ class SIFRoundIconDetector {
                 
                 let centerY = roiMat!.size().height / 2 - 1
                 let centerBrokeArrowRect = CGRect.init(x: 0, y: centerY, width: roiMat!.size().width, height: 2)
+               
+                //draw write rect to fix arrow area
                 OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat!, rect: centerBrokeArrowRect, r: 0, g: 0, b: 0)
+                let image = UIImage.init(cvMat: roiMat!)
                 return roiMat!
                 
             }

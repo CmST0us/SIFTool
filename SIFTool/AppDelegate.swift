@@ -19,13 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ApiHelper.shared.baseUrlPath = "http://schoolido.lu/api"
         ApiHelper.shared.taskWaitTime = 15
         
-        let cacheDir = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true)[0].appendingPathComponent("cards")
+        let cacheDir = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.allDomainsMask, true)[0].appendingPathComponent("resources")
         
         if FileManager.default.fileExists(atPath: cacheDir) {
             try? FileManager.default.createDirectory(atPath: cacheDir, withIntermediateDirectories: true, attributes: nil)
         }
         
-        SIFCacheHelper.shared.cacheDirectory = cacheDir
+        let cache = SIFCacheHelper.shared
+        cache.cacheDirectory = cacheDir
+        
+        if !cache.isCardsCached {
+            assert(cache.unzipResourceData())
+            cache.cards = cache.loadCardsJsonFile()
+        }
         
         return true
     }

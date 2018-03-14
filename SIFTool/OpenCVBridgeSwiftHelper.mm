@@ -199,12 +199,18 @@
 @implementation UIImage(CVMat)
 
 + (UIImage *)imageWithCVMat:(CVMat *)mat {
+    if (mat.mat.channels() == 4) {
+        cv::cvtColor(mat.mat, mat.mat, cv::COLOR_BGRA2RGB);
+    }
+    
     return MatToUIImage(mat.mat);
 }
 
 - (CVMat *)mat {
     auto mat = [[CVMat alloc] init];
+    
     UIImageToMat(self, mat.mat, true);
+    cv::cvtColor(mat.mat, mat.mat, cv::COLOR_RGBA2BGRA);
     return mat;
 }
 
