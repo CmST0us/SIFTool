@@ -8,7 +8,7 @@
 
 import XCTest
 
-class ApiTest: XCTestCase {
+class ApiHelperTest: XCTestCase {
     
     override func setUp() {
         super.setUp()

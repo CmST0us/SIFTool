@@ -9,7 +9,7 @@
 
 import XCTest
 
-class OpenCVTest: XCTestCase {
+class CVBridgeTest: XCTestCase {
 
     let sp = "/Users/cmst0us/Downloads"
     override func setUp() {
