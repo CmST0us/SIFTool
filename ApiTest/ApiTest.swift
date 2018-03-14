@@ -55,67 +55,70 @@ class ApiTest: XCTestCase {
             XCTFail()
         }
     }
-    func testDetectorMakeRoundCardPattern() {
-        if let data = NSData(contentsOfFile: "/Users/cmst0us/Downloads/f.json") as Data? {
-            if let results = DataModelHelper.shared.array(withJsonData: data) as? [Dictionary<String, Any>] {
-                
-                let cards = results.map({ (dict) -> CardDataModel in
-                    let card = CardDataModel(withDictionary: dict)
-                    return card
-                })
-                let c = SIFRoundIconDetectorConfiguration.defaultRoundIconConfiguration
-                let detector = SIFRoundIconDetector(withCards: cards, configuration: c)
-                for u in detector.roundCardUrls {
-                    var image0: NSImage? = nil
-                    var image1: NSImage? = nil
-                    if let u0 = u.1 {
-                        image0 = NSImage.init(contentsOf: u0)
-                    }
-                    if let u1 = u.2 {
-                        image1 = NSImage.init(contentsOf: u1)
-                    }
-                    detector.makeRoundCardImagePattern(cardId: u.0, images: (image0?.mat, image1?.mat))
-                    let card = detector.card(atPatternPoint: CGPoint.init(x: 0, y: c.patternRealHeight))
-                    Logger.shared.console("\(card.0!.idol.name)")
-                }
-                Logger.shared.console("make Pattern finish")
-                return
-            }
-        }
-        XCTFail()
-    }
     
-    func testDetectorSearch() {
-        if let data = NSData(contentsOfFile: "/Users/cmst0us/Downloads/f.json") as Data? {
-            if let result = DataModelHelper.shared.array(withJsonData: data) as? [Dictionary<String, Any>] {
-                let cards = result.map({ (dict) -> CardDataModel in
-                    let card = CardDataModel(withDictionary: dict)
-                    return card
-                })
-                let config = SIFRoundIconDetectorConfiguration.defaultRoundIconConfiguration
-                let detector = SIFRoundIconDetector(withCards: cards, configuration: config)
-                for u in detector.roundCardUrls {
-                    var image0: NSImage? = nil
-                    var image1: NSImage? = nil
-                    if let u0 = u.1 {
-                        image0 = NSImage.init(contentsOf: u0)
-                    }
-                    if let u1 = u.2 {
-                        image1 = NSImage.init(contentsOf: u1)
-                    }
-                    detector.makeRoundCardImagePattern(cardId: u.0, images: (image0?.mat, image1?.mat))
-                    let screenShoot = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "/Users/cmst0us/Downloads/test.png")
-                    let cardRects = detector.search(screenShoot: screenShoot)
-                    for rect in cardRects {
-                        var roundCardImage = screenShoot.roi(at: rect)
-                        roundCardImage = detector.makeTemplateImagePattern(image: roundCardImage)
-                        let result = detector.match(image: roundCardImage)
-                        Logger.shared.console("\(result)")
-                    }
-                }
-            }
-        }
-    }
+//    func testDetectorMakeRoundCardPattern() {
+//        if let data = NSData(contentsOfFile: "/Users/cmst0us/Downloads/f.json") as Data? {
+//            if let results = DataModelHelper.shared.array(withJsonData: data) as? [Dictionary<String, Any>] {
+//
+//                let cards = results.map({ (dict) -> [Int: CardDataModel] in
+//                    let card = CardDataModel(withDictionary: dict)
+//                    return
+//                })
+//
+//                let c = SIFRoundIconDetectorConfiguration.defaultRoundIconConfiguration
+//                let detector = SIFRoundIconDetector(withCards: cards, configuration: c)
+//                for u in detector.roundCardUrls {
+//                    var image0: NSImage? = nil
+//                    var image1: NSImage? = nil
+//                    if let u0 = u.1 {
+//                        image0 = NSImage.init(contentsOf: u0)
+//                    }
+//                    if let u1 = u.2 {
+//                        image1 = NSImage.init(contentsOf: u1)
+//                    }
+//                    detector.makeRoundCardImagePattern(cardId: u.0, images: (image0?.mat, image1?.mat))
+//                    let card = detector.card(atPatternPoint: CGPoint.init(x: 0, y: c.patternRealHeight))
+//                    Logger.shared.console("\(card.0!.idol.name)")
+//                }
+//                Logger.shared.console("make Pattern finish")
+//                return
+//            }
+//        }
+//        XCTFail()
+//    }
+//
+    
+//    func testDetectorSearch() {
+//        if let data = NSData(contentsOfFile: "/Users/cmst0us/Downloads/f.json") as Data? {
+//            if let result = DataModelHelper.shared.array(withJsonData: data) as? [Dictionary<String, Any>] {
+//                let cards = result.map({ (dict) -> CardDataModel in
+//                    let card = CardDataModel(withDictionary: dict)
+//                    return card
+//                })
+//                let config = SIFRoundIconDetectorConfiguration.defaultRoundIconConfiguration
+//                let detector = SIFRoundIconDetector(withCards: cards, configuration: config)
+//                for u in detector.roundCardUrls {
+//                    var image0: NSImage? = nil
+//                    var image1: NSImage? = nil
+//                    if let u0 = u.1 {
+//                        image0 = NSImage.init(contentsOf: u0)
+//                    }
+//                    if let u1 = u.2 {
+//                        image1 = NSImage.init(contentsOf: u1)
+//                    }
+//                    detector.makeRoundCardImagePattern(cardId: u.0, images: (image0?.mat, image1?.mat))
+//                    let screenShoot = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "/Users/cmst0us/Downloads/test.png")
+//                    let cardRects = detector.search(screenShoot: screenShoot)
+//                    for rect in cardRects {
+//                        var roundCardImage = screenShoot.roi(at: rect)
+//                        roundCardImage = detector.makeTemplateImagePattern(image: roundCardImage)
+//                        let result = detector.match(image: roundCardImage)
+//                        Logger.shared.console("\(result)")
+//                    }
+//                }
+//            }
+//        }
+//    }
 
     func testImageRead() {
         let image = NSImage.init(contentsOfFile: "/Users/cmst0us/Downloads/round.png")

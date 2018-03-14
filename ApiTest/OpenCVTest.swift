@@ -140,16 +140,16 @@ class OpenCVTest: XCTestCase {
             let o = image.clone();
             let template = OpenCVBridgeSwiftHelper.sharedInstance().readImage(withNamePath: "\(sp)/template.png")
             let resultMat = OpenCVBridgeSwiftHelper.sharedInstance().matchTemplate(withImage: image, template: template, method: CVBridgeTemplateMatchMode.CCOEFF_NORMED)
-            var maxPoint = (0, 0, NSNumber.init(value: 0))
+            var maxPoint = (0, 0, Float(0))
             for y in 0 ..< Int(resultMat.size().height) {
                 for x in 0 ..< Int(resultMat.size().width) {
                     let p = CGPoint.init(x: x, y: y)
                     let v = resultMat.floatValue(at: p)
-                    if v.floatValue > maxPoint.2.floatValue {
+                    if v > maxPoint.2 {
                         maxPoint = (x, y, v)
                     }
-                    if v.floatValue > 1 {
-                        Logger.shared.console("bad value (> 0)")
+                    if v > 1 {
+                        Logger.shared.console("bad value (> 1)")
                     }
                 }
             }
