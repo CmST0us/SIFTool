@@ -26,10 +26,10 @@ class UserCardStorageHelper {
 
 // MARK: - fetch method
 extension UserCardStorageHelper {
-    func fetchUserCardManagedObject(withCardId cardId: Int, user: String) -> NSManagedObject? {
+    func fetchUserCardManagedObject(withCardId cardId: Int, cardSetName: String) -> NSManagedObject? {
         let viewContext = UserCardCoreDataHelper.shared.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>.init(entityName: UserCardDataModel.entityName)
-        fetchRequest.predicate = NSPredicate(format: "cardId == %d AND user == %@", cardId, user)
+        fetchRequest.predicate = NSPredicate(format: "cardId == %d AND cardSetName == %@", cardId, cardSetName)
         do {
             if let result = try viewContext.fetch(fetchRequest).first {
                 return result
@@ -42,10 +42,10 @@ extension UserCardStorageHelper {
     
     
     
-    func fetchAllUserCard(user: String) -> [UserCardDataModel]? {
+    func fetchAllCard(cardSetName: String) -> [UserCardDataModel]? {
         let viewContext = UserCardCoreDataHelper.shared.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>.init(entityName: UserCardDataModel.entityName)
-        fetchRequest.predicate = NSPredicate(format: "user == %@", user)
+        fetchRequest.predicate = NSPredicate(format: "cardSetName == %@", cardSetName)
         fetchRequest.resultType = .dictionaryResultType
         do {
             if let result = try viewContext.fetch(fetchRequest) as? [[String: Any]] {
@@ -59,7 +59,7 @@ extension UserCardStorageHelper {
         return nil
     }
     
-    func fetchAllUsers() -> NSOrderedSet {
+    func fetchAllCardSetName() -> NSOrderedSet {
         let viewContext = UserCardCoreDataHelper.shared.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>.init(entityName: UserCardDataModel.entityName)
         
@@ -67,7 +67,7 @@ extension UserCardStorageHelper {
             let results = try viewContext.fetch(fetchRequest)
             var userSet = Set<String>.init()
             for result in results {
-                let user = result.value(forKey: "user") as! String
+                let user = result.value(forKey: "cardSetName") as! String
                 userSet.insert(user)
             }
             return NSOrderedSet.init(set: userSet)
@@ -80,7 +80,7 @@ extension UserCardStorageHelper {
 
 // MARK: - add method
 extension UserCardStorageHelper {
-    func addUserCard(card: UserCardDataModel, checkExist: Bool = true) {
+    func addCard(card: UserCardDataModel, checkExist: Bool = true) {
         
         func add(card: UserCardDataModel) {
             let viewContext = UserCardCoreDataHelper.shared.persistentContainer.viewContext
@@ -97,7 +97,7 @@ extension UserCardStorageHelper {
         if checkExist == false {
             add(card: card)
         } else {
-            if let _ = fetchUserCardManagedObject(withCardId: card.cardId, user: card.cardSetName) {
+            if let _ = fetchUserCardManagedObject(withCardId: card.cardId, cardSetName: card.cardSetName) {
                 return
             } else {
                 add(card: card)
@@ -108,17 +108,17 @@ extension UserCardStorageHelper {
 
 // MARK: - remove method
 extension UserCardStorageHelper {
-    func removeUserCard(withCardId cardId: Int, user: String) {
+    func removeUserCard(withCardId cardId: Int, cardSetName: String) {
         let viewContext = UserCardCoreDataHelper.shared.persistentContainer.viewContext
-        if let managedObject = fetchUserCardManagedObject(withCardId: cardId, user: user) {
+        if let managedObject = fetchUserCardManagedObject(withCardId: cardId, cardSetName: cardSetName) {
             viewContext.delete(managedObject)
             doSave()
         }
     }
-    func removeAllUserCards(user: String) {
+    func removeAllCards(cardSetName: String) {
         let viewContext = UserCardCoreDataHelper.shared.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSManagedObject>.init(entityName: UserCardDataModel.entityName)
-        fetchRequest.predicate = NSPredicate(format: "user == %@", user)
+        fetchRequest.predicate = NSPredicate(format: "cardSetName == %@", cardSetName)
         do {
             let results = try viewContext.fetch(fetchRequest)
             for result in results {
