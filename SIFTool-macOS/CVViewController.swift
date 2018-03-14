@@ -142,10 +142,10 @@ class CVViewController: NSViewController {
                 }
                 // user 8 pix offset to avoid button layout in 1080p screenshot
                 let roiMat = cloneMat.roi(at: CGRect.init(x: minX, y: minY + 8, width: w, height: h - 8))
-                let centerY = roiMat.size().height / 2 - 1
-                let centerBrokeArrowRect = CGRect.init(x: 0, y: centerY, width: roiMat.size().width, height: 2)
-                OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat, rect: centerBrokeArrowRect, r: 0, g: 0, b: 0)
-                return roiMat
+                let centerY = roiMat!.size().height / 2 - 1
+                let centerBrokeArrowRect = CGRect.init(x: 0, y: centerY, width: roiMat!.size().width, height: 2)
+                OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat!, rect: centerBrokeArrowRect, r: 0, g: 0, b: 0)
+                return roiMat!
             }
             return cloneMat
         }

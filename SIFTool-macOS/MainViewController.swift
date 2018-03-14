@@ -27,12 +27,10 @@ class MainViewController: NSViewController {
     @IBOutlet weak var sortMethodSegmentedControl: NSSegmentedControl!
     
     private lazy var userCards: [UserCardDataModel] = {
-        return UserCardStorageHelper.shared.fetchAllUserCard(user: user) ?? []
+        return UserCardStorageHelper.shared.fetchAllCard(cardSetName: SIFCacheHelper.shared.currentCardSetName) ?? []
     }()
     
     private lazy var filterUserCards: [UserCardDataModel] = []
-    
-    lazy var user: String = UserDefaults.init().value(forKey: "user") as? String ?? "default"
     
     var collectionViewDataModel: [UserCardDataModel] {
         if self.cardsFiltePredicateEditor.numberOfRows > 0 {
@@ -107,20 +105,19 @@ class MainViewController: NSViewController {
         }
     }
     @objc func reloadData(_ sender: Any) {
-        self.user = UserDefaults.init().value(forKey: "user") as? String ?? "default"
-        userCards = UserCardStorageHelper.shared.fetchAllUserCard(user: user) ?? []
+        userCards = UserCardStorageHelper.shared.fetchAllCard(cardSetName: SIFCacheHelper.shared.currentCardSetName) ?? []
         filterUserCards.removeAll()
-        cardsInfoLabel.stringValue = "\(self.user) 持有 \(String(collectionViewDataModel.count)) 种卡"
+        cardsInfoLabel.stringValue = "\(SIFCacheHelper.shared.currentCardSetName) 持有 \(String(collectionViewDataModel.count)) 种卡"
         self.userCardCollectionView.reloadData()
     }
     
     func filterData() {
-        cardsInfoLabel.stringValue = "\(self.user) 持有 \(String(collectionViewDataModel.count)) 种卡"
+        cardsInfoLabel.stringValue = "\(SIFCacheHelper.shared.currentCardSetName) 持有 \(String(collectionViewDataModel.count)) 种卡"
         self.userCardCollectionView.reloadData()
     }
     
     @IBAction func deleteAllCards(_ sender: Any) {
-        UserCardStorageHelper.shared.removeAllUserCards(user: self.user)
+        UserCardStorageHelper.shared.removeAllCards(cardSetName: SIFCacheHelper.shared.currentCardSetName)
         self.reloadData(self)
     }
     
@@ -159,7 +156,7 @@ class MainViewController: NSViewController {
         ApiHelper.shared.baseUrlPath = "http://schoolido.lu/api"
         ApiHelper.shared.taskWaitTime = 15
         SIFCacheHelper.shared.cacheDirectory = "/Users/cmst0us/Downloads/card_round"
-        cardsInfoLabel.stringValue = "\(self.user) 持有 \(String(collectionViewDataModel.count)) 种卡"
+        cardsInfoLabel.stringValue = "\(SIFCacheHelper.shared.currentCardSetName) 持有 \(String(collectionViewDataModel.count)) 种卡"
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData(_:)), name: NSNotification.Name.init(ImportCardViewController.NotificationName.importOk), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData(_:)), name: NSNotification.Name(rawValue: NotificationName.reloadData), object: nil)
         

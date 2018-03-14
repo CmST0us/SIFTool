@@ -13,7 +13,7 @@ class OpenCardSetViewController: NSViewController {
     @IBOutlet weak var cardSetTableView: NSTableView!
     
     lazy var users: NSOrderedSet = {
-        return UserCardStorageHelper.shared.fetchAllUsers()
+        return UserCardStorageHelper.shared.fetchAllCardSetName()
     }()	
     
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class OpenCardSetViewController: NSViewController {
     @IBAction func comfirm(_ sender: Any) {
         let selectIndex = cardSetTableView.selectedRow
         let name = users.object(at: selectIndex) as! String
-        UserDefaults.init().setValue(name, forKey: "user")
+        SIFCacheHelper.shared.currentCardSetName = name
         NotificationCenter.default.post(name: NSNotification.Name.init(MainViewController.NotificationName.reloadData), object: nil)
         NSApplication.shared.keyWindow!.close()
     }

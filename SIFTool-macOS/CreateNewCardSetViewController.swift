@@ -18,7 +18,7 @@ class CreateNewCardSetViewController: NSViewController {
             name = "default"
         }
         
-        UserDefaults.init().setValue(name, forKey: "user")
+        SIFCacheHelper.shared.currentCardSetName = name
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: MainViewController.NotificationName.reloadData), object: nil)
         NSApplication.shared.keyWindow!.close()
     }

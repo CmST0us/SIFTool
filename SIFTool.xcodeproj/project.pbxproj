@@ -140,6 +140,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4F0BB6072058BF660004E819 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4FEA5EEF203467BB00F03CCC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 4FEA5EF6203467BB00F03CCC;
+			remoteInfo = SIFTool;
+		};
 		4F4F5FC0203490220025741A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4FEA5EEF203467BB00F03CCC /* Project object */;
@@ -599,6 +606,7 @@
 			);
 			dependencies = (
 				4F4F5FC1203490220025741A /* PBXTargetDependency */,
+				4F0BB6082058BF660004E819 /* PBXTargetDependency */,
 			);
 			name = ApiTest;
 			productName = ApiTest;
@@ -659,7 +667,6 @@
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
-						TestTargetID = 4FEA5F0F2034686700F03CCC;
 					};
 					4FEA5EF6203467BB00F03CCC = {
 						CreatedOnToolsVersion = 9.2;
@@ -977,6 +984,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4F0BB6082058BF660004E819 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 4FEA5EF6203467BB00F03CCC /* SIFTool */;
+			targetProxy = 4F0BB6072058BF660004E819 /* PBXContainerItemProxy */;
+		};
 		4F4F5FC1203490220025741A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 4FEA5F0F2034686700F03CCC /* SIFTool-macOS */;
@@ -1007,7 +1019,6 @@
 		4F4F5FC3203490220025741A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1025,14 +1036,12 @@
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SIFTool-macOS.app/Contents/MacOS/SIFTool-macOS";
 			};
 			name = Debug;
 		};
 		4F4F5FC4203490220025741A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1049,7 +1058,6 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx;
 				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SIFTool-macOS.app/Contents/MacOS/SIFTool-macOS";
 			};
 			name = Release;
 		};

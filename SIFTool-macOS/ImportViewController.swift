@@ -88,24 +88,30 @@ class ImportCardViewController: NSViewController {
         requestActivitor.startAnimation(nil)
         DispatchQueue.global().async {
             for screenshot in self.screenshots {
-                let mat = screenshot.mat
-                let results = self.detector.search(screenshot: mat)
+                let originMat = screenshot.mat
+                let results = self.detector.search(screenshot: originMat)
                 for result in results.1 {
-                    let roi = mat.roi(at: results.0).roi(at: result)
-                    let roiClone = roi.clone()
-                    let template = self.detector.makeTemplateImagePattern(image: roi)
+                    let roi = originMat.roi(at: results.0)?.roi(at: result)
+                    guard roi != nil else {
+                        continue
+                    }
+                    let roiClone = roi!.clone()
+                    let template = self.detector.makeTemplateImagePattern(image: roi!)
+                    
                     if let point = self.detector.match(image: template) {
                         let card = self.detector.card(atPatternPoint: point)
+                        
                         if card == nil {
                             continue
                         }
                         
-                        let userCard = UserCardDataModel.init()
+                        let userCard = UserCardDataModel()
                         userCard.cardId = card!.0.id.intValue
                         userCard.idolized = card!.1
                         userCard.isImport = true
                         userCard.isKizunaMax = true
-                        userCard.user = UserDefaults.init().value(forKey: "user") as? String ?? "default"
+                        userCard.cardSetName = SIFCacheHelper.shared.currentCardSetName
+                        
                         self.cards.append((userCard, NSImage.init(cvMat: roiClone)))
                             Logger.shared.output("find card, id: \(String(card!.0.id.intValue))")
                     }
@@ -195,7 +201,7 @@ class ImportCardViewController: NSViewController {
     @IBAction func importSelectedCard(_ sender: Any) {
         for card in cards {
             if card.0.isImport {
-                UserCardStorageHelper.shared.addUserCard(card: card.0)
+                UserCardStorageHelper.shared.addCard(card: card.0)
             }
         }
         Logger.shared.output("import OK")
