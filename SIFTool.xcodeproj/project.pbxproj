@@ -48,7 +48,6 @@
 		4F1EB1FB203FBB6E0003BA0C /* CardTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F8203FBB6D0003BA0C /* CardTableCellView.swift */; };
 		4F1EB1FE203FE2630003BA0C /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
 		4F1EB1FF203FE2630003BA0C /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
-		4F1EB200203FE2630003BA0C /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
 		4F2C02B22049C2B4001086B7 /* CreateNewCardSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2C02B12049C2B4001086B7 /* CreateNewCardSetViewController.swift */; };
 		4F2C02B52049C2D1001086B7 /* OpenCardSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F2C02B32049C2D1001086B7 /* OpenCardSetViewController.swift */; };
 		4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F4F5F9320347A8F0025741A /* ApiHelper.swift */; };
@@ -102,6 +101,10 @@
 		4F677B232058380300B2C4AE /* SIFCardImportCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F677B222058380300B2C4AE /* SIFCardImportCollectionViewCell.swift */; };
 		4F83C2482045A9100071C58E /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F83C2472045A9100071C58E /* MainWindowController.swift */; };
 		4F9A9C1C2058CE2000CED9C5 /* MiscTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A9C1B2058CE2000CED9C5 /* MiscTest.swift */; };
+		4F9A9C1E2058CEA800CED9C5 /* SIFCacheTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F9A9C1D2058CEA800CED9C5 /* SIFCacheTest.swift */; };
+		4F9A9C1F2058CED000CED9C5 /* SIFCacheHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1FD203FE2630003BA0C /* SIFCacheHelper.swift */; };
+		4F9A9C212058CF5A00CED9C5 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
+		4F9A9C222058CF6100CED9C5 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F2F2034699500F03CCC /* CoreDataHelper.swift */; };
 		4FBA7B02204DA59B00037CF5 /* ScoreIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */; };
 		4FBA7B04204EA8E300037CF5 /* UIView+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */; };
 		4FBA7B0620503A7100037CF5 /* SIFCardFilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B0520503A7100037CF5 /* SIFCardFilterViewController.swift */; };
@@ -112,7 +115,6 @@
 		4FC16846204DA2A200A73CB2 /* SIFUserCardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC16845204DA2A200A73CB2 /* SIFUserCardCollectionViewCell.swift */; };
 		4FE1E395204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
 		4FE1E396204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
-		4FE1E397204278060032F229 /* UserCardStorageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E394204278060032F229 /* UserCardStorageHelper.swift */; };
 		4FE1E399204278B50032F229 /* UserCardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E398204278B50032F229 /* UserCardDataModel.swift */; };
 		4FE1E39A204278B50032F229 /* UserCardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E398204278B50032F229 /* UserCardDataModel.swift */; };
 		4FE1E39B204278B50032F229 /* UserCardDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E398204278B50032F229 /* UserCardDataModel.swift */; };
@@ -216,6 +218,7 @@
 		4F677B222058380300B2C4AE /* SIFCardImportCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCardImportCollectionViewCell.swift; sourceTree = "<group>"; };
 		4F83C2472045A9100071C58E /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		4F9A9C1B2058CE2000CED9C5 /* MiscTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MiscTest.swift; sourceTree = "<group>"; };
+		4F9A9C1D2058CEA800CED9C5 /* SIFCacheTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCacheTest.swift; sourceTree = "<group>"; };
 		4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreIndicatorView.swift; sourceTree = "<group>"; };
 		4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+IB.swift"; sourceTree = "<group>"; };
 		4FBA7B0520503A7100037CF5 /* SIFCardFilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCardFilterViewController.swift; sourceTree = "<group>"; };
@@ -355,6 +358,7 @@
 				4F1EB1F7203F2D700003BA0C /* MyPlayground.playground */,
 				4F4F5FBD203490220025741A /* ApiHelperTest.swift */,
 				4F0864092038662900CFDD98 /* CVBridgeTest.swift */,
+				4F9A9C1D2058CEA800CED9C5 /* SIFCacheTest.swift */,
 				4F9A9C1B2058CE2000CED9C5 /* MiscTest.swift */,
 				4F4F5FBF203490220025741A /* Info.plist */,
 			);
@@ -853,7 +857,10 @@
 			files = (
 				4F0863FB20372D5000CFDD98 /* CVDataModel.swift in Sources */,
 				4F4F5FC7203490620025741A /* ApiRequestParamProtocol.swift in Sources */,
+				4F9A9C212058CF5A00CED9C5 /* UserCardStorageHelper.swift in Sources */,
 				4F079BA42041AEF900ED4728 /* String+appendPathComponent.swift in Sources */,
+				4F9A9C222058CF6100CED9C5 /* CoreDataHelper.swift in Sources */,
+				4F9A9C1F2058CED000CED9C5 /* SIFCacheHelper.swift in Sources */,
 				4FE1E3A420427DD50032F229 /* CoreDataModelBridgeProtocol.swift in Sources */,
 				4F4F5FC8203490620025741A /* Dictionary+URLParam.swift in Sources */,
 				4F086422203C8A1A00CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
@@ -867,9 +874,9 @@
 				4F0863FF20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
 				4F0864112039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,
 				4F4F5FCD203490620025741A /* SkillUpTinyCardDataModel.swift in Sources */,
-				4FE1E397204278060032F229 /* UserCardStorageHelper.swift in Sources */,
 				4F1EB1F6203F28880003BA0C /* URL+FilePath.swift in Sources */,
 				4F4F5FCE203490620025741A /* URPairDataModel.swift in Sources */,
+				4F9A9C1E2058CEA800CED9C5 /* SIFCacheTest.swift in Sources */,
 				4F4F5FCF203490620025741A /* DataModelHelper.swift in Sources */,
 				4FE1E39B204278B50032F229 /* UserCardDataModel.swift in Sources */,
 				4F9A9C1C2058CE2000CED9C5 /* MiscTest.swift in Sources */,
@@ -882,7 +889,6 @@
 				4F4F5FC62034903E0025741A /* ApiRequestParam.swift in Sources */,
 				4F4F5FBE203490220025741A /* ApiHelperTest.swift in Sources */,
 				4F1EB1FB203FBB6E0003BA0C /* CardTableCellView.swift in Sources */,
-				4F1EB200203FE2630003BA0C /* SIFCacheHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1032,7 +1038,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SIFTool/../../../../Desktop/opensource",
 				);
-				INFOPLIST_FILE = ApiTest/Info.plist;
+				INFOPLIST_FILE = SIFToolTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eki.ApiTest;
@@ -1055,7 +1061,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SIFTool/../../../../Desktop/opensource",
 				);
-				INFOPLIST_FILE = ApiTest/Info.plist;
+				INFOPLIST_FILE = SIFToolTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.eki.ApiTest;
