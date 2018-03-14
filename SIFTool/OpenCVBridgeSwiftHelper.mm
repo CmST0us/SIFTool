@@ -52,7 +52,14 @@
     
     auto matSize = _mat.size();
     
-    if (r.x + r.width > matSize.width || r.y + matSize.height) {
+    if (!(r.x > 0 &&
+        r.y > 0 &&
+        r.width > 0 &&
+        r.height > 0)) {
+        return NULL;
+    }
+    
+    if (r.x + r.width > matSize.width || r.y + r.height > matSize.height) {
         return NULL;
     }
     auto m = [[CVMat alloc] init];
