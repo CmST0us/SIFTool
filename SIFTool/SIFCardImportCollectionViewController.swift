@@ -110,7 +110,7 @@ extension SIFCardImportCollectionViewController {
             
             Logger.shared.output("load cards cache ok")
             
-            setProgressHudLabelText("配置中")
+            setProgressHudLabelText("更新卡片数据")
             self.setupDetector()
             setProgressHudLabelText("扫描中")
             

@@ -10,6 +10,7 @@
 
 #if TARGET_OS_IPHONE
 #import "UIImage+CVMat.h"
+#import "NSValue+ValueWithPoint.h"
 #elif TARGET_OS_OSX
 #import "NSImage+CVMat.h"
 #endif

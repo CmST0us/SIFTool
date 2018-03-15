@@ -40,6 +40,12 @@
 		4F086420203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
 		4F086421203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
 		4F086422203C8A1A00CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
+		4F1EAC32205A45CF001708EF /* NSValue+pointValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EAC31205A45CF001708EF /* NSValue+pointValue.swift */; };
+		4F1EAC33205A45CF001708EF /* NSValue+pointValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EAC31205A45CF001708EF /* NSValue+pointValue.swift */; };
+		4F1EAC34205A45CF001708EF /* NSValue+pointValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EAC31205A45CF001708EF /* NSValue+pointValue.swift */; };
+		4F1EAC37205A67EC001708EF /* NSValue+ValueWithPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EAC36205A67EC001708EF /* NSValue+ValueWithPoint.m */; };
+		4F1EAC38205A67EC001708EF /* NSValue+ValueWithPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EAC36205A67EC001708EF /* NSValue+ValueWithPoint.m */; };
+		4F1EAC39205A67EC001708EF /* NSValue+ValueWithPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EAC36205A67EC001708EF /* NSValue+ValueWithPoint.m */; };
 		4F1EB1F2203EBFDB0003BA0C /* ImportViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F1203EBFDB0003BA0C /* ImportViewController.swift */; };
 		4F1EB1F4203F28880003BA0C /* URL+FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F3203F28880003BA0C /* URL+FilePath.swift */; };
 		4F1EB1F5203F28880003BA0C /* URL+FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EB1F3203F28880003BA0C /* URL+FilePath.swift */; };
@@ -184,6 +190,9 @@
 		4F086417203BB68A00CFDD98 /* CV.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CV.storyboard; sourceTree = "<group>"; };
 		4F08641B203C7A3B00CFDD98 /* SIFRoundIconDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFRoundIconDetector.swift; sourceTree = "<group>"; };
 		4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFRoundIconDetectorConfiguration.swift; sourceTree = "<group>"; };
+		4F1EAC31205A45CF001708EF /* NSValue+pointValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSValue+pointValue.swift"; sourceTree = "<group>"; };
+		4F1EAC35205A67EC001708EF /* NSValue+ValueWithPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSValue+ValueWithPoint.h"; sourceTree = "<group>"; };
+		4F1EAC36205A67EC001708EF /* NSValue+ValueWithPoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSValue+ValueWithPoint.m"; sourceTree = "<group>"; };
 		4F1EB1F1203EBFDB0003BA0C /* ImportViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportViewController.swift; sourceTree = "<group>"; };
 		4F1EB1F3203F28880003BA0C /* URL+FilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+FilePath.swift"; sourceTree = "<group>"; };
 		4F1EB1F7203F2D700003BA0C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -507,6 +516,7 @@
 				4F08640E2039E24D00CFDD98 /* Array+PointArrayRect.swift */,
 				4F1EB1F3203F28880003BA0C /* URL+FilePath.swift */,
 				4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */,
+				4F1EAC31205A45CF001708EF /* NSValue+pointValue.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -551,6 +561,8 @@
 			children = (
 				4FEA5F3720346A4100F03CCC /* opencv */,
 				4F08640B2038664100CFDD98 /* Bridge.h */,
+				4F1EAC35205A67EC001708EF /* NSValue+ValueWithPoint.h */,
+				4F1EAC36205A67EC001708EF /* NSValue+ValueWithPoint.m */,
 			);
 			name = Bridge;
 			sourceTree = "<group>";
@@ -875,6 +887,7 @@
 				4F9A9C1F2058CED000CED9C5 /* SIFCacheHelper.swift in Sources */,
 				4FE1E3A420427DD50032F229 /* CoreDataModelBridgeProtocol.swift in Sources */,
 				4F4F5FC8203490620025741A /* Dictionary+URLParam.swift in Sources */,
+				4F1EAC39205A67EC001708EF /* NSValue+ValueWithPoint.m in Sources */,
 				4F086422203C8A1A00CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
 				4F08640A2038662900CFDD98 /* CVBridgeTest.swift in Sources */,
 				4F4F5FC9203490620025741A /* Data+JSONDataToDictionary.swift in Sources */,
@@ -893,6 +906,7 @@
 				4FE1E39B204278B50032F229 /* UserCardDataModel.swift in Sources */,
 				4F9A9C1C2058CE2000CED9C5 /* MiscTest.swift in Sources */,
 				4F4F5FD820349B810025741A /* String+Date.swift in Sources */,
+				4F1EAC34205A45CF001708EF /* NSValue+pointValue.swift in Sources */,
 				4FE1E3A02042798C0032F229 /* UserCard.xcdatamodeld in Sources */,
 				4F4F5FD0203490620025741A /* Logger.swift in Sources */,
 				4F08641E203C7A3B00CFDD98 /* SIFRoundIconDetector.swift in Sources */,
@@ -914,7 +928,9 @@
 				4FEA5F2C2034693700F03CCC /* Logger.swift in Sources */,
 				4FEA5F302034699500F03CCC /* CoreDataHelper.swift in Sources */,
 				4FEA5EFB203467BB00F03CCC /* AppDelegate.swift in Sources */,
+				4F1EAC32205A45CF001708EF /* NSValue+pointValue.swift in Sources */,
 				4FE1E39E2042798C0032F229 /* UserCard.xcdatamodeld in Sources */,
+				4F1EAC37205A67EC001708EF /* NSValue+ValueWithPoint.m in Sources */,
 				4F677B1620518ED000B2C4AE /* SIFCardFilterPredicateEditorValueTableViewCell.swift in Sources */,
 				4F0863FD20372D6400CFDD98 /* IdolDataModel.swift in Sources */,
 				4F0863F920372D5000CFDD98 /* CVDataModel.swift in Sources */,
@@ -972,6 +988,7 @@
 				4F0863FA20372D5000CFDD98 /* CVDataModel.swift in Sources */,
 				4FE1E3A62042ABF40032F229 /* CheckBoxTableCellView.swift in Sources */,
 				4F086408203862DE00CFDD98 /* CVMat.h in Sources */,
+				4F1EAC33205A45CF001708EF /* NSValue+pointValue.swift in Sources */,
 				4F086421203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */,
 				4F4F5FB2203486500025741A /* ApiRequestParamProtocol.swift in Sources */,
 				4F079BA32041AEF900ED4728 /* String+appendPathComponent.swift in Sources */,
@@ -991,6 +1008,7 @@
 				4F0864102039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,
 				4FE1E39F2042798C0032F229 /* UserCard.xcdatamodeld in Sources */,
 				4FE1E39A204278B50032F229 /* UserCardDataModel.swift in Sources */,
+				4F1EAC38205A67EC001708EF /* NSValue+ValueWithPoint.m in Sources */,
 				4F4F5FD720349B810025741A /* String+Date.swift in Sources */,
 				4F4F5FA9203480CD0025741A /* MiniEventDataModel.swift in Sources */,
 				4F4F5F9520347A8F0025741A /* ApiHelper.swift in Sources */,

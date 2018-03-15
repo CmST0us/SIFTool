@@ -104,82 +104,109 @@ class SIFRoundIconDetector {
     
 
     func search(screenshot: CVMat) -> (CGRect, [CGRect]) {
-        let gaussianMat = OpenCVBridgeSwiftHelper.sharedInstance().gaussianBlur(withImage: screenshot, kernelSize: CGSize.init(width: 3, height: 1), sigmaX: 3, sigmaY: 3, borderType: CVBridgeBorderType.default)
-        let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: gaussianMat, targetColor: CVBridgeColorCovertType.bgr2Gray)
+        
+        let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: screenshot, targetColor: CVBridgeColorCovertType.bgr2Gray)
         let binaryMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 220.0, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
+        let cloneMat = binaryMat.clone()
+        let canny = OpenCVBridgeSwiftHelper.sharedInstance().canny(withImage: binaryMat, lowThreshold: 100, highThreshold: 200)
         var outputArray: [CGRect] = []
-        var screenshotRoiRect: CGRect!
+        var screenshotRoiRect: CGRect = CGRect(origin: CGPoint.init(x: 0, y: 0), size: screenshot.size())
+        
+        func isHorizonLine(line: (CGPoint, CGPoint)) -> Bool {
+            if abs(line.0.x - line.1.x) < 0.001 {
+                return false
+            }
+            if abs((line.1.y - line.0.y) / (line.1.x - line.0.x)) < 0.1 {
+                return true
+            }
+            return false
+        }
+        
         func findContours(mat: CVMat, step: Int) -> CVMat {
-            let cloneMat = mat.clone()
-            let output = OpenCVBridgeSwiftHelper.sharedInstance().findContours(withImage: mat, mode: CVBridgeRetrievalMode.external, method: CVBridgeApproximationMode.none, offsetPoint: CGPoint.zero) as! [[NSValue]]
-            
-            var minX = CGFloat.greatestFiniteMagnitude
-            var maxX = CGFloat.leastNormalMagnitude
-            var maxXPlusWeight = CGFloat.leastNormalMagnitude
-            var minY = CGFloat.greatestFiniteMagnitude
-            var maxY = CGFloat.leastNormalMagnitude
-            var maxYPlusHeight = CGFloat.leastNormalMagnitude
-            var maxWidth = CGFloat.leastNormalMagnitude
-            var maxHeight = CGFloat.leastNormalMagnitude
-            for contours in output {
-                let rect = contours.contoursRect()
-                let area = rect.size.width * rect.size.height
-                if area < 80 * 80 {
-                    continue
-                }
-                let aspectRadio = Double(rect.size.width / rect.size.height)
-                let aspectRadioThresh = 0.2
-                if abs(aspectRadio - 1) > aspectRadioThresh {
-                    continue
-                }
+            if step == 1 {
+                let output = OpenCVBridgeSwiftHelper.sharedInstance().findContours(withImage: mat, mode: CVBridgeRetrievalMode.external, method: CVBridgeApproximationMode.none, offsetPoint: CGPoint.zero) as! [[NSValue]]
                 
-                minX = Swift.min(minX, rect.origin.x)
-                maxX = Swift.max(maxX, rect.origin.x)
-                minY = Swift.min(minY, rect.origin.y)
-                maxY = Swift.max(maxY, rect.origin.y)
-                maxWidth = Swift.max(maxWidth, rect.size.width)
-                maxHeight = Swift.max(maxHeight, rect.size.height)
-                
-                maxXPlusWeight = Swift.max(maxXPlusWeight, maxWidth + maxX)
-                maxYPlusHeight = Swift.max(maxYPlusHeight, maxHeight + maxY)
-                if step == 1{
+                var minX = CGFloat.greatestFiniteMagnitude
+                var maxX = CGFloat.leastNormalMagnitude
+                var maxXPlusWeight = CGFloat.leastNormalMagnitude
+                var minY = CGFloat.greatestFiniteMagnitude
+                var maxY = CGFloat.leastNormalMagnitude
+                var maxYPlusHeight = CGFloat.leastNormalMagnitude
+                var maxWidth = CGFloat.leastNormalMagnitude
+                var maxHeight = CGFloat.leastNormalMagnitude
+                for contours in output {
+                    let rect = contours.contoursRect()
+                    let area = rect.size.width * rect.size.height
+                    if area < 80 * 80 {
+                        continue
+                    }
+                    let aspectRadio = Double(rect.size.width / rect.size.height)
+                    let aspectRadioThresh = 0.2
+                    if abs(aspectRadio - 1) > aspectRadioThresh {
+                        continue
+                    }
+                    
+                    minX = Swift.min(minX, rect.origin.x)
+                    maxX = Swift.max(maxX, rect.origin.x)
+                    minY = Swift.min(minY, rect.origin.y)
+                    maxY = Swift.max(maxY, rect.origin.y)
+                    maxWidth = Swift.max(maxWidth, rect.size.width)
+                    maxHeight = Swift.max(maxHeight, rect.size.height)
+                    
+                    maxXPlusWeight = Swift.max(maxXPlusWeight, maxWidth + maxX)
+                    maxYPlusHeight = Swift.max(maxYPlusHeight, maxHeight + maxY)
                     outputArray.append(rect)
                 }
             }
             if step == 0 {
-                var w = maxXPlusWeight
-                var h = maxYPlusHeight
-                if w > cloneMat.size().width {
-                    w = cloneMat.size().width - minX - 1
-                } else {
-                    w = maxXPlusWeight - minX
+                var lines = OpenCVBridgeSwiftHelper.sharedInstance().houghlinesP(withImage: mat, rho: 1, theta: Double.pi / 180, threshold: 700, minLineLength: 200, maxLineGap: 10) as! [[NSValue]]
+                
+                lines = lines.filter { (value) -> Bool in
+                    return isHorizonLine(line: (value[0].pointValue, value[1].pointValue))
                 }
                 
-                if h > cloneMat.size().height {
-                    h = cloneMat.size().height - minY - 1
-                } else {
-                    h = maxYPlusHeight - minY
+                lines.sort { (a, b) -> Bool in
+                    return a[0].pointValue.y < b[0].pointValue.y
                 }
-                // user 8 pix offset to avoid button layout in 1080p screenshot
-                screenshotRoiRect = CGRect.init(x: minX, y: minY + 8, width: w, height: h - 8)
-                let roiMat = cloneMat.roi(at: screenshotRoiRect)
                 
-                guard roiMat != nil else {
+                var diffArray: [(y1: Double, y2: Double, diff: Double)] = []
+                
+                for (index, item) in lines.enumerated() {
+                    if index + 1 == lines.count {
+                        break
+                    }
+                    
+                    let y1 = item[0].pointValue.y
+                    let y2 = lines[index + 1][0].pointValue.y
+                    let diff = y2 - y1
+                    
+                    diffArray.append((y1: Double(y1), y2: Double(y2), diff: Double(diff)))
+                }
+                
+                let maxDistanse = diffArray.max { (a, b) -> Bool in
+                    return a.diff < b.diff
+                }
+                
+                guard maxDistanse != nil  else {
                     return cloneMat
                 }
+                guard maxDistanse!.diff > 0.001 else {
+                    return cloneMat
+                }
+                screenshotRoiRect = CGRect(x: 0, y: maxDistanse!.y1, width: Double(cloneMat.size().width), height: maxDistanse!.diff)
+                let roiMat =  cloneMat.roi(at: screenshotRoiRect) ?? cloneMat
                 
-                let centerY = roiMat!.size().height / 2 - 1
-                let centerBrokeArrowRect = CGRect.init(x: 0, y: centerY, width: roiMat!.size().width, height: 2)
-               
-                //draw write rect to fix arrow area
-                OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat!, rect: centerBrokeArrowRect, r: 0, g: 0, b: 0)
-                let image = UIImage.init(cvMat: roiMat!)
-                return roiMat!
+                let centerY = roiMat.size().height / 2 - 1
+                let centerBrokeArrowRect = CGRect.init(x: 0, y: centerY, width: roiMat.size().width, height: 2)
                 
+                //draw white rect to fix arrow area
+                OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat, rect: centerBrokeArrowRect, r: 0, g: 0, b: 0)
+                
+                return roiMat
             }
             return cloneMat
         }
-        let _ = findContours(mat: findContours(mat: binaryMat, step: 0), step: 1)
+        let _ = findContours(mat: findContours(mat: canny, step: 0), step: 1)
         return (screenshotRoiRect, outputArray)
     }
     

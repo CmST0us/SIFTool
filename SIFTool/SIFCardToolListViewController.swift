@@ -9,6 +9,7 @@
 import UIKit
 import MobileCoreServices
 import TZImagePickerController
+import MBProgressHUD
 
 class SIFCardToolListViewController: UIViewController {
     
@@ -16,7 +17,8 @@ class SIFCardToolListViewController: UIViewController {
         static let cardFilterSegue = "cardFilterSegue"
         static let importCardSegue = "importCardSegue"
     }
-    
+
+    private var processHUD: MBProgressHUD!
     private var selectScreenshots: [UIImage] = []
     
 //    private lazy var _collectionViewDataSource: [UserCardDataModel] = {
@@ -63,6 +65,12 @@ class SIFCardToolListViewController: UIViewController {
         
     }
     
+    private func isPhotoLibraryAvailable() -> Bool {
+        
+        return UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary)
+        
+    }
+    
     @IBOutlet private weak var userCardCollectionView: UICollectionView!
     
     @IBAction func addCard(_ sender: Any) {
@@ -103,9 +111,49 @@ class SIFCardToolListViewController: UIViewController {
         
     }
     
-    func isPhotoLibraryAvailable() -> Bool {
-        return UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.photoLibrary)
+    @IBAction func refreshCache(_ sender: Any) {
+
+        try? SIFCacheHelper.shared.deleteCardsCache()
+        try? SIFCacheHelper.shared.deleteMatchPattern()
+        
+        processHUD = MBProgressHUD(view: self.view)
+        self.view.addSubview(processHUD)
+        
+        processHUD.show(animated: true)
+        
+        func hideHUD(afterDelay: TimeInterval) {
+            
+            DispatchQueue.main.async {
+                self.processHUD.hide(animated: true, afterDelay: afterDelay)
+            }
+            
+        }
+        
+        func setHUDLabelText(_ text: String) {
+            
+            DispatchQueue.main.async {
+                self.processHUD.label.text = text
+            }
+            
+        }
+        
+        DispatchQueue.global().async {
+            do {
+                try SIFCacheHelper.shared.cacheCards(process: { (current, total) in
+                    setHUDLabelText("\(String(current)) / \(String(total))")
+                })
+                hideHUD(afterDelay: 0)
+            } catch let e as ApiRequestError{
+                setHUDLabelText(e.message)
+                hideHUD(afterDelay: 1.0)
+            } catch {
+                setHUDLabelText(error.localizedDescription)
+                hideHUD(afterDelay: 1.0)
+            }
+        }
+        
     }
+    
     
 }
 

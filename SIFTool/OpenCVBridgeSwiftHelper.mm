@@ -10,6 +10,7 @@
 #if TARGET_OS_IPHONE
 #import <UIKit/UIKit.h>
 #import <opencv2/imgcodecs/ios.h>
+#import "NSValue+ValueWithPoint.h"
 #endif
 #import <opencv2/opencv.hpp>
 #import <vector>
@@ -502,8 +503,8 @@
     auto array = [NSMutableArray array];
     
     for( size_t i = 0; i < lines.size(); i++) {
-        auto pointValue1 = [NSValue valueWithPoint:NSMakePoint(lines[i][0], lines[i][1])];
-        auto pointValue2 = [NSValue valueWithPoint:NSMakePoint(lines[i][2], lines[i][3])];
+        auto pointValue1 = [NSValue valueWithPoint:CGPointMake(lines[i][0], lines[i][1])];
+        auto pointValue2 = [NSValue valueWithPoint:CGPointMake(lines[i][2], lines[i][3])];
         
         [array addObject:@[pointValue1, pointValue2]];
     }
