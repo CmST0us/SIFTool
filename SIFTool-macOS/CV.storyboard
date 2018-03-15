@@ -259,10 +259,40 @@
                                     <action selector="doGauss:" target="gQp-WR-b1r" id="jPU-eX-8eR"/>
                                 </connections>
                             </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PnI-st-xlP">
+                                <rect key="frame" x="773" y="680" width="58" height="17"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="直线检测" id="Tv2-YZ-K2U">
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bhd-JQ-TtG">
+                                <rect key="frame" x="837" y="677" width="144" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="1|700|200|10|100|200" drawsBackground="YES" id="VSc-wX-Yvc">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iW8-CO-iez">
+                                <rect key="frame" x="845" y="641" width="94" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <buttonCell key="cell" type="push" title="直线检测" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="aUe-iW-F0p">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" usesAppearanceFont="YES"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="findLine:" target="gQp-WR-b1r" id="FKs-mp-YQL"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="covertParams" destination="Nnk-uM-tbP" id="CUH-2h-uWc"/>
+                        <outlet property="findLineParam" destination="bhd-JQ-TtG" id="NFH-Y1-7Et"/>
                         <outlet property="gaussParams" destination="koR-1H-0Kh" id="Na1-OM-xbE"/>
                         <outlet property="imageNameTextField" destination="zrT-Ii-kHo" id="JlH-8s-fN3"/>
                         <outlet property="imageView" destination="Gq4-ck-ESA" id="DyK-s2-qw5"/>

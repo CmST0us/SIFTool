@@ -52,8 +52,8 @@
     
     auto matSize = _mat.size();
     
-    if (!(r.x > 0 &&
-        r.y > 0 &&
+    if (!(r.x >= 0 &&
+        r.y >= 0 &&
         r.width > 0 &&
         r.height > 0)) {
         return NULL;
@@ -407,7 +407,10 @@
                       r:(double)r
                       g:(double)g
                       b:(double)b {
-    cv::line(mat.mat, cv::Point(point1.x, point1.y), cv::Point(point2.x, point2.y), cv::Scalar(b, g, r), lineWidth, CV_AA);
+    auto p1 = cv::Point(point1.x, point1.y);
+    auto p2 = cv::Point(point2.x, point2.y);
+    auto sc = cv::Scalar(b, g, r);
+    cv::line(mat.mat, p1, p2, sc, lineWidth);
 }
 
 #pragma mark - 搜索算法
@@ -500,7 +503,7 @@
     
     for( size_t i = 0; i < lines.size(); i++) {
         auto pointValue1 = [NSValue valueWithPoint:NSMakePoint(lines[i][0], lines[i][1])];
-        auto pointValue2 = [NSValue valueWithPoint:NSMakePoint(lines[i][0], lines[i][2])];
+        auto pointValue2 = [NSValue valueWithPoint:NSMakePoint(lines[i][2], lines[i][3])];
         
         [array addObject:@[pointValue1, pointValue2]];
     }

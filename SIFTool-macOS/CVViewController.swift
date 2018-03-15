@@ -10,6 +10,7 @@ import Cocoa
 
 class CVViewController: NSViewController {
     
+    @IBOutlet weak var findLineParam: NSTextField!
     @IBOutlet weak var imageNameTextField: NSTextField!
     @IBOutlet weak var threshParams: NSTextField!
     @IBOutlet weak var morphyParams: NSTextField!
@@ -84,6 +85,79 @@ class CVViewController: NSViewController {
     @IBAction func resetImage(_ sender: Any) {
         imageView.image = NSImage(named: NSImage.Name("\(imageNameTextField.stringValue)"))
     }
+    @IBAction func findLine(_ sender: Any) {
+        
+        func isHorizonLine(line: (CGPoint, CGPoint)) -> Bool {
+            if abs(line.0.x - line.1.x) < 0.001 {
+                return false
+            }
+            if abs((line.1.y - line.0.y) / (line.1.x - line.0.x)) < 0.1 {
+                return true
+            }
+            return false
+        }
+        
+        var mat = imageView.image!.mat
+        let cloneMat = mat.clone()
+        mat = (OpenCVBridgeSwiftHelper.sharedInstance().splitImage(mat) as! [CVMat])[0]
+        let paramString = findLineParam.stringValue
+        let tParamArray = paramString.split(separator: "|")
+        var paramArray = tParamArray.map { item in
+            String(item)
+        }
+        let rhoParam = Double(paramArray[0])!
+        let thresholdParam = Double(paramArray[1])!
+        let minLineParam = Double(paramArray[2])!
+        let maxLineParam = Double(paramArray[3])!
+        let cannyLow = Double(paramArray[4])!
+        let cannyHigh = Double(paramArray[5])!
+        
+        mat = OpenCVBridgeSwiftHelper.sharedInstance().canny(withImage: mat, lowThreshold: cannyLow, highThreshold: cannyHigh)
+        var lines = OpenCVBridgeSwiftHelper.sharedInstance().houghlinesP(withImage: mat, rho: rhoParam, theta: Double.pi / 180, threshold: thresholdParam, minLineLength: minLineParam, maxLineGap: maxLineParam) as! [[NSValue]]
+        
+        lines = lines.filter { (value) -> Bool in
+            return isHorizonLine(line: (value[0].pointValue, value[1].pointValue))
+        }
+        
+        lines.sort { (a, b) -> Bool in
+            return a[0].pointValue.y < b[0].pointValue.y
+        }
+        
+        var diffArray: [(y1: Double, y2: Double, diff: Double)] = []
+        
+        for (index, item) in lines.enumerated() {
+            if index + 1 == lines.count {
+                break
+            }
+            
+            let y1 = item[0].pointValue.y
+            let y2 = lines[index + 1][0].pointValue.y
+            let diff = y2 - y1
+            
+            diffArray.append((y1: Double(y1), y2: Double(y2), diff: Double(diff)))
+        }
+
+        let maxDistanse = diffArray.max { (a, b) -> Bool in
+            return a.diff < b.diff
+        }
+        
+        // max Distance == 0 case
+        
+        let point11 = CGPoint(x: 0, y: maxDistanse!.y1)
+        let point12 = CGPoint(x: Double(cloneMat.size().width), y: maxDistanse!.y1)
+        
+        let point21 = CGPoint(x: 0, y: maxDistanse!.y2)
+        let point22 = CGPoint(x: Double(cloneMat.size().width), y: maxDistanse!.y2)
+        
+        let roiRect = CGRect(x: 0, y: maxDistanse!.y1, width: Double(cloneMat.size().width), height: maxDistanse!.diff)
+        
+//        OpenCVBridgeSwiftHelper.sharedInstance().drawLine(inImage: cloneMat, point1: point11, point2: point12, lineWidth: 3, r: 255, g: 0, b: 0)
+//        OpenCVBridgeSwiftHelper.sharedInstance().drawLine(inImage: cloneMat, point1: point21, point2: point22, lineWidth: 3, r: 255, g: 0, b: 0)
+
+        
+        imageView.image = NSImage.init(cvMat: cloneMat.roi(at: roiRect)!)
+    }
+    
     @IBAction func drawContours(_ sender: Any) {
         var m = imageView.image?.mat
         let channel = OpenCVBridgeSwiftHelper.sharedInstance().splitImage(m!) as! [CVMat]
