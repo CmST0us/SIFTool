@@ -19,7 +19,7 @@ class SIFCardToolListViewController: UIViewController {
     }
 
     private var processHUD: MBProgressHUD!
-    private var selectScreenshots: [UIImage] = []
+    private var selectScreenshots: [UIImage]!
     
 //    private lazy var _collectionViewDataSource: [UserCardDataModel] = {
 //
@@ -167,6 +167,7 @@ extension SIFCardToolListViewController {
         userCardCollectionView.delegate = self
         userCardCollectionView.dataSource = self
         
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -175,6 +176,11 @@ extension SIFCardToolListViewController {
         
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        
+        userCardCollectionView.setContentOffset(CGPoint.init(x: 0, y: 50), animated: true)
+        
+    }
     
 }
 
@@ -195,6 +201,12 @@ extension SIFCardToolListViewController: UICollectionViewDelegate, UICollectionV
         return cell
         
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SIFCardSortCollectionReusableView.Identificer.sortCell, for: indexPath)
+    }
+    
+    
     
 }
 
@@ -268,6 +280,7 @@ extension SIFCardToolListViewController: TZImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: TZImagePickerController!, didFinishPickingPhotos photos: [UIImage]!, sourceAssets assets: [Any]!, isSelectOriginalPhoto: Bool) {
         
+        self.selectScreenshots = []
         var originCallCount: Int = 0 {
             didSet {
                 if originCallCount == assets.count {

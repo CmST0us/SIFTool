@@ -46,4 +46,13 @@ struct SIFRoundIconDetectorConfiguration {
     var patternRealRect: CGRect {
         return CGRect.init(x: CGFloat(patternLeft), y: CGFloat(patternTop), width: CGFloat(patternRealWidth), height: CGFloat(patternRealHeight))
     }
+    
+    var templateRealRect: CGRect {
+        var templateRoiRect = self.patternRealRect
+        templateRoiRect.origin.x += 3
+        templateRoiRect.origin.y += 3
+        templateRoiRect.size.width -= 3
+        templateRoiRect.size.height -= 3
+        return templateRoiRect
+    }
 }

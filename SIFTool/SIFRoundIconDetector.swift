@@ -95,9 +95,9 @@ class SIFRoundIconDetector {
     
     func makeTemplateImagePattern(image: CVMat) -> CVMat {
         let resizeImage = OpenCVBridgeSwiftHelper.sharedInstance().resizeImage(image, to: _configuration.patternSize)
-        let roi = resizeImage.roi(at: _configuration.patternRealRect)
+        let roi = resizeImage.roi(at: _configuration.templateRealRect)
         guard roi != nil else {
-            return image
+            return resizeImage
         }
         return roi!
     }
@@ -105,10 +105,14 @@ class SIFRoundIconDetector {
 
     func search(screenshot: CVMat) -> (CGRect, [CGRect]) {
         
-        let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: screenshot, targetColor: CVBridgeColorCovertType.bgr2Gray)
-        let binaryMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 220.0, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
+        let gaussianMat = OpenCVBridgeSwiftHelper.sharedInstance().gaussianBlur(withImage: screenshot, kernelSize: CGSize.init(width: 3, height: 1), sigmaX: 3, sigmaY: 3, borderType: CVBridgeBorderType.default)
+        
+        let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: gaussianMat, targetColor: CVBridgeColorCovertType.bgr2Gray)
+        
+        let binaryMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 240, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
         let cloneMat = binaryMat.clone()
         let canny = OpenCVBridgeSwiftHelper.sharedInstance().canny(withImage: binaryMat, lowThreshold: 100, highThreshold: 200)
+        
         var outputArray: [CGRect] = []
         var screenshotRoiRect: CGRect = CGRect(origin: CGPoint.init(x: 0, y: 0), size: screenshot.size())
         
@@ -159,7 +163,7 @@ class SIFRoundIconDetector {
                 }
             }
             if step == 0 {
-                var lines = OpenCVBridgeSwiftHelper.sharedInstance().houghlinesP(withImage: mat, rho: 1, theta: Double.pi / 180, threshold: 700, minLineLength: 200, maxLineGap: 10) as! [[NSValue]]
+                var lines = OpenCVBridgeSwiftHelper.sharedInstance().houghlinesP(withImage: mat, rho: 1, theta: Double.pi / 180, threshold: 500, minLineLength: 150, maxLineGap: 30) as! [[NSValue]]
                 
                 lines = lines.filter { (value) -> Bool in
                     return isHorizonLine(line: (value[0].pointValue, value[1].pointValue))
@@ -193,13 +197,15 @@ class SIFRoundIconDetector {
                 guard maxDistanse!.diff > 0.001 else {
                     return cloneMat
                 }
-                screenshotRoiRect = CGRect(x: 0, y: maxDistanse!.y1, width: Double(cloneMat.size().width), height: maxDistanse!.diff)
+                //use 11 pix y offset to cover some mess
+                //use 4 pix x offset to cover some mess
+                screenshotRoiRect = CGRect(x: 4, y: maxDistanse!.y1 + 11, width: Double(cloneMat.size().width - 4), height: maxDistanse!.diff - 11)
                 let roiMat =  cloneMat.roi(at: screenshotRoiRect) ?? cloneMat
                 
                 let centerY = roiMat.size().height / 2 - 1
                 let centerBrokeArrowRect = CGRect.init(x: 0, y: centerY, width: roiMat.size().width, height: 2)
                 
-                //draw white rect to fix arrow area
+                //draw rect to fix arrow area
                 OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat, rect: centerBrokeArrowRect, r: 0, g: 0, b: 0)
                 
                 return roiMat

@@ -28,7 +28,11 @@ class SIFUserCardCollectionViewCell: UICollectionViewCell {
         rarityNameIdLabel.text = "\(withCard.rarity) \(withCard.idol.japaneseName ?? withCard.idol.englishName) (\(String(withCard.id.intValue)))"
         let kizunaMaxString = userCard.isKizunaMax ? "绊满" : "绊0"
         let idolizedString = userCard.idolized ? "已觉醒" : "未觉醒"
-        idolizedKizunaLabel.text = (kizunaMaxString + " " + idolizedString)
+        
+        if idolizedKizunaLabel != nil {
+            idolizedKizunaLabel.text = (kizunaMaxString + " " + idolizedString)
+        }
+
         smileIndicatorView.maxScore = withCard.statisticsSmile(idolized: true, isKizunaMax: true).doubleValue
         smileIndicatorView.score = withCard.statisticsSmile(idolized: userCard.idolized, isKizunaMax: userCard.isKizunaMax).doubleValue
         
