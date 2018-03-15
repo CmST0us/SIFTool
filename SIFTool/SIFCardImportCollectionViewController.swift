@@ -157,7 +157,7 @@ extension SIFCardImportCollectionViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        
+        scanScreenshot()
         
     }
 
@@ -169,7 +169,7 @@ extension SIFCardImportCollectionViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        scanScreenshot()
+        
         
     }
     
