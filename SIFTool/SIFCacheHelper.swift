@@ -156,6 +156,7 @@ extension SIFCacheHelper {
             }
             Logger.shared.output("all page download ok")
             let jsonData = try JSONSerialization.data(withJSONObject: results, options: [.prettyPrinted])
+            try? self.deleteCardsCache()
             try jsonData.write(to: URL.init(fileURLWithPath: self.cacheDirectory.appendingPathComponent("cards.json")))
         } catch {
             cards.removeAll()

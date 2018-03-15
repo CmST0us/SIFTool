@@ -113,7 +113,6 @@ class SIFCardToolListViewController: UIViewController {
     
     @IBAction func refreshCache(_ sender: Any) {
 
-        try? SIFCacheHelper.shared.deleteCardsCache()
         try? SIFCacheHelper.shared.deleteMatchPattern()
         
         processHUD = MBProgressHUD(view: self.view)
