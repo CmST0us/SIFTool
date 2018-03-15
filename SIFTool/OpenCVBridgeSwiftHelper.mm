@@ -400,6 +400,16 @@
     cv::rectangle(mat.mat, rec, s);
 }
 
+- (void)drawLineInImage:(CVMat *)mat
+                 point1:(CGPoint)point1
+                 point2:(CGPoint)point2
+              lineWidth:(int)lineWidth
+                      r:(double)r
+                      g:(double)g
+                      b:(double)b {
+    cv::line(mat.mat, cv::Point(point1.x, point1.y), cv::Point(point2.x, point2.y), cv::Scalar(b, g, r), lineWidth, CV_AA);
+}
+
 #pragma mark - 搜索算法
 - (NSArray *)findContoursWithImage:(CVMat *)mat
                               mode:(CVBridgeRetrievalMode)mode
@@ -442,4 +452,59 @@
     return output;
 }
 
+- (NSArray *)houghlinesWithImage:(CVMat *)mat
+                             rho:(double)rho
+                           theta:(double)theta
+                       threshold:(double)threshold {
+    std::vector<cv::Vec2f> lines;
+    cv::HoughLines(mat.mat, lines, rho, theta, threshold);
+    
+    auto array = [NSMutableArray array];
+    
+    for (int i = 0; i < lines.size(); ++i) {
+        float r = lines[i][0];
+        float t = lines[i][1];
+        
+        auto point1 = CGPointMake(0, 0);
+        auto point2 = CGPointMake(0, 0);
+        
+        double a = cos(t);
+        double b = sin(t);
+        
+        double x0 = a * r;
+        double y0 = b * r;
+        
+        point1.x = cvRound(x0 + 1000 * (-b));
+        point1.y = cvRound(y0 + 1000 * (a));
+        point2.x = cvRound(x0 - 1000 * (-b));
+        point2.y = cvRound(y0 - 1000 * (a));
+        
+        auto pointValue1 = [NSValue valueWithPoint:point1];
+        auto pointValue2 = [NSValue valueWithPoint:point2];
+        
+        [array addObject:@[pointValue1, pointValue2]];
+    }
+    
+    return array;
+}
+
+- (NSArray *)houghlinesPWithImage:(CVMat *)mat
+                             rho:(double)rho
+                           theta:(double)theta
+                        threshold:(double)threshold
+                    minLineLength:(double)minLineLength
+                       maxLineGap:(double)maxLineGap {
+    std::vector<cv::Vec4i> lines;
+    cv::HoughLinesP(mat.mat, lines, rho, theta, threshold, minLineLength, maxLineGap);
+    auto array = [NSMutableArray array];
+    
+    for( size_t i = 0; i < lines.size(); i++) {
+        auto pointValue1 = [NSValue valueWithPoint:NSMakePoint(lines[i][0], lines[i][1])];
+        auto pointValue2 = [NSValue valueWithPoint:NSMakePoint(lines[i][0], lines[i][2])];
+        
+        [array addObject:@[pointValue1, pointValue2]];
+    }
+    
+    return array;
+}
 @end

@@ -268,6 +268,14 @@ enum ImreadModes {
                       g:(double)g
                       b:(double)b;
 
+- (void)drawLineInImage:(nonnull CVMat *)mat
+                 point1:(CGPoint)point1
+                 point2:(CGPoint)point2
+              lineWidth:(int)lineWidth
+                      r:(double)r
+                      g:(double)g
+                      b:(double)b;
+
 #pragma mark: - 搜索算法
 /**
  查找轮廓
@@ -295,4 +303,39 @@ enum ImreadModes {
 - (nonnull CVMat *)matchTemplateWithImage:(nonnull CVMat *)mat
                                     template:(nonnull CVMat *)templateMat
                                       method:(CVBridgeTemplateMatchMode)method;
+
+
+/**
+ 霍夫变换直线检测
+
+ @param mat 输入图像
+ @param rho Distance resolution of the accumulator in pixels.
+ @param theta Angle resolution of the accumulator in radians.
+ @param threshold  Accumulator threshold parameter. Only those lines are returned that get enough votes ( >\texttt{threshold} ).
+ @return 检测到的直线的两点坐标 [NSValue<[CGPoint, CGPoint]>]
+ */
+- (nonnull NSArray *)houghlinesWithImage:(nonnull CVMat *)mat
+                                     rho:(double)rho
+                                   theta:(double)theta
+                               threshold:(double)threshold;
+
+
+/**
+ 霍夫变换线段检测
+
+ @param mat 输入图像
+ @param rho Distance resolution of the accumulator in pixels.
+ @param theta Angle resolution of the accumulator in radians.
+ @param threshold  Accumulator threshold parameter. Only those lines are returned that get enough votes ( >\texttt{threshold} ).
+ @param minLineLength Minimum line length. Line segments shorter than that are rejected.
+ @param maxLineGap Maximum allowed gap between points on the same line to link them.
+ @return 检测到的线段的两点坐标 [NSValue<[CGPoint, CGPoint]>]
+ */
+- (nonnull NSArray *)houghlinesPWithImage:(nonnull CVMat *)mat
+                              rho:(double)rho
+                            theta:(double)theta
+                        threshold:(double)threshold
+                    minLineLength:(double)minLineLength
+                               maxLineGap:(double)maxLineGap;
+
 @end
