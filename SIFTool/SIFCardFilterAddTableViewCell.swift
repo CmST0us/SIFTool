@@ -10,9 +10,6 @@ import UIKit
 
 class SIFCardFilterAddTableViewCell: UITableViewCell {
 
-    struct Identifier {
-        static let addCell = "addCell"
-    }
     
 }
 

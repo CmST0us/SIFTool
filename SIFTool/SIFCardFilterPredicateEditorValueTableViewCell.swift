@@ -12,9 +12,6 @@ class SIFCardFilterPredicateEditorValueTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var valueTextField: UITextField!
     
-    struct Identifier {
-        static let valueCell = "valueCell"
-    }
     
     var value: String? {
         

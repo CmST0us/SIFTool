@@ -15,6 +15,10 @@ class SIFCardFilterViewController: UIViewController {
         static let predicateEditorSegue = "predicateEditorSegue"
     }
     
+    struct Identifier {
+        static let addCell = "addCell"
+        static let predicateCell = "predicateCell"
+    }
     var delegate: SIFCardFilterDelegate?
     
     var predicates: [SIFCardFilterPredicate] = []
@@ -90,10 +94,10 @@ extension SIFCardFilterViewController: UITableViewDelegate, UITableViewDataSourc
         
         switch indexPath.tuple {
         case (0, 0):
-            let cell = tableView.dequeueReusableCell(withIdentifier: SIFCardFilterAddTableViewCell.Identifier.addCell, for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.addCell, for: indexPath)
             return cell
         case (1, let row):
-            let cell = tableView.dequeueReusableCell(withIdentifier: SIFCardFilterPredicateTableViewCell.Identifier.predicateCell, for: indexPath) as! SIFCardFilterPredicateTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.predicateCell, for: indexPath) as! SIFCardFilterPredicateTableViewCell
             cell.keyPathLabel.text = predicates[row].keyPathDisplayName
             cell.conditionLabel.text = predicates[row].conditionDisplayName
             cell.valueLabel.text = predicates[row].valueDisplayName
@@ -182,10 +186,11 @@ extension SIFCardFilterViewController {
 }
 
 // MARK: - Adaptive PopoverController Method
-extension SIFCardFilterViewController: UIPopoverPresentationControllerDelegate {
-    
-    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-        return .none
-    }
-    
-}
+//extension SIFCardFilterViewController: UIPopoverPresentationControllerDelegate {
+//
+//    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+//        return .none
+//    }
+//
+//}
+

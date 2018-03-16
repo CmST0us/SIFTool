@@ -10,10 +10,6 @@ import UIKit
 
 class SIFUserCardCollectionViewCell: UICollectionViewCell {
     
-    struct Identificer {
-        static let userCardCell = "userCardCell"
-    }
-    
     @IBOutlet weak var cardRoundImageView: UIImageView!
     @IBOutlet weak var rarityNameIdLabel: UILabel!
     @IBOutlet weak var idolizedKizunaLabel: UILabel!

@@ -25,6 +25,12 @@ class SIFCardFilterPredicateEditorTableViewController: UITableViewController {
         case select
     }
     
+    struct Identifier {
+        static let selectCell = "selectCell"
+        static let valueCell = "valueCell"
+        
+    }
+    
     var rowIndex: Int = 0
     
     var templateRow: [SIFCardFilterPredicateEditorRowTemplate]!
@@ -202,7 +208,7 @@ extension SIFCardFilterPredicateEditorTableViewController {
         
         switch indexPath.tuple {
         case (0, let row):
-            let cell = tableView.dequeueReusableCell(withIdentifier: SIFCardFilterPredicateEditorSelectTableViewCell.Identifier.selectCell, for: indexPath) as! SIFCardFilterPredicateEditorSelectTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.selectCell, for: indexPath) as! SIFCardFilterPredicateEditorSelectTableViewCell
             if row == currentSelectIndex.0 {
                 cell.select = true
             } else {
@@ -211,7 +217,7 @@ extension SIFCardFilterPredicateEditorTableViewController {
             cell.textLabel?.text = displayTuples[row].keyPath
             return cell
         case (1, let row):
-            let cell = tableView.dequeueReusableCell(withIdentifier: SIFCardFilterPredicateEditorSelectTableViewCell.Identifier.selectCell, for: indexPath) as! SIFCardFilterPredicateEditorSelectTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.selectCell, for: indexPath) as! SIFCardFilterPredicateEditorSelectTableViewCell
             if row == currentSelectIndex.1 {
                 cell.select = true
             } else {
@@ -221,7 +227,7 @@ extension SIFCardFilterPredicateEditorTableViewController {
             return cell
         case (2, let row):
             if displayTuples[currentSelectIndex.0].value.type == .select {
-                let cell = tableView.dequeueReusableCell(withIdentifier: SIFCardFilterPredicateEditorSelectTableViewCell.Identifier.selectCell, for: indexPath) as! SIFCardFilterPredicateEditorSelectTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.selectCell, for: indexPath) as! SIFCardFilterPredicateEditorSelectTableViewCell
                 if row == currentSelectIndex.2 {
                     cell.select = true
                 } else {
@@ -230,7 +236,7 @@ extension SIFCardFilterPredicateEditorTableViewController {
                 cell.textLabel?.text = displayTuples[currentSelectIndex.0].value.inputList?[row]
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: SIFCardFilterPredicateEditorValueTableViewCell.Identifier.valueCell, for: indexPath) as! SIFCardFilterPredicateEditorValueTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: Identifier.valueCell, for: indexPath) as! SIFCardFilterPredicateEditorValueTableViewCell
                 cell.value = currentInputValue
                 return cell
             }

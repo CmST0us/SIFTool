@@ -10,9 +10,6 @@ import UIKit
 
 class SIFCardSortCollectionReusableView: UICollectionReusableView {
     
-    struct Identificer {
-        static let sortCell = "sortCell"
-    }
     
 }
 

@@ -10,10 +10,6 @@ import UIKit
 
 class SIFCardFilterPredicateEditorSelectTableViewCell: UITableViewCell {
 
-    struct Identifier {
-        static let selectCell = "selectCell"
-    }
-    
     var select: Bool = false {
         
         didSet {

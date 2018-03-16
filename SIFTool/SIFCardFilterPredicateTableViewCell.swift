@@ -14,10 +14,6 @@ class SIFCardFilterPredicateTableViewCell: UITableViewCell {
     @IBOutlet weak var conditionLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
     
-    struct Identifier {
-        static let predicateCell = "predicateCell"
-    }
-    
 }
 
 // MARK: - Life Cycle Method

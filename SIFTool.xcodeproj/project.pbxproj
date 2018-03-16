@@ -400,13 +400,21 @@
 				4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */,
 				4FC16845204DA2A200A73CB2 /* SIFUserCardCollectionViewCell.swift */,
 				4FCF51BC205A75B3009B4848 /* SIFCardSortCollectionReusableView.swift */,
+				4FCF51BE205BE219009B4848 /* Filter */,
+				4F677B222058380300B2C4AE /* SIFCardImportCollectionViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		4FCF51BE205BE219009B4848 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
 				4FBA7B0720503AE700037CF5 /* SIFCardFilterAddTableViewCell.swift */,
 				4FBA7B0920503B2500037CF5 /* SIFCardFilterPredicateTableViewCell.swift */,
 				4F677B1320518EBC00B2C4AE /* SIFCardFilterPredicateEditorSelectTableViewCell.swift */,
 				4F677B1520518ED000B2C4AE /* SIFCardFilterPredicateEditorValueTableViewCell.swift */,
-				4F677B222058380300B2C4AE /* SIFCardImportCollectionViewCell.swift */,
 			);
-			name = Views;
+			name = Filter;
 			sourceTree = "<group>";
 		};
 		4FEA5EEE203467BB00F03CCC = {

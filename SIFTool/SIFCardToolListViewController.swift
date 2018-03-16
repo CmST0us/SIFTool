@@ -17,6 +17,12 @@ class SIFCardToolListViewController: UIViewController {
         static let cardFilterSegue = "cardFilterSegue"
         static let importCardSegue = "importCardSegue"
     }
+    
+    struct Identificer {
+        static let userCardCell = "userCardCell"
+        static let sortCell = "sortCell"
+        
+    }
 
     private var processHUD: MBProgressHUD!
     private var selectScreenshots: [UIImage]!
@@ -194,7 +200,7 @@ extension SIFCardToolListViewController: UICollectionViewDelegate, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SIFUserCardCollectionViewCell.Identificer.userCardCell, for: indexPath) as! SIFUserCardCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identificer.userCardCell, for: indexPath) as! SIFUserCardCollectionViewCell
         let userCardModel = collectionViewDataSource[indexPath.row]
         cell.setupView(withCard: SIFCacheHelper.shared.cards[userCardModel.cardId]!, userCard: userCardModel)
         return cell
@@ -202,7 +208,7 @@ extension SIFCardToolListViewController: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SIFCardSortCollectionReusableView.Identificer.sortCell, for: indexPath)
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identificer.sortCell, for: indexPath)
     }
     
     
