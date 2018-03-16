@@ -163,7 +163,7 @@ class SIFRoundIconDetector {
                 }
             }
             if step == 0 {
-                var lines = OpenCVBridgeSwiftHelper.sharedInstance().houghlinesP(withImage: mat, rho: 1, theta: Double.pi / 180, threshold: 500, minLineLength: 150, maxLineGap: 30) as! [[NSValue]]
+                var lines = OpenCVBridgeSwiftHelper.sharedInstance().houghlinesP(withImage: mat, rho: 1, theta: Double.pi / 180, threshold: 500, minLineLength: 200, maxLineGap: 30) as! [[NSValue]]
                 
                 lines = lines.filter { (value) -> Bool in
                     return isHorizonLine(line: (value[0].pointValue, value[1].pointValue))
