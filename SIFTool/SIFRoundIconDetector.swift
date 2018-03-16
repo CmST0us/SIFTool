@@ -197,10 +197,22 @@ class SIFRoundIconDetector {
                 guard maxDistanse!.diff > 0.001 else {
                     return cloneMat
                 }
+                
                 //use 11 pix y offset to cover some mess
                 //use 4 pix x offset to cover some mess
-                screenshotRoiRect = CGRect(x: 4, y: maxDistanse!.y1 + 11, width: Double(cloneMat.size().width - 4), height: maxDistanse!.diff - 11)
-                let roiMat =  cloneMat.roi(at: screenshotRoiRect) ?? cloneMat
+                screenshotRoiRect = CGRect(x: 10, y: maxDistanse!.y1 + 11, width: Double(cloneMat.size().width) - 10, height: maxDistanse!.diff - 11)
+                var roiMat =  cloneMat.roi(at: screenshotRoiRect) ?? cloneMat
+                let originSize = roiMat.size()
+                
+                //draw a black rect to cover arrow
+                let resizeHeight = (1920 * roiMat.size().height) / roiMat.size().width
+                roiMat = OpenCVBridgeSwiftHelper.sharedInstance().resizeImage(roiMat, to: CGSize.init(width: 1920, height: resizeHeight))
+                let arrowSize = CGSize.init(width: 114, height: 92)
+                let arrowX = 1920 - 20 - arrowSize.width
+                let arrowY = (resizeHeight - arrowSize.height) / 2
+                let arrowRect = CGRect.init(x: arrowX, y: arrowY, width: arrowSize.width, height: arrowSize.height)
+                OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat, rect: arrowRect, r: 0, g: 0, b: 0, thickness: -1)
+                roiMat = OpenCVBridgeSwiftHelper.sharedInstance().resizeImage(roiMat, to: originSize)
                 
                 let centerY = roiMat.size().height / 2 - 1
                 let centerBrokeArrowRect = CGRect.init(x: 0, y: centerY, width: roiMat.size().width, height: 2)

@@ -399,6 +399,24 @@
     rec.width = rect.size.width;
     cv::Scalar s(b, g, r);
     cv::rectangle(mat.mat, rec, s);
+    
+}
+
+- (void)drawRectInImage:(CVMat *)mat
+                   rect:(CGRect)rect
+                      r:(double)r
+                      g:(double)g
+                      b:(double)b
+              thickness:(double)thickness
+{
+    cv::Rect rec;
+    rec.x = rect.origin.x;
+    rec.y = rect.origin.y;
+    rec.height = rect.size.height;
+    rec.width = rect.size.width;
+    cv::Scalar s(b, g, r);
+    cv::rectangle(mat.mat, rec, s, thickness);
+    
 }
 
 - (void)drawLineInImage:(CVMat *)mat

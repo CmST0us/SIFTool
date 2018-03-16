@@ -268,6 +268,13 @@ enum ImreadModes {
                       g:(double)g
                       b:(double)b;
 
+- (void)drawRectInImage:(nonnull CVMat *)mat
+                   rect:(CGRect)rect
+                      r:(double)r
+                      g:(double)g
+                      b:(double)b
+              thickness:(double)thickness;
+
 - (void)drawLineInImage:(nonnull CVMat *)mat
                  point1:(CGPoint)point1
                  point2:(CGPoint)point2
