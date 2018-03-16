@@ -207,8 +207,8 @@ class SIFRoundIconDetector {
                 //draw a black rect to cover arrow
                 let resizeHeight = (1920 * roiMat.size().height) / roiMat.size().width
                 roiMat = OpenCVBridgeSwiftHelper.sharedInstance().resizeImage(roiMat, to: CGSize.init(width: 1920, height: resizeHeight))
-                let arrowSize = CGSize.init(width: 114, height: 92)
-                let arrowX = 1920 - 20 - arrowSize.width
+                let arrowSize = CGSize.init(width: 114, height: 120)
+                let arrowX = 1920 - 18 - arrowSize.width
                 let arrowY = (resizeHeight - arrowSize.height) / 2
                 let arrowRect = CGRect.init(x: arrowX, y: arrowY, width: arrowSize.width, height: arrowSize.height)
                 OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat, rect: arrowRect, r: 0, g: 0, b: 0, thickness: -1)
