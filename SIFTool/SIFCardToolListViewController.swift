@@ -55,9 +55,7 @@ class SIFCardToolListViewController: UIViewController {
     
     private var userCardDataSource: [UserCardDataModel] {
         
-        return (1000 ... 1100).map { (item) -> UserCardDataModel in
-            return UserCardDataModel.init(withDictionary: ["cardId": item, "idolized": false, "cardSetName": "default", "isKizunaMax": false])
-        }
+       return UserCardStorageHelper.shared.fetchAllCard(cardSetName: SIFCacheHelper.shared.currentCardSetName) ?? []
         
     }
     
@@ -162,6 +160,15 @@ class SIFCardToolListViewController: UIViewController {
     
 }
 
+// MARK: - Notification Method
+extension SIFCardToolListViewController {
+    
+    @objc func reloadData() {
+        self.userCardCollectionView.reloadData()
+    }
+    
+}
+
 // MARK: - View Life Cycle
 extension SIFCardToolListViewController {
     
@@ -172,7 +179,9 @@ extension SIFCardToolListViewController {
         userCardCollectionView.delegate = self
         userCardCollectionView.dataSource = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: SIFCardImportCollectionViewController.NotificationName.importFinish), object: nil)
         
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -183,7 +192,7 @@ extension SIFCardToolListViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        userCardCollectionView.setContentOffset(CGPoint.init(x: 0, y: 50), animated: true)
+        userCardCollectionView.setContentOffset(CGPoint.init(x: 0, y: 50), animated: false)
         
     }
     

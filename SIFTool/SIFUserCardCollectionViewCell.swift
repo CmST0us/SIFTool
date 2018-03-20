@@ -21,7 +21,9 @@ class SIFUserCardCollectionViewCell: UICollectionViewCell {
     func setupView(withCard: CardDataModel, userCard: UserCardDataModel) {
         
         cardRoundImageView.image = SIFCacheHelper.shared.image(withUrl: URL(string: (userCard.idolized ? withCard.roundCardIdolizedImage : withCard.roundCardImage) ?? ""))
+        
         rarityNameIdLabel.text = "\(withCard.rarity) \(withCard.idol.japaneseName ?? withCard.idol.englishName) (\(String(withCard.id.intValue)))"
+        
         let kizunaMaxString = userCard.isKizunaMax ? "绊满" : "绊0"
         let idolizedString = userCard.idolized ? "已觉醒" : "未觉醒"
         

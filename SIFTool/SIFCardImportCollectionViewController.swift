@@ -15,6 +15,10 @@ class SIFCardImportCollectionViewController: UICollectionViewController {
         static let cardCell = "cardCell"
     }
     
+    struct NotificationName {
+        static let importFinish = "SIFCardImportCollectionViewController.importFinish"
+    }
+    
     enum ImportType {
         case cardSet
         case screenshot
@@ -28,6 +32,19 @@ class SIFCardImportCollectionViewController: UICollectionViewController {
     var detectorConfiguration: SIFRoundIconDetectorConfiguration!
     
     var cards: [UserCardDataModel] = []
+    
+    
+    @IBAction func onDoImportButtonDown(_ sender: Any) {
+        
+        for card in self.cards {
+            if card.isImport {
+                UserCardStorageHelper.shared.addCard(card: card, checkExist: true)
+            }
+        }
+        Logger.shared.output("\(String(cards.count)) cards has been imported")
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationName.importFinish), object: nil)
+        
+    }
     
     private func setupDetector() {
         
@@ -57,15 +74,9 @@ class SIFCardImportCollectionViewController: UICollectionViewController {
         }
         
     }
-
-}
-
-
-// MARK: - View Life Cycle Method
-extension SIFCardImportCollectionViewController {
     
-    func scanScreenshot() {
-    
+    private func scanScreenshot() {
+        
         self.progressHud = MBProgressHUD(view: self.view)
         self.view.addSubview(self.progressHud)
         self.progressHud.show(animated: true)
@@ -153,6 +164,13 @@ extension SIFCardImportCollectionViewController {
         }
         
     }
+
+}
+
+
+// MARK: - View Life Cycle Method
+extension SIFCardImportCollectionViewController {
+    
     
     override func viewDidLoad() {
         

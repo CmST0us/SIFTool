@@ -543,6 +543,7 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
+                            <barButtonItem title="Item" systemItem="edit" id="0Hg-0u-S4N"/>
                             <barButtonItem systemItem="add" id="lGs-DX-Q1L">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -565,10 +566,10 @@
             </objects>
             <point key="canvasLocation" x="86" y="-26"/>
         </scene>
-        <!--导入卡组-->
+        <!--导入卡片-->
         <scene sceneID="BzP-12-1Iz">
             <objects>
-                <collectionViewController storyboardIdentifier="SIFCardImportCollectionViewController" title="导入卡组" clearsSelectionOnViewWillAppear="NO" id="V9c-FC-8dx" customClass="SIFCardImportCollectionViewController" customModule="SIFTool" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="SIFCardImportCollectionViewController" title="导入卡片" clearsSelectionOnViewWillAppear="NO" id="V9c-FC-8dx" customClass="SIFCardImportCollectionViewController" customModule="SIFTool" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rm8-qs-dpO">
                         <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -764,6 +765,9 @@
                                                             <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onKizunaMaxButtonDown:" destination="JL9-sm-j8G" eventType="touchUpInside" id="tqU-V1-knC"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Jcl-cr-FSA">
                                                     <rect key="frame" x="52" y="0.0" width="44" height="24"/>
@@ -781,6 +785,9 @@
                                                             <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onIdolizedButtonDown:" destination="JL9-sm-j8G" eventType="touchUpInside" id="JkR-Fl-7er"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP5-Iu-ugP">
                                                     <rect key="frame" x="104" y="0.0" width="44" height="24"/>
@@ -798,6 +805,9 @@
                                                             <real key="value" value="10"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="onImportButtonDown:" destination="JL9-sm-j8G" eventType="touchUpInside" id="Mas-Yu-okg"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </stackView>
@@ -843,6 +853,9 @@
                                 <connections>
                                     <outlet property="cardRoundImageView" destination="2Ae-7l-jKC" id="8qx-kl-5gR"/>
                                     <outlet property="coolScoreIndicatorView" destination="0zI-cc-tXW" id="OZd-Hp-x4n"/>
+                                    <outlet property="isIdolizedButton" destination="Jcl-cr-FSA" id="Lv0-mH-N6S"/>
+                                    <outlet property="isImportButton" destination="gP5-Iu-ugP" id="rpR-F7-F5l"/>
+                                    <outlet property="isKizunaMaxButton" destination="3tu-VE-Wey" id="HPb-bE-ccd"/>
                                     <outlet property="pureScoreIndicatorView" destination="Sty-VY-dp0" id="tki-Qr-JUZ"/>
                                     <outlet property="rarityNameIdLabel" destination="Bfm-7g-36E" id="aal-me-8qc"/>
                                     <outlet property="smileIndicatorView" destination="r9p-sp-g39" id="kdG-1k-cU8"/>
@@ -854,6 +867,15 @@
                             <outlet property="delegate" destination="V9c-FC-8dx" id="tez-YS-9jb"/>
                         </connections>
                     </collectionView>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="导入卡片" id="rQC-1t-C2X">
+                        <barButtonItem key="rightBarButtonItem" title="导入" id="6Lg-du-N9w">
+                            <connections>
+                                <action selector="onDoImportButtonDown:" destination="V9c-FC-8dx" id="USc-ZS-0wU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="j7E-7v-gS3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -113,6 +113,7 @@
 		4F9A9C222058CF6100CED9C5 /* CoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5F2F2034699500F03CCC /* CoreDataHelper.swift */; };
 		4F9A9C282058E00100CED9C5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A9C272058E00100CED9C5 /* libz.tbd */; };
 		4F9A9C2A2058E00A00CED9C5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F9A9C292058E00A00CED9C5 /* libz.tbd */; };
+		4FB699F4206134A4006DD028 /* UIColor+hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FB699F3206134A4006DD028 /* UIColor+hex.swift */; };
 		4FB8135B205971190089FD38 /* resources.zip in Resources */ = {isa = PBXBuildFile; fileRef = 4FB8135A205971190089FD38 /* resources.zip */; };
 		4FBA7B02204DA59B00037CF5 /* ScoreIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */; };
 		4FBA7B04204EA8E300037CF5 /* UIView+IB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */; };
@@ -234,6 +235,7 @@
 		4F9A9C1D2058CEA800CED9C5 /* SIFCacheTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCacheTest.swift; sourceTree = "<group>"; };
 		4F9A9C272058E00100CED9C5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
 		4F9A9C292058E00A00CED9C5 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		4FB699F3206134A4006DD028 /* UIColor+hex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+hex.swift"; sourceTree = "<group>"; };
 		4FB8135A205971190089FD38 /* resources.zip */ = {isa = PBXFileReference; lastKnownFileType = archive.zip; name = resources.zip; path = ../../../../Downloads/card_round/resources.zip; sourceTree = "<group>"; };
 		4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreIndicatorView.swift; sourceTree = "<group>"; };
 		4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+IB.swift"; sourceTree = "<group>"; };
@@ -400,8 +402,8 @@
 				4FBA7B01204DA59B00037CF5 /* ScoreIndicatorView.swift */,
 				4FC16845204DA2A200A73CB2 /* SIFUserCardCollectionViewCell.swift */,
 				4FCF51BC205A75B3009B4848 /* SIFCardSortCollectionReusableView.swift */,
-				4FCF51BE205BE219009B4848 /* Filter */,
 				4F677B222058380300B2C4AE /* SIFCardImportCollectionViewCell.swift */,
+				4FCF51BE205BE219009B4848 /* Filter */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -528,6 +530,7 @@
 				4F1EB1F3203F28880003BA0C /* URL+FilePath.swift */,
 				4FBA7B03204EA8E300037CF5 /* UIView+IB.swift */,
 				4F1EAC31205A45CF001708EF /* NSValue+pointValue.swift */,
+				4FB699F3206134A4006DD028 /* UIColor+hex.swift */,
 			);
 			name = Extension;
 			sourceTree = "<group>";
@@ -970,6 +973,7 @@
 				4F4F5F9820347AB70025741A /* ApiRequestParam.swift in Sources */,
 				4F08640F2039E24D00CFDD98 /* Array+PointArrayRect.swift in Sources */,
 				4F4F5FD620349B810025741A /* String+Date.swift in Sources */,
+				4FB699F4206134A4006DD028 /* UIColor+hex.swift in Sources */,
 				4F4F5FA8203480CD0025741A /* MiniEventDataModel.swift in Sources */,
 				4F4F5F9420347A8F0025741A /* ApiHelper.swift in Sources */,
 				4F677B18205192CD00B2C4AE /* SIFCardFilterPredicateEditorRowTemplate.swift in Sources */,
