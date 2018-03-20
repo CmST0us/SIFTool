@@ -27,12 +27,6 @@ class SIFCardToolListViewController: UIViewController {
     private var processHUD: MBProgressHUD!
     private var selectScreenshots: [UIImage]!
     
-//    private lazy var _collectionViewDataSource: [UserCardDataModel] = {
-//
-//       return UserCardStorageHelper.shared.fetchAllUserCard(user: user) ?? []
-//
-//    }()
-    
     private var cardFiltePredicates: [SIFCardFilterPredicate] = []
 
     private var filteCardDataSource: [UserCardDataModel] {
@@ -76,6 +70,23 @@ class SIFCardToolListViewController: UIViewController {
     }
     
     @IBOutlet private weak var userCardCollectionView: UICollectionView!
+    
+    @IBOutlet weak var editButton: UIBarButtonItem!
+    
+    
+    @IBAction func onEditButtonDown(_ sender: Any) {
+        
+        self.isEditing = !self.isEditing
+        
+        if self.isEditing {
+            editButton.title = "完成"
+        } else {
+            editButton.title = "编辑"
+        }
+        
+        self.userCardCollectionView.reloadData()
+        
+    }
     
     @IBAction func addCard(_ sender: Any) {
         
@@ -212,6 +223,15 @@ extension SIFCardToolListViewController: UICollectionViewDelegate, UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identificer.userCardCell, for: indexPath) as! SIFUserCardCollectionViewCell
         let userCardModel = collectionViewDataSource[indexPath.row]
         cell.setupView(withCard: SIFCacheHelper.shared.cards[userCardModel.cardId]!, userCard: userCardModel)
+        
+        if self.isEditing {
+            cell.selectCheckMarkImageView.isHidden = false
+            cell.isCellSelected = false
+        } else {
+            cell.selectCheckMarkImageView.isHidden = true
+            cell.isCellSelected = false
+        }
+        
         return cell
         
     }
@@ -220,7 +240,16 @@ extension SIFCardToolListViewController: UICollectionViewDelegate, UICollectionV
         return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identificer.sortCell, for: indexPath)
     }
     
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! SIFUserCardCollectionViewCell
+        
+        if self.isEditing {
+            cell.isCellSelected = !cell.isCellSelected
+        } else {
+            // open detail
+        }
+        
+    }
     
 }
 

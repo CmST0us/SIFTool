@@ -18,6 +18,20 @@ class SIFUserCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var coolScoreIndicatorView: ScoreIndicatorView!
     @IBOutlet weak var pureScoreIndicatorView: ScoreIndicatorView!
     
+    @IBOutlet weak var selectCheckMarkImageView: UIImageView!
+    
+    var isCellSelected: Bool = false {
+        didSet {
+            if selectCheckMarkImageView != nil {
+                if isCellSelected {
+                    selectCheckMarkImageView.image = UIImage.init(named: "check_mark_select")
+                } else {
+                    selectCheckMarkImageView.image = UIImage.init(named: "check_mark_unselect")
+                }
+            }
+        }
+    }
+    
     func setupView(withCard: CardDataModel, userCard: UserCardDataModel) {
         
         cardRoundImageView.image = SIFCacheHelper.shared.image(withUrl: URL(string: (userCard.idolized ? withCard.roundCardIdolizedImage : withCard.roundCardImage) ?? ""))

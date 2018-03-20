@@ -10,6 +10,14 @@ import UIKit
 
 class SIFCardSortCollectionReusableView: UICollectionReusableView {
     
+    @IBAction func onAttributeSortButtonDown(_ sender: Any) {
+    }
+    
+    @IBAction func onRankSortButtonDown(_ sender: Any) {
+    }
+    
+    @IBAction func onSortMethodDown(_ sender: Any) {
+    }
     
 }
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H8c-ug-OoR">
-    <device id="ipad10_5" orientation="portrait">
+    <device id="retina3_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,22 +17,22 @@
             <objects>
                 <viewController id="5JI-Tb-B40" customClass="SIFCardFilterViewController" customModule="SIFTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Wu-Ln-I8F">
-                        <rect key="frame" x="0.0" y="0.0" width="374" height="524"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Qfb-yK-oee">
-                                <rect key="frame" x="0.0" y="44" width="374" height="480"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addCell" textLabel="Hrb-5y-CTZ" imageView="acb-C0-eko" rowHeight="44" style="IBUITableViewCellStyleDefault" id="rl7-XM-aey" customClass="SIFCardFilterAddTableViewCell" customModule="SIFTool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="374" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addCell" textLabel="Hrb-5y-CTZ" imageView="acb-C0-eko" rowHeight="44" style="IBUITableViewCellStyleDefault" id="rl7-XM-aey" customClass="SIFCardFilterAddTableViewCell" customModule="SIFTool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rl7-XM-aey" id="zyS-mT-gF7">
-                                            <rect key="frame" x="0.0" y="0.0" width="374" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="添加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hrb-5y-CTZ">
-                                                    <rect key="frame" x="52" y="0.0" width="307" height="43.5"/>
+                                                    <rect key="frame" x="52" y="0.0" width="253" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -45,11 +45,11 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="predicateCell" rowHeight="67" id="n6O-V5-WXF" customClass="SIFCardFilterPredicateTableViewCell" customModule="SIFTool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99.5" width="374" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="predicateCell" rowHeight="67" id="n6O-V5-WXF" customClass="SIFCardFilterPredicateTableViewCell" customModule="SIFTool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="99.5" width="320" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n6O-V5-WXF" id="u1l-ev-nek">
-                                            <rect key="frame" x="0.0" y="0.0" width="341" height="66.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="287" height="66.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="pPx-0I-I73">
@@ -227,11 +227,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SIFCardToolListViewController" customModule="SIFTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6OP-XS-KvD">
-                                <rect key="frame" x="0.0" y="64" width="834" height="1048"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8iy-oI-zA5">
                                     <size key="itemSize" width="174" height="261"/>
@@ -241,7 +241,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userCardCell" id="fvI-8g-bq2" customClass="SIFUserCardCollectionViewCell" customModule="SIFTool" customModuleProvider="target">
-                                        <rect key="frame" x="8" y="54" width="174" height="261"/>
+                                        <rect key="frame" x="73" y="54" width="174" height="261"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="174" height="261"/>
@@ -416,6 +416,13 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="check_mark_select" translatesAutoresizingMaskIntoConstraints="NO" id="Fdq-gr-ieS">
+                                                    <rect key="frame" x="134" y="12" width="28" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="28" id="JVI-9j-KA2"/>
+                                                        <constraint firstAttribute="width" constant="28" id="oFf-21-P1i"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -427,8 +434,10 @@
                                             <constraint firstItem="WgJ-m8-lbK" firstAttribute="top" secondItem="fvI-8g-bq2" secondAttribute="top" constant="8" id="K0o-2s-1eU"/>
                                             <constraint firstItem="OME-Nc-3tM" firstAttribute="top" secondItem="dHE-fR-XSL" secondAttribute="bottom" constant="4" id="Nn5-r8-P84"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="OME-Nc-3tM" secondAttribute="trailing" id="Ssd-qK-E15"/>
+                                            <constraint firstItem="Fdq-gr-ieS" firstAttribute="trailing" secondItem="WgJ-m8-lbK" secondAttribute="trailing" constant="-4" id="XUh-qL-UMy"/>
                                             <constraint firstItem="OME-Nc-3tM" firstAttribute="leading" secondItem="fvI-8g-bq2" secondAttribute="leadingMargin" id="d1J-2l-hCT"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="OME-Nc-3tM" secondAttribute="bottom" constant="4" id="peX-4n-Uet"/>
+                                            <constraint firstItem="Fdq-gr-ieS" firstAttribute="top" secondItem="WgJ-m8-lbK" secondAttribute="top" constant="4" id="rh0-wd-e2d"/>
                                             <constraint firstAttribute="trailing" secondItem="WgJ-m8-lbK" secondAttribute="trailing" constant="8" id="zV3-Wd-Wst"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -461,60 +470,80 @@
                                             <outlet property="idolizedKizunaLabel" destination="kRs-3p-Cgm" id="wdS-Zg-Tsf"/>
                                             <outlet property="pureScoreIndicatorView" destination="boF-g6-zuy" id="tPk-d0-5lB"/>
                                             <outlet property="rarityNameIdLabel" destination="aZI-qh-803" id="MZe-Ru-dDD"/>
+                                            <outlet property="selectCheckMarkImageView" destination="Fdq-gr-ieS" id="wjz-PE-MZ2"/>
                                             <outlet property="smileIndicatorView" destination="xEN-SV-mZQ" id="lQI-BX-iNO"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sortCell" id="ClS-ZL-ls3" customClass="SIFCardSortCollectionReusableView" customModule="SIFTool" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="834" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24t-el-L2j">
-                                            <rect key="frame" x="8" y="15" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ggc-CU-z8G">
-                                            <rect key="frame" x="62" y="11" width="121" height="28"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="First"/>
-                                                <segment title="Second"/>
-                                            </segments>
-                                        </segmentedControl>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fx-HL-E77">
-                                            <rect key="frame" x="229" y="14" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="4wf-Xr-onf">
-                                            <rect key="frame" x="288" y="11" width="121" height="28"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="First"/>
-                                                <segment title="Second"/>
-                                            </segments>
-                                        </segmentedControl>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQd-FF-wbM">
-                                            <rect key="frame" x="453" y="14" width="42" height="21"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jvJ-lK-FLe">
-                                            <rect key="frame" x="516" y="11" width="121" height="28"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <segments>
-                                                <segment title="First"/>
-                                                <segment title="Second"/>
-                                            </segments>
-                                        </segmentedControl>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="E10-OV-h3t">
+                                            <rect key="frame" x="8" y="14" width="304.5" height="22"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kPI-Iv-M2a">
+                                                    <rect key="frame" x="0.0" y="0.0" width="81.5" height="22"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="排序属性" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24t-el-L2j">
+                                                            <rect key="frame" x="0.0" y="0.0" width="57.5" height="22"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWJ-hD-k4B">
+                                                            <rect key="frame" x="65.5" y="0.0" width="16" height="22"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <state key="normal" image="drop_down_icon"/>
+                                                            <connections>
+                                                                <action selector="onAttributeSortButtonDown:" destination="ClS-ZL-ls3" eventType="touchUpInside" id="Vk5-gc-uIs"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6tB-aa-h5X">
+                                                    <rect key="frame" x="111.5" y="0.0" width="81.5" height="22"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="排序等级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fx-HL-E77">
+                                                            <rect key="frame" x="0.0" y="0.0" width="57.5" height="22"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0O-6e-PiO">
+                                                            <rect key="frame" x="65.5" y="0.0" width="16" height="22"/>
+                                                            <state key="normal" image="drop_down_icon"/>
+                                                            <connections>
+                                                                <action selector="onRankSortButtonDown:" destination="ClS-ZL-ls3" eventType="touchUpInside" id="6s4-ta-o5T"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QBP-eb-5eD">
+                                                    <rect key="frame" x="223" y="0.0" width="81.5" height="22"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="排序方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQd-FF-wbM">
+                                                            <rect key="frame" x="0.0" y="0.0" width="57.5" height="22"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0V-qO-3a4">
+                                                            <rect key="frame" x="65.5" y="0.0" width="16" height="22"/>
+                                                            <state key="normal" image="drop_down_icon"/>
+                                                            <connections>
+                                                                <action selector="onSortMethodDown:" destination="ClS-ZL-ls3" eventType="touchUpInside" id="KRQ-AS-yFl"/>
+                                                            </connections>
+                                                        </button>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                        </stackView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="E10-OV-h3t" firstAttribute="centerX" secondItem="ClS-ZL-ls3" secondAttribute="centerX" id="30c-UX-cgI"/>
+                                        <constraint firstItem="E10-OV-h3t" firstAttribute="centerY" secondItem="ClS-ZL-ls3" secondAttribute="centerY" id="LsM-5Z-lHd"/>
+                                    </constraints>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
@@ -543,7 +572,11 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem title="Item" systemItem="edit" id="0Hg-0u-S4N"/>
+                            <barButtonItem title="编辑" id="0Hg-0u-S4N">
+                                <connections>
+                                    <action selector="onEditButtonDown:" destination="BYZ-38-t0r" id="Kqt-wg-kHo"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem systemItem="add" id="lGs-DX-Q1L">
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
@@ -558,20 +591,21 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="0Hg-0u-S4N" id="GPJ-qb-9QR"/>
                         <outlet property="userCardCollectionView" destination="6OP-XS-KvD" id="8cc-QE-tvW"/>
                         <segue destination="V9c-FC-8dx" kind="show" identifier="importCardSegue" id="01C-8T-7CG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="86" y="-26"/>
+            <point key="canvasLocation" x="85.611510791366911" y="-26.438848920863311"/>
         </scene>
         <!--导入卡片-->
         <scene sceneID="BzP-12-1Iz">
             <objects>
                 <collectionViewController storyboardIdentifier="SIFCardImportCollectionViewController" title="导入卡片" clearsSelectionOnViewWillAppear="NO" id="V9c-FC-8dx" customClass="SIFCardImportCollectionViewController" customModule="SIFTool" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rm8-qs-dpO">
-                        <rect key="frame" x="0.0" y="0.0" width="834" height="1112"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wOo-UF-xcB">
@@ -582,7 +616,7 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="JL9-sm-j8G" customClass="SIFCardImportCollectionViewCell" customModule="SIFTool" customModuleProvider="target">
-                                <rect key="frame" x="8" y="4" width="174" height="280"/>
+                                <rect key="frame" x="73" y="4" width="174" height="280"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="174" height="280"/>
@@ -886,7 +920,7 @@
             <objects>
                 <navigationController id="H8c-ug-OoR" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cz7-3p-HQ9">
-                        <rect key="frame" x="0.0" y="20" width="834" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -909,7 +943,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2uu-p9-7Tw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Pt-gM-4aA">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -929,6 +963,8 @@
     </scenes>
     <resources>
         <image name="add_button" width="22" height="22"/>
+        <image name="check_mark_select" width="22" height="22"/>
+        <image name="drop_down_icon" width="16" height="14"/>
         <image name="filter_nav_bar_icon_fill" width="18" height="18"/>
     </resources>
 </document>
