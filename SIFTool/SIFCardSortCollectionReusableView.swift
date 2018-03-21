@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SIFCardSortCollectionReusableView: UICollectionReusableView {
+class SIFCardSortToolView: UIView {
     
     var attributeSortBlock: ((_ sender: UIButton) -> Void)? = nil
     var rankSortBlock: ((_ sender: UIButton) -> Void)? = nil
@@ -35,7 +35,7 @@ class SIFCardSortCollectionReusableView: UICollectionReusableView {
 }
 
 
-extension SIFCardSortCollectionReusableView {
+extension SIFCardSortToolView {
     
     
     

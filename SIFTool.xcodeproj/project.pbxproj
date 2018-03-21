@@ -137,6 +137,7 @@
 		4FE1E3A420427DD50032F229 /* CoreDataModelBridgeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E3A120427DD50032F229 /* CoreDataModelBridgeProtocol.swift */; };
 		4FE1E3A62042ABF40032F229 /* CheckBoxTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E3A52042ABF40032F229 /* CheckBoxTableCellView.swift */; };
 		4FE1E3A72042ABF40032F229 /* CheckBoxTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FE1E3A52042ABF40032F229 /* CheckBoxTableCellView.swift */; };
+		4FE29C652062AE8800E9809E /* SortToolView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4FE29C642062AE8800E9809E /* SortToolView.xib */; };
 		4FEA5EFB203467BB00F03CCC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5EFA203467BB00F03CCC /* AppDelegate.swift */; };
 		4FEA5EFD203467BB00F03CCC /* SIFCardToolListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEA5EFC203467BB00F03CCC /* SIFCardToolListViewController.swift */; };
 		4FEA5F00203467BB00F03CCC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4FEA5EFE203467BB00F03CCC /* Main.storyboard */; };
@@ -251,6 +252,7 @@
 		4FE1E39D2042798C0032F229 /* UserCard.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = UserCard.xcdatamodel; sourceTree = "<group>"; };
 		4FE1E3A120427DD50032F229 /* CoreDataModelBridgeProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataModelBridgeProtocol.swift; sourceTree = "<group>"; };
 		4FE1E3A52042ABF40032F229 /* CheckBoxTableCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxTableCellView.swift; sourceTree = "<group>"; };
+		4FE29C642062AE8800E9809E /* SortToolView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SortToolView.xib; sourceTree = "<group>"; };
 		4FEA5EF7203467BB00F03CCC /* SIFTool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SIFTool.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEA5EFA203467BB00F03CCC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4FEA5EFC203467BB00F03CCC /* SIFCardToolListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCardToolListViewController.swift; sourceTree = "<group>"; };
@@ -391,6 +393,7 @@
 			children = (
 				4FEA5F03203467BB00F03CCC /* LaunchScreen.storyboard */,
 				4FEA5EFE203467BB00F03CCC /* Main.storyboard */,
+				4FE29C642062AE8800E9809E /* SortToolView.xib */,
 				4FBA7B0F2050474C00037CF5 /* PredicatePicker.xib */,
 			);
 			name = View;
@@ -748,6 +751,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FE29C652062AE8800E9809E /* SortToolView.xib in Resources */,
 				4FEA5F05203467BB00F03CCC /* LaunchScreen.storyboard in Resources */,
 				4FEA5F02203467BB00F03CCC /* Assets.xcassets in Resources */,
 				4FEA5F00203467BB00F03CCC /* Main.storyboard in Resources */,
@@ -799,6 +803,7 @@
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage-iOS/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SSZipArchive-iOS/SSZipArchive.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/TZImagePickerController/TZImagePickerController.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -807,6 +812,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SSZipArchive.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TZImagePickerController.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;

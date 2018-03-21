@@ -11,6 +11,8 @@ target 'SIFTool' do
   pod 'MBProgressHUD'
   pod 'GzipSwift'
   pod 'SSZipArchive'
+  pod 'SnapKit', '~> 4.0.0'
+  
 end
 
 target 'SIFTool-macOS' do

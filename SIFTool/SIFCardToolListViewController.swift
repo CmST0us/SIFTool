@@ -10,6 +10,7 @@ import UIKit
 import MobileCoreServices
 import TZImagePickerController
 import MBProgressHUD
+import SnapKit
 
 class SIFCardToolListViewController: UIViewController {
     
@@ -24,7 +25,12 @@ class SIFCardToolListViewController: UIViewController {
         
     }
 
+    //MARK: Private Member
     private var processHUD: MBProgressHUD!
+    
+    private var sortToolView: SIFCardSortToolView!
+    
+    private var lastScrollViewOffset: CGPoint = CGPoint(x: 0, y: 0)
     
     private var selectScreenshots: [UIImage]!
     
@@ -134,6 +140,101 @@ class SIFCardToolListViewController: UIViewController {
         
     }
     
+    // MARK: Private Method
+    private func setupSortToolView() {
+        
+        self.sortToolView = Bundle.main.loadNibNamed("SortToolView", owner: SIFCardSortToolView.self, options: nil)?.last! as! SIFCardSortToolView
+        
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: nil)
+        
+        sortToolView.attributeSortBlock = { [weak self] sender in
+            
+            let sheet = UIAlertController(title: "排序属性", message: nil, preferredStyle: .actionSheet)
+            
+            let pureSortAction = UIAlertAction(title: "洒脱", style: .default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.attribute = 0
+            })
+            let coolSortAction = UIAlertAction(title: "清纯", style: .default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.attribute = 1
+            })
+            let smileSortActin = UIAlertAction(title: "甜美", style: .default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.attribute = 2
+            })
+            
+            sheet.addAction(pureSortAction)
+            sheet.addAction(coolSortAction)
+            sheet.addAction(smileSortActin)
+            sheet.addAction(cancelAction)
+            
+            if let sheetPopverController = sheet.popoverPresentationController {
+                sheetPopverController.sourceView = sender
+                sheetPopverController.permittedArrowDirections = .any
+                self?.present(sheet, animated: true, completion: nil)
+            } else {
+                self?.present(sheet, animated: true, completion: nil)
+            }
+            
+        }
+        
+        sortToolView.rankSortBlock = { [weak self] sender in
+            let sheet = UIAlertController(title: "排序等级", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            
+            let minRankSortAction = UIAlertAction(title: "1级", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.rank = 0
+            })
+            let maxRankNonIdolizedAction = UIAlertAction(title: "未觉醒最高", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.rank = 1
+            })
+            let maxRankIdolizedAction = UIAlertAction(title: "觉醒最高", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.rank = 2
+            })
+            let userIdolizedStateAction = UIAlertAction(title: "用户持有觉醒状态", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.rank = 3
+            })
+            
+            sheet.addAction(minRankSortAction)
+            sheet.addAction(maxRankNonIdolizedAction)
+            sheet.addAction(maxRankIdolizedAction)
+            sheet.addAction(userIdolizedStateAction)
+            sheet.addAction(cancelAction)
+            
+            if let sheetPopverController = sheet.popoverPresentationController {
+                sheetPopverController.sourceView = sender
+                sheetPopverController.permittedArrowDirections = .any
+                self?.present(sheet, animated: true, completion: nil)
+            } else {
+                self?.present(sheet, animated: true, completion: nil)
+            }
+            
+        }
+        
+        sortToolView.sortMethodBlcok = { [weak self] sender in
+            let sheet = UIAlertController(title: "排序方式", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            
+            let ascendingMethodAction = UIAlertAction(title: "升序", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.method = 0
+            })
+            let deascendingMethodAction = UIAlertAction(title: "降序", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.method = 1
+            })
+            
+            sheet.addAction(ascendingMethodAction)
+            sheet.addAction(deascendingMethodAction)
+            sheet.addAction(cancelAction)
+            
+            if let sheetPopverController = sheet.popoverPresentationController {
+                sheetPopverController.sourceView = sender
+                sheetPopverController.permittedArrowDirections = .any
+                self?.present(sheet, animated: true, completion: nil)
+            } else {
+                self?.present(sheet, animated: true, completion: nil)
+            }
+            
+        }
+        
+    }
+    
+    // MARK: IBOutlet
     @IBOutlet private weak var userCardCollectionView: UICollectionView!
     
     @IBOutlet weak var editButton: UIBarButtonItem!
@@ -233,8 +334,8 @@ class SIFCardToolListViewController: UIViewController {
         
     }
     
-    
 }
+
 
 // MARK: - Notification Method
 extension SIFCardToolListViewController {
@@ -254,10 +355,26 @@ extension SIFCardToolListViewController {
         
         userCardCollectionView.delegate = self
         userCardCollectionView.dataSource = self
+
+        setupSortToolView()
         
+        self.sortToolView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.userCardCollectionView.addSubview(self.sortToolView)
+        
+        self.sortToolView.snp.makeConstraints { (maker) in
+            maker.bottom.equalTo(self.userCardCollectionView.snp.top)
+            maker.left.equalToSuperview()
+            maker.right.equalToSuperview()
+            maker.centerX.equalToSuperview()
+            maker.height.equalTo(34)
+        }
+        
+        self.userCardCollectionView.contentInset = UIEdgeInsets(top: 34, left: 0, bottom: 0, right: 0)
+
         NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: SIFCardImportCollectionViewController.NotificationName.importFinish), object: nil)
         
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -266,12 +383,19 @@ extension SIFCardToolListViewController {
         
     }
     
+    
     override func viewDidAppear(_ animated: Bool) {
         
-        userCardCollectionView.setContentOffset(CGPoint.init(x: 0, y: 50), animated: false)
+        self.userCardCollectionView.contentOffset = lastScrollViewOffset
         
     }
     
+    override func viewDidDisappear(_ animated: Bool) {
+        
+        lastScrollViewOffset = self.userCardCollectionView.contentOffset
+        
+    }
+
 }
 
 // MARK: - Collection View Delegate And DataSouce
@@ -301,99 +425,6 @@ extension SIFCardToolListViewController: UICollectionViewDelegate, UICollectionV
         
     }
     
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        let reuseView =  collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identificer.sortCell, for: indexPath) as! SIFCardSortCollectionReusableView
-        
-        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: nil)
-        
-        reuseView.attributeSortBlock = { [weak self] sender in
-            
-            let sheet = UIAlertController(title: "排序属性", message: nil, preferredStyle: .actionSheet)
-            
-            let pureSortAction = UIAlertAction(title: "洒脱", style: .default, handler: { (action) in
-                self?.sortConfigSelectIndexTuple.attribute = 0
-            })
-            let coolSortAction = UIAlertAction(title: "清纯", style: .default, handler: { (action) in
-                self?.sortConfigSelectIndexTuple.attribute = 1
-            })
-            let smileSortActin = UIAlertAction(title: "甜美", style: .default, handler: { (action) in
-                self?.sortConfigSelectIndexTuple.attribute = 2
-            })
-            
-            sheet.addAction(pureSortAction)
-            sheet.addAction(coolSortAction)
-            sheet.addAction(smileSortActin)
-            sheet.addAction(cancelAction)
-            
-            if let sheetPopverController = sheet.popoverPresentationController {
-                sheetPopverController.sourceView = sender
-                sheetPopverController.permittedArrowDirections = .any
-                self?.present(sheet, animated: true, completion: nil)
-            } else {
-                self?.present(sheet, animated: true, completion: nil)
-            }
-            
-        }
-        
-        reuseView.rankSortBlock = { [weak self] sender in
-            let sheet = UIAlertController(title: "排序等级", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-            
-            let minRankSortAction = UIAlertAction(title: "1级", style: UIAlertActionStyle.default, handler: { (action) in
-                self?.sortConfigSelectIndexTuple.rank = 0
-            })
-            let maxRankNonIdolizedAction = UIAlertAction(title: "未觉醒最高", style: UIAlertActionStyle.default, handler: { (action) in
-                self?.sortConfigSelectIndexTuple.rank = 1
-            })
-            let maxRankIdolizedAction = UIAlertAction(title: "觉醒最高", style: UIAlertActionStyle.default, handler: { (action) in
-                self?.sortConfigSelectIndexTuple.rank = 2
-            })
-            let userIdolizedStateAction = UIAlertAction(title: "用户持有觉醒状态", style: UIAlertActionStyle.default, handler: { (action) in
-                self?.sortConfigSelectIndexTuple.rank = 3
-            })
-            
-            sheet.addAction(minRankSortAction)
-            sheet.addAction(maxRankNonIdolizedAction)
-            sheet.addAction(maxRankIdolizedAction)
-            sheet.addAction(userIdolizedStateAction)
-            sheet.addAction(cancelAction)
-            
-            if let sheetPopverController = sheet.popoverPresentationController {
-                sheetPopverController.sourceView = sender
-                sheetPopverController.permittedArrowDirections = .any
-                self?.present(sheet, animated: true, completion: nil)
-            } else {
-                self?.present(sheet, animated: true, completion: nil)
-            }
-            
-        }
-        
-        reuseView.sortMethodBlcok = { [weak self] sender in
-            let sheet = UIAlertController(title: "排序方式", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-            
-            let ascendingMethodAction = UIAlertAction(title: "升序", style: UIAlertActionStyle.default, handler: { (action) in
-                self?.sortConfigSelectIndexTuple.method = 0
-            })
-            let deascendingMethodAction = UIAlertAction(title: "降序", style: UIAlertActionStyle.default, handler: { (action) in
-                self?.sortConfigSelectIndexTuple.method = 1
-            })
-            
-            sheet.addAction(ascendingMethodAction)
-            sheet.addAction(deascendingMethodAction)
-            sheet.addAction(cancelAction)
-            
-            if let sheetPopverController = sheet.popoverPresentationController {
-                sheetPopverController.sourceView = sender
-                sheetPopverController.permittedArrowDirections = .any
-                self?.present(sheet, animated: true, completion: nil)
-            } else {
-                self?.present(sheet, animated: true, completion: nil)
-            }
-            
-        }
-        
-        return reuseView
-    }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let cell = collectionView.cellForItem(at: indexPath) as! SIFUserCardCollectionViewCell
