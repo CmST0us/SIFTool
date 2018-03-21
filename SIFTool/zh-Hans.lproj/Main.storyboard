@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H8c-ug-OoR">
-    <device id="retina3_5" orientation="portrait">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -17,22 +17,22 @@
             <objects>
                 <viewController id="5JI-Tb-B40" customClass="SIFCardFilterViewController" customModule="SIFTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1Wu-Ln-I8F">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="Qfb-yK-oee">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addCell" textLabel="Hrb-5y-CTZ" imageView="acb-C0-eko" rowHeight="44" style="IBUITableViewCellStyleDefault" id="rl7-XM-aey" customClass="SIFCardFilterAddTableViewCell" customModule="SIFTool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="addCell" textLabel="Hrb-5y-CTZ" imageView="acb-C0-eko" rowHeight="44" style="IBUITableViewCellStyleDefault" id="rl7-XM-aey" customClass="SIFCardFilterAddTableViewCell" customModule="SIFTool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="55.333333333333336" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="rl7-XM-aey" id="zyS-mT-gF7">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="添加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Hrb-5y-CTZ">
-                                                    <rect key="frame" x="52" y="0.0" width="253" height="43.5"/>
+                                                    <rect key="frame" x="52" y="0.0" width="308" height="43.666666666666664"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -45,15 +45,15 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="predicateCell" rowHeight="67" id="n6O-V5-WXF" customClass="SIFCardFilterPredicateTableViewCell" customModule="SIFTool" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="99.5" width="320" height="67"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="predicateCell" rowHeight="67" id="n6O-V5-WXF" customClass="SIFCardFilterPredicateTableViewCell" customModule="SIFTool" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="67"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="n6O-V5-WXF" id="u1l-ev-nek">
-                                            <rect key="frame" x="0.0" y="0.0" width="287" height="66.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="66.666666666666671"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="pPx-0I-I73">
-                                                    <rect key="frame" x="15" y="13.5" width="294" height="40"/>
+                                                    <rect key="frame" x="15" y="13.666666666666664" width="294" height="40"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="KeyPath" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="90" translatesAutoresizingMaskIntoConstraints="NO" id="1a4-Sp-D9D">
                                                             <rect key="frame" x="0.0" y="0.0" width="90" height="40"/>
@@ -164,19 +164,19 @@
             <objects>
                 <tableViewController id="fjj-Cl-ymw" customClass="SIFCardFilterPredicateEditorTableViewController" customModule="SIFTool" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="XTG-DO-NS7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="selectCell" textLabel="qqU-pd-ujT" style="IBUITableViewCellStyleDefault" id="T0r-kr-PAq" customClass="SIFCardFilterPredicateEditorSelectTableViewCell" customModule="SIFTool" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="55.333333333333336" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="T0r-kr-PAq" id="UnW-Xk-IZu">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qqU-pd-ujT">
-                                            <rect key="frame" x="16" y="0.0" width="288" height="43.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="343" height="43.666666666666664"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -186,14 +186,14 @@
                                 </tableViewCellContentView>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="valueCell" id="WW4-dw-c7t" customClass="SIFCardFilterPredicateEditorValueTableViewCell" customModule="SIFTool" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="99.333333333333343" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WW4-dw-c7t" id="ggv-ws-cmT">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.666666666666664"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Value" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lxA-OC-JEL">
-                                            <rect key="frame" x="16" y="11" width="288" height="22"/>
+                                            <rect key="frame" x="16" y="11" width="343" height="22"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <textInputTraits key="textInputTraits"/>
@@ -227,11 +227,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SIFCardToolListViewController" customModule="SIFTool" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6OP-XS-KvD">
-                                <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="690"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8iy-oI-zA5">
                                     <size key="itemSize" width="174" height="261"/>
@@ -241,14 +241,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="userCardCell" id="fvI-8g-bq2" customClass="SIFUserCardCollectionViewCell" customModule="SIFTool" customModuleProvider="target">
-                                        <rect key="frame" x="73" y="54" width="174" height="261"/>
+                                        <rect key="frame" x="8" y="54" width="174" height="261"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                             <rect key="frame" x="0.0" y="0.0" width="174" height="261"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WgJ-m8-lbK">
-                                                    <rect key="frame" x="8" y="8" width="158" height="145.5"/>
+                                                    <rect key="frame" x="8" y="8" width="158" height="145.66666666666666"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="145.5" id="9AM-ii-Oxh"/>
                                                     </constraints>
@@ -277,16 +277,16 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="158" height="16"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pure" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cqJ-Rm-kyn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="30" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="29.666666666666668" height="16"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="cpc-Rt-Uo1">
-                                                                    <rect key="frame" x="37" y="0.0" width="121" height="16"/>
+                                                                    <rect key="frame" x="36.666666666666664" y="0.0" width="121.33333333333334" height="16"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="boF-g6-zuy" customClass="ScoreIndicatorView" customModule="SIFTool" customModuleProvider="target">
-                                                                            <rect key="frame" x="11" y="0.0" width="110" height="16"/>
+                                                                            <rect key="frame" x="11.333333333333343" y="0.0" width="110" height="16"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="16" id="WSr-N3-6NR"/>
@@ -324,16 +324,16 @@
                                                             <rect key="frame" x="0.0" y="20" width="158" height="16"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cool" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wu2-xq-4Pt">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="29.5" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="29.666666666666668" height="16"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="bxH-ZX-c66">
-                                                                    <rect key="frame" x="33.5" y="0.0" width="124.5" height="16"/>
+                                                                    <rect key="frame" x="33.666666666666664" y="0.0" width="124.33333333333334" height="16"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zXZ-HK-eh6" customClass="ScoreIndicatorView" customModule="SIFTool" customModuleProvider="target">
-                                                                            <rect key="frame" x="14.5" y="0.0" width="110" height="16"/>
+                                                                            <rect key="frame" x="14.333333333333343" y="0.0" width="110" height="16"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="16" id="L4e-11-qUz"/>
@@ -371,16 +371,16 @@
                                                             <rect key="frame" x="0.0" y="40" width="158" height="16"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oZ3-T6-Yf1">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="35.5" height="16"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="35.333333333333336" height="16"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="60v-jJ-n4V">
-                                                                    <rect key="frame" x="39.5" y="0.0" width="118.5" height="16"/>
+                                                                    <rect key="frame" x="39.333333333333336" y="0.0" width="118.66666666666666" height="16"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xEN-SV-mZQ" customClass="ScoreIndicatorView" customModule="SIFTool" customModuleProvider="target">
-                                                                            <rect key="frame" x="8.5" y="0.0" width="110" height="16"/>
+                                                                            <rect key="frame" x="8.6666666666666643" y="0.0" width="110" height="16"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
                                                                                 <constraint firstAttribute="height" constant="16" id="SI2-Ih-bj7"/>
@@ -476,23 +476,23 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="sortCell" id="ClS-ZL-ls3" customClass="SIFCardSortCollectionReusableView" customModule="SIFTool" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="E10-OV-h3t">
-                                            <rect key="frame" x="8" y="14" width="304.5" height="22"/>
+                                            <rect key="frame" x="55" y="14" width="304" height="22"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="kPI-Iv-M2a">
-                                                    <rect key="frame" x="0.0" y="0.0" width="81.5" height="22"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="81.333333333333329" height="22"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="排序属性" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24t-el-L2j">
-                                                            <rect key="frame" x="0.0" y="0.0" width="57.5" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YWJ-hD-k4B">
-                                                            <rect key="frame" x="65.5" y="0.0" width="16" height="22"/>
+                                                            <rect key="frame" x="65.333333333333329" y="0.0" width="16" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <state key="normal" image="drop_down_icon"/>
                                                             <connections>
@@ -502,16 +502,16 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6tB-aa-h5X">
-                                                    <rect key="frame" x="111.5" y="0.0" width="81.5" height="22"/>
+                                                    <rect key="frame" x="111.33333333333334" y="0.0" width="81.333333333333343" height="22"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="排序等级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9fx-HL-E77">
-                                                            <rect key="frame" x="0.0" y="0.0" width="57.5" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i0O-6e-PiO">
-                                                            <rect key="frame" x="65.5" y="0.0" width="16" height="22"/>
+                                                            <rect key="frame" x="65.333333333333314" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="drop_down_icon"/>
                                                             <connections>
                                                                 <action selector="onRankSortButtonDown:" destination="ClS-ZL-ls3" eventType="touchUpInside" id="6s4-ta-o5T"/>
@@ -520,16 +520,16 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="QBP-eb-5eD">
-                                                    <rect key="frame" x="223" y="0.0" width="81.5" height="22"/>
+                                                    <rect key="frame" x="222.66666666666671" y="0.0" width="81.333333333333343" height="22"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="排序方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GQd-FF-wbM">
-                                                            <rect key="frame" x="0.0" y="0.0" width="57.5" height="22"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="22"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0V-qO-3a4">
-                                                            <rect key="frame" x="65.5" y="0.0" width="16" height="22"/>
+                                                            <rect key="frame" x="65.333333333333314" y="0.0" width="16" height="22"/>
                                                             <state key="normal" image="drop_down_icon"/>
                                                             <connections>
                                                                 <action selector="onSortMethodDown:" destination="ClS-ZL-ls3" eventType="touchUpInside" id="KRQ-AS-yFl"/>
@@ -605,7 +605,7 @@
             <objects>
                 <collectionViewController storyboardIdentifier="SIFCardImportCollectionViewController" title="导入卡片" clearsSelectionOnViewWillAppear="NO" id="V9c-FC-8dx" customClass="SIFCardImportCollectionViewController" customModule="SIFTool" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="rm8-qs-dpO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wOo-UF-xcB">
@@ -616,14 +616,14 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cardCell" id="JL9-sm-j8G" customClass="SIFCardImportCollectionViewCell" customModule="SIFTool" customModuleProvider="target">
-                                <rect key="frame" x="73" y="4" width="174" height="280"/>
+                                <rect key="frame" x="8" y="4" width="174" height="280"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="174" height="280"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Ae-7l-jKC">
-                                            <rect key="frame" x="8" y="8" width="158" height="145.5"/>
+                                            <rect key="frame" x="8" y="8" width="158" height="145.66666666666666"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="145.5" id="qIJ-AL-UIe"/>
                                             </constraints>
@@ -635,16 +635,16 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="158" height="16"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pure" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4D-py-bcX">
-                                                            <rect key="frame" x="0.0" y="0.0" width="30" height="16"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="29.666666666666668" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Kh1-ti-BTB">
-                                                            <rect key="frame" x="37" y="0.0" width="121" height="16"/>
+                                                            <rect key="frame" x="36.666666666666664" y="0.0" width="121.33333333333334" height="16"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sty-VY-dp0" customClass="ScoreIndicatorView" customModule="SIFTool" customModuleProvider="target">
-                                                                    <rect key="frame" x="11" y="0.0" width="110" height="16"/>
+                                                                    <rect key="frame" x="11.333333333333343" y="0.0" width="110" height="16"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="16" id="ouc-ks-xZD"/>
@@ -682,16 +682,16 @@
                                                     <rect key="frame" x="0.0" y="20" width="158" height="16"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cool" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNR-xE-lwP">
-                                                            <rect key="frame" x="0.0" y="0.0" width="29.5" height="16"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="29.666666666666668" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="Tgi-p2-QgS">
-                                                            <rect key="frame" x="33.5" y="0.0" width="124.5" height="16"/>
+                                                            <rect key="frame" x="33.666666666666664" y="0.0" width="124.33333333333334" height="16"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0zI-cc-tXW" customClass="ScoreIndicatorView" customModule="SIFTool" customModuleProvider="target">
-                                                                    <rect key="frame" x="14.5" y="0.0" width="110" height="16"/>
+                                                                    <rect key="frame" x="14.333333333333343" y="0.0" width="110" height="16"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="height" constant="16" id="kr8-Qn-BJ0"/>
@@ -729,16 +729,16 @@
                                                     <rect key="frame" x="0.0" y="40" width="158" height="16"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKi-Fq-eGN">
-                                                            <rect key="frame" x="0.0" y="0.0" width="35.5" height="16"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="35.333333333333336" height="16"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="bottom" translatesAutoresizingMaskIntoConstraints="NO" id="s0F-p3-gN0">
-                                                            <rect key="frame" x="39.5" y="0.0" width="118.5" height="16"/>
+                                                            <rect key="frame" x="39.333333333333336" y="0.0" width="118.66666666666666" height="16"/>
                                                             <subviews>
                                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r9p-sp-g39" customClass="ScoreIndicatorView" customModule="SIFTool" customModuleProvider="target">
-                                                                    <rect key="frame" x="8.5" y="0.0" width="110" height="16"/>
+                                                                    <rect key="frame" x="8.6666666666666643" y="0.0" width="110" height="16"/>
                                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" constant="110" id="OFL-zu-H6l"/>
@@ -775,7 +775,7 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="RARITY NAME (ID)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfm-7g-36E">
-                                            <rect key="frame" x="8" y="158" width="135.5" height="18"/>
+                                            <rect key="frame" x="8" y="158" width="135.66666666666666" height="18"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -920,7 +920,7 @@
             <objects>
                 <navigationController id="H8c-ug-OoR" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Cz7-3p-HQ9">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -943,7 +943,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="2uu-p9-7Tw" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4Pt-gM-4aA">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -25,7 +25,72 @@ class SIFCardToolListViewController: UIViewController {
     }
 
     private var processHUD: MBProgressHUD!
+    
     private var selectScreenshots: [UIImage]!
+    
+    private var sortConfigSelectIndexTuple = (attribute: 0, rank: 0, method: 0) {
+        didSet {
+            userCardDataSource.sort { (a, b) -> Bool in
+                let aCard = SIFCacheHelper.shared.cards[a.cardId]!
+                let bCard = SIFCacheHelper.shared.cards[b.cardId]!
+                
+                /*
+                 <rank attr=min>
+                 <attribute attr=Cool> </attribute>
+                 <attribute attr=Pure> </attribute>
+                 <attribute attr=Smile> </attribute>
+                 <attribute attr=All> </attribute>
+                 </rank>
+                 <rank attr=nonidolized>
+                 <attribute attr=Cool> </attribute>
+                 <attribute attr=Pure> </attribute>
+                 <attribute attr=Smile> </attribute>
+                 <attribute attr=All> </attribute>
+                 </rank>
+                 <rank attr=idolized>
+                 <attribute attr=Cool> </attribute>
+                 <attribute attr=Pure> </attribute>
+                 <attribute attr=Smile> </attribute>
+                 <attribute attr=All> </attribute>
+                 </rank>
+                 <rank attr=user>
+                 <attribute attr=Cool> </attribute>
+                 <attribute attr=Pure> </attribute>
+                 <attribute attr=Smile> </attribute>
+                 <attribute attr=All> </attribute>
+                 </rank>
+                 */
+                
+                let aSortArray = [
+                    [aCard.minimumStatisticsCool, aCard.minimumStatisticsPure, aCard.minimumStatisticsSmile],
+                    [aCard.nonIdolizedMaximumStatisticsCool, aCard.nonIdolizedMaximumStatisticsPure, aCard.nonIdolizedMaximumStatisticsSmile],
+                    [aCard.idolizedMaximumStatisticsCool, aCard.idolizedMaximumStatisticsPure, aCard.idolizedMaximumStatisticsSmile],
+                    [aCard.statisticsCool(idolized: a.idolized, isKizunaMax: a.isKizunaMax), aCard.statisticsPure(idolized: a.idolized, isKizunaMax: a.isKizunaMax), aCard.statisticsSmile(idolized: a.idolized, isKizunaMax: a.isKizunaMax)]
+                    
+                ]
+                
+                let bSortArray = [
+                    [bCard.minimumStatisticsCool, bCard.minimumStatisticsPure, bCard.minimumStatisticsSmile],
+                    [bCard.nonIdolizedMaximumStatisticsCool, bCard.nonIdolizedMaximumStatisticsPure, bCard.nonIdolizedMaximumStatisticsSmile],
+                    [bCard.idolizedMaximumStatisticsCool, bCard.idolizedMaximumStatisticsPure, bCard.idolizedMaximumStatisticsSmile],
+                    [bCard.statisticsCool(idolized: b.idolized, isKizunaMax: b.isKizunaMax), bCard.statisticsPure(idolized: b.idolized, isKizunaMax: b.isKizunaMax), bCard.statisticsSmile(idolized: b.idolized, isKizunaMax: b.isKizunaMax)]
+                ]
+                
+                let attributeIndex = sortConfigSelectIndexTuple.attribute
+                let rankIndex = sortConfigSelectIndexTuple.rank
+                
+                
+                let sortScoreA = aSortArray[rankIndex][attributeIndex].intValue
+                let sortScoreB = bSortArray[rankIndex][attributeIndex].intValue
+                
+                if sortConfigSelectIndexTuple.method == 0 {
+                    return sortScoreA > sortScoreB
+                }
+                return sortScoreA < sortScoreB
+            }
+            self.reloadData()
+        }
+    }
     
     private var cardFiltePredicates: [SIFCardFilterPredicate] = []
 
@@ -47,11 +112,11 @@ class SIFCardToolListViewController: UIViewController {
         
     }
     
-    private var userCardDataSource: [UserCardDataModel] {
+    lazy private var userCardDataSource: [UserCardDataModel] = {
         
        return UserCardStorageHelper.shared.fetchAllCard(cardSetName: SIFCacheHelper.shared.currentCardSetName) ?? []
         
-    }
+    }()
     
     private var collectionViewDataSource: [UserCardDataModel] {
         
@@ -237,7 +302,97 @@ extension SIFCardToolListViewController: UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identificer.sortCell, for: indexPath)
+        
+        let reuseView =  collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: Identificer.sortCell, for: indexPath) as! SIFCardSortCollectionReusableView
+        
+        let cancelAction = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: nil)
+        
+        reuseView.attributeSortBlock = { [weak self] sender in
+            
+            let sheet = UIAlertController(title: "排序属性", message: nil, preferredStyle: .actionSheet)
+            
+            let pureSortAction = UIAlertAction(title: "洒脱", style: .default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.attribute = 0
+            })
+            let coolSortAction = UIAlertAction(title: "清纯", style: .default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.attribute = 1
+            })
+            let smileSortActin = UIAlertAction(title: "甜美", style: .default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.attribute = 2
+            })
+            
+            sheet.addAction(pureSortAction)
+            sheet.addAction(coolSortAction)
+            sheet.addAction(smileSortActin)
+            sheet.addAction(cancelAction)
+            
+            if let sheetPopverController = sheet.popoverPresentationController {
+                sheetPopverController.sourceView = sender
+                sheetPopverController.permittedArrowDirections = .any
+                self?.present(sheet, animated: true, completion: nil)
+            } else {
+                self?.present(sheet, animated: true, completion: nil)
+            }
+            
+        }
+        
+        reuseView.rankSortBlock = { [weak self] sender in
+            let sheet = UIAlertController(title: "排序等级", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            
+            let minRankSortAction = UIAlertAction(title: "1级", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.rank = 0
+            })
+            let maxRankNonIdolizedAction = UIAlertAction(title: "未觉醒最高", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.rank = 1
+            })
+            let maxRankIdolizedAction = UIAlertAction(title: "觉醒最高", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.rank = 2
+            })
+            let userIdolizedStateAction = UIAlertAction(title: "用户持有觉醒状态", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.rank = 3
+            })
+            
+            sheet.addAction(minRankSortAction)
+            sheet.addAction(maxRankNonIdolizedAction)
+            sheet.addAction(maxRankIdolizedAction)
+            sheet.addAction(userIdolizedStateAction)
+            sheet.addAction(cancelAction)
+            
+            if let sheetPopverController = sheet.popoverPresentationController {
+                sheetPopverController.sourceView = sender
+                sheetPopverController.permittedArrowDirections = .any
+                self?.present(sheet, animated: true, completion: nil)
+            } else {
+                self?.present(sheet, animated: true, completion: nil)
+            }
+            
+        }
+        
+        reuseView.sortMethodBlcok = { [weak self] sender in
+            let sheet = UIAlertController(title: "排序方式", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            
+            let ascendingMethodAction = UIAlertAction(title: "升序", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.method = 0
+            })
+            let deascendingMethodAction = UIAlertAction(title: "降序", style: UIAlertActionStyle.default, handler: { (action) in
+                self?.sortConfigSelectIndexTuple.method = 1
+            })
+            
+            sheet.addAction(ascendingMethodAction)
+            sheet.addAction(deascendingMethodAction)
+            sheet.addAction(cancelAction)
+            
+            if let sheetPopverController = sheet.popoverPresentationController {
+                sheetPopverController.sourceView = sender
+                sheetPopverController.permittedArrowDirections = .any
+                self?.present(sheet, animated: true, completion: nil)
+            } else {
+                self?.present(sheet, animated: true, completion: nil)
+            }
+            
+        }
+        
+        return reuseView
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
