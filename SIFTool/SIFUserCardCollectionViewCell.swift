@@ -18,18 +18,16 @@ class SIFUserCardCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var coolScoreIndicatorView: ScoreIndicatorView!
     @IBOutlet weak var pureScoreIndicatorView: ScoreIndicatorView!
     
-    @IBOutlet weak var selectCheckMarkImageView: UIImageView!
+    @IBOutlet weak var deleteButton: UIButton!
     
-    var isCellSelected: Bool = false {
-        didSet {
-            if selectCheckMarkImageView != nil {
-                if isCellSelected {
-                    selectCheckMarkImageView.image = UIImage.init(named: "check_mark_select")
-                } else {
-                    selectCheckMarkImageView.image = UIImage.init(named: "check_mark_unselect")
-                }
-            }
+    var deleteHandle: ((_ : UIButton) -> Void)? = nil
+    
+    @IBAction func onDeleteButtonDown(_ sender: UIButton) {
+        
+        if let handle = deleteHandle {
+            handle(sender)
         }
+        
     }
     
     func setupView(withCard: CardDataModel, userCard: UserCardDataModel) {

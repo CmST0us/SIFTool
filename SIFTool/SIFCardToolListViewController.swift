@@ -48,25 +48,21 @@ class SIFCardToolListViewController: UIViewController {
                  <attribute attr=Cool> </attribute>
                  <attribute attr=Pure> </attribute>
                  <attribute attr=Smile> </attribute>
-                 <attribute attr=All> </attribute>
                  </rank>
                  <rank attr=nonidolized>
                  <attribute attr=Cool> </attribute>
                  <attribute attr=Pure> </attribute>
                  <attribute attr=Smile> </attribute>
-                 <attribute attr=All> </attribute>
                  </rank>
                  <rank attr=idolized>
                  <attribute attr=Cool> </attribute>
                  <attribute attr=Pure> </attribute>
                  <attribute attr=Smile> </attribute>
-                 <attribute attr=All> </attribute>
                  </rank>
                  <rank attr=user>
                  <attribute attr=Cool> </attribute>
                  <attribute attr=Pure> </attribute>
                  <attribute attr=Smile> </attribute>
-                 <attribute attr=All> </attribute>
                  </rank>
                  */
                 
@@ -457,13 +453,21 @@ extension SIFCardToolListViewController: UICollectionViewDelegate, UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Identificer.userCardCell, for: indexPath) as! SIFUserCardCollectionViewCell
         let userCardModel = collectionViewDataSource[indexPath.row]
         cell.setupView(withCard: SIFCacheHelper.shared.cards[userCardModel.cardId]!, userCard: userCardModel)
-        
+        cell.deleteHandle = { [weak self] sender in
+            if let deletedCell = sender.superview?.superview as? UICollectionViewCell {
+                let deletedIndex = collectionView.indexPath(for: deletedCell)!
+                let deletedUserCardModel = self?.collectionViewDataSource[deletedIndex.row]
+                self?.userCardDataSource = (self?.userCardDataSource.filter({ (item) -> Bool in
+                    !(item.cardId == deletedUserCardModel!.cardId)
+                }))!
+                collectionView.deleteItems(at: [deletedIndex])
+                UserCardStorageHelper.shared.removeUserCard(withCardId: deletedUserCardModel!.cardId, cardSetName: SIFCacheHelper.shared.currentCardSetName)
+            }
+        }
         if self.isEditing {
-            cell.selectCheckMarkImageView.isHidden = false
-            cell.isCellSelected = false
+            cell.deleteButton.isHidden = false
         } else {
-            cell.selectCheckMarkImageView.isHidden = true
-            cell.isCellSelected = false
+            cell.deleteButton.isHidden = true
         }
         
         return cell
@@ -472,12 +476,9 @@ extension SIFCardToolListViewController: UICollectionViewDelegate, UICollectionV
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as! SIFUserCardCollectionViewCell
-        
-        if self.isEditing {
-            cell.isCellSelected = !cell.isCellSelected
-        } else {
-            // open detail
+//        let cell = collectionView.cellForItem(at: indexPath) as! SIFUserCardCollectionViewCell
+        if !self.isEditing {
+            
         }
         
     }

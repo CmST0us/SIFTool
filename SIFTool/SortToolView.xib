@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina5_5" orientation="portrait">
+    <device id="ipad9_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -13,23 +13,23 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="5Ox-zD-PMn" customClass="SIFCardSortToolView" customModule="SIFTool" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="378" height="34"/>
+            <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
             <subviews>
-                <stackView opaque="NO" contentMode="scaleToFill" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="H25-k3-Tdx">
-                    <rect key="frame" x="36.333333333333343" y="5.6666666666666679" width="304" height="22"/>
+                <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="H25-k3-Tdx">
+                    <rect key="frame" x="204" y="501" width="360.5" height="22"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="3Tj-9w-CGv">
-                            <rect key="frame" x="0.0" y="0.0" width="81.333333333333329" height="22"/>
+                            <rect key="frame" x="0.0" y="0.0" width="81.5" height="22"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="排序属性" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q2t-eh-Dej">
-                                    <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="22"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="57.5" height="22"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHo-eb-pd3">
-                                    <rect key="frame" x="65.333333333333343" y="0.0" width="16" height="22"/>
+                                    <rect key="frame" x="65.5" y="0.0" width="16" height="22"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <state key="normal" image="drop_down_icon"/>
                                     <connections>
@@ -39,16 +39,16 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="A79-Ev-0iF">
-                            <rect key="frame" x="111.33333333333331" y="0.0" width="81.333333333333314" height="22"/>
+                            <rect key="frame" x="139.5" y="0.0" width="81.5" height="22"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="排序等级" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9kD-jI-V83">
-                                    <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="22"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="57.5" height="22"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PVd-qj-njo">
-                                    <rect key="frame" x="65.333333333333343" y="0.0" width="16" height="22"/>
+                                    <rect key="frame" x="65.5" y="0.0" width="16" height="22"/>
                                     <state key="normal" image="drop_down_icon"/>
                                     <connections>
                                         <action selector="onRankSortButtonDown:" destination="5Ox-zD-PMn" eventType="touchUpInside" id="SFN-3v-YtC"/>
@@ -57,16 +57,16 @@
                             </subviews>
                         </stackView>
                         <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6N4-9g-BIW">
-                            <rect key="frame" x="222.66666666666666" y="0.0" width="81.333333333333343" height="22"/>
+                            <rect key="frame" x="279" y="0.0" width="81.5" height="22"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="排序方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gt-NZ-OSI">
-                                    <rect key="frame" x="0.0" y="0.0" width="57.333333333333336" height="22"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="57.5" height="22"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ii0-Dc-oWi">
-                                    <rect key="frame" x="65.333333333333314" y="0.0" width="16" height="22"/>
+                                    <rect key="frame" x="65.5" y="0.0" width="16" height="22"/>
                                     <state key="normal" image="drop_down_icon"/>
                                     <connections>
                                         <action selector="onSortMethodDown:" destination="5Ox-zD-PMn" eventType="touchUpInside" id="4eh-mw-XwO"/>
@@ -84,9 +84,8 @@
                 <constraint firstItem="H25-k3-Tdx" firstAttribute="centerY" secondItem="5Ox-zD-PMn" secondAttribute="centerY" id="er3-MR-1KU"/>
                 <constraint firstItem="H25-k3-Tdx" firstAttribute="centerX" secondItem="5Ox-zD-PMn" secondAttribute="centerX" id="nty-nI-BcI"/>
             </constraints>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="DTd-3n-f75"/>
-            <point key="canvasLocation" x="-68" y="-332.5"/>
+            <point key="canvasLocation" x="-97" y="-333"/>
         </view>
     </objects>
     <resources>
