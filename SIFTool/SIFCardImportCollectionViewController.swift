@@ -38,8 +38,9 @@ class SIFCardImportCollectionViewController: UICollectionViewController {
     // MARK: IBAction IBOutlet
     @IBAction func onDoImportButtonDown(_ sender: Any) {
         
-        progressHud.show(animated: true)
         progressHud.label.text = "正在导入"
+        progressHud.show(animated: true)
+
         for card in self.cards {
             if card.isImport {
                 UserCardStorageHelper.shared.addCard(card: card, checkExist: true)
@@ -164,9 +165,10 @@ class SIFCardImportCollectionViewController: UICollectionViewController {
                     
                 }
                 
-                hideProgressHud()
-                finish()
             }
+            
+            hideProgressHud()
+            finish()
             
         }
         
