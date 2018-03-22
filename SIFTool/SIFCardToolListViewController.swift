@@ -419,6 +419,7 @@ extension SIFCardToolListViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(importFinish), name: NSNotification.Name(rawValue: NotificationName.importFinish), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(didSwitchCardSet), name: NSNotification.Name(rawValue: NotificationName.switchCardSet), object: nil)
         
+//        Logger.shared.enableMatWindow()
         
     }
     

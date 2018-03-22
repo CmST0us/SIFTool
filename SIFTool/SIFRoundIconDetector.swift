@@ -236,9 +236,10 @@ class SIFRoundIconDetector {
                     return cloneMat
                 }
                 
-                //use 11 pix y offset (left right) to cover some mess
+                //use 11 pix y offset (top) to cover some mess
+                //use 19 pix y offset (bottom) to cover some mess
                 //use 10 pix x offset (left) to cover some mess
-                screenshotRoiRect = CGRect(x: 10, y: maxDistanse!.y1 + 11, width: Double(cloneMat.size().width) - 10, height: maxDistanse!.diff - 22)
+                screenshotRoiRect = CGRect(x: 10, y: maxDistanse!.y1 + 11, width: Double(cloneMat.size().width) - 10, height: maxDistanse!.diff - 30)
                 var roiMat =  cloneMat.roi(at: screenshotRoiRect) ?? cloneMat
                 let originSize = roiMat.size()
                 
@@ -257,6 +258,7 @@ class SIFRoundIconDetector {
                 
                 //draw rect to fix arrow area
                 OpenCVBridgeSwiftHelper.sharedInstance().drawRect(inImage: roiMat, rect: centerBrokeArrowRect, r: 0, g: 0, b: 0)
+//                Logger.shared.showMat(roiMat)
                 
                 return roiMat
             }
