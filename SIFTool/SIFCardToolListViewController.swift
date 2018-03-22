@@ -177,6 +177,7 @@ class SIFCardToolListViewController: UIViewController {
             
             if let sheetPopverController = sheet.popoverPresentationController {
                 sheetPopverController.sourceView = sender
+                sheetPopverController.sourceRect = sender.frame
                 sheetPopverController.permittedArrowDirections = .any
                 self?.present(sheet, animated: true, completion: nil)
             } else {
@@ -209,6 +210,7 @@ class SIFCardToolListViewController: UIViewController {
             
             if let sheetPopverController = sheet.popoverPresentationController {
                 sheetPopverController.sourceView = sender
+                sheetPopverController.sourceRect = sender.frame
                 sheetPopverController.permittedArrowDirections = .any
                 self?.present(sheet, animated: true, completion: nil)
             } else {
@@ -233,6 +235,7 @@ class SIFCardToolListViewController: UIViewController {
             
             if let sheetPopverController = sheet.popoverPresentationController {
                 sheetPopverController.sourceView = sender
+                sheetPopverController.sourceRect = sender.frame
                 sheetPopverController.permittedArrowDirections = .any
                 self?.present(sheet, animated: true, completion: nil)
             } else {
