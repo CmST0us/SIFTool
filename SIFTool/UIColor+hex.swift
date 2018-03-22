@@ -46,5 +46,6 @@ extension UIColor {
     
     static let buttonOff = UIColor.init(hex: "#D8D8D8")!
     static let buttonOn = UIColor.init(hex: "#7ED321")!
-    
+    static let currentCardSet = UIColor.init(hex: "#057AFF")!
+    static let navigationBar = UIColor.init(hex: "#0096FF")!
 }

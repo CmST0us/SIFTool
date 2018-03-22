@@ -15,16 +15,13 @@ class SIFCardImportCollectionViewController: UICollectionViewController {
         static let cardCell = "cardCell"
     }
     
-    struct NotificationName {
-        static let importFinish = "SIFCardImportCollectionViewController.importFinish"
-    }
     
     enum ImportType {
         case cardSet
         case screenshot
     }
     
-    
+    // MARK: Private Member
     var screenshots: [UIImage]!
     var progressHud: MBProgressHUD!
     
@@ -33,16 +30,26 @@ class SIFCardImportCollectionViewController: UICollectionViewController {
     
     var cards: [UserCardDataModel] = []
     
+    // MARK: Private Method
+    @objc func exitCurrentVC() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
+    // MARK: IBAction IBOutlet
     @IBAction func onDoImportButtonDown(_ sender: Any) {
         
+        progressHud.show(animated: true)
+        progressHud.label.text = "正在导入"
         for card in self.cards {
             if card.isImport {
                 UserCardStorageHelper.shared.addCard(card: card, checkExist: true)
             }
         }
-        Logger.shared.output("\(String(cards.count)) cards has been imported")
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: NotificationName.importFinish), object: nil)
+        progressHud.label.text = "导入成功"
+        progressHud.hide(animated: true, afterDelay: 0.5)
+        self.perform(#selector(exitCurrentVC), with: nil, afterDelay: 0.5)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: SIFCardToolListViewController.NotificationName.importFinish), object: nil)
         
     }
     

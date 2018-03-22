@@ -24,13 +24,16 @@ class SIFCardToolListViewController: UIViewController {
         static let sortCell = "sortCell"
         
     }
-
+    
+    struct NotificationName {
+        static let importFinish = "SIFCardImportCollectionViewController.importFinish"
+        static let switchCardSet = "SIFCardImportCollectionViewController.switchCardSet"
+    }
+    
     //MARK: Private Member
     private var processHUD: MBProgressHUD!
     
     private var sortToolView: SIFCardSortToolView!
-    
-    private var lastScrollViewOffset: CGPoint = CGPoint(x: 0, y: 0)
     
     private var selectScreenshots: [UIImage]!
     
@@ -141,6 +144,12 @@ class SIFCardToolListViewController: UIViewController {
     }
     
     // MARK: Private Method
+    private func reloadData() {
+        
+        self.userCardCollectionView.reloadData()
+        
+    }
+    
     private func setupSortToolView() {
         
         self.sortToolView = Bundle.main.loadNibNamed("SortToolView", owner: SIFCardSortToolView.self, options: nil)?.last! as! SIFCardSortToolView
@@ -234,11 +243,33 @@ class SIFCardToolListViewController: UIViewController {
         
     }
     
+    private func setupSelectCardSetButtonTitle() {
+        
+        self.selectCardSetButton.setTitle("\(SIFCacheHelper.shared.currentCardSetName)的卡组▼", for: UIControlState.normal)
+        
+    }
+    
     // MARK: IBOutlet
     @IBOutlet private weak var userCardCollectionView: UICollectionView!
     
     @IBOutlet weak var editButton: UIBarButtonItem!
     
+    @IBOutlet weak var selectCardSetButton: UIButton!
+    
+    @IBAction func onSelectCardSetButtonDown(_ sender: UIButton) {
+        
+        let cardSetSelectVC = SIFCardSetNameSelectTableViewController.storyBoardInstance()
+        
+        cardSetSelectVC.modalPresentationStyle = .popover
+        if let popover = cardSetSelectVC.popoverPresentationController {
+            popover.delegate = cardSetSelectVC
+            popover.permittedArrowDirections = .up
+            popover.sourceView = sender
+            popover.sourceRect = sender.frame
+        }
+        
+        self.present(cardSetSelectVC, animated: true, completion: nil)
+    }
     
     @IBAction func onEditButtonDown(_ sender: Any) {
         
@@ -270,6 +301,8 @@ class SIFCardToolListViewController: UIViewController {
             photoPicker.allowTakePicture = true
             photoPicker.allowPickingVideo = false
             photoPicker.pickerDelegate = self
+            photoPicker.naviBgColor = UIColor.navigationBar
+            photoPicker.naviTitleColor = UIColor.white
             
             self.present(photoPicker, animated: true, completion: nil)
         }
@@ -340,10 +373,17 @@ class SIFCardToolListViewController: UIViewController {
 // MARK: - Notification Method
 extension SIFCardToolListViewController {
     
-    @objc func reloadData() {
+    @objc func importFinish() {
+        self.userCardDataSource = UserCardStorageHelper.shared.fetchAllCard(cardSetName: SIFCacheHelper.shared.currentCardSetName) ?? []
         self.userCardCollectionView.reloadData()
     }
     
+    @objc func didSwitchCardSet() {
+        self.userCardDataSource = UserCardStorageHelper.shared.fetchAllCard(cardSetName: SIFCacheHelper.shared.currentCardSetName) ?? []
+        self.userCardCollectionView.reloadData()
+        self.isEditing = false
+        setupSelectCardSetButtonTitle()
+    }
 }
 
 // MARK: - View Life Cycle
@@ -361,6 +401,7 @@ extension SIFCardToolListViewController {
         self.sortToolView.translatesAutoresizingMaskIntoConstraints = false
         
         self.userCardCollectionView.addSubview(self.sortToolView)
+        self.userCardCollectionView.alwaysBounceVertical = true
         
         self.sortToolView.snp.makeConstraints { (maker) in
             maker.bottom.equalTo(self.userCardCollectionView.snp.top)
@@ -372,7 +413,8 @@ extension SIFCardToolListViewController {
         
         self.userCardCollectionView.contentInset = UIEdgeInsets(top: 34, left: 0, bottom: 0, right: 0)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(reloadData), name: NSNotification.Name(rawValue: SIFCardImportCollectionViewController.NotificationName.importFinish), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(importFinish), name: NSNotification.Name(rawValue: NotificationName.importFinish), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(didSwitchCardSet), name: NSNotification.Name(rawValue: NotificationName.switchCardSet), object: nil)
         
         
     }
@@ -386,13 +428,12 @@ extension SIFCardToolListViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         
-        self.userCardCollectionView.contentOffset = lastScrollViewOffset
+        setupSelectCardSetButtonTitle()
         
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         
-        lastScrollViewOffset = self.userCardCollectionView.contentOffset
         
     }
 

@@ -40,6 +40,7 @@
 		4F086420203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
 		4F086421203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
 		4F086422203C8A1A00CFDD98 /* SIFRoundIconDetectorConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */; };
+		4F13D91C206347DC0077C46E /* SIFCardSetNameSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F13D91B206347DC0077C46E /* SIFCardSetNameSelectTableViewController.swift */; };
 		4F1EAC32205A45CF001708EF /* NSValue+pointValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EAC31205A45CF001708EF /* NSValue+pointValue.swift */; };
 		4F1EAC33205A45CF001708EF /* NSValue+pointValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EAC31205A45CF001708EF /* NSValue+pointValue.swift */; };
 		4F1EAC34205A45CF001708EF /* NSValue+pointValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1EAC31205A45CF001708EF /* NSValue+pointValue.swift */; };
@@ -193,6 +194,7 @@
 		4F086417203BB68A00CFDD98 /* CV.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CV.storyboard; sourceTree = "<group>"; };
 		4F08641B203C7A3B00CFDD98 /* SIFRoundIconDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFRoundIconDetector.swift; sourceTree = "<group>"; };
 		4F08641F203C8A1900CFDD98 /* SIFRoundIconDetectorConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFRoundIconDetectorConfiguration.swift; sourceTree = "<group>"; };
+		4F13D91B206347DC0077C46E /* SIFCardSetNameSelectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SIFCardSetNameSelectTableViewController.swift; sourceTree = "<group>"; };
 		4F1EAC31205A45CF001708EF /* NSValue+pointValue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSValue+pointValue.swift"; sourceTree = "<group>"; };
 		4F1EAC35205A67EC001708EF /* NSValue+ValueWithPoint.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSValue+ValueWithPoint.h"; sourceTree = "<group>"; };
 		4F1EAC36205A67EC001708EF /* NSValue+ValueWithPoint.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSValue+ValueWithPoint.m"; sourceTree = "<group>"; };
@@ -478,10 +480,11 @@
 		4FEA5F23203468A300F03CCC /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				4F677B1E20552BAD00B2C4AE /* SIFCardImportCollectionViewController.swift */,
-				4FEA5EFC203467BB00F03CCC /* SIFCardToolListViewController.swift */,
 				4FBA7B0520503A7100037CF5 /* SIFCardFilterViewController.swift */,
 				4F677B1120518D8300B2C4AE /* SIFCardFilterPredicateEditorTableViewController.swift */,
+				4FEA5EFC203467BB00F03CCC /* SIFCardToolListViewController.swift */,
+				4F677B1E20552BAD00B2C4AE /* SIFCardImportCollectionViewController.swift */,
+				4F13D91B206347DC0077C46E /* SIFCardSetNameSelectTableViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -986,6 +989,7 @@
 				4F677B232058380300B2C4AE /* SIFCardImportCollectionViewCell.swift in Sources */,
 				4F4F5FA1203480870025741A /* CardDataModel.swift in Sources */,
 				4F08640320373B7000CFDD98 /* OpenCVBridgeSwiftHelper.mm in Sources */,
+				4F13D91C206347DC0077C46E /* SIFCardSetNameSelectTableViewController.swift in Sources */,
 				4FCF51BD205A75B3009B4848 /* SIFCardSortCollectionReusableView.swift in Sources */,
 				4FBA7B0620503A7100037CF5 /* SIFCardFilterViewController.swift in Sources */,
 				4F4F5F9B20347D160025741A /* Dictionary+URLParam.swift in Sources */,
