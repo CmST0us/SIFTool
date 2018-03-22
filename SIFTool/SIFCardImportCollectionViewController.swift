@@ -1,4 +1,4 @@
-//
+ //
 //  SIFCardImportCollectionViewController.swift
 //  SIFTool
 //
@@ -134,7 +134,8 @@ class SIFCardImportCollectionViewController: UICollectionViewController {
             setProgressHudLabelText("扫描中")
             
             for screenshot in self.screenshots {
-                let originMat = screenshot.mat
+                let originMat = self.detector.cutEdgeArea(screenshot.mat)
+                
                 let results = self.detector.search(screenshot: originMat)
                 
                 for result in results.1 {

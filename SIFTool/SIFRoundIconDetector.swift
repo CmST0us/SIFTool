@@ -102,19 +102,35 @@ class SIFRoundIconDetector {
         return roi!
     }
     
-
-    func search(screenshot: CVMat) -> (CGRect, [CGRect]) {
+    func cutEdgeArea(_ target: CVMat) -> CVMat {
         
-        let gaussianMat = OpenCVBridgeSwiftHelper.sharedInstance().gaussianBlur(withImage: screenshot, kernelSize: CGSize.init(width: 3, height: 1), sigmaX: 3, sigmaY: 3, borderType: CVBridgeBorderType.default)
-        
-        let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: gaussianMat, targetColor: CVBridgeColorCovertType.bgr2Gray)
-        
+        let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: target, targetColor: CVBridgeColorCovertType.bgr2Gray)
         let binaryMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 240, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
-        let cloneMat = binaryMat.clone()
-        let canny = OpenCVBridgeSwiftHelper.sharedInstance().canny(withImage: binaryMat, lowThreshold: 100, highThreshold: 200)
         
-        var outputArray: [CGRect] = []
-        var screenshotRoiRect: CGRect = CGRect(origin: CGPoint.init(x: 0, y: 0), size: screenshot.size())
+        var edgeLeft = 0
+        for x in 0 ..< Int(binaryMat.size().width) {
+            var vl = 0
+            
+            for y in 0 ..< Int(binaryMat.size().height) {
+                let pixLeft = binaryMat.ucharValue(at: CGPoint(x: x, y: y))
+                if pixLeft == 255 {
+                    vl += 1
+                }
+            }
+            
+            if vl == Int(binaryMat.size().height) {
+                edgeLeft += 1
+            } else {
+                break
+            }
+        }
+        
+        let cutEdgeRect = CGRect(x: edgeLeft, y: 0, width: Int(Int(binaryMat.size().width) - edgeLeft * 2), height: Int(binaryMat.size().height))
+        
+        return target.roi(at: cutEdgeRect) ?? target
+    }
+    
+    func search(screenshot: CVMat) -> (CGRect, [CGRect]) {
         
         func isHorizonLine(line: (CGPoint, CGPoint)) -> Bool {
             if abs(line.0.x - line.1.x) < 0.001 {
@@ -125,6 +141,28 @@ class SIFRoundIconDetector {
             }
             return false
         }
+        
+        func isVerticallyLine(line: (CGPoint, CGPoint)) -> Bool {
+            if abs(line.0.x - line.1.x) < 0.001 {
+                return true
+            }
+            return false
+        }
+        
+        
+        let gaussianMat = OpenCVBridgeSwiftHelper.sharedInstance().gaussianBlur(withImage: screenshot, kernelSize: CGSize.init(width: 3, height: 1), sigmaX: 3, sigmaY: 3, borderType: CVBridgeBorderType.default)
+        
+        let grayMat = OpenCVBridgeSwiftHelper.sharedInstance().covertColor(withImage: gaussianMat, targetColor: CVBridgeColorCovertType.bgr2Gray)
+        
+        var binaryMat = OpenCVBridgeSwiftHelper.sharedInstance().threshold(withImage: grayMat, thresh: 240, maxValue: 255, type: CVBridgeThresholdType.binary_Inv)
+        
+        let cloneMat = binaryMat.clone()
+        let canny = OpenCVBridgeSwiftHelper.sharedInstance().canny(withImage: binaryMat, lowThreshold: 100, highThreshold: 200)
+        
+        var outputArray: [CGRect] = []
+        var screenshotRoiRect: CGRect = CGRect(origin: CGPoint.init(x: 0, y: 0), size: screenshot.size())
+        
+        
         
         func findContours(mat: CVMat, step: Int) -> CVMat {
             if step == 1 {
@@ -163,7 +201,7 @@ class SIFRoundIconDetector {
                 }
             }
             if step == 0 {
-                var lines = OpenCVBridgeSwiftHelper.sharedInstance().houghlinesP(withImage: mat, rho: 1, theta: Double.pi / 180, threshold: 500, minLineLength: 200, maxLineGap: 30) as! [[NSValue]]
+                var lines = OpenCVBridgeSwiftHelper.sharedInstance().houghlinesP(withImage: mat, rho: 1, theta: Double.pi / 180, threshold: 500, minLineLength: 200, maxLineGap: 25) as! [[NSValue]]
                 
                 lines = lines.filter { (value) -> Bool in
                     return isHorizonLine(line: (value[0].pointValue, value[1].pointValue))
@@ -198,9 +236,9 @@ class SIFRoundIconDetector {
                     return cloneMat
                 }
                 
-                //use 11 pix y offset to cover some mess
-                //use 4 pix x offset to cover some mess
-                screenshotRoiRect = CGRect(x: 10, y: maxDistanse!.y1 + 11, width: Double(cloneMat.size().width) - 10, height: maxDistanse!.diff - 11)
+                //use 11 pix y offset (left right) to cover some mess
+                //use 10 pix x offset (left) to cover some mess
+                screenshotRoiRect = CGRect(x: 10, y: maxDistanse!.y1 + 11, width: Double(cloneMat.size().width) - 10, height: maxDistanse!.diff - 22)
                 var roiMat =  cloneMat.roi(at: screenshotRoiRect) ?? cloneMat
                 let originSize = roiMat.size()
                 
