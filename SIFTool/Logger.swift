@@ -24,6 +24,9 @@ class Logger {
     }
     static let shared = Logger()
     var delegate: LoggerProtocol? = nil
+    
+    var matWindow: UIWindow!
+    var imageView: UIImageView!
 }
 
 extension Logger {
@@ -77,6 +80,23 @@ extension Logger {
                 print(logStr)
             }
         #endif
+    }
+    
+    func showMat(_ mat: CVMat) {
+        let image = UIImage.init(cvMat: mat)
+        DispatchQueue.main.async {
+            self.imageView.image = image
+        }
+    }
+    
+    func enableMatWindow() {
+        matWindow = UIWindow(frame: CGRect.init(x: 60, y: 0, width: 300, height: 200))
+        imageView = UIImageView(frame: matWindow.bounds)
+        matWindow.addSubview(imageView)
+        
+        matWindow.windowLevel = UIWindowLevelAlert
+        matWindow.screen = UIScreen.main
+        matWindow.makeKeyAndVisible()
     }
 }
 
